@@ -37,6 +37,9 @@ return {
 		version = false,
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {
+			options = {
+				try_as_border = false,
+			},
 			symbol = '▎',
 		},
 	},
@@ -57,11 +60,16 @@ return {
 	-- Detect tabstop and shiftwidth automatically
 	-- 'tpope/vim-sleuth',
 
+	-- LSP Config{{{
 	-- NOTE: This is where your plugins related to LSP can be installed.
 	--  The configuration is done below. Search for lspconfig to find it below.
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
+		event = { 'BufReadPost', 'BufNewFile' },
+		config = function()
+			require('pluggers.lspconfig')
+		end,
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			{ 'williamboman/mason.nvim', config = true },
@@ -74,8 +82,9 @@ return {
 			-- Additional lua configuration, makes nvim stuff amazing!
 			'folke/neodev.nvim',
 		},
-	},
+	}, -- }}}
 
+	-- nvim-cmp {{{
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
@@ -93,10 +102,19 @@ return {
 			-- Adds a number of user-friendly snippets
 			'rafamadriz/friendly-snippets',
 		},
-	},
+		config = function()
+			require('pluggers.cmp')
+		end,
+	}, -- }}}
 
 	-- Useful plugin to show you pending keybinds.
-	{ 'folke/which-key.nvim', opts = {} },
+	{
+		'folke/which-key.nvim',
+		opts = {},
+		keys = { '<leader>', 'z', 'g' },
+	},
+
+	-- Git Signs{{{
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
 		'lewis6991/gitsigns.nvim',
@@ -148,23 +166,24 @@ return {
 				})
 			end,
 		},
-	},
+	}, -- }}}
 
-	{
-		-- Set lualine as statusline
-		'nvim-lualine/lualine.nvim',
-		-- See `:help lualine.txt`
-		opts = {
-			options = {
-				icons_enabled = false,
-				theme = 'onedark',
-				component_separators = '|',
-				section_separators = '',
-			},
-		},
-	},
+	-- {
+	-- 	-- Set lualine as statusline
+	-- 	'nvim-lualine/lualine.nvim',
+	-- 	-- See `:help lualine.txt`
+	--
+	-- 	opts = {
+	-- 		options = {
+	-- 			icons_enabled = false,
+	-- 			theme = 'onedark',
+	-- 			component_separators = '|',
+	-- 			section_separators = '',
+	-- 		},
+	-- 	},
+	-- },
 
-	-- Fuzzy Finder (files, lsp, etc)
+	-- Fuzzy Finder (files, lsp, etc) {{{
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
@@ -198,10 +217,12 @@ return {
 					},
 				},
 			})
-			pcall(require('telescope').load_extension, 'fzf') -- }}}
+			pcall(require('telescope').load_extension, 'fzf')
 		end,
 	},
+	-- }}}
 
+	-- Tree Sitter {{{
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -289,7 +310,7 @@ return {
 			end, 0)
 		end,
 		build = ':TSUpdate',
-	},
+	}, -- }}}
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.

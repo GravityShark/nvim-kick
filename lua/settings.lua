@@ -1,5 +1,16 @@
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+-- [[ Highlight on yank ]]{{{
+-- See `:help vim.highlight.on_yank()`
+-- local highlight_group =
+-- 	vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+-- 	callback = function()
+-- 		vim.highlight.on_yank()
+-- 	end,
+-- 	group = highlight_group,
+-- 	pattern = '*',
+-- })}}}
 
 -- Enable break indent
 vim.o.breakindent = true
