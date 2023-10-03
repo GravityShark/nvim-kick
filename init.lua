@@ -604,22 +604,47 @@ vim.keymap.set('n', '<leader>i', '<cmd>UndotreeFocus<CR>', { noremap = true }) -
 -- nm('<leader>i', '<cmd>UndotreeHide<CR>')                                        -- Toggle file explorer
 
 -- vim-fugtive {{{
-nm('<leader>gg', '<cmd>Git<CR>')
-nm('<leader>gd', '<cmd>Git diff<CR>')
-nm('<leader>gc', '<cmd>Git commit<CR>')
-nm('<leader>ga', '<cmd>Git add<CR>')
-nm('<leader>gs', '<cmd>Git show<CR>')
+vim.keymap.set('n', '<leader>gg', '<cmd>Git<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gd', '<cmd>Git diff<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>ga', '<cmd>Git add<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gs', '<cmd>Git show<CR>', { noremap = true })
 -- nm('<leader>gp', '<cmd>Git pull<CR>')
 -- nm('<leader>gP', '<cmd>Git push<CR>')
 -- }}}
 
 -- Troublin{{{
-nm('<leader>xx', '<cmd>TroubleToggle<cr>')
-nm('<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
-nm('<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>')
-nm('<leader>xq', '<cmd>TroubleToggle quickfix<cr>')
-nm('<leader>xl', '<cmd>TroubleToggle loclist<cr>')
-nm('gR', '<cmd>TroubleToggle lsp_references<cr>')
+vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { noremap = true })
+vim.keymap.set(
+	'n',
+	'<leader>xw',
+	'<cmd>TroubleToggle workspace_diagnostics<cr>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>xd',
+	'<cmd>TroubleToggle document_diagnostics<cr>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>xq',
+	'<cmd>TroubleToggle quickfix<cr>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>xl',
+	'<cmd>TroubleToggle loclist<cr>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'gR',
+	'<cmd>TroubleToggle lsp_references<cr>',
+	{ noremap = true }
+)
 -- }}}
 
 -- [[ Highlight on yank ]]
