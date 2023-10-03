@@ -2,14 +2,34 @@ return {
 	-- NOTE: First, some plugins that don't require any configuration
 
 	-- Git related plugins
+	-- {
+	-- 	-- Theme inspired by Atom
+	-- 	'navarasu/onedark.nvim',
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme('onedark')
+	-- 	end,
+	-- },
+
 	{
-		-- Theme inspired by Atom
-		'navarasu/onedark.nvim',
+		'rose-pine/neovim',
+		name = 'rose-pine',
 		lazy = false,
 		priority = 1000,
+		opts = { disable_background = true },
 		config = function()
-			vim.cmd.colorscheme('onedark')
+			require('rose-pine').setup()
+			-- vim.cmd.colorscheme('monokai-pro-octagon')
+			vim.cmd.colorscheme('rose-pine')
 		end,
+	},
+
+	{
+		'echasnovski/mini.pairs',
+		version = false,
+		event = 'InsertEnter',
+		opts = {},
 	},
 
 	-- 'tpope/vim-fugitive',
