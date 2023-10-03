@@ -13,15 +13,15 @@ return {
 	-- },
 
 	{
-		'sainnhe/sonokai',
+		'rose-pine/neovim',
+		name = 'rose-pine',
 		lazy = false,
 		priority = 1000,
+		opts = { disable_background = true },
 		config = function()
-			vim.g.sonokai_style = 'andromeda'
-			vim.g.sonokai_better_performance = 1
-			vim.g.sonokai_transparent_background = 1
-
-			vim.cmd.colorscheme('sonokai')
+			require('rose-pine').setup()
+			-- vim.cmd.colorscheme('monokai-pro-octagon')
+			vim.cmd.colorscheme('rose-pine')
 		end,
 	},
 
