@@ -1,7 +1,5 @@
 return {
-	-- NOTE: First, some plugins that don't require any configuration
-
-	-- Git related plugins
+	-- Theme {{{
 	-- {
 	-- 	-- Theme inspired by Atom
 	-- 	'navarasu/onedark.nvim',
@@ -11,7 +9,6 @@ return {
 	-- 		vim.cmd.colorscheme('onedark')
 	-- 	end,
 	-- },
-
 	{
 		'sainnhe/sonokai',
 		lazy = false,
@@ -25,7 +22,9 @@ return {
 			vim.cmd.colorscheme('sonokai')
 		end,
 	},
+	-- }}}
 
+	-- mini.nvim {{{}}}
 	{
 		'echasnovski/mini.pairs',
 		version = false,
@@ -33,11 +32,21 @@ return {
 		opts = {},
 	},
 
+	{
+		'echasnovski/mini.indentscope',
+		version = false,
+		event = { 'BufReadPost', 'BufNewFile' },
+		opts = {
+			symbol = '▎',
+		},
+	},
+
+	-- Git related plugins
 	-- 'tpope/vim-fugitive',
 	-- 'tpope/vim-rhubarb',
 
 	-- Detect tabstop and shiftwidth automatically
-	'tpope/vim-sleuth',
+	-- 'tpope/vim-sleuth',
 
 	-- NOTE: This is where your plugins related to LSP can be installed.
 	--  The configuration is done below. Search for lspconfig to find it below.
@@ -65,6 +74,9 @@ return {
 			-- Snippet Engine & its associated nvim-cmp source
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip',
+
+			-- Adds paths to sources
+			'hrsh7th/cmp-path',
 
 			-- Adds LSP completion capabilities
 			'hrsh7th/cmp-nvim-lsp',
@@ -143,15 +155,6 @@ return {
 		},
 	},
 
-	{
-		-- Add indentation guides even on blank lines
-		'lukas-reineke/indent-blankline.nvim',
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help indent_blankline.txt`
-		main = 'ibl',
-		opts = {},
-	},
-
 	-- "gc" to comment visual regions/lines
 	{
 		'echasnovski/mini.comment',
@@ -164,6 +167,7 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
+		cmd = 'Telescope',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -179,6 +183,22 @@ return {
 				end,
 			},
 		},
+		config = function()
+			require('telescope').setup({
+				defaults = {
+					layout_config = {
+						horizontal = {
+							preview_width = 0.55,
+							results_width = 0.5,
+						},
+						width = 0.95,
+						height = 0.90,
+						preview_cutoff = 120,
+					},
+				},
+			})
+			pcall(require('telescope').load_extension, 'fzf') -- }}}
+		end,
 	},
 
 	{

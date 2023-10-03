@@ -82,25 +82,6 @@ require('keymaps')
 -- 	pattern = '*',
 -- })}}}
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup({
-	defaults = {
-		layout_config = {
-			horizontal = {
-				preview_width = 0.55,
-				results_width = 0.5,
-			},
-			width = 0.95,
-			height = 0.90,
-			preview_cutoff = 120,
-		},
-	},
-})
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
 -- [[ Configure Treesitter ]]{{{
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
@@ -355,6 +336,7 @@ cmp.setup({
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
+		{ name = 'path' },
 	},
 })
 
