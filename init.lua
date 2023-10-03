@@ -389,15 +389,25 @@ vim.keymap.set(
 -- g.maplocalleader = ','                                                                 -- Use Space, like key for alternative hotkeys
 -- Custom {{{
 -- Easier Indent moving in
-vm('>', '> gv')
-vm('<', '< gv')
+vim.keymap.set('v', '>', '> gv', { noremap = true })
+vim.keymap.set('v', '<', '< gv', { noremap = true })
 
 -- Space + y|d yanks or cuts to system clipboard
-nvm('<leader>y', '"+y')
-nvm('<leader>d', '"+d')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { noremap = true })
 -- Correct Pasting
-nvm('<leader>p', '<CMD> set paste<CR>"+p<CMD>set paste!<CR>')
-nvm('<leader>P', '<CMD> set paste<CR>"+P<CMD>set paste!<CR>')
+vim.keymap.set(
+	{ 'n', 'v' },
+	'<leader>p',
+	'<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	{ 'n', 'v' },
+	'<leader>P',
+	'<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
+	{ noremap = true }
+)
 
 -- local function bufdel ()
 --   local currentbuf = vim.api.nvim_get_current_buf()
@@ -416,65 +426,181 @@ nvm('<leader>P', '<CMD> set paste<CR>"+P<CMD>set paste!<CR>')
 
 -- nm('<leader>c', bufdel())
 -- fat \/
-nm(
+vim.keymap.set(
+	'n',
 	'<leader>c',
 	'<CMD>lua require("extensions.bufferline").bufrem(vim.api.nvim_get_current_buf())<CR>'
 )
--- nm('<leader>ww', '<CMD>w<CR>')
-nm('<leader>w', '<CMD>w<CR>')
+-- vim.keymap.set('-- n', '<leader>ww', '<CMD>w<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>w', '<CMD>w<CR>', { noremap = true })
 
 -- Middle positioned C+ D/U
-nm('<C-d>', '<C-d>zz')
-nm('<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
 -- }}}
 
 -- Harpoon {{{
-nm('<leader>a', '<CMD> lua require("harpoon.mark").add_file() <CR>')
-nm('<leader>`', '<CMD> lua require("harpoon.ui").toggle_quick_menu() <CR>')
-nm('<leader>1', '<CMD> lua require("harpoon.ui").nav_file(1) <CR>')
-nm('<leader>2', '<CMD> lua require("harpoon.ui").nav_file(2) <CR>')
-nm('<leader>3', '<CMD> lua require("harpoon.ui").nav_file(3) <CR>')
-nm('<leader>4', '<CMD> lua require("harpoon.ui").nav_file(4) <CR>')
-nm('<leader>5', '<CMD> lua require("harpoon.ui").nav_file(5) <CR>')
-nm('<leader>6', '<CMD> lua require("harpoon.ui").nav_file(6) <CR>')
+vim.keymap.set(
+	'n',
+	'<leader>a',
+	'<CMD> lua require("harpoon.mark").add_file() <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>`',
+	'<CMD> lua require("harpoon.ui").toggle_quick_menu() <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>1',
+	'<CMD> lua require("harpoon.ui").nav_file(1) <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>2',
+	'<CMD> lua require("harpoon.ui").nav_file(2) <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>3',
+	'<CMD> lua require("harpoon.ui").nav_file(3) <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>4',
+	'<CMD> lua require("harpoon.ui").nav_file(4) <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>5',
+	'<CMD> lua require("harpoon.ui").nav_file(5) <CR>',
+	{ noremap = true }
+)
+vim.keymap.set(
+	'n',
+	'<leader>6',
+	'<CMD> lua require("harpoon.ui").nav_file(6) <CR>',
+	{ noremap = true }
+)
 -- }}}
 
 -- LSP {{{
-nm('K', '<cmd>lua vim.lsp.buf.hover()<CR>') -- Hover object
-nm('ga', '<cmd>lua vim.lsp.buf.code_action()<CR>') -- Code actions
-nm('gR', '<cmd>lua vim.lsp.buf.rename()<CR>') -- Rename an object
-nm('gD', '<cmd>lua vim.lsp.buf.declaration()<cr>') -- Go to declaration
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true }) -- Hover object
+vim.keymap.set(
+	'n',
+	'ga',
+	'<cmd>lua vim.lsp.buf.code_action()<CR>',
+	{ noremap = true }
+) -- Code actions
+vim.keymap.set(
+	'n',
+	'gR',
+	'<cmd>lua vim.lsp.buf.rename()<CR>',
+	{ noremap = true }
+) -- Rename an object
+vim.keymap.set(
+	'n',
+	'gD',
+	'<cmd>lua vim.lsp.buf.declaration()<cr>',
+	{ noremap = true }
+) -- Go to declaration
 -- }}}
 
 -- Telescope {{{
-nm('gd', '<cmd>Telescope lsp_definitions<CR>') -- Goto declaration
-nm('<leader>fr', '<cmd>Telescope oldfiles<CR>') -- Show recent files
-nm('<leader>fg', '<cmd>Telescope git_files<CR>') -- Search for a file in project
-nm('<leader>ff', '<cmd>Telescope find_files<CR>') -- Search for a file (ignoring dotfiles)
-nm('<leader>fa', '<cmd>Telescope find_files hidden=true no_ignore=true<CR>') -- Search for a file (with dotfiles)
-nm('<leader>fp', '<cmd>Telescope jumplist<CR>') -- Show jumplist (previous locations)
-nm('<leader>fb', '<cmd>Telescope git_branches<CR>') -- Show git branches
-nm('<leader>fg', '<cmd>Telescope live_grep<CR>') -- Find a string in project
-nm('<leader>ft', '<cmd>Telescope buffers<CR>') -- Show all buffers
-nm('<leader>f?', '<cmd>Telescope<CR>') -- Show all commands
-nm('<leader>fs', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>') -- Search for dynamic symbols
-nm('<leader>fu', '<cmd>Telescope undo<CR>') -- Show undotree
-nm('<leader>fn', '<cmd>Telescope notify<CR>') -- Show nvim-notify history
+vim.keymap.set(
+	'n',
+	'gd',
+	'<cmd>Telescope lsp_definitions<CR>',
+	{ noremap = true }
+) -- Goto declaration
+vim.keymap.set(
+	'n',
+	'<leader>fr',
+	'<cmd>Telescope oldfiles<CR>',
+	{ noremap = true }
+) -- Show recent files
+vim.keymap.set(
+	'n',
+	'<leader>fg',
+	'<cmd>Telescope git_files<CR>',
+	{ noremap = true }
+) -- Search for a file in project
+vim.keymap.set(
+	'n',
+	'<leader>ff',
+	'<cmd>Telescope find_files<CR>',
+	{ noremap = true }
+) -- Search for a file (ignoring dotfiles)
+vim.keymap.set(
+	'n',
+	'<leader>fa',
+	'<cmd>Telescope find_files hidden=true no_ignore=true<CR>',
+	{ noremap = true }
+) -- Search for a file (with dotfiles)
+vim.keymap.set(
+	'n',
+	'<leader>fp',
+	'<cmd>Telescope jumplist<CR>',
+	{ noremap = true }
+) -- Show jumplist (previous locations)
+vim.keymap.set(
+	'n',
+	'<leader>fb',
+	'<cmd>Telescope git_branches<CR>',
+	{ noremap = true }
+) -- Show git branches
+vim.keymap.set(
+	'n',
+	'<leader>fg',
+	'<cmd>Telescope live_grep<CR>',
+	{ noremap = true }
+) -- Find a string in project
+vim.keymap.set(
+	'n',
+	'<leader>ft',
+	'<cmd>Telescope buffers<CR>',
+	{ noremap = true }
+) -- Show all buffers
+vim.keymap.set('n', '<leader>f?', '<cmd>Telescope<CR>', { noremap = true }) -- Show all commands
+vim.keymap.set(
+	'n',
+	'<leader>fs',
+	'<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
+	{ noremap = true }
+) -- Search for dynamic symbols
+vim.keymap.set('n', '<leader>fu', '<cmd>Telescope undo<CR>', { noremap = true }) -- Show undotree
+vim.keymap.set(
+	'n',
+	'<leader>fn',
+	'<cmd>Telescope notify<CR>',
+	{ noremap = true }
+) -- Show nvim-notify history
 -- }}}
 
 -- Neo Tree {{{
-nm('<leader>n', '<cmd>Neotree toggle<CR>') -- Toggle file explorer
-nm('<leader>e', '<cmd>Neotree focus<CR>') -- Focus file explorer
+vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle<CR>', { noremap = true }) -- Toggle file explorer
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree focus<CR>', { noremap = true }) -- Focus file explorer
 -- }}}
 
 -- Bufferline {{{
-nm('<Tab>', '<cmd>BufferLineCycleNext<CR>') -- Toggle file explorer
-nm('<S-Tab>', '<cmd>BufferLineCyclePrev<CR>') -- Toggle file explorer
+vim.keymap.set('n', '<Tab>', '<cmd>BufferLineCycleNext<CR>', { noremap = true }) -- Toggle file explorer
+vim.keymap.set(
+	'n',
+	'<S-Tab>',
+	'<cmd>BufferLineCyclePrev<CR>',
+	{ noremap = true }
+) -- Toggle file explorer
 -- }}}
 
 -- vim undotree
-nm('<leader>u', '<cmd>UndotreeToggle<CR>') -- Toggle file explorer
-nm('<leader>i', '<cmd>UndotreeFocus<CR>') -- Toggle file explorer
+vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>', { noremap = true }) -- Toggle file explorer
+vim.keymap.set('n', '<leader>i', '<cmd>UndotreeFocus<CR>', { noremap = true }) -- Toggle file explorer
 -- nm('<leader>i', '<cmd>UndotreeHide<CR>')                                        -- Toggle file explorer
 
 -- vim-fugtive {{{
@@ -875,4 +1001,4 @@ cmp.setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et
