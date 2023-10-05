@@ -12,33 +12,20 @@
 -- 	pattern = '*',
 -- })}}}
 
--- Enable break indent
-vim.o.breakindent = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
 -- LSP Diagnostics {{{
-local signs = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' }
+local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
-	local hl = 'DiagnosticSign' .. type
+	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
 
--- Self {{{
+-- Other {{{
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.undofile = true
 
-vim.opt.wrap = false
+-- vim.opt.wrap = true
 
 vim.opt.conceallevel = 2
 vim.opt.matchtime = 0
@@ -46,8 +33,20 @@ vim.opt.matchtime = 0
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = '80'
+--
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Keep signcolumn on by default
+-- vim.wo.signcolumn = 'yes'
+--
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = "menuone,noselect"
+vim.opt.colorcolumn = "80"
 -- }}}
 
 -- Tabs {{{
@@ -59,7 +58,7 @@ vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for mor
 -- }}}
 
 -- Folding {{{
-vim.opt.foldmethod = 'marker'
+vim.opt.foldmethod = "marker"
 -- }}}
 
 -- Search {{{
@@ -75,32 +74,10 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- }}}
 
 -- Wild Menu {{{
-vim.opt.wildmenu = true
-vim.opt.wildmode = 'longest:full,full'
+-- Default to true in neovim
+-- vim.opt.wildmenu = true
+-- vim.opt.wildmode = 'longest:full,full'
 -- }}}
 
 -- Default Plugins {{{
-local disabled_built_ins = {
-	-- "netrw",
-	-- "netrwPlugin",
-	-- "netrwSettings",
-	'netrwFileHandlers',
-	'gzip',
-	'zip',
-	'zipPlugin',
-	'tar',
-	'tarPlugin',
-	'getscript',
-	'getscriptPlugin',
-	'vimball',
-	'vimballPlugin',
-	'2html_plugin',
-	'logipat',
-	'rrhelper',
-	'spellfile_plugin',
-	'matchit',
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-	vim.g['loaded_' .. plugin] = 1
-end
+-- }}}

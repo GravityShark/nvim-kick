@@ -10,45 +10,48 @@ return {
 	-- 	end,
 	-- },
 	{
-		'sainnhe/sonokai',
+		"sainnhe/sonokai",
 		lazy = false,
+		enabled = false,
 		priority = 1000,
 		opts = { disable_background = true },
 		config = function()
-			vim.g.sonokai_style = 'andromeda'
+			vim.g.sonokai_style = "andromeda"
 			vim.g.sonokai_better_performance = 1
 			vim.g.sonokai_transparent_background = 1
+			vim.g.sonokai_floatin = 1
+			vim.g.sonokai_enable_italic = 1
 
-			vim.cmd.colorscheme('sonokai')
+			vim.cmd.colorscheme("sonokai")
 		end,
 	},
 	-- }}}
 
 	-- mini.nvim {{{
 	{
-		'echasnovski/mini.pairs',
+		"echasnovski/mini.pairs",
 		version = false,
-		event = 'InsertEnter',
+		event = "InsertEnter",
 		opts = {},
 	},
 
 	{
-		'echasnovski/mini.indentscope',
+		"echasnovski/mini.indentscope",
 		version = false,
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			options = {
 				try_as_border = false,
 			},
-			symbol = '▎',
+			symbol = "▎",
 		},
 	},
 
 	-- "gc" to comment visual regions/lines
 	{
-		'echasnovski/mini.comment',
+		"echasnovski/mini.comment",
 		version = false,
-		keys = { 'gc', 'gcc' },
+		keys = { "gcc", { "gc", mode = "v" } },
 		opts = {},
 	},
 	-- }}}
@@ -58,111 +61,112 @@ return {
 	-- 'tpope/vim-rhubarb',
 
 	-- Detect tabstop and shiftwidth automatically
-	-- 'tpope/vim-sleuth',
-
+	-- {
+	-- 	'tpope/vim-sleuth',
+	-- 	event = 'VeryLazy',
+	-- },
 	-- LSP Config{{{
 	-- NOTE: This is where your plugins related to LSP can be installed.
 	--  The configuration is done below. Search for lspconfig to find it below.
 	{
 		-- LSP Configuration & Plugins
-		'neovim/nvim-lspconfig',
-		event = { 'BufReadPost', 'BufNewFile' },
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require('pluggers.lspconfig')
+			require("pluggers.lspconfig")
 		end,
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ 'williamboman/mason.nvim', config = true },
-			'williamboman/mason-lspconfig.nvim',
 
 			-- Useful status updates for LSP
+			{ "williamboman/mason.nvim", config = true },
+			"williamboman/mason-lspconfig.nvim",
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			-- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, lazy = false },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
-			'folke/neodev.nvim',
+			"folke/neodev.nvim",
 		},
 	}, -- }}}
 
 	-- nvim-cmp {{{
 	{
 		-- Autocompletion
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 
 			-- Adds paths to sources
-			'hrsh7th/cmp-path',
+			"hrsh7th/cmp-path",
 
 			-- Adds LSP completion capabilities
-			'hrsh7th/cmp-nvim-lsp',
+			"hrsh7th/cmp-nvim-lsp",
+			--
+			-- Adds regl
+			"hrsh7th/cmp-buffer",
 
 			-- Adds a number of user-friendly snippets
-			'rafamadriz/friendly-snippets',
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
-			require('pluggers.cmp')
+			require("pluggers.cmp")
 		end,
 	}, -- }}}
 
 	-- Useful plugin to show you pending keybinds.
 	{
-		'folke/which-key.nvim',
+		"folke/which-key.nvim",
 		opts = {},
-		keys = { '<leader>', 'z', 'g' },
+		keys = { "<leader>", "z", "g" },
 	},
 
 	-- Git Signs{{{
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
-		'lewis6991/gitsigns.nvim',
+		"lewis6991/gitsigns.nvim",
 		opts = {
 			-- See `:help gitsigns.txt`
 			signs = {
-				add = { text = '+' },
-				change = { text = '~' },
-				delete = { text = '_' },
-				topdelete = { text = '‾' },
-				changedelete = { text = '~' },
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
 			},
 			on_attach = function(bufnr)
 				vim.keymap.set(
-					'n',
-					'<leader>hp',
-					require('gitsigns').preview_hunk,
-					{ buffer = bufnr, desc = 'Preview git hunk' }
+					"n",
+					"<leader>hp",
+					require("gitsigns").preview_hunk,
+					{ buffer = bufnr, desc = "Preview git hunk" }
 				)
 
 				-- don't override the built-in and fugitive keymaps
 				local gs = package.loaded.gitsigns
-				vim.keymap.set(
-					{ 'n', 'v' },
-					']c',
-					function()
-						if vim.wo.diff then
-							return ']c'
-						end
-						vim.schedule(function()
-							gs.next_hunk()
-						end)
-						return '<Ignore>'
-					end,
-					{ expr = true, buffer = bufnr, desc = 'Jump to next hunk' }
-				)
-				vim.keymap.set({ 'n', 'v' }, '[c', function()
+				vim.keymap.set({ "n", "v" }, "]c", function()
 					if vim.wo.diff then
-						return '[c'
+						return "]c"
+					end
+					vim.schedule(function()
+						gs.next_hunk()
+					end)
+					return "<Ignore>"
+				end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+				vim.keymap.set({ "n", "v" }, "[c", function()
+					if vim.wo.diff then
+						return "[c"
 					end
 					vim.schedule(function()
 						gs.prev_hunk()
 					end)
-					return '<Ignore>'
+					return "<Ignore>"
 				end, {
 					expr = true,
 					buffer = bufnr,
-					desc = 'Jump to previous hunk',
+					desc = "Jump to previous hunk",
 				})
 			end,
 		},
@@ -185,26 +189,27 @@ return {
 
 	-- Fuzzy Finder (files, lsp, etc) {{{
 	{
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
-		cmd = 'Telescope',
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		cmd = "Telescope",
 		dependencies = {
-			'nvim-lua/plenary.nvim',
+			"nvim-lua/plenary.nvim",
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
 			-- Only load if `make` is available. Make sure you have the system
 			-- requirements installed.
 			{
-				'nvim-telescope/telescope-fzf-native.nvim',
+				"nvim-telescope/telescope-fzf-native.nvim",
 				-- NOTE: If you are having trouble with this installation,
 				--       refer to the README for telescope-fzf-native for more instructions.
-				build = 'make',
+				build = "make",
 				cond = function()
-					return vim.fn.executable('make') == 1
+					return vim.fn.executable("make") == 1
 				end,
 			},
 		},
 		config = function()
-			require('telescope').setup({
+			local telescope = require("telescope")
+			telescope.setup({
 				defaults = {
 					layout_config = {
 						horizontal = {
@@ -217,7 +222,7 @@ return {
 					},
 				},
 			})
-			pcall(require('telescope').load_extension, 'fzf')
+			telescope.load_extension("fzf")
 		end,
 	},
 	-- }}}
@@ -225,93 +230,23 @@ return {
 	-- Tree Sitter {{{
 	{
 		-- Highlight, edit, and navigate code
-		'nvim-treesitter/nvim-treesitter',
-		event = { 'BufReadPost', 'BufNewFile' },
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter-textobjects',
-		},
-		config = function()
-			vim.defer_fn(function()
-				require('nvim-treesitter.configs').setup({
-					-- Add languages to be installed here that you want installed for treesitter
-					ensure_installed = {
-						'c',
-						'cpp',
-						'go',
-						'lua',
-						'python',
-						'rust',
-						'tsx',
-						'javascript',
-						'typescript',
-						'vimdoc',
-						'vim',
-					},
-
-					-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-					auto_install = false,
-
-					highlight = { enable = true },
-					indent = { enable = true },
-					incremental_selection = {
-						enable = true,
-						keymaps = {
-							init_selection = '<c-space>',
-							node_incremental = '<c-space>',
-							scope_incremental = '<c-s>',
-							node_decremental = '<M-space>',
-						},
-					},
-					textobjects = {
-						select = {
-							enable = true,
-							lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-							keymaps = {
-								-- You can use the capture groups defined in textobjects.scm
-								['aa'] = '@parameter.outer',
-								['ia'] = '@parameter.inner',
-								['af'] = '@function.outer',
-								['if'] = '@function.inner',
-								['ac'] = '@class.outer',
-								['ic'] = '@class.inner',
-							},
-						},
-						move = {
-							enable = true,
-							set_jumps = true, -- whether to set jumps in the jumplist
-							goto_next_start = {
-								[']m'] = '@function.outer',
-								[']]'] = '@class.outer',
-							},
-							goto_next_end = {
-								[']M'] = '@function.outer',
-								[']['] = '@class.outer',
-							},
-							goto_previous_start = {
-								['[m'] = '@function.outer',
-								['[['] = '@class.outer',
-							},
-							goto_previous_end = {
-								['[M'] = '@function.outer',
-								['[]'] = '@class.outer',
-							},
-						},
-						swap = {
-							enable = true,
-							swap_next = {
-								['<leader>a'] = '@parameter.inner',
-							},
-							swap_previous = {
-								['<leader>A'] = '@parameter.inner',
-							},
-						},
-					},
-				})
-			end, 0)
-		end,
-		build = ':TSUpdate',
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+		-- dependencies = {
+		-- 	'nvim-treesitter/nvim-treesitter-textobjects',
+		-- },
+		config = function() end,
+		build = ":TSUpdate",
 	}, -- }}}
 
+	-- Fast bufferline
+	{
+		"nvoid-lua/bufferline.lua",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup({ kind_icons = true })
+		end,
+	},
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
 	--       Uncomment any of the lines below to enable them.

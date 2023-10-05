@@ -48,6 +48,29 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- }}}
 
+-- Default Plugins {{{
+vim.g.editorconfig = false
+local disabled_built_ins = {
+	-- 'editorconfig',
+	'gzip',
+	'man',
+	'matchit',
+	'matchparen',
+	'netrwPlugin',
+	'remote_plugins',
+	-- 'shada_plugin', -- Seems pretty useful
+	'spellfile_plugin',
+	'tarPlugin',
+	'2html_plugin',
+	'tutor_mode_plugin',
+	'zipPlugin_ext',
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+	vim.g['loaded_' .. plugin] = 1
+end
+-- }}}
+--
 -- Initialize lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -60,6 +83,9 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
+-- vim.opt.runtimepath:remove('~/.vim')
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup(require('plugins'), { defaults = { lazy = true } }) -- }}}
