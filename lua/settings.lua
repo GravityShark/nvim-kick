@@ -77,25 +77,32 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- vim.opt.wildmode = 'longest:full,full'
 -- }}}
 
-function BufRem(number)
-	local bufremove = require('mini.bufremove')
-	if not bufremove.delete(number, false) then
-		local choice = vim.fn.confirm(
-			'Save changes to ' .. vim.fn.expand('%:p'),
-			'&Yes\n&No\n&Cancel',
-			3
-		)
+vim.g.undotree_WindowLayout = 3
 
-		if choice == 1 then
-			vim.cmd('update')
-			bufremove.delete(number, false)
-		elseif choice == 2 then
-			bufremove.delete(number, true)
-		end
+function ToggleTabline()
+	-- Get the count of active buffers
+	local active_buffers =
+		vim.fn.len(vim.fn.getbufinfo({ listed = true, unlisted = true }))
+
+	if active_buffers == 1 then
+		vim.o.showtabline = 0
+	else
+		vim.o.showtabline = 2
 	end
 end
 
-vim.g.undotree_WindowLayout = 3
+vim.cmd([[
+augroup TablineToggle
+    autocmd!
+    autocmd BufAdd, BufDelete * lua ToggleTabline()
+augroup END
+]])
+
+-- netrw
+vim.cmd([[
+  autocmd FileType netrw set relativenumber
+]])
+
 -- vim.cmd.colorscheme('habamax')
 -- Default Plugins {{{
 -- }}}

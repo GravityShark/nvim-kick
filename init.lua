@@ -60,6 +60,7 @@ local disabled_built_ins = {
 	-- 'netrwPlugin', -- Enables Netrw
 	'remote_plugins', -- i also idk
 	'shada_plugin', -- IDK how to use shada
+	'shada', -- IDK how to use shada
 	'spellfile_plugin', -- something about spell checking idk
 	'tarPlugin', --
 	'2html_plugin', -- :TOhtml, turns your current file to a formatted html

@@ -12,7 +12,7 @@ return {
 	{
 		'sainnhe/sonokai',
 		lazy = false,
-		-- enabled = false,
+		enabled = false,
 		priority = 1000,
 		opts = { disable_background = true },
 		config = function()
@@ -25,6 +25,20 @@ return {
 			vim.cmd.colorscheme('sonokai')
 		end,
 	},
+
+	{
+		'catppuccin/nvim',
+		enabled = false,
+		lazy = false,
+		name = 'catppuccin',
+		priority = 1000,
+		config = function()
+			require('plugg')
+			vim.cmd.colorscheme('catppuccin')
+		end,
+	},
+
+	{ 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 	-- }}}
 
 	-- mini.nvim {{{
@@ -63,7 +77,7 @@ return {
 		version = false,
 		event = { 'BufReadPost', 'BufNewFile' },
 		dependencies = 'nvim-tree/nvim-web-devicons',
-		opts = { tabpage_section = 'right' },
+		opts = { set_vim_settings = false },
 	},
 
 	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
@@ -121,7 +135,7 @@ return {
 			{ 'williamboman/mason.nvim', config = true },
 			'williamboman/mason-lspconfig.nvim',
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			-- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, lazy = false },
+			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, lazy = false },
 		},
 	}, -- }}}
 

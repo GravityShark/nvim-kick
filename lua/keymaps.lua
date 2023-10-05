@@ -222,25 +222,32 @@ vim.api.nvim_set_keymap(
 ) -- Show nvim-notify history
 -- }}}
 
--- Neo Tree {{{
-vim.api.nvim_set_keymap(
-	'n',
-	'<leader>n',
-	'<cmd>Neotree toggle<CR>',
-	{ noremap = true }
-) -- Toggle file explorer
-vim.api.nvim_set_keymap(
-	'n',
-	'<leader>e',
-	'<cmd>Neotree focus<CR>',
-	{ noremap = true }
-) -- Focus file explorer
+-- netrw {{{
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Sex!<CR>', { noremap = true }) -- Toggle file explorer
 -- }}}
 
 -- Buffers {{{
 -- Tabs to move around buffers
 vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true })
+
+function BufRem(number)
+	local bufremove = require('mini.bufremove')
+	if not bufremove.delete(number, false) then
+		local choice = vim.fn.confirm(
+			'Save changes to ' .. vim.fn.expand('%:p'),
+			'&Yes\n&No\n&Cancel',
+			3
+		)
+
+		if choice == 1 then
+			vim.cmd('update')
+			bufremove.delete(number, false)
+		elseif choice == 2 then
+			bufremove.delete(number, true)
+		end
+	end
+end
 
 vim.api.nvim_set_keymap(
 	'n',
@@ -413,10 +420,10 @@ vim.keymap.set(
 vim.keymap.set({ 'i' }, '<C-K>', function()
 	require('luasnip').expand()
 end, { silent = true })
-vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+vim.keymap.set({ 's' }, '<Tab>', function()
 	require('luasnip').jump(1)
 end, { silent = true })
-vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+vim.keymap.set({ 's' }, '<S-Tab>', function()
 	require('luasnip').jump(-1)
 end, { silent = true })
 
