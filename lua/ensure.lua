@@ -1,16 +1,16 @@
 M = {}
 
 M.treesitter = {
-	"lua",
-	"python",
-	"c",
-	"bash",
+	'lua',
+	'python',
+	'c',
+	'bash',
 }
 
 M.mason = {
-	"lua_ls",
-	"pyright",
-	"clangd",
+	'lua_ls',
+	'pyright',
+	'clangd',
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },

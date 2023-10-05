@@ -13,9 +13,9 @@
 -- })}}}
 
 -- LSP Diagnostics {{{
-local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
+local signs = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' }
 for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
+	local hl = 'DiagnosticSign' .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
@@ -45,8 +45,8 @@ vim.o.breakindent = true
 -- vim.wo.signcolumn = 'yes'
 --
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-vim.opt.colorcolumn = "80"
+vim.o.completeopt = 'menuone,noselect'
+vim.opt.colorcolumn = '80'
 -- }}}
 
 -- Tabs {{{
@@ -58,7 +58,7 @@ vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for mor
 -- }}}
 
 -- Folding {{{
-vim.opt.foldmethod = "marker"
+vim.opt.foldmethod = 'marker'
 -- }}}
 
 -- Search {{{
@@ -79,5 +79,26 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- vim.opt.wildmode = 'longest:full,full'
 -- }}}
 
+function BufRem(number)
+	local bufremove = require('mini.bufremove')
+	if not bufremove.delete(number, false) then
+		local choice = vim.fn.confirm(
+			'Save changes to ' .. vim.fn.expand('%:p'),
+			'&Yes\n&No\n&Cancel',
+			3
+		)
+
+		if choice == 1 then
+			vim.cmd('update')
+			bufremove.delete(number, false)
+		elseif choice == 2 then
+			bufremove.delete(number, true)
+		end
+	end
+end
+
+vim.cmd('command! -nargs=1 BufferKill lua BufRem(<f-args>)')
+
+vim.cmd.colorscheme('habamax')
 -- Default Plugins {{{
 -- }}}
