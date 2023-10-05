@@ -55,7 +55,6 @@ vim.keymap.set(
 
 -- nm('<leader>c', bufdel())
 -- fat \/
-vim.api.nvim_set_keymap('n', '<leader>c', 'BufferKill', { noremap = true })
 -- vim.api.nvim_set_keymap('-- n', '<leader>ww', '<CMD>w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>w', '<CMD>w<CR>', { noremap = true })
 
@@ -238,26 +237,18 @@ vim.api.nvim_set_keymap(
 ) -- Focus file explorer
 -- }}}
 
--- Bufferline {{{
-vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true }) -- Toggle file explorer
-vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true }) -- Toggle file explorer
--- }}}
+-- Buffers {{{
+-- Tabs to move around buffers
+vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true })
 
--- vim undotree{{{
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>u',
-	'<cmd>UndotreeToggle<CR>',
-	{ noremap = true }
-) -- Toggle file explorer
-vim.api.nvim_set_keymap(
-	'n',
-	'<leader>i',
-	'<cmd>UndotreeFocus<CR>',
+	'<leader>c',
+	'<cmd>lua BufRem(0)<CR>',
 	{ noremap = true }
 )
--- nm('<leader>i', '<cmd>UndotreeHide<CR>')
--- Toggle file explorer}}}
+-- }}}
 
 -- vim-fugtive {{{
 vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>Git<CR>', { noremap = true })
@@ -285,8 +276,6 @@ vim.api.nvim_set_keymap(
 	'<cmd>Git show<CR>',
 	{ noremap = true }
 )
--- nm('<leader>gp', '<cmd>Git pull<CR>')
--- nm('<leader>gP', '<cmd>Git push<CR>')
 -- }}}
 
 -- Troublin{{{
@@ -420,6 +409,7 @@ vim.keymap.set(
 -- 	{ desc = '[S]earch [R]esume' }
 -- )}}}
 
+-- Luasnips{{{
 vim.keymap.set({ 'i' }, '<C-K>', function()
 	require('luasnip').expand()
 end, { silent = true })
@@ -434,4 +424,4 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
 	if require('luasnip').choice_active() then
 		require('luasnip').change_choice(1)
 	end
-end, { silent = true })
+end, { silent = true }) -- }}}

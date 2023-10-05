@@ -30,8 +30,6 @@ vim.opt.undofile = true
 vim.opt.conceallevel = 2
 vim.opt.matchtime = 0
 
-vim.opt.termguicolors = true
-
 vim.opt.scrolloff = 8
 --
 -- Decrease update time
@@ -41,7 +39,7 @@ vim.o.timeoutlen = 300
 -- Enable break indent
 vim.o.breakindent = true
 
--- Keep signcolumn on by default
+-- Is already on by defalut
 -- vim.wo.signcolumn = 'yes'
 --
 -- Set completeopt to have a better completion experience
@@ -74,7 +72,7 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- }}}
 
 -- Wild Menu {{{
--- Default to true in neovim
+-- already is the defalut in neovim
 -- vim.opt.wildmenu = true
 -- vim.opt.wildmode = 'longest:full,full'
 -- }}}
@@ -97,8 +95,7 @@ function BufRem(number)
 	end
 end
 
-vim.cmd('command! -nargs=1 BufferKill lua BufRem(<f-args>)')
-
-vim.cmd.colorscheme('habamax')
+vim.g.undotree_WindowLayout = 3
+-- vim.cmd.colorscheme('habamax')
 -- Default Plugins {{{
 -- }}}

@@ -12,10 +12,11 @@ return {
 	{
 		'sainnhe/sonokai',
 		lazy = false,
-		enabled = false,
+		-- enabled = false,
 		priority = 1000,
 		opts = { disable_background = true },
 		config = function()
+			vim.opt.termguicolors = true
 			vim.g.sonokai_style = 'andromeda'
 			vim.g.sonokai_better_performance = 1
 			vim.g.sonokai_transparent_background = 1
@@ -62,7 +63,7 @@ return {
 		version = false,
 		event = { 'BufReadPost', 'BufNewFile' },
 		dependencies = 'nvim-tree/nvim-web-devicons',
-		opts = {},
+		opts = { tabpage_section = 'right' },
 	},
 
 	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
@@ -71,8 +72,19 @@ return {
 	-- Undotree
 	{
 		'mbbill/undotree',
-		event = { 'VeryLazy' and 'BufReadPost', 'BufNewFile' },
+		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
+		keys = {
+			{ '<leader>u', '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>' },
+		},
 	},
+	-- {
+	--   "jiaoshijie/undotree",
+	--   dependencies = "nvim-lua/plenary.nvim",
+	--   config = true,
+	--   keys = { -- load the plugin only when using it's keybinding:
+	--     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+	--   },
+	-- },
 
 	{ 'ThePrimeagen/harpoon' },
 
