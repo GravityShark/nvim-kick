@@ -65,12 +65,27 @@ return {
 		opts = {},
 	},
 
-	{ 'echasnovski/mini.bufremove', version = false },
+	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
 	-- }}}
+
+	-- Undotree
+	{
+		'mbbill/undotree',
+		event = { 'VeryLazy' and 'BufReadPost', 'BufNewFile' },
+	},
+
+	{ 'ThePrimeagen/harpoon' },
+
+	{
+		'ThePrimeagen/vim-be-good',
+		cmd = { 'VimBeGood' },
+	},
+
+	{ 'tpope/vim-fugitive', cmd = { 'Git' } },
 
 	-- Git related plugins
 	-- 'tpope/vim-fugitive',
-	-- 'tpope/vim-rhubarb',
+	'tpope/vim-rhubarb',
 
 	-- Detect tabstop and shiftwidth automatically
 	-- {
@@ -95,11 +110,15 @@ return {
 			'williamboman/mason-lspconfig.nvim',
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			-- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, lazy = false },
-
-			-- Additional lua configuration, makes nvim stuff amazing!
-			'folke/neodev.nvim',
 		},
 	}, -- }}}
+
+	-- Additional lua configuration, makes nvim stuff amazing!
+	{
+		'folke/neodev.nvim',
+		ft = { 'lua', 'vim' },
+		opts = {},
+	},
 
 	-- nvim-cmp {{{
 	{

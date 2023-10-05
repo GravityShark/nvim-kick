@@ -419,3 +419,19 @@ vim.keymap.set(
 -- 	require('telescope.builtin').resume,
 -- 	{ desc = '[S]earch [R]esume' }
 -- )}}}
+
+vim.keymap.set({ 'i' }, '<C-K>', function()
+	require('luasnip').expand()
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+	require('luasnip').jump(1)
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+	require('luasnip').jump(-1)
+end, { silent = true })
+
+vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+	if require('luasnip').choice_active() then
+		require('luasnip').change_choice(1)
+	end
+end, { silent = true })

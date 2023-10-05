@@ -49,28 +49,29 @@ vim.g.maplocalleader = ' '
 -- }}}
 
 -- Default Plugins {{{
+-- All neovim default plugins
 vim.g.editorconfig = false
 local disabled_built_ins = {
-	-- 'editorconfig',
-	'gzip',
-	'man',
-	'matchit',
-	'matchparen',
-	'netrwPlugin',
-	'remote_plugins',
-	-- 'shada_plugin', -- Seems pretty useful
-	'spellfile_plugin',
-	'tarPlugin',
-	'2html_plugin',
-	'tutor_mode_plugin',
-	'zipPlugin_ext',
+	-- 'editorconfig', -- has a different way of disabling
+	'gzip', -- Allows editing files that have been gzipped
+	'man', -- :Man, allows using vim as a man page reader
+	--    'matchit', -- Gives extra options for '%' command
+	-- 'matchparen', -- Shows/highlights the matching parenthesis and others
+	-- 'netrwPlugin', -- Enables Netrw
+	'remote_plugins', -- i also idk
+	'shada_plugin', -- IDK how to use shada
+	'spellfile_plugin', -- something about spell checking idk
+	'tarPlugin', --
+	'2html_plugin', -- :TOhtml, turns your current file to a formatted html
+	'tutor_mode_plugin', -- :Tutor
+	'zipPlugin_ext', -- Allows you to edit Zip files from vim
 }
 
 for _, plugin in pairs(disabled_built_ins) do
 	vim.g['loaded_' .. plugin] = 1
 end
 -- }}}
---
+
 -- Initialize lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
