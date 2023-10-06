@@ -5,15 +5,28 @@ local mason_lspconfig = require('mason-lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local servers = require('ensure').mason
+
 mason_lspconfig.setup({
-	ensure_installed = require('ensure').mason,
+	ensure_installed = vim.tbl_keys(servers),
 })
 
 mason_lspconfig.setup_handlers({
 	function(server_name)
-		require('lspconfig')[server_name].setup({})
+		require('lspconfig')[server_name].setup({
+			capabilities = capabilities,
+			-- on_attach = on_attach,
+			settings = servers[server_name],
+			filetypes = (servers[server_name] or {}).filetypes,
+		})
 	end,
 })
+
+-- mason_lspconfig.setup_handlers({
+-- 	function(server_name)
+-- 		require('lspconfig')[server_name].setup({})
+-- 	end,
+-- })
 
 -- -- [[ Configure LSP ]]
 -- --  This function gets run when an LSP connects to a particular buffer.

@@ -330,9 +330,9 @@ return {
 		build = ':TSUpdate',
 
 		-- Easy diagnostics
-		{ 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
-	}, -- }}}
-
+	},
+	{ 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
+	-- }}}
 	-- Color the background of color codes {{{
 	{
 		'norcalli/nvim-colorizer.lua',
