@@ -178,8 +178,12 @@ return {
 	}, -- }}}
 
 	-- Git related plugins {{{
-	{ 'tpope/vim-fugitive', cmd = { 'Git' } },
-	dependencies = { 'tpope/vim-rhubarb', cmd = { 'GBrowse' } },
+
+	{
+        'tpope/vim-rhubarb',
+        cmd = { 'GBrowse' },
+        dependencies = { 'tpope/vim-fugitive', cmd = { 'Git' } }
+    },
 	-- }}}
 
 	-- Detect tabstop and shiftwidth automatically{{{
@@ -261,7 +265,11 @@ return {
 					return vim.fn.executable('make') == 1
 				end,
 			},
+            -- Shows a diff of all undo changes
 			'debugloop/telescope-undo.nvim',
+
+            -- Shows all projects / folders
+            'nvim-telescope/telescope-project.nvim'
 		},
 		config = function()
 			local telescope = require('telescope')
@@ -312,7 +320,7 @@ return {
 	--       These are some example plugins that I've included in the kickstart repository.
 	--       Uncomment any of the lines below to enable them.
 	-- require 'kickstart.plugins.autoformat',
-	require('kickstart.plugins.debug'),
+	-- require('kickstart.plugins.debug'),
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
