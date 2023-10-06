@@ -170,45 +170,6 @@ return {
 
 	-- }}}
 
-	-- Undotree {{{
-	{
-		'mbbill/undotree',
-		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
-	},
-	-- {
-	--   "jiaoshijie/undotree",
-	--   dependencies = "nvim-lua/plenary.nvim",
-	--   config = true,
-	--   keys = { -- load the plugin only when using it's keybinding:
-	--     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
-	--   },
-	-- },}}}
-
-	-- Blazingly fast {{{
-	{ 'ThePrimeagen/harpoon' },
-
-	{
-		'ThePrimeagen/vim-be-good',
-		cmd = { 'VimBeGood' },
-	},
-	-- }}}
-
-	-- Git related plugins {{{
-
-	{
-		'tpope/vim-fugitive',
-		cmd = { 'Git', 'GBrowse' },
-		dependencies = 'tpope/vim-rhubarb',
-	},
-	-- }}}
-
-	-- Detect tabstop and shiftwidth automatically{{{
-	-- {
-	-- 	'tpope/vim-sleuth',
-	-- 	event = 'VeryLazy',
-	-- },
-	--}}}
-
 	-- LSP & Mason {{{
 	{
 		-- LSP Configuration & Plugins
@@ -250,28 +211,6 @@ return {
 		config = function()
 			require('pluggers.cmp')
 		end,
-	}, -- }}}
-
-	-- Useful plugin to show you pending keybinds.{{{
-	-- {
-	-- 	'folke/which-key.nvim',
-	--        enabled = false,
-	-- 	keys = { '<leader>', 'z', 'g' },
-	-- 	init = function()
-	-- 		vim.opt.timeout = true
-	-- 		vim.opt.timeoutlen = 500
-	-- 	end,
-	-- 	opts = function()
-	-- 		require('pluggers.which-key')
-	-- 	end,
-	-- }, -- }}}
-
-	-- Git Signs{{{
-	{
-		-- Adds git related signs to the gutter, as well as utilities for managing changes
-		event = { 'BufReadPost', 'BufNewFile' },
-		'lewis6991/gitsigns.nvim',
-		opts = require('pluggers.gitsigns'),
 	}, -- }}}
 
 	-- Fuzzy Finder (files, lsp, etc) {{{
@@ -333,12 +272,60 @@ return {
 	},
 	{ 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
 	-- }}}
+
 	-- Color the background of color codes {{{
 	{
 		'norcalli/nvim-colorizer.lua',
 		cmd = { 'ColorizerToggle' },
 		opts = {},
 	}, -- }}}
+
+	-- Blazingly fast {{{
+	{ 'ThePrimeagen/harpoon' },
+
+	{
+		'ThePrimeagen/vim-be-good',
+		cmd = { 'VimBeGood' },
+	},
+	-- }}}
+
+	-- Git Signs{{{
+	{
+		-- Adds git related signs to the gutter, as well as utilities for managing changes
+		event = { 'BufReadPost', 'BufNewFile' },
+		'lewis6991/gitsigns.nvim',
+		opts = require('pluggers.gitsigns'),
+	}, -- }}}
+
+	-- Undotree {{{
+	{
+		'mbbill/undotree',
+		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
+	},
+	-- {
+	--   "jiaoshijie/undotree",
+	--   dependencies = "nvim-lua/plenary.nvim",
+	--   config = true,
+	--   keys = { -- load the plugin only when using it's keybinding:
+	--     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+	--   },
+	-- },}}}
+
+	-- Git related plugins {{{
+
+	{
+		'tpope/vim-fugitive',
+		cmd = { 'Git', 'GBrowse' },
+		dependencies = 'tpope/vim-rhubarb',
+	},
+	-- }}}
+
+	-- Detect tabstop and shiftwidth automatically{{{
+	-- {
+	-- 	'tpope/vim-sleuth',
+	-- 	event = 'VeryLazy',
+	-- },
+	--}}}
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.
