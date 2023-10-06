@@ -109,6 +109,6 @@ return {
 
 		-- Install golang specific config
 		-- require('dap-go').setup()
-        require('dap-python').setup()
+		require('dap-python').setup()
 	end,
 }

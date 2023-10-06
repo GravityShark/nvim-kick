@@ -2,61 +2,83 @@
 -- See `:help vim.api.nvim_set_keymap()`
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Remap for dealing with word wrap{{{
-vim.api.nvim_set_keymap(
-	'n',
-	'k',
-	"v:count == 0 ? 'gk' : 'k'",
-	{ expr = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	'n',
-	'j',
-	"v:count == 0 ? 'gj' : 'j'",
-	{ expr = true, silent = true }
-) -- }}}
+-- X Remap for dealing with word wrap{{{
+-- vim.api.nvim_set_keymap(
+-- 	'n',
+-- 	'k',
+-- 	"v:count == 0 ? 'gk' : 'k'",
+-- 	{ expr = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	'n',
+-- 	'j',
+-- 	"v:count == 0 ? 'gj' : 'j'",
+-- 	{ expr = true, silent = true }
+-- )
+-- }}}
 
--- Easier visual mode indents
-vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
-vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
+-- Easier visual mode indents {{{
+vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true, silent = true })
 -- }}}
 
 -- Space + y|d yanks or cuts to system clipboard{{{
-vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { noremap = true }) -- }}}
+vim.keymap.set(
+	{ 'n', 'v' },
+	'<leader>y',
+	'"+y',
+	{ noremap = true, silent = true, desc = '[y]ank to system clipboard' }
+)
+vim.keymap.set(
+	{ 'n', 'v' },
+	'<leader>d',
+	'"+d',
+	{ noremap = true, silent = true, desc = '[d]elete to system clipboard' }
+) -- }}}
 
 -- Correct Pasting{{{
 vim.keymap.set(
 	{ 'n', 'v' },
 	'<leader>p',
 	'<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-	{ noremap = true }
+	{ noremap = true, silent = true, desc = '[p]aste System Clipboard' }
 )
 vim.keymap.set(
 	{ 'n', 'v' },
 	'<leader>P',
 	'<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-	{ noremap = true }
+	{ noremap = true, silent = true, desc = '[P]aste System Clipboard' }
 ) -- }}}
 
-vim.api.nvim_set_keymap('n', '<leader>w', '<CMD>w<CR>', { noremap = true })
+-- X Save keymap{{{
+-- vim.api.nvim_set_keymap('n', '<leader>w', '<CMD>w<CR>', { noremap = true })}}}
 
 -- Middle positioned C+ D/U{{{
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true }) -- }}}
+vim.api.nvim_set_keymap(
+	'n',
+	'<C-d>',
+	'<C-d>zz',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	'n',
+	'<C-u>',
+	'<C-u>zz',
+	{ noremap = true, silent = true }
+) -- }}}
 
 -- Harpoon {{{
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>a',
 	'<CMD> lua require("harpoon.mark").add_file() <CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Harpoon [A]dd' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>`',
 	'<CMD> lua require("harpoon.ui").toggle_quick_menu() <CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Harpoon Open Menu' }
 )
 vim.api.nvim_set_keymap(
 	'n',
@@ -134,25 +156,25 @@ vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fr',
 	'<cmd>Telescope oldfiles<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [R]ecent' }
 ) -- Show recent files
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fj',
 	'<cmd>Telescope git_files<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [G]it Files' }
 ) -- Search for a file in project
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>ff',
 	'<cmd>Telescope find_files<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [F]iles' }
 ) -- Search for a file (ignoring dotfiles)
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fa',
 	'<cmd>Telescope find_files hidden=true no_ignore=true<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [A]ll Files' }
 ) -- Search for a file (with dotfiles)
 -- vim.api.nvim_set_keymap(
 -- 	'n',
@@ -170,45 +192,77 @@ vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fg',
 	'<cmd>Telescope live_grep<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find text using [G]rep' }
 ) -- Find a string in project
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fb',
 	'<cmd>Telescope buffers<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [B]uffers' }
 ) -- Show all buffers
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>f?',
 	'<cmd>Telescope<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find ?' }
 ) -- Show all commands
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fs',
 	'<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [N]' }
 ) -- Search for dynamic symbols
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>fu',
 	'<cmd>Telescope undo<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Find [U]ndo History' }
 ) -- Show undotree
+-- vim.api.nvim_set_keymap(
+-- 	'n',
+-- 	'<leader>fn',
+-- 	'<cmd>Telescope notify<CR>',
+-- 	{ noremap = true , desc = 'Find [N]otification History' }
+-- ) -- Show nvim-notify history
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>fn',
-	'<cmd>Telescope notify<CR>',
-	{ noremap = true }
-) -- Show nvim-notify history
+	'<leader>fp',
+	'<cmd>Telescope project<CR>',
+	{ noremap = true, desc = 'Find [P]rojects' }
+) -- Show projects
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>fd',
+	'<cmd>Telescope diagnostics<CR>',
+	{ noremap = true, desc = 'Find [D]iagnostics' }
+) -- Show diagnostics
+vim.keymap.set('n', '<leader>f/', function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require('telescope.builtin').current_buffer_fuzzy_find(
+		require('telescope.themes').get_dropdown({
+			winblend = 10,
+			previewer = false,
+		})
+	)
+end, { desc = '[/] Fuzzily search in current buffer' })
+
 -- }}}
 
 -- netrw {{{
 -- Open netrw on the right
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Vex!<CR>', { noremap = true })
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>n',
+	'<cmd>Vex!<CR>',
+	{ noremap = true, desc = 'SEEX!!!' }
+)
 -- Open current window as netrw
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>Ex<CR>', { noremap = true })
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>e',
+	'<cmd>Ex<CR>',
+	{ noremap = true, desc = '[E]xplorer in current window' }
+)
 -- }}}
 
 -- Buffers {{{
@@ -238,35 +292,40 @@ vim.api.nvim_set_keymap(
 	'n',
 	'<leader>c',
 	'<cmd>lua BufRem(0)<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = '[C]lose current buffer' }
 )
 -- }}}
 
 -- vim-fugtive {{{
-vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>Git<CR>', { noremap = true })
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>gg',
+	'<cmd>Git<CR>',
+	{ noremap = true, desc = '[G]it' }
+)
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>gd',
 	'<cmd>Git diff<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Git [C]ommit' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>gc',
 	'<cmd>Git commit<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Git [C]ommit' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>ga',
-	'<cmd>Git add<CR>',
-	{ noremap = true }
+	'<cmd>Git add %<CR>',
+	{ noremap = true, desc = 'Git [A]dd current buffer' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>gs',
 	'<cmd>Git show<CR>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Git [S]how' }
 )
 -- }}}
 
@@ -275,37 +334,37 @@ vim.api.nvim_set_keymap(
 	'n',
 	'<leader>xx',
 	'<cmd>TroubleToggle<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble [T]oggle' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>xw',
 	'<cmd>TroubleToggle workspace_diagnostics<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble [W]orkspace Diagnostics' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>xd',
 	'<cmd>TroubleToggle document_diagnostics<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble [D]ocument Diagnostics' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>xq',
 	'<cmd>TroubleToggle quickfix<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble [Q]uick Fix' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'<leader>xl',
 	'<cmd>TroubleToggle loclist<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble [L]OC/Diagnostic List' }
 )
 vim.api.nvim_set_keymap(
 	'n',
 	'gR',
 	'<cmd>TroubleToggle lsp_references<cr>',
-	{ noremap = true }
+	{ noremap = true, desc = 'Trouble LSP [R]eferences' }
 )
 -- }}}
 
@@ -328,78 +387,13 @@ vim.keymap.set(
 -- 	vim.diagnostic.open_float,
 -- 	{ desc = 'Open floating diagnostic message' }
 -- )
-vim.keymap.set(
-	'n',
-	'<leader>q',
-	vim.diagnostic.setloclist,
-	{ desc = 'Open diagnostics list' }
-) -- }}}
-
--- See `:help telescope.builtin`{{{
--- vim.api.nvim_set_keymap(
+-- vim.keymap.set(
 -- 	'n',
--- 	'<leader>?',
--- 	require('telescope.builtin').oldfiles,
--- 	{ desc = '[?] Find recently opened files' }
+-- 	'<leader>q',
+-- 	vim.diagnostic.setloclist,
+-- 	{ desc = 'Open diagnostics list' }
 -- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader><space>',
--- 	require('telescope.builtin').buffers,
--- 	{ desc = '[ ] Find existing buffers' }
--- )
--- vim.api.nvim_set_keymap('n', '<leader>/', function()
--- 	-- You can pass additional configuration to telescope to change theme, layout, etc.
--- 	require('telescope.builtin').current_buffer_fuzzy_find(
--- 		require('telescope.themes').get_dropdown({
--- 			winblend = 10,
--- 			previewer = false,
--- 		})
--- 	)
--- end, { desc = '[/] Fuzzily search in current buffer' })
---
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>gf',
--- 	require('telescope.builtin').git_files,
--- 	{ desc = 'Search [G]it [F]iles' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sf',
--- 	require('telescope.builtin').find_files,
--- 	{ desc = '[S]earch [F]iles' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sh',
--- 	require('telescope.builtin').help_tags,
--- 	{ desc = '[S]earch [H]elp' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sw',
--- 	require('telescope.builtin').grep_string,
--- 	{ desc = '[S]earch current [W]ord' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sg',
--- 	require('telescope.builtin').live_grep,
--- 	{ desc = '[S]earch by [G]rep' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sd',
--- 	require('telescope.builtin').diagnostics,
--- 	{ desc = '[S]earch [D]iagnostics' }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>sr',
--- 	require('telescope.builtin').resume,
--- 	{ desc = '[S]earch [R]esume' }
--- )}}}
+-- }}}
 
 -- Luasnips{{{
 vim.keymap.set({ 'i' }, '<C-K>', function()

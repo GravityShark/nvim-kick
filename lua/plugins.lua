@@ -150,6 +150,18 @@ return {
 		},
 		opts = {},
 	},
+
+	-- { 'echasnovski/mini.animate', version = false, opts = {} },
+
+	{
+		'echasnovski/mini.clue',
+		version = false,
+		keys = { '<leader>', 'z', 'g' },
+		config = function()
+			require('pluggers.mini-clue')
+		end,
+	},
+
 	-- }}}
 
 	-- Undotree {{{
@@ -157,7 +169,12 @@ return {
 		'mbbill/undotree',
 		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
 		keys = {
-			{ '<leader>u', '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>' },
+			{
+				'n',
+				'<leader>u',
+				'<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>',
+				{ noremap = true, desc = '[U]ndotree Toggle' },
+			},
 		},
 	},
 	-- {
@@ -175,15 +192,16 @@ return {
 	{
 		'ThePrimeagen/vim-be-good',
 		cmd = { 'VimBeGood' },
-	}, -- }}}
+	},
+	-- }}}
 
 	-- Git related plugins {{{
 
 	{
-        'tpope/vim-rhubarb',
-        cmd = { 'GBrowse' },
-        dependencies = { 'tpope/vim-fugitive', cmd = { 'Git' } }
-    },
+		'tpope/vim-fugitive',
+		cmd = { 'Git', 'GBrowse' },
+		dependencies = 'tpope/vim-rhubarb',
+	},
 	-- }}}
 
 	-- Detect tabstop and shiftwidth automatically{{{
@@ -197,7 +215,7 @@ return {
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
-		event = { 'BufReadPre', 'BufNewFile' },
+		event = { 'BufReadPost', 'BufReadPre', 'BufNewFile' },
 		config = function()
 			require('pluggers.lspconfig')
 		end,
@@ -237,11 +255,18 @@ return {
 	}, -- }}}
 
 	-- Useful plugin to show you pending keybinds.{{{
-	{
-		'folke/which-key.nvim',
-		opts = {},
-		keys = { '<leader>', 'z', 'g' },
-	}, -- }}}
+	-- {
+	-- 	'folke/which-key.nvim',
+	--        enabled = false,
+	-- 	keys = { '<leader>', 'z', 'g' },
+	-- 	init = function()
+	-- 		vim.opt.timeout = true
+	-- 		vim.opt.timeoutlen = 500
+	-- 	end,
+	-- 	opts = function()
+	-- 		require('pluggers.which-key')
+	-- 	end,
+	-- }, -- }}}
 
 	-- Git Signs{{{
 	{
@@ -265,11 +290,11 @@ return {
 					return vim.fn.executable('make') == 1
 				end,
 			},
-            -- Shows a diff of all undo changes
+			-- Shows a diff of all undo changes
 			'debugloop/telescope-undo.nvim',
 
-            -- Shows all projects / folders
-            'nvim-telescope/telescope-project.nvim'
+			-- Shows all projects / folders
+			'nvim-telescope/telescope-project.nvim',
 		},
 		config = function()
 			local telescope = require('telescope')
@@ -286,8 +311,9 @@ return {
 					},
 				},
 			})
-			telescope.load_extension('fzf')
-			telescope.load_extension('undo')
+			pcall(telescope.load_extension('fzf'))
+			pcall(telescope.load_extension('undo'))
+			pcall(telescope.load_extension('project'))
 		end,
 	},
 	-- }}}

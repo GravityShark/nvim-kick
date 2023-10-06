@@ -31,17 +31,14 @@ vim.opt.conceallevel = 2
 vim.opt.matchtime = 0
 
 vim.opt.scrolloff = 8
---
+
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 250 -- 50
 vim.o.timeoutlen = 300
 
 -- Enable break indent
 vim.o.breakindent = true
 
--- Is already on by defalut
--- vim.wo.signcolumn = 'yes'
---
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 vim.opt.colorcolumn = '80'
@@ -71,7 +68,7 @@ vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new vertical splits to right
 -- }}}
 
--- Wild Menu {{{
+-- [[ Wild Menu ]] {{{
 -- already is the defalut in neovim
 -- vim.o.wildmenu = true
 
@@ -79,39 +76,41 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- vim.o.wildcharm = string.byte('<Tab>')
 -- }}}
 
--- Undotree{{{
+-- Undotree Layout {{{
 vim.g.undotree_WindowLayout = 3
 -- }}}
 
-function ToggleTabline() -- {{{
-	-- Get the count of active buffers
-	local buffers = vim.fn.getbufinfo({ listed = true })
+-- function ToggleTabline() -- {{{
+-- 	-- Get the count of active buffers
+-- 	local buffers = vim.fn.getbufinfo({ listed = true })
+--
+-- 	if #buffers == 1 then
+-- 		vim.o.showtabline = 0
+-- 	else
+-- 		vim.o.showtabline = 2
+-- 	end
+-- 	print(#buffers)
+-- end
+--
+-- vim.cmd([[
+-- augroup TablineToggle
+--     autocmd!
+--     autocmd BufAdd, BufDelete * lua ToggleTabline()
+-- augroup END
+-- ]])
+vim.o.showtabline = 2
+-- }}}
 
-	if #buffers == 1 then
-		vim.o.showtabline = 0
-	else
-		vim.o.showtabline = 2
-	end
-	print(#buffers)
-end
-
-vim.cmd([[
-augroup TablineToggle
-    autocmd!
-    autocmd BufAdd, BufDelete * lua ToggleTabline()
-augroup END
-]]) -- }}}
-
--- Transparency {{{
+-- Transparency Highlight Groups {{{
 vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
 	-- "NormalFloat",
 	'Pmenu',
 	'TelescopeNormal',
-	'Title',
+	-- 'Title',
 })
 -- }}}
 
--- Netrw {{{
+-- Set relative line numbers to Netrw {{{
 vim.cmd([[
   autocmd FileType netrw set relativenumber
 ]])
