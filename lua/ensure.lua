@@ -7,17 +7,6 @@ M.treesitter = {
 	'bash',
 }
 
--- M.mason = {
--- 'lua_ls',
--- 'pyright',
--- 'clangd',
--- lua_ls = {
--- 	Lua = {
--- 		workspace = { checkThirdParty = false },
--- 		telemetry = { enable = false },
--- 	},
--- },
--- }
 M.mason = {
 	clangd = {},
 	gopls = {},

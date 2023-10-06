@@ -4,55 +4,6 @@ return {
 	{ 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 
 	-- Theme {{{
-	-- {
-	-- 	-- Theme inspired by Atom
-	-- 	'navarasu/onedark.nvim',
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd.colorscheme('onedark')
-	-- 	end,
-	-- },
-	-- {
-	-- 	'sainnhe/sonokai',
-	-- 	lazy = false,
-	-- 	enabled = false,
-	-- 	priority = 1000,
-	-- 	opts = { disable_background = true },
-	-- 	config = function()
-	-- 		vim.opt.termguicolors = true
-	-- 		vim.g.sonokai_style = 'andromeda'
-	-- 		vim.g.sonokai_better_performance = 1
-	-- 		vim.g.sonokai_transparent_background = 1
-	-- 		vim.g.sonokai_enable_italic = 1
-	--
-	-- 		vim.cmd.colorscheme('sonokai')
-	-- 	end,
-	-- },
-	--
-	--    {
-	--        'rktjmp/lush.nvim',
-	--        enabled = false,
-	--        lazy = false,
-	--        config = function()
-	-- 		vim.opt.termguicolors = true
-	--
-	--            require('pluggers.sonokai_lush')
-	--        end
-	--    },
-	--
-	-- {
-	-- 	'catppuccin/nvim',
-	-- 	enabled = false,
-	-- 	lazy = false,
-	-- 	name = 'catppuccin',
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.opt.termguicolors = true
-	-- 		require('pluggers.catppuccin')
-	-- 		vim.cmd.colorscheme('catppuccin')
-	-- 	end,
-	-- },
 	{
 		'tanvirtin/monokai.nvim',
 		enabled = true,
@@ -90,6 +41,35 @@ return {
 			})
 		end,
 	},
+
+	-- {
+	-- 	'sainnhe/sonokai',
+	-- 	lazy = false,
+	-- 	enabled = false,
+	-- 	priority = 1000,
+	-- 	opts = { disable_background = true },
+	-- 	config = function()
+	-- 		vim.opt.termguicolors = true
+	-- 		vim.g.sonokai_style = 'andromeda'
+	-- 		vim.g.sonokai_better_performance = 1
+	-- 		vim.g.sonokai_transparent_background = 1
+	-- 		vim.g.sonokai_enable_italic = 1
+	--
+	-- 		vim.cmd.colorscheme('sonokai')
+	-- 	end,
+	-- },
+	-- {
+	-- 	'catppuccin/nvim',
+	-- 	enabled = false,
+	-- 	lazy = false,
+	-- 	name = 'catppuccin',
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.opt.termguicolors = true
+	-- 		require('pluggers.catppuccin')
+	-- 		vim.cmd.colorscheme('catppuccin')
+	-- 	end,
+	-- },
 	-- }}}
 
 	-- mini.nvim {{{
@@ -168,14 +148,6 @@ return {
 	{
 		'mbbill/undotree',
 		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
-		keys = {
-			{
-				'n',
-				'<leader>u',
-				'<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>',
-				{ noremap = true, desc = '[U]ndotree Toggle' },
-			},
-		},
 	},
 	-- {
 	--   "jiaoshijie/undotree",
