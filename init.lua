@@ -55,7 +55,7 @@ local disabled_built_ins = {
 	-- 'editorconfig', -- has a different way of disabling
 	'gzip', -- Allows editing files that have been gzipped
 	'man', -- :Man, allows using vim as a man page reader
-	--    'matchit', -- Gives extra options for '%' command
+	-- 'matchit', -- Gives extra options for '%' command
 	-- 'matchparen', -- Shows/highlights the matching parenthesis and others
 	-- 'netrwPlugin', -- Enables Netrw
 	'remote_plugins', -- i also idk
@@ -86,17 +86,12 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
--- vim.opt.runtimepath:remove('~/.vim')
-
 vim.opt.rtp:prepend(lazypath)
 
--- { import = 'custom.plugins' },
 require('lazy').setup({ import = 'plugins' }, { defaults = { lazy = true } }) -- }}}
 
--- [[ Setting options ]]
+-- Settings and Keymaps
 require('settings')
-
--- [[ Basic Keymaps ]]
 require('keymaps')
 
 -- The line beneath this is called `modeline`. See `:help modeline`

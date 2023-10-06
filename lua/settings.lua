@@ -73,22 +73,25 @@ vim.opt.splitright = true -- Put new vertical splits to right
 
 -- Wild Menu {{{
 -- already is the defalut in neovim
--- vim.opt.wildmenu = true
--- vim.opt.wildmode = 'longest:full,full'
+-- vim.o.wildmenu = true
+
+-- Set wildcharm to trigger the wildmenu
+-- vim.o.wildcharm = string.byte('<Tab>')
 -- }}}
 
-vim.g.undotree_WindowLayout = 3
+-- Undotree{{{
+vim.g.undotree_WindowLayout = 3 -- }}}
 
-function ToggleTabline()
+function ToggleTabline() -- {{{
 	-- Get the count of active buffers
-	local active_buffers =
-		vim.fn.len(vim.fn.getbufinfo({ listed = true, unlisted = true }))
+	local buffers = vim.fn.getbufinfo({ listed = true })
 
-	if active_buffers == 1 then
+	if #buffers == 1 then
 		vim.o.showtabline = 0
 	else
 		vim.o.showtabline = 2
 	end
+	print(#buffers)
 end
 
 vim.cmd([[
@@ -96,13 +99,19 @@ augroup TablineToggle
     autocmd!
     autocmd BufAdd, BufDelete * lua ToggleTabline()
 augroup END
-]])
+]]) -- }}}
 
--- netrw
+vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
+	-- "NormalFloat",
+	'Pmenu',
+	'TelescopeNormal',
+	'FidgetTitle',
+	'FidgetTask',
+	'Title',
+})
+
+-- netrw{{{
 vim.cmd([[
   autocmd FileType netrw set relativenumber
 ]])
-
--- vim.cmd.colorscheme('habamax')
--- Default Plugins {{{
 -- }}}

@@ -16,15 +16,16 @@ vim.api.nvim_set_keymap(
 	{ expr = true, silent = true }
 ) -- }}}
 
--- Custom {{{
--- Easier Indent moving in
+-- Easier visual mode indents
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
+-- }}}
 
--- Space + y|d yanks or cuts to system clipboard
+-- Space + y|d yanks or cuts to system clipboard{{{
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { noremap = true })
--- Correct Pasting
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { noremap = true }) -- }}}
+
+-- Correct Pasting{{{
 vim.keymap.set(
 	{ 'n', 'v' },
 	'<leader>p',
@@ -36,32 +37,13 @@ vim.keymap.set(
 	'<leader>P',
 	'<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
 	{ noremap = true }
-)
+) -- }}}
 
--- local function bufdel ()
---   local currentbuf = vim.api.nvim_get_current_buf()
---   local bufremove = require("mini.bufremove")
---   if not bufremove.delete(currentbuf, false) then
---     local choice = vim.fn.confirm("Save changes to " .. vim.fn.expand("%:p"), "&Yes\n&No\n&Cancel", 3)
---
---     if choice == 1 then
---         vim.cmd('update')
---         bufremove.delete(currentbuf, false)
---     elseif choice == 2 then
---         bufremove.delete(currentbuf, true)
---     end
---   end
--- end
-
--- nm('<leader>c', bufdel())
--- fat \/
--- vim.api.nvim_set_keymap('-- n', '<leader>ww', '<CMD>w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>w', '<CMD>w<CR>', { noremap = true })
 
--- Middle positioned C+ D/U
+-- Middle positioned C+ D/U{{{
 vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true })
--- }}}
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true }) -- }}}
 
 -- Harpoon {{{
 vim.api.nvim_set_keymap(
@@ -78,37 +60,37 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>1',
+	'<A-1>',
 	'<CMD> lua require("harpoon.ui").nav_file(1) <CR>',
 	{ noremap = true }
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>2',
+	'<A-2>',
 	'<CMD> lua require("harpoon.ui").nav_file(2) <CR>',
 	{ noremap = true }
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>3',
+	'<A-3>',
 	'<CMD> lua require("harpoon.ui").nav_file(3) <CR>',
 	{ noremap = true }
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>4',
+	'<A-4>',
 	'<CMD> lua require("harpoon.ui").nav_file(4) <CR>',
 	{ noremap = true }
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>5',
+	'<A-5>',
 	'<CMD> lua require("harpoon.ui").nav_file(5) <CR>',
 	{ noremap = true }
 )
 vim.api.nvim_set_keymap(
 	'n',
-	'<leader>6',
+	'<A-6>',
 	'<CMD> lua require("harpoon.ui").nav_file(6) <CR>',
 	{ noremap = true }
 )
@@ -223,29 +205,10 @@ vim.api.nvim_set_keymap(
 -- }}}
 
 -- netrw {{{
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Vex!<CR>', { noremap = true }) -- Toggle file explorer
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Ex<CR>', { noremap = true }) -- Toggle file explorer
-function toggle_netrw()
-	-- Check if the netrw explorer is open
-	if vim.g.netrw_is_open then
-		-- Close the netrw window and buffer
-		vim.cmd('silent execute "bdelete " .. g:netrw_buffer')
-		vim.g.netrw_is_open = false
-	else
-		-- Open the netrw explorer on the right
-		vim.g.netrw_buffer = vim.fn.bufnr('%')
-		vim.cmd(':Sex!')
-		vim.g.netrw_is_open = true
-	end
-end
-
--- Define a keybinding to toggle the netrw explorer
-vim.api.nvim_set_keymap(
-	'n',
-	'<leader>n',
-	':lua toggle_netrw()<CR>',
-	{ noremap = true }
-)
+-- Open netrw on the right
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Vex!<CR>', { noremap = true })
+-- Open current window as netrw
+vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>Ex<CR>', { noremap = true })
 -- }}}
 
 -- Buffers {{{
@@ -359,12 +322,12 @@ vim.keymap.set(
 	vim.diagnostic.goto_next,
 	{ desc = 'Go to next diagnostic message' }
 )
-vim.keymap.set(
-	'n',
-	'<leader>e',
-	vim.diagnostic.open_float,
-	{ desc = 'Open floating diagnostic message' }
-)
+-- vim.keymap.set(
+-- 	'n',
+-- 	'<leader>e',
+-- 	vim.diagnostic.open_float,
+-- 	{ desc = 'Open floating diagnostic message' }
+-- )
 vim.keymap.set(
 	'n',
 	'<leader>q',
@@ -449,7 +412,7 @@ vim.keymap.set({ 's' }, '<S-Tab>', function()
 	require('luasnip').jump(-1)
 end, { silent = true })
 
-vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+vim.keymap.set({ 'i', 's' }, '<C-e>', function()
 	if require('luasnip').choice_active() then
 		require('luasnip').change_choice(1)
 	end

@@ -1,10 +1,7 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-require('luasnip.loaders.from_vscode').lazy_load()
+-- require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup({})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local kind_icons = {
 	Text = '',
@@ -72,41 +69,38 @@ cmp.setup({
 	},
 
 	formatting = {
+		fields = { 'kind', 'abbr', 'menu' },
 		format = function(entry, vim_item)
 			-- Kind icons
-			-- vim_item.kind =
+			local sources = ({
+				buffer = '[Buffer]',
+				nvim_lsp = '[LSP]',
+				luasnip = '[LuaSnip]',
+				nvim_lua = '[Lua]',
+				path = '[Path]',
+			})[entry.source.name]
+			vim_item.menu = '(' .. vim_item.kind .. ') ' .. sources
+			vim_item.kind = kind_icons[vim_item.kind] .. ' '
 			-- 	string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+
 			-- This concatonates the icons with the name of the item kind
 
-			vim_item.kind = (kind_icons[vim_item.kind] or '') .. vim_item.kind
+			-- vim_item.kind = (kind_icons[vim_item.kind] or '') .. vim_item.kind
 			-- Source
-			-- vim_item.menu = ({
-			-- 	buffer = '[Buffer]',
-			-- 	nvim_lsp = '[LSP]',
-			-- 	luasnip = '[LuaSnip]',
-			-- 	nvim_lua = '[Lua]',
-			-- 	path = '[Path]',
-			-- 	-- latex_symbols = '[LaTeX]',
-			-- })[entry.source.name]
 			return vim_item
 		end,
 	},
 
 	window = {
-		completion = { -- rounded border; thin-style scrollbar
+		completion = {
+			winhighlight = 'Normal:Pmenu,FloatBorder:SpecialChar',
 			border = 'rounded',
-			scrollbar = '║',
+			scrollbar = true,
 		},
-		documentation = { -- no border; native-style scrollbar
+		documentation = {
+			winhighlight = 'Normal:Pmenu,FloatBorder:SpecialChar',
 			border = 'rounded',
-			scrollbar = '║',
-			-- other options
+			scrollbar = true,
 		},
 	},
 }) -- }}}
-
-cmp.setup.cmdline('/', {
-	view = {
-		entries = { name = 'wildmenu', separator = '|' },
-	},
-})

@@ -9,22 +9,22 @@ return {
 	-- 		vim.cmd.colorscheme('onedark')
 	-- 	end,
 	-- },
-	{
-		'sainnhe/sonokai',
-		lazy = false,
-		enabled = false,
-		priority = 1000,
-		opts = { disable_background = true },
-		config = function()
-			vim.opt.termguicolors = true
-			vim.g.sonokai_style = 'andromeda'
-			vim.g.sonokai_better_performance = 1
-			vim.g.sonokai_transparent_background = 1
-			vim.g.sonokai_enable_italic = 1
-
-			vim.cmd.colorscheme('sonokai')
-		end,
-	},
+	-- {
+	-- 	'sainnhe/sonokai',
+	-- 	lazy = false,
+	-- 	enabled = false,
+	-- 	priority = 1000,
+	-- 	opts = { disable_background = true },
+	-- 	config = function()
+	-- 		vim.opt.termguicolors = true
+	-- 		vim.g.sonokai_style = 'andromeda'
+	-- 		vim.g.sonokai_better_performance = 1
+	-- 		vim.g.sonokai_transparent_background = 1
+	-- 		vim.g.sonokai_enable_italic = 1
+	--
+	-- 		vim.cmd.colorscheme('sonokai')
+	-- 	end,
+	-- },
 	--
 	--    {
 	--        'rktjmp/lush.nvim',
@@ -53,7 +53,7 @@ return {
 		'tanvirtin/monokai.nvim',
 		enabled = true,
 		lazy = false,
-		dependencies = { 'xiyaowong/transparent.nvim', opt = {} },
+		dependencies = { 'xiyaowong/transparent.nvim' },
 		config = function()
 			require('monokai').setup({
 				pallette = {
@@ -172,7 +172,8 @@ return {
 	-- {
 	-- 	'tpope/vim-sleuth',
 	-- 	event = 'VeryLazy',
-	-- },}}}
+	-- },
+	--}}}
 
 	-- LSP & Mason {{{
 	{
@@ -191,7 +192,7 @@ return {
 		},
 	}, -- }}}
 
-	-- nvim-cmp {{{
+	-- Completion {{{
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
@@ -205,8 +206,6 @@ return {
 			--
 			-- Adds the built-in vim auto-complete
 			'hrsh7th/cmp-buffer',
-
-			'hrsh7th/cmp-cmdline',
 
 			-- Snippet Engine & its associated nvim-cmp source
 			'L3MON4D3/LuaSnip',
@@ -230,54 +229,7 @@ return {
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
 		'lewis6991/gitsigns.nvim',
-		opts = {
-			-- See `:help gitsigns.txt`
-			signs = {
-				add = { text = '+' },
-				change = { text = '~' },
-				delete = { text = '_' },
-				topdelete = { text = '‾' },
-				changedelete = { text = '~' },
-			},
-			on_attach = function(bufnr)
-				vim.keymap.set(
-					'n',
-					'<leader>hp',
-					require('gitsigns').preview_hunk,
-					{ buffer = bufnr, desc = 'Preview git hunk' }
-				)
-
-				-- don't override the built-in and fugitive keymaps
-				local gs = package.loaded.gitsigns
-				vim.keymap.set(
-					{ 'n', 'v' },
-					']c',
-					function()
-						if vim.wo.diff then
-							return ']c'
-						end
-						vim.schedule(function()
-							gs.next_hunk()
-						end)
-						return '<Ignore>'
-					end,
-					{ expr = true, buffer = bufnr, desc = 'Jump to next hunk' }
-				)
-				vim.keymap.set({ 'n', 'v' }, '[c', function()
-					if vim.wo.diff then
-						return '[c'
-					end
-					vim.schedule(function()
-						gs.prev_hunk()
-					end)
-					return '<Ignore>'
-				end, {
-					expr = true,
-					buffer = bufnr,
-					desc = 'Jump to previous hunk',
-				})
-			end,
-		},
+		opts = require('pluggers.gitsigns'),
 	}, -- }}}
 
 	-- Fuzzy Finder (files, lsp, etc) {{{
@@ -287,18 +239,14 @@ return {
 		cmd = 'Telescope',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
-			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
-			-- Only load if `make` is available. Make sure you have the system
-			-- requirements installed.
 			{
 				'nvim-telescope/telescope-fzf-native.nvim',
-				-- NOTE: If you are having trouble with this installation,
-				--       refer to the README for telescope-fzf-native for more instructions.
 				build = 'make',
 				cond = function()
 					return vim.fn.executable('make') == 1
 				end,
 			},
+			'debugloop/telescope-undo.nvim',
 		},
 		config = function()
 			local telescope = require('telescope')
@@ -316,6 +264,7 @@ return {
 				},
 			})
 			telescope.load_extension('fzf')
+			telescope.load_extension('undo')
 		end,
 	},
 	-- }}}
@@ -328,9 +277,9 @@ return {
 		-- dependencies = {
 		-- 	'nvim-treesitter/nvim-treesitter-textobjects',
 		-- },
-		-- config = function()
-		--           require('pluggers.treesitter')
-		--       end,
+		config = function()
+			require('pluggers.treesitter')
+		end,
 		build = ':TSUpdate',
 	}, -- }}}
 
