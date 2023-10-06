@@ -88,7 +88,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({ import = 'plugins' }, { defaults = { lazy = true } }) -- }}}
+-- It's at lua/plugins.lua
+require('lazy').setup({ import = 'plugins' }, { defaults = { lazy = true } })
+-- }}}
 
 -- Settings and Keymaps
 require('settings')

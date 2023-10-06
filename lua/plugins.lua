@@ -5,6 +5,13 @@ return {
 
 	-- Theme {{{
 	{
+		'echasnovski/mini.statusline',
+		version = false,
+		opts = { set_vim_settings = false },
+		lazy = false,
+	},
+
+	{
 		'tanvirtin/monokai.nvim',
 		enabled = true,
 		lazy = false,
@@ -73,6 +80,25 @@ return {
 	-- }}}
 
 	-- mini.nvim {{{
+	--[[ Things that i wanna add from mini.nvim
+    *  mini.base16 -- coolors
+    ** mini.colors
+    ** mini.hues
+    * mini.ai -- better a and i commands
+    * mini.bracketed -- better bracket movement
+    * mini.cursorword -- lighter vim-illuminate
+    * mini.files -- like a netrw    
+    * mini.jump -- extends f and t
+    * mini.jump2d -- adds labels, kinda like how qutebrowser does it
+    * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+    
+
+
+
+
+    things i wanna
+    ]]
+	--
 	-- Auto pairs ()
 	{
 		'echasnovski/mini.pairs',
