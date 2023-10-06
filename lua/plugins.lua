@@ -1,4 +1,8 @@
 return {
+
+	-- Makes me feel good
+	{ 'dstein64/vim-startuptime', cmd = 'StartupTime' },
+
 	-- Theme {{{
 	-- {
 	-- 	-- Theme inspired by Atom
@@ -86,8 +90,6 @@ return {
 			})
 		end,
 	},
-
-	{ 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 	-- }}}
 
 	-- mini.nvim {{{
@@ -112,7 +114,7 @@ return {
 		},
 	},
 
-	-- "gc" to comment visual regions/lines
+	-- "gcc/gc" to comment visual regions/lines
 	{
 		'echasnovski/mini.comment',
 		version = false,
@@ -129,17 +131,28 @@ return {
 		opts = { set_vim_settings = false },
 	},
 
+	-- Kill buffers and preserve window layout
 	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
 
+	-- 's' to surround with '' or ()
 	{
 		'echasnovski/mini.surround',
 		version = false,
-		keys = { 'sa', 'sd', 'sr', 'sf', 'sF', 'sh', 'sn', mode = 'nv' },
+		keys = {
+			{ 'sa', mode = 'v' },
+			'sa',
+			'sd',
+			'sr',
+			'sf',
+			'sF',
+			'sh',
+			'sn',
+		},
 		opts = {},
 	},
 	-- }}}
 
-	-- Undotree{{{
+	-- Undotree {{{
 	{
 		'mbbill/undotree',
 		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
@@ -164,9 +177,10 @@ return {
 		cmd = { 'VimBeGood' },
 	}, -- }}}
 
-	-- Git related plugins{{{
+	-- Git related plugins {{{
 	{ 'tpope/vim-fugitive', cmd = { 'Git' } },
-	'tpope/vim-rhubarb', -- }}}
+	dependencies = { 'tpope/vim-rhubarb', cmd = { 'GBrowse' } },
+	-- }}}
 
 	-- Detect tabstop and shiftwidth automatically{{{
 	-- {
@@ -228,6 +242,7 @@ return {
 	-- Git Signs{{{
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
+		event = { 'BufReadPost', 'BufNewFile' },
 		'lewis6991/gitsigns.nvim',
 		opts = require('pluggers.gitsigns'),
 	}, -- }}}
@@ -269,7 +284,7 @@ return {
 	},
 	-- }}}
 
-	-- Tree Sitter {{{
+	-- Treesitter {{{
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -281,9 +296,12 @@ return {
 			require('pluggers.treesitter')
 		end,
 		build = ':TSUpdate',
+
+		-- Easy diagnostics
+		{ 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
 	}, -- }}}
 
-	-- nvim-colizer.lua {{{
+	-- Color the background of color codes {{{
 	{
 		'norcalli/nvim-colorizer.lua',
 		cmd = { 'ColorizerToggle' },
@@ -294,7 +312,7 @@ return {
 	--       These are some example plugins that I've included in the kickstart repository.
 	--       Uncomment any of the lines below to enable them.
 	-- require 'kickstart.plugins.autoformat',
-	-- require 'kickstart.plugins.debug',
+	require('kickstart.plugins.debug'),
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping

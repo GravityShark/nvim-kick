@@ -80,7 +80,8 @@ vim.opt.splitright = true -- Put new vertical splits to right
 -- }}}
 
 -- Undotree{{{
-vim.g.undotree_WindowLayout = 3 -- }}}
+vim.g.undotree_WindowLayout = 3
+-- }}}
 
 function ToggleTabline() -- {{{
 	-- Get the count of active buffers
@@ -101,16 +102,16 @@ augroup TablineToggle
 augroup END
 ]]) -- }}}
 
+-- Transparency {{{
 vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
 	-- "NormalFloat",
 	'Pmenu',
 	'TelescopeNormal',
-	'FidgetTitle',
-	'FidgetTask',
 	'Title',
 })
+-- }}}
 
--- netrw{{{
+-- Netrw {{{
 vim.cmd([[
   autocmd FileType netrw set relativenumber
 ]])
