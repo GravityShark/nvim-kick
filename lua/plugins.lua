@@ -25,16 +25,65 @@ return {
 			vim.cmd.colorscheme('sonokai')
 		end,
 	},
-
+	--
+	--    {
+	--        'rktjmp/lush.nvim',
+	--        enabled = false,
+	--        lazy = false,
+	--        config = function()
+	-- 		vim.opt.termguicolors = true
+	--
+	--            require('pluggers.sonokai_lush')
+	--        end
+	--    },
+	--
+	-- {
+	-- 	'catppuccin/nvim',
+	-- 	enabled = false,
+	-- 	lazy = false,
+	-- 	name = 'catppuccin',
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.opt.termguicolors = true
+	-- 		require('pluggers.catppuccin')
+	-- 		vim.cmd.colorscheme('catppuccin')
+	-- 	end,
+	-- },
 	{
-		'catppuccin/nvim',
-		enabled = false,
+		'tanvirtin/monokai.nvim',
+		enabled = true,
 		lazy = false,
-		name = 'catppuccin',
-		priority = 1000,
+		dependencies = { 'xiyaowong/transparent.nvim', opt = {} },
 		config = function()
-			require('plugg')
-			vim.cmd.colorscheme('catppuccin')
+			require('monokai').setup({
+				pallette = {
+					black = '#181a1c',
+					-- black = '#000000',
+					base1 = '#252630',
+					base2 = '#2b2d3a',
+					base3 = '#333648',
+					base4 = '#363a4e',
+					base5 = '#393e53',
+					base6 = '#3f445b',
+					base7 = '#5a5e7a',
+					-- pink = '#ff6188',
+					white = '#e1e3e4',
+					red = '#fb617e',
+					orange = '#f89860',
+					yellow = '#edc763',
+					green = '#9ed06c',
+					aqua = '#6dcae8',
+					purple = '#bb97ee',
+					grey = '#7e8294',
+					bg_green = '#a9dc76',
+					bg_blue = '#77d5f0',
+					diff_add = '#394634',
+					diff_remove = '#55393d',
+					diff_change = '#354157',
+					-- diff_text = '#4e432f',
+					brown = '#4e432f',
+				},
+			})
 		end,
 	},
 
@@ -81,9 +130,16 @@ return {
 	},
 
 	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
+
+	{
+		'echasnovski/mini.surround',
+		version = false,
+		keys = { 'sa', 'sd', 'sr', 'sf', 'sF', 'sh', 'sn', mode = 'nv' },
+		opts = {},
+	},
 	-- }}}
 
-	-- Undotree
+	-- Undotree{{{
 	{
 		'mbbill/undotree',
 		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
@@ -98,53 +154,42 @@ return {
 	--   keys = { -- load the plugin only when using it's keybinding:
 	--     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
 	--   },
-	-- },
+	-- },}}}
 
+	-- Blazingly fast {{{
 	{ 'ThePrimeagen/harpoon' },
 
 	{
 		'ThePrimeagen/vim-be-good',
 		cmd = { 'VimBeGood' },
-	},
+	}, -- }}}
 
+	-- Git related plugins{{{
 	{ 'tpope/vim-fugitive', cmd = { 'Git' } },
+	'tpope/vim-rhubarb', -- }}}
 
-	-- Git related plugins
-	-- 'tpope/vim-fugitive',
-	'tpope/vim-rhubarb',
-
-	-- Detect tabstop and shiftwidth automatically
+	-- Detect tabstop and shiftwidth automatically{{{
 	-- {
 	-- 	'tpope/vim-sleuth',
 	-- 	event = 'VeryLazy',
-	-- },
-	-- LSP Config{{{
-	-- NOTE: This is where your plugins related to LSP can be installed.
-	--  The configuration is done below. Search for lspconfig to find it below.
+	-- },}}}
+
+	-- LSP & Mason {{{
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = { 'BufReadPre', 'BufNewFile' },
 		config = function()
 			require('pluggers.lspconfig')
 		end,
 		dependencies = {
-			-- Automatically install LSPs to stdpath for neovim
-
-			-- Useful status updates for LSP
 			{ 'williamboman/mason.nvim', config = true },
 			'williamboman/mason-lspconfig.nvim',
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, lazy = false },
+
+			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			{ 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
 		},
 	}, -- }}}
-
-	-- Additional lua configuration, makes nvim stuff amazing!
-	{
-		'folke/neodev.nvim',
-		ft = { 'lua', 'vim' },
-		opts = {},
-	},
 
 	-- nvim-cmp {{{
 	{
@@ -152,7 +197,6 @@ return {
 		'hrsh7th/nvim-cmp',
 		event = 'InsertEnter',
 		dependencies = {
-
 			-- Adds paths to sources
 			'hrsh7th/cmp-path',
 
@@ -161,6 +205,8 @@ return {
 			--
 			-- Adds the built-in vim auto-complete
 			'hrsh7th/cmp-buffer',
+
+			'hrsh7th/cmp-cmdline',
 
 			-- Snippet Engine & its associated nvim-cmp source
 			'L3MON4D3/LuaSnip',
@@ -173,12 +219,12 @@ return {
 		end,
 	}, -- }}}
 
-	-- Useful plugin to show you pending keybinds.
+	-- Useful plugin to show you pending keybinds.{{{
 	{
 		'folke/which-key.nvim',
 		opts = {},
 		keys = { '<leader>', 'z', 'g' },
-	},
+	}, -- }}}
 
 	-- Git Signs{{{
 	{
@@ -234,21 +280,6 @@ return {
 		},
 	}, -- }}}
 
-	-- {
-	-- 	-- Set lualine as statusline
-	-- 	'nvim-lualine/lualine.nvim',
-	-- 	-- See `:help lualine.txt`
-	--
-	-- 	opts = {
-	-- 		options = {
-	-- 			icons_enabled = false,
-	-- 			theme = 'onedark',
-	-- 			component_separators = '|',
-	-- 			section_separators = '',
-	-- 		},
-	-- 	},
-	-- },
-
 	-- Fuzzy Finder (files, lsp, etc) {{{
 	{
 		'nvim-telescope/telescope.nvim',
@@ -297,8 +328,17 @@ return {
 		-- dependencies = {
 		-- 	'nvim-treesitter/nvim-treesitter-textobjects',
 		-- },
-		config = function() end,
+		-- config = function()
+		--           require('pluggers.treesitter')
+		--       end,
 		build = ':TSUpdate',
+	}, -- }}}
+
+	-- nvim-colizer.lua {{{
+	{
+		'norcalli/nvim-colorizer.lua',
+		cmd = { 'ColorizerToggle' },
+		opts = {},
 	}, -- }}}
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -313,5 +353,4 @@ return {
 	--    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-	-- { import = 'custom.plugins' },
 }

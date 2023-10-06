@@ -7,10 +7,25 @@ M.treesitter = {
 	'bash',
 }
 
+-- M.mason = {
+-- 'lua_ls',
+-- 'pyright',
+-- 'clangd',
+-- lua_ls = {
+-- 	Lua = {
+-- 		workspace = { checkThirdParty = false },
+-- 		telemetry = { enable = false },
+-- 	},
+-- },
+-- }
 M.mason = {
-	'lua_ls',
-	'pyright',
-	'clangd',
+	clangd = {},
+	gopls = {},
+	pyright = {},
+	rust_analyzer = {},
+	tsserver = {},
+	html = { filetypes = { 'html', 'twig', 'hbs' } },
+
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -18,21 +33,5 @@ M.mason = {
 		},
 	},
 }
--- local servers = {
--- clangd = {},
--- gopls = {},
--- pyright = {},
--- rust_analyzer = {},
--- tsserver = {},
--- html = { filetypes = { 'html', 'twig', 'hbs'} },
---
--- 	lua_ls = {
--- 		Lua = {
--- 			workspace = { checkThirdParty = false },
--- 			telemetry = { enable = false },
--- 		},
--- 	},
--- }
---
 
 return M

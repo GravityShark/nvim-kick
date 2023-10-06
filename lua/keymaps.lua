@@ -223,7 +223,29 @@ vim.api.nvim_set_keymap(
 -- }}}
 
 -- netrw {{{
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Sex!<CR>', { noremap = true }) -- Toggle file explorer
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Vex!<CR>', { noremap = true }) -- Toggle file explorer
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Ex<CR>', { noremap = true }) -- Toggle file explorer
+function toggle_netrw()
+	-- Check if the netrw explorer is open
+	if vim.g.netrw_is_open then
+		-- Close the netrw window and buffer
+		vim.cmd('silent execute "bdelete " .. g:netrw_buffer')
+		vim.g.netrw_is_open = false
+	else
+		-- Open the netrw explorer on the right
+		vim.g.netrw_buffer = vim.fn.bufnr('%')
+		vim.cmd(':Sex!')
+		vim.g.netrw_is_open = true
+	end
+end
+
+-- Define a keybinding to toggle the netrw explorer
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>n',
+	':lua toggle_netrw()<CR>',
+	{ noremap = true }
+)
 -- }}}
 
 -- Buffers {{{

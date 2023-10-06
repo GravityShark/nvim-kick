@@ -3,6 +3,37 @@ local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup({})
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+local kind_icons = {
+	Text = '',
+	Method = '󰆧',
+	Function = '󰊕',
+	Constructor = '',
+	Field = '󰇽',
+	Variable = '󰂡',
+	Class = '󰠱',
+	Interface = '',
+	Module = '',
+	Property = '󰜢',
+	Unit = '',
+	Value = '󰎠',
+	Enum = '',
+	Keyword = '󰌋',
+	Snippet = '',
+	Color = '󰏘',
+	File = '󰈙',
+	Reference = '',
+	Folder = '󰉋',
+	EnumMember = '',
+	Constant = '󰏿',
+	Struct = '',
+	Event = '',
+	Operator = '󰆕',
+	TypeParameter = '󰅲',
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -40,6 +71,27 @@ cmp.setup({
 		{ name = 'buffer' },
 	},
 
+	formatting = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			-- vim_item.kind =
+			-- 	string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+			-- This concatonates the icons with the name of the item kind
+
+			vim_item.kind = (kind_icons[vim_item.kind] or '') .. vim_item.kind
+			-- Source
+			-- vim_item.menu = ({
+			-- 	buffer = '[Buffer]',
+			-- 	nvim_lsp = '[LSP]',
+			-- 	luasnip = '[LuaSnip]',
+			-- 	nvim_lua = '[Lua]',
+			-- 	path = '[Path]',
+			-- 	-- latex_symbols = '[LaTeX]',
+			-- })[entry.source.name]
+			return vim_item
+		end,
+	},
+
 	window = {
 		completion = { -- rounded border; thin-style scrollbar
 			border = 'rounded',
@@ -53,5 +105,8 @@ cmp.setup({
 	},
 }) -- }}}
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+cmp.setup.cmdline('/', {
+	view = {
+		entries = { name = 'wildmenu', separator = '|' },
+	},
+})
