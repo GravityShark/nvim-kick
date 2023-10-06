@@ -156,7 +156,7 @@ return {
 	{
 		'echasnovski/mini.clue',
 		version = false,
-		keys = { '<leader>', 'z', 'g' },
+		keys = { '<leader>', 'z', 'g', '[', ']' },
 		config = function()
 			require('pluggers.mini-clue')
 		end,

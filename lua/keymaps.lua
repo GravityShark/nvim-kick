@@ -286,6 +286,7 @@ function BufRem(number)
 			bufremove.delete(number, true)
 		end
 	end
+	ToggleTabline()
 end
 
 vim.api.nvim_set_keymap(
@@ -411,3 +412,11 @@ vim.keymap.set({ 'i', 's' }, '<C-e>', function()
 		require('luasnip').change_choice(1)
 	end
 end, { silent = true }) -- }}}
+
+-- Undotree {{{
+vim.api.nvim_set_keymap(
+	'n',
+	'<leader>u',
+	'<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
+	{ noremap = true, desc = '[U]ndotree Toggle' }
+) -- }}}

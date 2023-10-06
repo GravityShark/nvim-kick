@@ -80,34 +80,36 @@ vim.opt.splitright = true -- Put new vertical splits to right
 vim.g.undotree_WindowLayout = 3
 -- }}}
 
--- function ToggleTabline() -- {{{
--- 	-- Get the count of active buffers
--- 	local buffers = vim.fn.getbufinfo({ listed = true })
---
--- 	if #buffers == 1 then
--- 		vim.o.showtabline = 0
--- 	else
--- 		vim.o.showtabline = 2
--- 	end
--- 	print(#buffers)
--- end
---
--- vim.cmd([[
--- augroup TablineToggle
---     autocmd!
---     autocmd BufAdd, BufDelete * lua ToggleTabline()
--- augroup END
--- ]])
-vim.o.showtabline = 2
+function ToggleTabline() -- {{{
+	-- Get the count of active buffers
+	local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+
+	if buffers == 1 then
+		vim.o.showtabline = 0
+	else
+		vim.o.showtabline = 2
+	end
+end
+
+vim.api.nvim_create_autocmd({
+	'BufAdd',
+	'BufDelete',
+	'BufEnter',
+}, { command = 'lua ToggleTabline()' })
+
+-- vim.cmd.augroup('BufAdd, BufDelete * lua ToggleTabline()')
 -- }}}
 
 -- Transparency Highlight Groups {{{
 vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
-	-- "NormalFloat",
+	'NormalFloat',
 	'Pmenu',
 	'TelescopeNormal',
+	-- 'MiniClueDescSingle'
 	-- 'Title',
 })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { link = 'Keyword' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Keyword' })
 -- }}}
 
 -- Set relative line numbers to Netrw {{{

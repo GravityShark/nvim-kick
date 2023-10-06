@@ -40,13 +40,19 @@ miniclue.setup({
 		miniclue.gen_clues.registers(),
 		miniclue.gen_clues.windows(),
 		miniclue.gen_clues.z(),
+		{ mode = 'n', keys = '<Leader>f', desc = '+[F]ind' },
+		{ mode = 'n', keys = '<Leader>g', desc = '+[G]it' },
+		{ mode = 'n', keys = '<Leader>x', desc = '+[X] is Trouble' },
 	},
 	window = {
 		-- Floating window config
-		config = {},
+		config = {
+			width = 'auto',
+			border = 'rounded',
+		},
 
 		-- Delay before showing clue window
-		delay = 300,
+		delay = 250,
 
 		-- Keys to scroll inside the clue window
 		scroll_down = '<C-d>',
