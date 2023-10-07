@@ -43,7 +43,7 @@ rd -r ~\AppData\Local\nvim-data
     - [ ] mini.colors
     - [ ] mini.hues
 - [ ] mini.bracketed -- better bracket movement
-- [ ] mini.cursorword -- lighter vim-illuminate
+- [X] mini.cursorword -- lighter vim-illuminate
 - [ ] mini.files -- like a netrw    
 - [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
 - [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
