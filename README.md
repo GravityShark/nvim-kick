@@ -5,7 +5,44 @@
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
+*** from inside the lua/plugins.lua
+```
+--[[ Things that i wanna add from mini.nvim
+*  mini.base16 -- coolors
+** mini.colors
+** mini.hues
+* mini.bracketed -- better bracket movement
+* mini.cursorword -- lighter vim-illuminate
+* mini.files -- like a netrw    
+* mini.jump2d -- adds labels, kinda like how qutebrowser does it
+* mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+* mini.sessions 
+* mini.starter or alpha-nvim -starting tihg
+* mini.splitjoin -- cool way of like splitting lines like
 
+`
+tbl = {a, f(1,2), {b, c}, d}
+` by the hit of a keybind you can turn it into
+tbl = {
+	a,
+	f(1,2),
+	{b, c},
+	d
+}
+})
+
+*  'nvim-treesitter/nvim-treesitter-textobjects' whatevre this is
+* built in terminal in nvim (kinda not)
+* make nvim-lsp lighter and faster
+	* get html lsp to wor
+* navic/barbeque
+* none-ls
+* dap
+* setup treesitter keybindings and such
+* and also
+]]--
+
+```
 
 
 

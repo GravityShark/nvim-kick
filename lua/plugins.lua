@@ -13,6 +13,7 @@ local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 * mini.sessions 
 * mini.starter or alpha-nvim -starting tihg
 * mini.splitjoin -- cool way of like splitting lines like
+
 `
 tbl = {a, f(1,2), {b, c}, d}
 ` by the hit of a keybind you can turn it into
@@ -24,14 +25,17 @@ tbl = {
 }
 })
 
+*  'nvim-treesitter/nvim-treesitter-textobjects' whatevre this is
 * built in terminal in nvim (kinda not)
 * make nvim-lsp lighter and faster
+	* get html lsp to wor
 * navic/barbeque
 * none-ls
 * dap
 * setup treesitter keybindings and such
 * and also
 ]]
+--
 return {
 
 	-- Starttime Makes me feel good{{{
