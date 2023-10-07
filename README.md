@@ -4,58 +4,39 @@
 ```bash
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
-
-### from inside the lua/plugins.lua
-```lua
---[[ Things that i wanna add from mini.nvim
-
-
-foo = {b, a(1,2), {r, s}, s}
--- by the hit of a keybind you can turn it into
-foo = {
-	b,
-	a(1,2),
-	{r, s},
-	s
-}
-})
-
-
-*  'nvim-treesitter/nvim-treesitter-textobjects' whatevre this is
-* built in terminal in nvim (kinda not)
-* make nvim-lsp lighter and faster
-	* get html lsp to wor
-* navic/barbeque
-* none-ls
-* dap
-* setup treesitter keybindings and such
-* neoconf -- idk what this is
-
-* maybe bring back noice and notify
-* like anything in this https://www.lazyvim.org/plugins/
-]]--
-```
 ### plugins to look into
+- [ ] noice, notify
+    - [ ] dressing.nvim
+- [ ] nvim-dap
+- [ ] none-ls/ linting, format
+- [ ] navic / barbeque
+- [ ] nvim-treesitter-textobjects
+- [ ] under mini.comments. nvim-ts-context-commentstring
+- [ ] neoconf
+- [ ] terminal in neovim
+- [ ] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
 #### mini.nvim
 - [ ]  mini.base16 -- coolors
-** mini.colors
-** mini.hues
-* mini.bracketed -- better bracket movement
-* mini.cursorword -- lighter vim-illuminate
-* mini.files -- like a netrw    
-* mini.jump2d -- adds labels, kinda like how qutebrowser does it
-* mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-* mini.sessions  -- persistence.nvim
-* mini.starter or alpha-nvim -starting tihg
-* mini.splitjoin -- cool way of like splitting lines like
+    - [ ] mini.colors
+    - [ ] mini.hues
+- [ ] mini.bracketed -- better bracket movement
+- [ ] mini.cursorword -- lighter vim-illuminate
+- [ ] mini.files -- like a netrw    
+- [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
+- [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+- [ ] mini.sessions  -- persistence.nvim
+- [ ] mini.starter or alpha-nvim -starting tihg
+- [ ] mini.splitjoin -- cool way of like splitting lines like
+> but basically anything from https://www.lazyvim.org/plugins/ or lunarvim
 
 ### TODO
 - [ ] a option to set for like 'lite' and 'full' graphics
 - [ ] and also have mini.colors/base16 easy otions
 	- [ ] setup highlighting to be better but thats like on the colors part idk
 - [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
-- [ ] https://github.com/anuvyklack/hydra.nvim is very interesting
-
+- [ ] make nvim-lsp lighter and faster
+- [ ] get html lsp to wor
+- [ ] setup treesitter keybindings and such
 
 > Nows the rest of the uneditted readme
 
