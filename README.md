@@ -6,7 +6,7 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 ```
 
 *** from inside the lua/plugins.lua
-```
+```lua
 --[[ Things that i wanna add from mini.nvim
 *  mini.base16 -- coolors
 ** mini.colors
@@ -16,7 +16,7 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 * mini.files -- like a netrw    
 * mini.jump2d -- adds labels, kinda like how qutebrowser does it
 * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-* mini.sessions 
+* mini.sessions  -- persistence.nvim
 * mini.starter or alpha-nvim -starting tihg
 * mini.splitjoin -- cool way of like splitting lines like
 
@@ -39,9 +39,11 @@ tbl = {
 * none-ls
 * dap
 * setup treesitter keybindings and such
-* and also
-]]--
+* neoconf -- idk what this is
 
+* maybe bring back noice and notify
+* like anything in this https://www.lazyvim.org/plugins/
+]]--
 ```
 
 
