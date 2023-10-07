@@ -24,6 +24,21 @@ mason_lspconfig.setup_handlers({
     end,
 })
 
+if vim.g.is_termux then
+    -- Manual setup
+    local lspconfig = require('lspconfig')
+    lspconfig.lua_ls.setup({
+        settings = {
+            Lua = {
+                workspace = { checkThirdParty = false },
+                telemetry = { enable = false },
+            },
+        },
+    })
+    lspconfig.clangd.setup({})
+    lspconfig.rust_analyzer.setup({})
+end
+
 -- mason_lspconfig.setup_handlers({
 -- 	function(server_name)
 -- 		require('lspconfig')[server_name].setup({})

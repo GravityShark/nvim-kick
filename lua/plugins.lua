@@ -242,9 +242,16 @@ return {
             })
 
             -- Setup orgmode
+            local agenda_files = '~/Notes/**/*'
+            local default_notes_file = '~/Notes/refile.org'
+            if vim.g.is_termux then
+                local agenda_files = '/storage/self/primary/**/*'
+                local default_notes_file = '/storage/self/primary/refile.org'
+            else
+            end
             require('orgmode').setup({
-                org_agenda_files = '~/Notes/**/*',
-                org_default_notes_file = '~/Notes/refile.org',
+                org_agenda_files = agenda_files,
+                org_default_notes_file = default_notes_file,
             })
         end,
     },

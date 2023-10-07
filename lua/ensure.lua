@@ -6,6 +6,8 @@ M.treesitter = {
     'c',
     'cpp',
     'javascript',
+    'typescript',
+    'tsx',
     'css',
     'vim',
     'vimdoc',
@@ -15,21 +17,37 @@ M.treesitter = {
     'markdown',
     'gitcommit',
     'org',
+
+    -- other
+    'rust',
+    'go',
 }
 
-M.mason = {
-    clangd = {},
-    pylsp = {},
-    tsserver = {},
-    html = { filetypes = { 'html', 'twig', 'hbs' } },
-    tailwindcss = {},
+if not vim.g.is_termux then
+    M.mason = {
+        pylsp = {},
+        tsserver = {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        tailwindcss = {},
+        gopls = {},
 
-    lua_ls = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
+        rust_analyzer = {},
+        clangd = {},
+        lua_ls = {
+            Lua = {
+                workspace = { checkThirdParty = false },
+                telemetry = { enable = false },
+            },
         },
-    },
-}
+    }
+else
+    M.mason = {
+        pylsp = {},
+        tsserver = {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        tailwindcss = {},
+        gopls = {},
+    }
+end
 
 return M
