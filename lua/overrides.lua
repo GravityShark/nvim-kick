@@ -1,2 +1,4 @@
 -- Some overrides shit so i can still git pull
-return 0
+return function() 
+    vim.g.is_termux = true
+end
