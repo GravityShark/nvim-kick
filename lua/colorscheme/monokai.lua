@@ -77,6 +77,7 @@ return {
 					bg = palette.base1,
 				},
 				FidgetTitle = { fg = palette.pink },
+				PmenuThumb = { bg = palette.base4 },
 			},
 		})
 	end,
