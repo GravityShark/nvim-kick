@@ -3,15 +3,15 @@
 
 #### install
 - on Linux and Mac
-```sh
+```bash
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 then
-```sh
+```bash
 nvim --headless "+Lazy! sync" +a
 ```
 - on Windows
-```
+```bash
 git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\ 
 ```
 
