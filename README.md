@@ -5,7 +5,7 @@
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
-*** from inside the lua/plugins.lua
+### from inside the lua/plugins.lua
 ```lua
 --[[ Things that i wanna add from mini.nvim
 *  mini.base16 -- coolors
@@ -31,6 +31,7 @@ tbl = {
 }
 })
 
+
 *  'nvim-treesitter/nvim-treesitter-textobjects' whatevre this is
 * built in terminal in nvim (kinda not)
 * make nvim-lsp lighter and faster
@@ -45,8 +46,11 @@ tbl = {
 * like anything in this https://www.lazyvim.org/plugins/
 ]]--
 ```
-
-
+### other things i want
+- [ ] a option to set for like 'lite' and 'full' graphics
+- [ ] and also have mini.colors/base16 easy otions
+- [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
+- [ ] https://github.com/anuvyklack/hydra.nvim is very interesting
 
 > Nows the rest of the uneditted readme
 
