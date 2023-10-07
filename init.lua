@@ -68,7 +68,10 @@ require('lazy').setup({ import = 'plugins' }, {
     -- Defaults to lazy load and use latest version
     defaults = { lazy = true, version = false },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
-    checker = { enabled = true },
+    ui = {
+        border = 'rounded',
+    },
+
     performance = {
         rtp = {
             -- There is a built in rtp disable in lazy
