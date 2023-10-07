@@ -33,6 +33,7 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 - [ ] a option to set for like 'lite' and 'full' graphics
 - [ ] and also have mini.colors/base16 easy otions
 	- [ ] setup highlighting to be better but thats like on the colors part idk
+	- [ ] and have it use telescope as a selector of themes like nvchad
 - [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
 - [ ] make nvim-lsp lighter and faster
 - [ ] get html lsp to wor
