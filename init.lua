@@ -40,9 +40,6 @@ P.S. You can delete this when you're done too. It's your config now :)
 --]]
 --}}}
 
--- Shit that i override and never change
-require('overrides')
-
 -- Leader Key {{{
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -97,7 +94,6 @@ require('lazy').setup({ import = 'plugins' }, {
 -- Settings and Keymaps
 require('settings')
 require('keymaps')
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
