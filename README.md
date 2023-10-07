@@ -8,26 +8,15 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 ### from inside the lua/plugins.lua
 ```lua
 --[[ Things that i wanna add from mini.nvim
-*  mini.base16 -- coolors
-** mini.colors
-** mini.hues
-* mini.bracketed -- better bracket movement
-* mini.cursorword -- lighter vim-illuminate
-* mini.files -- like a netrw    
-* mini.jump2d -- adds labels, kinda like how qutebrowser does it
-* mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-* mini.sessions  -- persistence.nvim
-* mini.starter or alpha-nvim -starting tihg
-* mini.splitjoin -- cool way of like splitting lines like
 
-`
-tbl = {a, f(1,2), {b, c}, d}
-` by the hit of a keybind you can turn it into
-tbl = {
-	a,
-	f(1,2),
-	{b, c},
-	d
+
+foo = {b, a(1,2), {r, s}, s}
+-- by the hit of a keybind you can turn it into
+foo = {
+	b,
+	a(1,2),
+	{r, s},
+	s
 }
 })
 
@@ -46,11 +35,27 @@ tbl = {
 * like anything in this https://www.lazyvim.org/plugins/
 ]]--
 ```
-### other things i want
+### plugins to look into
+#### mini.nvim
+- [ ]  mini.base16 -- coolors
+** mini.colors
+** mini.hues
+* mini.bracketed -- better bracket movement
+* mini.cursorword -- lighter vim-illuminate
+* mini.files -- like a netrw    
+* mini.jump2d -- adds labels, kinda like how qutebrowser does it
+* mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+* mini.sessions  -- persistence.nvim
+* mini.starter or alpha-nvim -starting tihg
+* mini.splitjoin -- cool way of like splitting lines like
+
+### TODO
 - [ ] a option to set for like 'lite' and 'full' graphics
 - [ ] and also have mini.colors/base16 easy otions
+	- [ ] setup highlighting to be better but thats like on the colors part idk
 - [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
 - [ ] https://github.com/anuvyklack/hydra.nvim is very interesting
+
 
 > Nows the rest of the uneditted readme
 
