@@ -1,6 +1,37 @@
 local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
 local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 
+--[[ Things that i wanna add from mini.nvim
+*  mini.base16 -- coolors
+** mini.colors
+** mini.hues
+* mini.bracketed -- better bracket movement
+* mini.cursorword -- lighter vim-illuminate
+* mini.files -- like a netrw    
+* mini.jump2d -- adds labels, kinda like how qutebrowser does it
+* mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+* mini.sessions 
+* mini.starter or alpha-nvim -starting tihg
+* mini.splitjoin -- cool way of like splitting lines like
+`
+tbl = {a, f(1,2), {b, c}, d}
+` by the hit of a keybind you can turn it into
+tbl = {
+	a,
+	f(1,2),
+	{b, c},
+	d
+}
+})
+
+* built in terminal in nvim (kinda not)
+* make nvim-lsp lighter and faster
+* navic/barbeque
+* none-ls
+* dap
+* setup treesitter keybindings and such
+* and also
+]]
 return {
 
 	-- Starttime Makes me feel good{{{
@@ -17,7 +48,8 @@ return {
 	{
 		'echasnovski/mini.statusline',
 		opts = { set_vim_settings = false },
-		event = 'VeryLazy',
+		lazy = false,
+		-- event = VeryLazyFile,
 	},
 
 	-- vim.cmd.colorscheme('habamax'),
@@ -26,16 +58,6 @@ return {
 	-- }}}
 
 	-- mini.nvim {{{
-	--[[ Things that i wanna add from mini.nvim
-    *  mini.base16 -- coolors
-    ** mini.colors
-    ** mini.hues
-    * mini.bracketed -- better bracket movement
-    * mini.cursorword -- lighter vim-illuminate
-    * mini.files -- like a netrw    
-    * mini.jump2d -- adds labels, kinda like how qutebrowser does it
-    * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-    ]]
 
 	-- better (a)round and (i)nside commands{{{
 	{ 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
@@ -135,7 +157,7 @@ return {
 			require('pluggers.lspconfig')
 		end,
 		dependencies = {
-			{ 'williamboman/mason.nvim', config = true },
+			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 
 			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
@@ -229,6 +251,35 @@ return {
 	{ 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
 	-- }}}
 
+	-- Orgmode{{{
+	{
+		'nvim-orgmode/orgmode',
+		dependencies = {
+			{ 'nvim-treesitter/nvim-treesitter', lazy = true },
+		},
+		event = 'VeryLazy',
+		config = function()
+			-- Load treesitter grammar for org
+			require('orgmode').setup_ts_grammar()
+
+			-- Setup treesitter
+			require('nvim-treesitter.configs').setup({
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = { 'org' },
+				},
+				ensure_installed = { 'org' },
+			})
+
+			-- Setup orgmode
+			require('orgmode').setup({
+				org_agenda_files = '~/Notes/**/*',
+				org_default_notes_file = '~/Notes/refile.org',
+			})
+		end,
+	},
+	-- }}}
+
 	-- Color the background of color codes {{{
 	{
 		'norcalli/nvim-colorizer.lua',
@@ -282,6 +333,29 @@ return {
 		event = 'VeryLazy',
 	},
 	--}}}
+
+	-- cmd ZenMode{{{
+	{
+		'folke/zen-mode.nvim',
+		cmd = { 'ZenMode' },
+		opts = {
+			window = {
+				width = 85, -- width of the Zen window
+			},
+			plugins = {
+				options = {
+					enabled = true,
+					ruler = false, -- disables the ruler text in the cmd line area
+					showcmd = true, -- disables the command in the last line of the screen
+					-- you may turn on/off statusline in zen mode by setting 'laststatus'
+					-- statusline will be shown only if 'laststatus' == 3
+					laststatus = 1, -- turn off the statusline in zen mode
+				},
+				gitsigns = { enabled = true },
+			},
+		},
+	},
+	-- }}}
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
 	--       These are some example plugins that I've included in the kickstart repository.

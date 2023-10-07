@@ -14,7 +14,7 @@ vim.opt.undofile = true
 -- Maybe
 -- vim.opt.wrap = true
 
--- For ** and __
+-- For orgmode
 vim.opt.conceallevel = 2
 
 -- Disable that weird effect where it changes the color of your cursor

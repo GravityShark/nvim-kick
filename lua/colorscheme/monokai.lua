@@ -50,9 +50,6 @@ return {
 				FloatBorder = { fg = palette.pink },
 				LineNrAbove = { fg = palette.orange },
 				LineNrBelow = { fg = palette.orange },
-				-- StatusLineNC = {
-				--     fg = palette.pink,
-				-- },
 				MiniTablineModifiedHidden = { fg = palette.pink },
 				MiniTablineModifiedCurrent = {
 					bg = palette.base4,
@@ -71,15 +68,14 @@ return {
 					fg = palette.white,
 					bg = palette.black,
 				},
-				-- StatusLine = {
-				-- 	-- fg = palette.white,
-				-- 	bg = palette.base1,
-				-- },
-				-- StatusLineNC = {
-				-- 	-- fg = palette.white,
-				-- 	bg = palette.base1,
-				-- },
-				-- FidgetTask = { fg = palette.grey },
+				StatusLine = {
+					-- fg = palette.white,
+					bg = palette.base2,
+				},
+				StatusLineNC = {
+					-- fg = palette.white,
+					bg = palette.base1,
+				},
 				FidgetTitle = { fg = palette.pink },
 			},
 		})

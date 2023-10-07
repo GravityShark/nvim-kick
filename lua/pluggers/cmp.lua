@@ -66,6 +66,8 @@ cmp.setup({
 		{ name = 'luasnip' },
 		{ name = 'path' },
 		{ name = 'buffer' },
+		-- Org mode
+		{ name = 'orgmode' },
 	},
 
 	formatting = {

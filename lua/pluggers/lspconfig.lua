@@ -1,4 +1,6 @@
--- Absolute minimum config for LSP & Mason
+-- Minimum config for LSP & Mason
+
+require('mason').setup()
 
 local mason_lspconfig = require('mason-lspconfig')
 
