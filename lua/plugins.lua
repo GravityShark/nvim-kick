@@ -11,76 +11,11 @@ return {
 		lazy = false,
 	},
 
-	{
-		'tanvirtin/monokai.nvim',
-		enabled = true,
-		lazy = false,
-		dependencies = { 'xiyaowong/transparent.nvim' },
-		config = function()
-			require('monokai').setup({
-				pallette = {
-					black = '#181a1c',
-					-- black = '#000000',
-					base1 = '#252630',
-					base2 = '#2b2d3a',
-					base3 = '#333648',
-					base4 = '#363a4e',
-					base5 = '#393e53',
-					base6 = '#3f445b',
-					base7 = '#5a5e7a',
-					-- pink = '#ff6188',
-					white = '#e1e3e4',
-					red = '#fb617e',
-					orange = '#f89860',
-					yellow = '#edc763',
-					green = '#9ed06c',
-					aqua = '#6dcae8',
-					purple = '#bb97ee',
-					grey = '#7e8294',
-					bg_green = '#a9dc76',
-					bg_blue = '#77d5f0',
-					diff_add = '#394634',
-					diff_remove = '#55393d',
-					diff_change = '#354157',
-					-- diff_text = '#4e432f',
-					brown = '#4e432f',
-				},
-			})
-		end,
-	},
+	require('colorscheme.monokai')
+		(		-- }}}
 
-	-- {
-	-- 	'sainnhe/sonokai',
-	-- 	lazy = false,
-	-- 	enabled = false,
-	-- 	priority = 1000,
-	-- 	opts = { disable_background = true },
-	-- 	config = function()
-	-- 		vim.opt.termguicolors = true
-	-- 		vim.g.sonokai_style = 'andromeda'
-	-- 		vim.g.sonokai_better_performance = 1
-	-- 		vim.g.sonokai_transparent_background = 1
-	-- 		vim.g.sonokai_enable_italic = 1
-	--
-	-- 		vim.cmd.colorscheme('sonokai')
-	-- 	end,
-	-- },
-	-- {
-	-- 	'catppuccin/nvim',
-	-- 	enabled = false,
-	-- 	lazy = false,
-	-- 	name = 'catppuccin',
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.opt.termguicolors = true
-	-- 		require('pluggers.catppuccin')
-	-- 		vim.cmd.colorscheme('catppuccin')
-	-- 	end,
-	-- },
-	-- }}}
-
-	-- mini.nvim {{{
-	--[[ Things that i wanna add from mini.nvim
+		-- mini.nvim {{{
+		--[[ Things that i wanna add from mini.nvim
     *  mini.base16 -- coolors
     ** mini.colors
     ** mini.hues
@@ -98,14 +33,14 @@ return {
 
     things i wanna
     ]]
-	--
-	-- Auto pairs ()
-	{
-		'echasnovski/mini.pairs',
-		version = false,
-		event = 'InsertEnter',
-		opts = {},
-	},
+		--
+		-- Auto pairs ()
+{
+			'echasnovski/mini.pairs',
+			version = false,
+			event = 'InsertEnter',
+			opts = {},
+		}),
 
 	-- Indent indicators
 	{

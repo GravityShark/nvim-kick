@@ -4,6 +4,12 @@ M.treesitter = {
 	'lua',
 	'python',
 	'c',
+	'cpp',
+	'tsx',
+	'javascript',
+	'typescript',
+	'vim',
+	'vimdoc',
 	'bash',
 }
 
@@ -14,6 +20,7 @@ M.mason = {
 	rust_analyzer = {},
 	tsserver = {},
 	html = { filetypes = { 'html', 'twig', 'hbs' } },
+	tailwindcss = {},
 
 	lua_ls = {
 		Lua = {

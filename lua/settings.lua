@@ -83,7 +83,6 @@ end
 -- }}}
 
 -- Automatic disabling/renabling bufferline at 1> || 1< Buffers {{{
-
 function ToggleTabline()
 	-- Get the count of active buffers
 	local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
@@ -100,19 +99,6 @@ vim.api.nvim_create_autocmd({
 	'BufDelete',
 	'BufEnter',
 }, { command = 'lua ToggleTabline()' })
-
--- vim.cmd.augroup('BufAdd, BufDelete * lua ToggleTabline()')
--- }}}
-
--- Transparency Highlight Groups {{{
-vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
-	'NormalFloat',
-	'Pmenu',
-	'TelescopeNormal',
-})
-
-vim.api.nvim_set_hl(0, 'TelescopeBorder', { link = 'Keyword' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Keyword' })
 -- }}}
 
 -- Set relative line numbers to Netrw {{{
