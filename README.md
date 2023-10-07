@@ -60,10 +60,11 @@ rd -r ~\AppData\Local\nvim-data
 	- [ ] and have it use telescope as a selector of themes like nvchad
 - [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
 - [ ] make nvim-lsp lighter and faster
-- [ ] get html lsp to wor
+- [ ] get html lsp to work
 - [ ] setup treesitter keybindings and such
 	- [ ] nvim-treesitter/nvim-treesitter-context
  	- [ ] nvim-treesitter/playground
+  - [ ] instead of harpoon have a function tha like lists the buffers in order and allows me to like do <a-1> to <a-9> and select that buffer in my tabline 
 
 ### also remember [neovide](https://neovide.dev/)
 
@@ -71,6 +72,8 @@ rd -r ~\AppData\Local\nvim-data
 - what if i make a neovim distro purely made to be mouse and input mode only
 	- sounds stupid but there is a lack of extremely lightweight (i. e. cli/tui) text editors out there that have good functionality
  	- and its made for people who wont even learn vim motions but be able to use its amazing ecosystem
+    	- im gonna name it devil.nvim or like good.nvim
+       	- or like neo as in taking the vim out of neovim
 
 > Nows the rest of the uneditted readme
 
