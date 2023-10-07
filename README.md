@@ -38,6 +38,7 @@ rd -r ~\AppData\Local\nvim-data
 - [ ] neoconf
 - [ ] terminal in neovim
 - [ ] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
+- [ ] ("eandrju/cellular-automaton.nvim") fun 
 #### mini.nvim
 - [ ]  mini.base16 -- coolors
     - [ ] mini.colors
@@ -61,6 +62,8 @@ rd -r ~\AppData\Local\nvim-data
 - [ ] make nvim-lsp lighter and faster
 - [ ] get html lsp to wor
 - [ ] setup treesitter keybindings and such
+	- [ ] nvim-treesitter/nvim-treesitter-context
+ 	- [ ] nvim-treesitter/playground
 
 ### also remember [neovide](https://neovide.dev/)
 
