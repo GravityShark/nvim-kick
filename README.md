@@ -2,7 +2,7 @@
 ## my own neovim config from kickstart
 
 ```bash
-git clone https://github.com/GravityShark0/nvim-kick "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 ### plugins to look into
 - [ ] noice, notify
