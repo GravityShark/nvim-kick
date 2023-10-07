@@ -65,10 +65,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- It's at lua/plugins.lua
 require('lazy').setup({ import = 'plugins' }, {
+	-- Defaults to lazy load and use latest version
 	defaults = { lazy = true, version = false },
+	-- install = { colorscheme = { "tokyonight", "habamax" } },
+	checker = { enabled = true },
 	performance = {
 		rtp = {
-            -- There is a built in rtp disable in lazy
+			-- There is a built in rtp disable in lazy
 			disabled_plugins = {
 				'editorconfig',
 				'gzip',

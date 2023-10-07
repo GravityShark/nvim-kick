@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup({})
 
 local kind_icons = {
@@ -93,6 +94,7 @@ cmp.setup({
 	window = {
 		completion = {
 			winhighlight = 'Normal:Pmenu,FloatBorder:SpecialChar',
+			completeopt = 'menu,menuone,noinsert',
 			border = 'rounded',
 			scrollbar = true,
 		},

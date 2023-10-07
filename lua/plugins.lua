@@ -1,22 +1,23 @@
 local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
+local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 
 return {
 
-	-- Makes me feel good
+	-- Starttime Makes me feel good{{{
 	{
 		'dstein64/vim-startuptime',
 		cmd = 'StartupTime',
 		config = function()
-			vim.g.startuptime_tries = 10
+			vim.g.startuptime_tries = 100
 		end,
 	},
+	-- }}}
 
 	-- Theme {{{
 	{
 		'echasnovski/mini.statusline',
-		version = false,
 		opts = { set_vim_settings = false },
-		lazy = false,
+		event = 'VeryLazy',
 	},
 
 	require('colorscheme.monokai'),
@@ -27,19 +28,17 @@ return {
     *  mini.base16 -- coolors
     ** mini.colors
     ** mini.hues
-    * mini.ai -- better a and i commands
     * mini.bracketed -- better bracket movement
     * mini.cursorword -- lighter vim-illuminate
     * mini.files -- like a netrw    
-    * mini.jump -- extends f and t
     * mini.jump2d -- adds labels, kinda like how qutebrowser does it
     * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
     ]]
-	--
+	{ 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+	{ 'echasnovski/mini.jump', event = 'VeryLazy', opts = {} },
 	-- Auto pairs ()
 	{
 		'echasnovski/mini.pairs',
-		version = false,
 		event = 'InsertEnter',
 		opts = {},
 	},
@@ -47,7 +46,6 @@ return {
 	-- Indent indicators
 	{
 		'echasnovski/mini.indentscope',
-		version = false,
 		event = LazyFile,
 		opts = {
 			-- symbol = '▎',
@@ -60,27 +58,29 @@ return {
 	-- "gcc/gc" to comment visual regions/lines
 	{
 		'echasnovski/mini.comment',
-		version = false,
 		keys = { 'gcc', { 'gc', mode = 'v' } },
-		opts = {},
+		opts = {
+			custom_commentstring = function()
+				return require('ts_context_commentstring.internal').calculate_commentstring()
+					or vim.bo.commentstring
+			end,
+		},
 	},
 
 	-- Fast bufferline
 	{
 		'echasnovski/mini.tabline',
-		version = false,
 		-- event = { 'BufReadPost', 'BufNewFile' },
 		dependencies = 'nvim-tree/nvim-web-devicons',
 		opts = { set_vim_settings = false },
 	},
 
 	-- Kill buffers and preserve window layout
-	{ 'echasnovski/mini.bufremove', version = false, opts = {} },
+	{ 'echasnovski/mini.bufremove', opts = {} },
 
 	-- 's' to surround with '' or ()
 	{
 		'echasnovski/mini.surround',
-		version = false,
 		keys = {
 			{ 'sa', mode = 'v' },
 			'sa',
@@ -94,11 +94,10 @@ return {
 		opts = {},
 	},
 
-	-- { 'echasnovski/mini.animate', version = false, opts = {} },
+	{ 'echasnovski/mini.animate', event = 'VeryLazy', opts = {} },
 
 	{
 		'echasnovski/mini.clue',
-		version = false,
 		keys = { '<leader>', 'z', 'g', '[', ']' },
 		config = function()
 			require('pluggers.mini-clue')
@@ -111,7 +110,7 @@ return {
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
-		event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+		event = LazyFile,
 		config = function()
 			require('pluggers.lspconfig')
 		end,
@@ -119,8 +118,8 @@ return {
 			{ 'williamboman/mason.nvim', config = true },
 			'williamboman/mason-lspconfig.nvim',
 
-			-- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-			-- { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
+			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			{ 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
 		},
 	}, -- }}}
 
@@ -196,7 +195,7 @@ return {
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = VeryLazyFile,
 		-- dependencies = {
 		-- 	'nvim-treesitter/nvim-treesitter-textobjects',
 		-- },
@@ -229,7 +228,7 @@ return {
 	-- Git Signs{{{
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = LazyFile,
 		'lewis6991/gitsigns.nvim',
 		opts = require('pluggers.gitsigns'),
 	}, -- }}}

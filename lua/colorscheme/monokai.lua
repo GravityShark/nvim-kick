@@ -1,6 +1,7 @@
 return {
 	'tanvirtin/monokai.nvim',
-	enabled = true,
+	-- enabled = true,
+	--    event = 'VeryLazy',
 	lazy = false,
 	dependencies = {
 		'xiyaowong/transparent.nvim',
