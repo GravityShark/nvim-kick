@@ -8,7 +8,7 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 ```
 then
 ```sh
-nvim--headless "+Lazy! sync" +a
+nvim --headless "+Lazy! sync" +a
 ```
 - on Windows
 ```
