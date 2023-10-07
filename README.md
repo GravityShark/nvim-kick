@@ -1,8 +1,31 @@
 # nvim-kick
 ## my own neovim config from kickstart
 
+#### install
+- on Linux and Mac
+```sh
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+```
+then
+```sh
+nvim--headless "+Lazy! sync" +a
+```
+- on Windows
+```
+git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\ 
+```
+
+
+#### uninstall
+- Linux / Macos (unix)
 ```bash
-git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+```
+- Windows
+```bash
+rd -r ~\AppData\Local\nvim
+rd -r ~\AppData\Local\nvim-data
 ```
 ### plugins to look into
 - [ ] noice, notify
@@ -38,6 +61,11 @@ git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HO
 - [ ] make nvim-lsp lighter and faster
 - [ ] get html lsp to wor
 - [ ] setup treesitter keybindings and such
+
+### Shitty idea
+- what if i make a neovim distro purely made to be mouse and input mode only
+	- sounds stupid but there is a lack of extremely lightweight (i. e. cli/tui) text editors out there that have good functionality
+ 	- and its made for people who wont even learn vim motions but be able to use its amazing ecosystem
 
 > Nows the rest of the uneditted readme
 
