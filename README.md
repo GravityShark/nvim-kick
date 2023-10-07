@@ -6,7 +6,7 @@
 ```bash
 git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
-then
+then do this or just run nvim by itself
 ```bash
 nvim --headless "+Lazy! sync" +a
 ```
