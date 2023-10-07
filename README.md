@@ -62,6 +62,8 @@ rd -r ~\AppData\Local\nvim-data
 - [ ] get html lsp to wor
 - [ ] setup treesitter keybindings and such
 
+### also remember [neovide](https://neovide.dev/)
+
 ### Shitty idea
 - what if i make a neovim distro purely made to be mouse and input mode only
 	- sounds stupid but there is a lack of extremely lightweight (i. e. cli/tui) text editors out there that have good functionality
