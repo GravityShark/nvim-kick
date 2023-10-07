@@ -52,6 +52,7 @@ vim.opt.showmatch = true -- Highlight search instances
 
 -- Undotree Layout
 vim.g.undotree_WindowLayout = 3
+vim.opt.showmode = false
 
 -- [[ Wild Menu ]] {{{
 -- already is the defalut in neovim
@@ -89,7 +90,8 @@ function ToggleTabline()
 
 	if buffers == 1 then
 		vim.o.showtabline = 0
-	else
+	elseif buffers > 1 then
+		require('mini.tabline').setup()
 		vim.o.showtabline = 2
 	end
 end
@@ -105,4 +107,5 @@ vim.api.nvim_create_autocmd({
 vim.cmd([[
   autocmd FileType netrw set relativenumber
 ]])
+vim.g.netrw_hide = 1
 -- }}}

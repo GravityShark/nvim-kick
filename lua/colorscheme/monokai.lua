@@ -4,16 +4,13 @@ return {
 	lazy = false,
 	dependencies = {
 		'xiyaowong/transparent.nvim',
-		config = function()
-			-- Transparency Highlight Groups {{{
-			vim.g.transparent_groups =
-				vim.list_extend(vim.g.transparent_groups or {}, {
-					'NormalFloat',
-					'Pmenu',
-					'TelescopeNormal',
-				})
-			-- }}}
-		end,
+		opts = {
+			extra_groups = {
+				'NormalFloat',
+				'Pmenu',
+				'TelescopeNormal',
+			},
+		},
 	},
 	config = function()
 		local monokai = require('monokai')
@@ -73,7 +70,15 @@ return {
 					fg = palette.white,
 					bg = palette.black,
 				},
-				FidgetTask = { fg = palette.grey },
+				-- StatusLine = {
+				-- 	-- fg = palette.white,
+				-- 	bg = palette.base1,
+				-- },
+				-- StatusLineNC = {
+				-- 	-- fg = palette.white,
+				-- 	bg = palette.base1,
+				-- },
+				-- FidgetTask = { fg = palette.grey },
 				FidgetTitle = { fg = palette.pink },
 			},
 		})

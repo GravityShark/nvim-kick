@@ -1,7 +1,15 @@
+local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
+
 return {
 
 	-- Makes me feel good
-	{ 'dstein64/vim-startuptime', cmd = 'StartupTime' },
+	{
+		'dstein64/vim-startuptime',
+		cmd = 'StartupTime',
+		config = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
 
 	-- Theme {{{
 	{
@@ -11,11 +19,11 @@ return {
 		lazy = false,
 	},
 
-	require('colorscheme.monokai')
-		(		-- }}}
+	require('colorscheme.monokai'),
+	-- }}}
 
-		-- mini.nvim {{{
-		--[[ Things that i wanna add from mini.nvim
+	-- mini.nvim {{{
+	--[[ Things that i wanna add from mini.nvim
     *  mini.base16 -- coolors
     ** mini.colors
     ** mini.hues
@@ -26,32 +34,26 @@ return {
     * mini.jump -- extends f and t
     * mini.jump2d -- adds labels, kinda like how qutebrowser does it
     * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-    
-
-
-
-
-    things i wanna
     ]]
-		--
-		-- Auto pairs ()
-{
-			'echasnovski/mini.pairs',
-			version = false,
-			event = 'InsertEnter',
-			opts = {},
-		}),
+	--
+	-- Auto pairs ()
+	{
+		'echasnovski/mini.pairs',
+		version = false,
+		event = 'InsertEnter',
+		opts = {},
+	},
 
 	-- Indent indicators
 	{
 		'echasnovski/mini.indentscope',
 		version = false,
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = LazyFile,
 		opts = {
-			options = {
-				try_as_border = false,
-			},
-			symbol = '▎',
+			-- symbol = '▎',
+			-- symbol = "▏",
+			symbol = '│',
+			options = { try_as_border = true },
 		},
 	},
 
@@ -67,7 +69,7 @@ return {
 	{
 		'echasnovski/mini.tabline',
 		version = false,
-		event = { 'BufReadPost', 'BufNewFile' },
+		-- event = { 'BufReadPost', 'BufNewFile' },
 		dependencies = 'nvim-tree/nvim-web-devicons',
 		opts = { set_vim_settings = false },
 	},
@@ -109,7 +111,7 @@ return {
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
-		event = { 'BufReadPost', 'BufReadPre', 'BufNewFile' },
+		event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
 		config = function()
 			require('pluggers.lspconfig')
 		end,
@@ -117,8 +119,8 @@ return {
 			{ 'williamboman/mason.nvim', config = true },
 			'williamboman/mason-lspconfig.nvim',
 
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-			{ 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
+			-- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			-- { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
 		},
 	}, -- }}}
 
