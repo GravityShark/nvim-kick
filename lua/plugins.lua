@@ -20,7 +20,9 @@ return {
 		event = 'VeryLazy',
 	},
 
+	-- vim.cmd.colorscheme('habamax'),
 	require('colorscheme.monokai'),
+
 	-- }}}
 
 	-- mini.nvim {{{
@@ -34,16 +36,20 @@ return {
     * mini.jump2d -- adds labels, kinda like how qutebrowser does it
     * mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
     ]]
+
+	-- better (a)round and (i)nside commands{{{
 	{ 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+	-- }}}
+	-- better f/F and t/T{{{
 	{ 'echasnovski/mini.jump', event = 'VeryLazy', opts = {} },
-	-- Auto pairs ()
+	-- }}}
+	-- Auto pairs (){{{
 	{
 		'echasnovski/mini.pairs',
 		event = 'InsertEnter',
 		opts = {},
-	},
-
-	-- Indent indicators
+	}, -- }}}
+	-- Indent indicators{{{
 	{
 		'echasnovski/mini.indentscope',
 		event = LazyFile,
@@ -54,8 +60,8 @@ return {
 			options = { try_as_border = true },
 		},
 	},
-
-	-- "gcc/gc" to comment visual regions/lines
+	-- }}}
+	-- "gcc/gc" to comment visual regions/lines{{{
 	{
 		'echasnovski/mini.comment',
 		keys = { 'gcc', { 'gc', mode = 'v' } },
@@ -66,19 +72,19 @@ return {
 			end,
 		},
 	},
-
-	-- Fast bufferline
+	-- }}}
+	-- Fast bufferline{{{
 	{
 		'echasnovski/mini.tabline',
 		-- event = { 'BufReadPost', 'BufNewFile' },
 		dependencies = 'nvim-tree/nvim-web-devicons',
 		opts = { set_vim_settings = false },
 	},
-
-	-- Kill buffers and preserve window layout
-	{ 'echasnovski/mini.bufremove', opts = {} },
-
-	-- 's' to surround with '' or ()
+	-- }}}
+	-- Kill buffers and preserve window layout{{{
+	{ 'echasnovski/mini.bufremove' },
+	-- }}}
+	-- 's' to surround with '' or (){{{
 	{
 		'echasnovski/mini.surround',
 		keys = {
@@ -93,9 +99,15 @@ return {
 		},
 		opts = {},
 	},
-
-	{ 'echasnovski/mini.animate', event = 'VeryLazy', opts = {} },
-
+	-- }}}
+	-- Animations on things{{{
+	{
+		'echasnovski/mini.animate',
+		event = 'VeryLazy',
+		opts = { scroll = { enable = false } },
+	},
+	-- }}}
+	-- Which-key but kinda good but bad??{{{
 	{
 		'echasnovski/mini.clue',
 		keys = { '<leader>', 'z', 'g', '[', ']' },
@@ -103,6 +115,14 @@ return {
 			require('pluggers.mini-clue')
 		end,
 	},
+	-- }}}
+	-- Illuminate same words{{{
+	{
+		'echasnovski/mini.cursorword',
+		event = VeryLazyFile,
+		opts = {},
+	},
+	-- }}}
 
 	-- }}}
 
@@ -257,10 +277,10 @@ return {
 	-- }}}
 
 	-- Detect tabstop and shiftwidth automatically{{{
-	-- {
-	-- 	'tpope/vim-sleuth',
-	-- 	event = 'VeryLazy',
-	-- },
+	{
+		'tpope/vim-sleuth',
+		event = 'VeryLazy',
+	},
 	--}}}
 
 	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
