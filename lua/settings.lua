@@ -66,41 +66,41 @@ vim.opt.showmode = false
 -- [[ Highlight on yank ]]{{{
 -- See `:help vim.highlight.on_yank()`
 local highlight_group =
-	vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+    vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = '*',
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
 })
 --}}}
 
 -- LSP Diagnostics Signs {{{
 local signs = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' }
 for type, icon in pairs(signs) do
-	local hl = 'DiagnosticSign' .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
 
 -- Automatic disabling/renabling bufferline at 1> || 1< Buffers {{{
 function ToggleTabline()
-	-- Get the count of active buffers
-	local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+    -- Get the count of active buffers
+    local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 
-	if buffers == 1 then
-		vim.o.showtabline = 0
-	elseif buffers > 1 then
-		require('mini.tabline').setup()
-		vim.o.showtabline = 2
-	end
+    if buffers == 1 then
+        vim.o.showtabline = 0
+    elseif buffers > 1 then
+        require('mini.tabline').setup()
+        vim.o.showtabline = 2
+    end
 end
 
 vim.api.nvim_create_autocmd({
-	'BufAdd',
-	'BufDelete',
-	'BufEnter',
+    'BufAdd',
+    'BufDelete',
+    'BufEnter',
 }, { command = 'lua ToggleTabline()' })
 -- }}}
 
