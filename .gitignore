@@ -3,5 +3,4 @@ test.sh
 .luarc.json
 nvim
 lazy-lock.json
-stylua.sh
 lua/overrides.lua
