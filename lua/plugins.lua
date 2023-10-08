@@ -15,14 +15,16 @@ return {
     -- }}}
 
     -- Theme {{{
+    -- Statusline{{{
     {
         'echasnovski/mini.statusline',
         opts = { set_vim_settings = false },
         lazy = false,
         -- event = VeryLazyFile,
-    },
+    }, -- }}}
 
     -- vim.cmd.colorscheme('habamax'),
+    -- go to the lua/colorscheme dir to see more
     require('colorscheme.monokai'),
 
     -- }}}
@@ -96,8 +98,13 @@ return {
     {
         'echasnovski/mini.animate',
         event = 'VeryLazy',
-        opts = { scroll = { enable = false } },
+        opts = {
+            scroll = {
+                enable = false,
+            },
+        },
     },
+
     -- }}}
     -- Which-key but kinda good but bad??{{{
     {
