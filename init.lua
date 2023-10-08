@@ -48,6 +48,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- }}}
 
+-- I use because some stuff are not the same on my termux phone
+-- vim.g.is_termux = true
+
 -- Initialize lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
