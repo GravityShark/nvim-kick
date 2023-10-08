@@ -115,5 +115,5 @@ vim.g.netrw_hide = 1
 -- if using neovide {{{
 if vim.g.neovide then
     -- vim.o.guifont = "UbuntuMono Nerd Font:h14"
-    vim.g.neovide_transparency = 0.9
+    vim.g.neovide_transparency = 0
 end -- }}}
