@@ -1,6 +1,11 @@
 local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
 local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 
+Goolio = true
+if vim.g.neovide then
+    Goolio = false
+end
+
 -- Please Read the README.md
 return {
 
@@ -95,9 +100,11 @@ return {
     },
     -- }}}
     -- Animations on things{{{
+
     {
         'echasnovski/mini.animate',
         event = 'VeryLazy',
+        enabled = Goolio,
         opts = {
             scroll = {
                 enable = false,
