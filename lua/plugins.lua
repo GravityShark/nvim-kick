@@ -13,7 +13,7 @@ return {
     {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
-        config = function()
+        init = function()
             vim.g.startuptime_tries = 100
         end,
     },
@@ -23,7 +23,7 @@ return {
     -- Statusline{{{
     {
         'echasnovski/mini.statusline',
-        opts = { set_vim_settings = false },
+        config = { set_vim_settings = false },
         lazy = false,
         -- event = VeryLazyFile,
     }, -- }}}
@@ -37,20 +37,20 @@ return {
     -- mini.nvim {{{
 
     -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+    { 'echasnovski/mini.ai', event = 'VeryLazy', config = true },
     -- }}}
     -- better f/F and t/T{{{
     {
         'echasnovski/mini.jump',
         keys = { 'f', 'F', 't', 'T', ';' },
-        opts = {},
+        config = true,
     },
     -- }}}
     -- Auto pairs (){{{
     {
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
-        opts = {},
+        config = true,
     }, -- }}}
     -- Indent indicators{{{
     {
@@ -100,7 +100,7 @@ return {
             'sh',
             'sn',
         },
-        opts = {},
+        config = true,
     },
     -- }}}
     -- Animations on things{{{
@@ -130,7 +130,7 @@ return {
     {
         'echasnovski/mini.cursorword',
         event = VeryLazyFile,
-        opts = {},
+        config = true,
     },
     -- }}}
 
@@ -148,10 +148,13 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
-            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-            { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
+            { 'j-hui/fidget.nvim', tag = 'legacy', config = true },
+            { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, config = true },
         },
-    }, -- }}}
+    },
+
+    { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
+    -- }}}
 
     -- Completion {{{
     {
@@ -236,7 +239,6 @@ return {
 
         -- Easy diagnostics
     },
-    { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
     -- }}}
 
     -- Orgmode{{{
@@ -280,7 +282,7 @@ return {
     {
         'norcalli/nvim-colorizer.lua',
         cmd = { 'ColorizerToggle' },
-        opts = {},
+        -- config = true,
     }, -- }}}
 
     -- Blazingly fast {{{
@@ -334,7 +336,7 @@ return {
     {
         'folke/zen-mode.nvim',
         cmd = { 'ZenMode' },
-        opts = {
+        config = {
             window = {
                 width = 85, -- width of the Zen window
             },
@@ -351,6 +353,7 @@ return {
             },
         },
     },
+
     -- }}}
 
     -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

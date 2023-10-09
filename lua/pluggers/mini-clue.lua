@@ -43,6 +43,7 @@ miniclue.setup({
         { mode = 'n', keys = '<Leader>f', desc = '+[F]ind' },
         { mode = 'n', keys = '<Leader>g', desc = '+[G]it' },
         { mode = 'n', keys = '<Leader>x', desc = '+[X] is Trouble' },
+        { mode = 'n', keys = '<Leader>o', desc = '+[O]rgmode' },
     },
     window = {
         -- Floating window config
