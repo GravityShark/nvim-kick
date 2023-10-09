@@ -40,7 +40,11 @@ return {
     { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
     -- }}}
     -- better f/F and t/T{{{
-    { 'echasnovski/mini.jump', event = 'VeryLazy', opts = {} },
+    {
+        'echasnovski/mini.jump',
+        keys = { 'f', 'F', 't', 'T', ';' },
+        opts = {},
+    },
     -- }}}
     -- Auto pairs (){{{
     {
@@ -241,7 +245,8 @@ return {
         dependencies = {
             { 'nvim-treesitter/nvim-treesitter', lazy = true },
         },
-        event = 'VeryLazy',
+        ft = 'org',
+        keys = '<leader>o',
         config = function()
             -- Load treesitter grammar for org
             require('orgmode').setup_ts_grammar()
