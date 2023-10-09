@@ -1,11 +1,6 @@
 local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
 local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 
-Goolio = true
-if vim.g.neovide then
-    Goolio = false
-end
-
 -- Please Read the README.md
 return {
 
@@ -31,26 +26,27 @@ return {
     -- vim.cmd.colorscheme('habamax'),
     -- go to the lua/colorscheme dir to see more
     require('colorscheme.monokai'),
+    -- require('colorscheme.mini'),
 
     -- }}}
 
     -- mini.nvim {{{
 
     -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = 'VeryLazy', config = true },
+    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
     -- }}}
     -- better f/F and t/T{{{
     {
         'echasnovski/mini.jump',
         keys = { 'f', 'F', 't', 'T', ';' },
-        config = true,
+        opts = {},
     },
     -- }}}
     -- Auto pairs (){{{
     {
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
-        config = true,
+        opts = {},
     }, -- }}}
     -- Indent indicators{{{
     {
@@ -68,12 +64,7 @@ return {
     {
         'echasnovski/mini.comment',
         keys = { 'gcc', { 'gc', mode = 'v' } },
-        opts = {
-            custom_commentstring = function()
-                return require('ts_context_commentstring.internal').calculate_commentstring()
-                    or vim.bo.commentstring
-            end,
-        },
+        opts = {},
     },
     -- }}}
     -- Fast bufferline{{{
@@ -100,7 +91,7 @@ return {
             'sh',
             'sn',
         },
-        config = true,
+        opts = {},
     },
     -- }}}
     -- Animations on things{{{
@@ -108,7 +99,13 @@ return {
     {
         'echasnovski/mini.animate',
         event = 'VeryLazy',
-        enabled = Goolio,
+        enabled = function()
+            if vim.g.neovide then
+                return false
+            else
+                return true
+            end
+        end,
         opts = {
             scroll = {
                 enable = false,
@@ -130,7 +127,7 @@ return {
     {
         'echasnovski/mini.cursorword',
         event = VeryLazyFile,
-        config = true,
+        opts = {},
     },
     -- }}}
 
@@ -148,8 +145,8 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
-            { 'j-hui/fidget.nvim', tag = 'legacy', config = true },
-            { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, config = true },
+            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
         },
     },
 
@@ -282,7 +279,7 @@ return {
     {
         'norcalli/nvim-colorizer.lua',
         cmd = { 'ColorizerToggle' },
-        -- config = true,
+        -- opts = {},
     }, -- }}}
 
     -- Blazingly fast {{{
@@ -310,7 +307,7 @@ return {
     -- {
     --   "jiaoshijie/undotree",
     --   dependencies = "nvim-lua/plenary.nvim",
-    --   config = true,
+    --   opts = {},
     --   keys = { -- load the plugin only when using it's keybinding:
     --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
     --   },
@@ -356,16 +353,7 @@ return {
 
     -- }}}
 
-    -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-    --       These are some example plugins that I've included in the kickstart repository.
-    --       Uncomment any of the lines below to enable them.
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),
-
-    -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-    --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-    --    up-to-date with whatever is in the kickstart repo.
-    --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-    --
     --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 }

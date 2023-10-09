@@ -70,7 +70,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({ import = 'plugins' }, {
     -- Defaults to lazy load and use latest version
     defaults = { lazy = true, version = false },
-    -- install = { colorscheme = { "tokyonight", "habamax" } },
+    -- install = { colorscheme = { 'tokyonight', 'habamax' } },
     ui = {
         border = 'rounded',
     },
