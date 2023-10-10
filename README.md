@@ -35,7 +35,7 @@ rd -r ~\AppData\Local\nvim-data
 - [ ] navic / barbeque
 - [ ] nvim-treesitter-textobjects
 - [ ] under mini.comments. nvim-ts-context-commentstring
-- [ ] neoconf
+- [-] neoconf (i dont think i need this)
 - [ ] terminal in neovim
 - [ ] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
 - [ ] ("eandrju/cellular-automaton.nvim") fun 

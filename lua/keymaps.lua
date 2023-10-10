@@ -50,9 +50,6 @@ vim.keymap.set(
     { noremap = true, silent = true, desc = '[P]aste System Clipboard' }
 ) -- }}}
 
--- X Save keymap{{{
--- vim.api.nvim_set_keymap('n', '<leader>w', '<CMD>w<CR>', { noremap = true })}}}
-
 -- Middle positioned C+ D/U{{{
 vim.api.nvim_set_keymap(
     'n',
@@ -309,7 +306,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>gd',
     '<cmd>Git diff<CR>',
-    { noremap = true, desc = 'Git [C]ommit' }
+    { noremap = true, desc = 'Git [D]iff' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -319,15 +316,27 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>ga',
+    '<leader>gaa',
     '<cmd>Git add %<CR>',
-    { noremap = true, desc = 'Git [A]dd current buffer' }
+    { noremap = true, desc = 'Git Add [A]ll' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>gac',
+    '<cmd>Git add %<CR>',
+    { noremap = true, desc = 'Git [A]dd [C]urrent buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gs',
     '<cmd>Git show<CR>',
     { noremap = true, desc = 'Git [S]how' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>gp',
+    '<cmd>Git push<CR>',
+    { noremap = true, desc = 'Git [P]ush' }
 )
 -- }}}
 
@@ -371,18 +380,18 @@ vim.api.nvim_set_keymap(
 -- }}}
 
 -- Diagnostic keymaps{{{
-vim.keymap.set(
-    'n',
-    '[d',
-    vim.diagnostic.goto_prev,
-    { desc = 'Go to previous diagnostic message' }
-)
-vim.keymap.set(
-    'n',
-    ']d',
-    vim.diagnostic.goto_next,
-    { desc = 'Go to next diagnostic message' }
-)
+-- vim.keymap.set(
+--     'n',
+--     '[d',
+--     vim.diagnostic.goto_prev,
+--     { desc = 'Go to previous diagnostic message' }
+-- )
+-- vim.keymap.set(
+--     'n',
+--     ']d',
+--     vim.diagnostic.goto_next,
+--     { desc = 'Go to next diagnostic message' }
+-- )
 -- vim.keymap.set(
 -- 	'n',
 -- 	'<leader>e',
@@ -421,3 +430,25 @@ vim.api.nvim_set_keymap(
     '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
     { noremap = true, desc = '[U]ndotree Toggle' }
 ) -- }}}
+
+-- NvTerm {{{
+vim.keymap.set(
+    { 'n', 't' },
+    '<C-w>tv',
+    '<cmd> lua require("nvterm.terminal").toggle (\'vertical\')<CR>',
+    { noremap = true, desc = 'Terminal [V]ertical' }
+)
+vim.keymap.set(
+    { 'n', 't' },
+    '<C-w>th',
+    '<cmd> lua require("nvterm.terminal").toggle (\'horizontal\')<CR>',
+    { noremap = true, desc = 'Terminal [S]plit Horizontally' }
+)
+vim.keymap.set(
+    { 'n', 't' },
+    '<C-w>tf',
+    '<cmd> lua require("nvterm.terminal").toggle (\'float\')<CR>',
+    { noremap = true, desc = 'Terminal [F]loating' }
+)
+
+-- }}}

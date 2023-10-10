@@ -42,8 +42,11 @@ miniclue.setup({
         miniclue.gen_clues.z(),
         { mode = 'n', keys = '<Leader>f', desc = '+[F]ind' },
         { mode = 'n', keys = '<Leader>g', desc = '+[G]it' },
+        { mode = 'n', keys = '<Leader>ga', desc = 'Git [A]dd' },
         { mode = 'n', keys = '<Leader>x', desc = '+[X] is Trouble' },
-        { mode = 'n', keys = '<Leader>o', desc = '+[O]rgmode' },
+        { mode = 'n', keys = '<Leader>o', desc = '+[O]rg' },
+        { mode = 'n', keys = '<C-w>t', desc = '+[T]erminal' },
+        { mode = 't', keys = '<C-w>t', desc = '+[T]erminal' },
     },
     window = {
         -- Floating window config

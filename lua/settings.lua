@@ -12,7 +12,7 @@ vim.opt.relativenumber = true
 -- Undofile
 vim.opt.undofile = true
 
--- Maybe
+-- Wrap enabled by default
 -- vim.opt.wrap = true
 
 -- For orgmode
@@ -53,15 +53,16 @@ vim.opt.showmatch = true -- Highlight search instances
 
 -- Undotree Layout
 vim.g.undotree_WindowLayout = 3
+
+-- Disable showing --Insert-- or --Visual-- in the cmdline
 vim.opt.showmode = false
 
--- [[ Wild Menu ]] {{{
+-- [[ Wild Menu ]]
 -- already is the defalut in neovim
 -- vim.o.wildmenu = true
 
 -- Set wildcharm to trigger the wildmenu
 -- vim.o.wildcharm = string.byte('<Tab>')
--- }}}
 -- }}}
 
 -- [[ Highlight on yank ]]{{{
@@ -109,7 +110,6 @@ vim.api.nvim_create_autocmd({
 vim.cmd([[
   autocmd FileType netrw set relativenumber
 ]])
-vim.g.netrw_hide = 1
 -- }}}
 
 -- if using neovide {{{

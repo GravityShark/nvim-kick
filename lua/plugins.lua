@@ -117,7 +117,17 @@ return {
     -- Which-key but kinda good but bad??{{{
     {
         'echasnovski/mini.clue',
-        keys = { '<leader>', 'z', 'g', '[', ']' },
+        keys = {
+            '<leader>',
+            'z',
+            'g',
+            "'",
+            '"',
+            '`',
+            '<C-w>',
+            { '<C-r>', mode = 'i' },
+            { '<C-x>', mode = 'i' },
+        },
         config = function()
             require('pluggers.mini-clue')
         end,
@@ -145,11 +155,13 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
+            'folke/neodev.nvim',
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-            { 'folke/neodev.nvim', ft = { 'lua', 'vim' }, opts = {} },
+            enabled = false,
         },
     },
 
+    -- Diagnostics
     { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
     -- }}}
 
@@ -233,8 +245,6 @@ return {
             require('pluggers.treesitter')
         end,
         build = ':TSUpdate',
-
-        -- Easy diagnostics
     },
     -- }}}
 
@@ -279,7 +289,6 @@ return {
     {
         'norcalli/nvim-colorizer.lua',
         cmd = { 'ColorizerToggle' },
-        -- opts = {},
     }, -- }}}
 
     -- Blazingly fast {{{
@@ -291,38 +300,30 @@ return {
     },
     -- }}}
 
-    -- Git Signs{{{
-    {
-        -- Adds git related signs to the gutter, as well as utilities for managing changes
-        event = LazyFile,
-        'lewis6991/gitsigns.nvim',
-        opts = require('pluggers.gitsigns'),
-    }, -- }}}
-
     -- Undotree {{{
     {
         'mbbill/undotree',
         cmd = { 'UndotreeToggle', 'UndotreeFocus' },
     },
-    -- {
-    --   "jiaoshijie/undotree",
-    --   dependencies = "nvim-lua/plenary.nvim",
-    --   opts = {},
-    --   keys = { -- load the plugin only when using it's keybinding:
-    --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
-    --   },
-    -- },}}}
+    -- }}}
 
     -- Git related plugins {{{
-
+    -- Git Signs{{{
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    {
+        'lewis6991/gitsigns.nvim',
+        event = LazyFile,
+        opts = require('pluggers.gitsigns'),
+    }, -- }}}
+    -- Fugitive {{{
     {
         'tpope/vim-fugitive',
         cmd = { 'Git', 'GBrowse' },
         dependencies = 'tpope/vim-rhubarb',
-    },
+    }, -- }}}
     -- }}}
 
-    -- Detect tabstop and shiftwidth automatically{{{
+    -- Detect tabstop and shiftwidth automatically {{{
     {
         'tpope/vim-sleuth',
         event = LazyFile,
@@ -345,15 +346,26 @@ return {
                     -- you may turn on/off statusline in zen mode by setting 'laststatus'
                     -- statusline will be shown only if 'laststatus' == 3
                     laststatus = 1, -- turn off the statusline in zen mode
+                    showmode = true,
                 },
                 gitsigns = { enabled = true },
+                tmux = { enabled = true },
             },
+
+            -- on_open = function(win)
+            --     vim.fn.system('st')
+            -- end
         },
     },
-
     -- }}}
+
+    -- NvTerm
+    {
+        'NvChad/nvterm',
+        opts = {},
+    },
 
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),
-    --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+    -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 }
