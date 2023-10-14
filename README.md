@@ -35,7 +35,7 @@ rd -r ~\AppData\Local\nvim-data
 - [ ] navic / barbeque
 - [ ] nvim-treesitter-textobjects
 - [ ] under mini.comments. nvim-ts-context-commentstring
-- [-] neoconf (i dont think i need this)
+- [X] neoconf (i dont think i need this)
 - [X] terminal in neovim
 - [ ] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
 - [ ] ("eandrju/cellular-automaton.nvim") fun 
@@ -59,7 +59,7 @@ rd -r ~\AppData\Local\nvim-data
 	- [ ] setup highlighting to be better but thats like on the colors part idk
 	- [ ] and have it use telescope as a selector of themes like nvchad
 - [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
-- [ ] make nvim-lsp lighter and faster
+- [ ] make nvim-lsp lighter and faster (probably can never change)
 - [X] get html lsp to work
 - [ ] setup treesitter keybindings and such
 	- [ ] nvim-treesitter/nvim-treesitter-context
