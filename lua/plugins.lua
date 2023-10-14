@@ -359,11 +359,12 @@ return {
     },
     -- }}}
 
-    -- NvTerm
+    -- NvTerm{{{
     {
         'NvChad/nvterm',
         opts = {},
     },
+-- }}}
 
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),
