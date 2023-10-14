@@ -153,7 +153,7 @@ return {
             require('pluggers.lspconfig')
         end,
         dependencies = {
-            'williamboman/mason.nvim',
+            { 'williamboman/mason.nvim', cmd = 'Mason' },
             'williamboman/mason-lspconfig.nvim',
 
             'folke/neodev.nvim',
@@ -162,7 +162,9 @@ return {
         },
     },
 
-    -- Diagnostics
+    -- }}}
+
+    -- Diagnostics {{{
     { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
     -- }}}
 
