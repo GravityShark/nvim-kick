@@ -17,8 +17,6 @@ M.treesitter = {
     'markdown',
     'gitcommit',
     'org',
-
-    -- other
     'rust',
     'go',
 }
