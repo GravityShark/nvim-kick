@@ -1,5 +1,6 @@
 M = {}
 
+-- Treesitter ensure_installed
 M.treesitter = {
     'lua',
     'python',
@@ -21,6 +22,7 @@ M.treesitter = {
     'go',
 }
 
+-- Mason ensure_installed
 if not vim.g.is_termux then
     M.mason = {
         pylsp = {},
@@ -38,13 +40,32 @@ if not vim.g.is_termux then
             },
         },
     }
-else
+else -- Termux
     M.mason = {
         pylsp = {},
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         tailwindcss = {},
         gopls = {},
+    }
+end
+
+-- none-ls sources
+function M.null()
+    local null_ls = require('null-ls')
+
+    local formatting = null_ls.builtins.formatting
+    -- local lint = null_ls.builtins.diagnostics
+
+    local sources = {
+        -- formatting.prettier,
+        formatting.stylua,
+
+        -- lint.shellcheck,
+    }
+    return
+    {
+        formatting.stylua,
     }
 end
 

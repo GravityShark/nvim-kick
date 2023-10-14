@@ -153,18 +153,32 @@ return {
             require('pluggers.lspconfig')
         end,
         dependencies = {
-            { 'williamboman/mason.nvim', cmd = 'Mason' },
+            -- Easy installation of LSPs and more
+            { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
+
+            -- Easier configuration, might remove
             'williamboman/mason-lspconfig.nvim',
 
+            -- Better Neovim Lua LSP configuration
             'folke/neodev.nvim',
+
+            -- Shows a little widget showing the status of LSP
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-            enabled = false,
+
+            -- Allows the usage of Linters and Formatters
+            {
+                'nvimtools/none-ls.nvim',
+                config = function()
+                    require('pluggers.none-ls')
+                end,
+            },
+            -- No time to make work
         },
     },
 
     -- }}}
 
-    -- Diagnostics {{{
+    -- Diagnostic Viewer {{{
     { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
     -- }}}
 

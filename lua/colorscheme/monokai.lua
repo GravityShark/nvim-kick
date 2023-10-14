@@ -13,7 +13,7 @@ return {
     },
     config = function()
         -- local monokai = require('monokai')
-        -- local palette = monokai.pro
+        -- local paletter = monokai.pro
         local paletter = {
             black = '#181a1c',
             base1 = '#252630',

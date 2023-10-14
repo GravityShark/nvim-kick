@@ -1,7 +1,5 @@
 -- Minimum config for LSP & Mason
 
-require('mason').setup()
-
 local mason_lspconfig = require('mason-lspconfig')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
