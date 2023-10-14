@@ -31,6 +31,7 @@ local kind_icons = {
     TypeParameter = '󰅲',
 }
 
+---@diagnostic disable-next-line: missing-fields
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -70,6 +71,7 @@ cmp.setup({
         { name = 'orgmode' },
     },
 
+    ---@diagnostic disable-next-line: missing-fields
     formatting = {
         fields = { 'kind', 'abbr', 'menu' },
         format = function(entry, vim_item)

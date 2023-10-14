@@ -70,7 +70,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>a',
     '<CMD> lua require("harpoon.mark").add_file() <CR>',
-    { noremap = true, desc = 'Harpoon [A]dd' }
+    { noremap = true, desc = 'Harpoon [a]dd' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -127,7 +127,7 @@ vim.api.nvim_set_keymap(
     'n',
     'ga',
     '<cmd>lua vim.lsp.buf.code_action()<CR>',
-    { noremap = true }
+    { noremap = true, desc = 'Diagnostic Code [a]ction' }
 ) -- Code actions
 vim.api.nvim_set_keymap(
     'n',
@@ -154,25 +154,25 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fr',
     '<cmd>Telescope oldfiles<CR>',
-    { noremap = true, desc = 'Find [R]ecent' }
+    { noremap = true, desc = 'Find [r]ecent' }
 ) -- Show recent files
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fj',
     '<cmd>Telescope git_files<CR>',
-    { noremap = true, desc = 'Find [G]it Files' }
+    { noremap = true, desc = 'Find [j]it Files' }
 ) -- Search for a file in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ff',
     '<cmd>Telescope find_files<CR>',
-    { noremap = true, desc = 'Find [F]iles' }
+    { noremap = true, desc = 'Find [f]iles' }
 ) -- Search for a file (ignoring dotfiles)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fa',
     '<cmd>Telescope find_files hidden=true no_ignore=true<CR>',
-    { noremap = true, desc = 'Find [A]ll Files' }
+    { noremap = true, desc = 'Find [a]ll Files' }
 ) -- Search for a file (with dotfiles)
 -- vim.api.nvim_set_keymap(
 -- 	'n',
@@ -190,13 +190,13 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fg',
     '<cmd>Telescope live_grep<CR>',
-    { noremap = true, desc = 'Find text using [G]rep' }
+    { noremap = true, desc = 'Find text using [g]rep' }
 ) -- Find a string in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fb',
     '<cmd>Telescope buffers<CR>',
-    { noremap = true, desc = 'Find [B]uffers' }
+    { noremap = true, desc = 'Find [b]uffers' }
 ) -- Show all buffers
 vim.api.nvim_set_keymap(
     'n',
@@ -204,17 +204,17 @@ vim.api.nvim_set_keymap(
     '<cmd>Telescope<CR>',
     { noremap = true, desc = 'Find ?' }
 ) -- Show all commands
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>fs',
-    '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
-    { noremap = true, desc = 'Find [N]' }
-) -- Search for dynamic symbols
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>fs',
+--     '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
+--     { noremap = true, desc = 'Find [s]ymbls' }
+-- ) -- Search for dynamic symbols
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fu',
     '<cmd>Telescope undo<CR>',
-    { noremap = true, desc = 'Find [U]ndo History' }
+    { noremap = true, desc = 'Find [u]ndo History' }
 ) -- Show undotree
 -- vim.api.nvim_set_keymap(
 -- 	'n',
@@ -226,13 +226,13 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fp',
     '<cmd>Telescope project<CR>',
-    { noremap = true, desc = 'Find [P]rojects' }
+    { noremap = true, desc = 'Find [p]rojects' }
 ) -- Show projects
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fd',
     '<cmd>Telescope diagnostics<CR>',
-    { noremap = true, desc = 'Find [D]iagnostics' }
+    { noremap = true, desc = 'Find [d]iagnostics' }
 ) -- Show diagnostics
 vim.keymap.set('n', '<leader>f/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -259,7 +259,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>e',
     '<cmd>Ex<CR>',
-    { noremap = true, desc = '[E]xplorer in current window' }
+    { noremap = true, desc = '[e]xplorer in current window' }
 )
 -- }}}
 
@@ -291,7 +291,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
     '<cmd>lua BufRem(0)<CR>',
-    { noremap = true, desc = '[C]lose current buffer' }
+    { noremap = true, desc = '[c]lose current buffer' }
 )
 -- }}}
 
@@ -300,43 +300,43 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>gg',
     '<cmd>Git<CR>',
-    { noremap = true, desc = '[G]it' }
+    { noremap = true, desc = '[g]it' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gd',
     '<cmd>Git diff<CR>',
-    { noremap = true, desc = 'Git [D]iff' }
+    { noremap = true, desc = 'Git [d]iff' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gc',
     '<cmd>Git commit<CR>',
-    { noremap = true, desc = 'Git [C]ommit' }
+    { noremap = true, desc = 'Git [c]ommit' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gaa',
     '<cmd>Git add %<CR>',
-    { noremap = true, desc = 'Git Add [A]ll' }
+    { noremap = true, desc = 'Git Add [a]ll' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gac',
     '<cmd>Git add %<CR>',
-    { noremap = true, desc = 'Git [A]dd [C]urrent buffer' }
+    { noremap = true, desc = 'Git Add [c]urrent buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gs',
     '<cmd>Git show<CR>',
-    { noremap = true, desc = 'Git [S]how' }
+    { noremap = true, desc = 'Git [s]how' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gp',
     '<cmd>Git push<CR>',
-    { noremap = true, desc = 'Git [P]ush' }
+    { noremap = true, desc = 'Git [p]ush' }
 )
 -- }}}
 
@@ -345,31 +345,31 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>xx',
     '<cmd>TroubleToggle<cr>',
-    { noremap = true, desc = 'Trouble [T]oggle' }
+    { noremap = true, desc = 'Trouble [x] Toggle' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>xw',
     '<cmd>TroubleToggle workspace_diagnostics<cr>',
-    { noremap = true, desc = 'Trouble [W]orkspace Diagnostics' }
+    { noremap = true, desc = 'Trouble [w]orkspace Diagnostics' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>xd',
     '<cmd>TroubleToggle document_diagnostics<cr>',
-    { noremap = true, desc = 'Trouble [D]ocument Diagnostics' }
+    { noremap = true, desc = 'Trouble [d]ocument Diagnostics' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>xq',
     '<cmd>TroubleToggle quickfix<cr>',
-    { noremap = true, desc = 'Trouble [Q]uick Fix' }
+    { noremap = true, desc = 'Trouble [q]uick Fix' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>xl',
     '<cmd>TroubleToggle loclist<cr>',
-    { noremap = true, desc = 'Trouble [L]OC/Diagnostic List' }
+    { noremap = true, desc = 'Trouble [l]OC/Diagnostic List' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -428,7 +428,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>u',
     '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
-    { noremap = true, desc = '[U]ndotree Toggle' }
+    { noremap = true, desc = '[u]ndotree Toggle' }
 ) -- }}}
 
 -- NvTerm {{{
@@ -436,19 +436,18 @@ vim.keymap.set(
     { 'n', 't' },
     '<C-w>tv',
     '<cmd> lua require("nvterm.terminal").toggle (\'vertical\')<CR>',
-    { noremap = true, desc = 'Terminal [V]ertical' }
+    { noremap = true, desc = 'Terminal [v]ertical' }
 )
 vim.keymap.set(
     { 'n', 't' },
-    '<C-w>th',
+    '<C-w>ts',
     '<cmd> lua require("nvterm.terminal").toggle (\'horizontal\')<CR>',
-    { noremap = true, desc = 'Terminal [S]plit Horizontally' }
+    { noremap = true, desc = 'Terminal [s]plit Horizontally' }
 )
 vim.keymap.set(
     { 'n', 't' },
     '<C-w>tf',
     '<cmd> lua require("nvterm.terminal").toggle (\'float\')<CR>',
-    { noremap = true, desc = 'Terminal [F]loating' }
+    { noremap = true, desc = 'Terminal [f]loating' }
 )
-
 -- }}}

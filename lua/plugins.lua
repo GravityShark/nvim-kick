@@ -4,7 +4,7 @@ local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
 -- Please Read the README.md
 return {
 
-    -- Starttime Makes me feel good{{{
+    -- Starttime Makes me feel good {{{
     {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
@@ -15,16 +15,17 @@ return {
     -- }}}
 
     -- Theme {{{
-    -- Statusline{{{
+
+    -- Statusline {{{
     {
         'echasnovski/mini.statusline',
         config = { set_vim_settings = false },
         lazy = false,
-        -- event = VeryLazyFile,
-    }, -- }}}
+    },
+    -- }}}
 
-    -- vim.cmd.colorscheme('habamax'),
     -- go to the lua/colorscheme dir to see more
+    -- vim.cmd.colorscheme('habamax'),
     require('colorscheme.monokai'),
     -- require('colorscheme.mini'),
 
