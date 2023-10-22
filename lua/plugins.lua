@@ -34,13 +34,13 @@ return {
     -- mini.nvim {{{
 
     -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+    { 'echasnovski/mini.ai',       event = 'VeryLazy', opts = {} },
     -- }}}
     -- better f/F and t/T{{{
     {
         'echasnovski/mini.jump',
         keys = { 'f', 'F', 't', 'T', ';' },
-        opts = {},
+        opts = { highlight = 0 },
     },
     -- }}}
     -- Auto pairs (){{{
@@ -154,7 +154,7 @@ return {
         end,
         dependencies = {
             -- Easy installation of LSPs and more
-            { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
+            { 'williamboman/mason.nvim', cmd = 'Mason',  opts = {} },
 
             -- Easier configuration, might remove
             'williamboman/mason-lspconfig.nvim',
@@ -163,7 +163,7 @@ return {
             'folke/neodev.nvim',
 
             -- Shows a little widget showing the status of LSP
-            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
             -- Allows the usage of Linters and Formatters
             {
@@ -179,7 +179,7 @@ return {
     -- }}}
 
     -- Diagnostic Viewer {{{
-    { 'folke/trouble.nvim', cmd = { 'TroubleToggle' } },
+    { 'folke/trouble.nvim',  cmd = { 'TroubleToggle' } },
     -- }}}
 
     -- Completion {{{
@@ -358,7 +358,7 @@ return {
             plugins = {
                 options = {
                     enabled = true,
-                    ruler = false, -- disables the ruler text in the cmd line area
+                    ruler = false,  -- disables the ruler text in the cmd line area
                     showcmd = true, -- disables the command in the last line of the screen
                     -- you may turn on/off statusline in zen mode by setting 'laststatus'
                     -- statusline will be shown only if 'laststatus' == 3
@@ -381,7 +381,7 @@ return {
         'NvChad/nvterm',
         opts = {},
     },
--- }}}
+    -- }}}
 
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),

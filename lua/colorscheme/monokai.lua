@@ -21,7 +21,7 @@ return {
             base3 = '#333648',
             base4 = '#363a4e',
             base5 = '#393e53',
-            base6 = '#3f445b',
+            -- base6 = '#3f445b',
             base7 = '#5a5e7a',
             pink = '#ff6188',
             white = '#e1e3e4',
