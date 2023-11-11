@@ -19,7 +19,7 @@ return {
     -- Statusline {{{
     {
         'echasnovski/mini.statusline',
-        config = { set_vim_settings = false },
+        opts = { set_vim_settings = false },
         lazy = false,
     },
     -- }}}
@@ -351,7 +351,7 @@ return {
     {
         'folke/zen-mode.nvim',
         cmd = { 'ZenMode' },
-        config = {
+        opts = {
             window = {
                 width = 85, -- width of the Zen window
             },
