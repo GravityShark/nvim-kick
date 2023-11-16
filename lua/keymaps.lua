@@ -3,18 +3,18 @@
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- X Remap for dealing with word wrap{{{
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'k',
--- 	"v:count == 0 ? 'gk' : 'k'",
--- 	{ expr = true, silent = true }
--- )
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'j',
--- 	"v:count == 0 ? 'gj' : 'j'",
--- 	{ expr = true, silent = true }
--- )
+vim.api.nvim_set_keymap(
+    'n',
+    'k',
+    "v:count == 0 ? 'gk' : 'k'",
+    { expr = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    'j',
+    "v:count == 0 ? 'gj' : 'j'",
+    { expr = true, silent = true }
+)
 -- }}}
 
 -- Easier visual mode indents {{{
@@ -250,8 +250,8 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 -- Open netrw on the right
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>n',
-    '<cmd>Vex!<CR>',
+    '<leader>.',
+    '<cmd>Sex!<CR>',
     { noremap = true, desc = 'SEEX!!!' }
 )
 -- Open current window as netrw
