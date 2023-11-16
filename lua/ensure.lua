@@ -63,8 +63,7 @@ function M.null()
 
         -- lint.shellcheck,
     }
-    return
-    {
+    return {
         formatting.stylua,
     }
 end

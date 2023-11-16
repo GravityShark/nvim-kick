@@ -102,7 +102,7 @@ end
 vim.api.nvim_create_autocmd({
     'BufAdd',
     'BufDelete',
-    'BufEnter',
+    -- 'BufEnter',
 }, { command = 'lua ToggleTabline()' })
 -- }}}
 
