@@ -80,37 +80,37 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-1>',
+    '<leader>1',
     '<CMD> lua require("harpoon.ui").nav_file(1) <CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-2>',
+    '<leader>2',
     '<CMD> lua require("harpoon.ui").nav_file(2) <CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-3>',
+    '<leader>3',
     '<CMD> lua require("harpoon.ui").nav_file(3) <CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-4>',
+    '<leader>4',
     '<CMD> lua require("harpoon.ui").nav_file(4) <CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-5>',
+    '<leader>5',
     '<CMD> lua require("harpoon.ui").nav_file(5) <CR>',
     { noremap = true }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<A-6>',
+    '<leader>6',
     '<CMD> lua require("harpoon.ui").nav_file(6) <CR>',
     { noremap = true }
 )
