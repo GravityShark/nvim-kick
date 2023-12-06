@@ -334,6 +334,13 @@ return {
 	{
 		'norcalli/nvim-colorizer.lua',
 		cmd = { 'ColorizerToggle' },
+		keys = {
+			{
+				'<leader>o',
+				'<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
+				desc = 'C[o]lorize Colors'
+			}
+		}
 	}, -- }}}
 
 	-- Blazingly fast {{{
