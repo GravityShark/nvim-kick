@@ -1,37 +1,37 @@
 M = {}
 
--- Treesitter ensure_installed
+-- Treesitter ensure_installed{{{
 M.treesitter = {
     'lua',
     'python',
     'c',
     'cpp',
     'javascript',
-    'typescript',
-    'tsx',
+    -- 'typescript',
+    -- 'tsx',
     'css',
     'vim',
     'vimdoc',
     'bash',
-    'sql',
+    -- 'sql',
     'json',
     'markdown',
     'gitcommit',
     'org',
-    'rust',
-    'go',
-}
+    -- 'rust',
+    -- 'go',
+}-- }}}
 
--- Mason ensure_installed
+-- Mason ensure_installed{{{
 if not vim.g.is_termux then
     M.mason = {
         pylsp = {},
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         tailwindcss = {},
-        gopls = {},
+        -- gopls = {},
 
-        rust_analyzer = {},
+        -- rust_analyzer = {},
         clangd = {},
         lua_ls = {
             Lua = {
@@ -46,26 +46,22 @@ else -- Termux
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         tailwindcss = {},
-        gopls = {},
+        -- gopls = {},
     }
-end
+end-- }}}
 
--- none-ls sources
+-- none-ls sources{{{
 function M.null()
     local null_ls = require('null-ls')
 
     local formatting = null_ls.builtins.formatting
     -- local lint = null_ls.builtins.diagnostics
 
-    local sources = {
+    return {
         -- formatting.prettier,
         formatting.stylua,
-
         -- lint.shellcheck,
     }
-    return {
-        formatting.stylua,
-    }
-end
+end-- }}}
 
 return M

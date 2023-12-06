@@ -1,5 +1,4 @@
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Opts {{{
 -- Global statusline
@@ -12,11 +11,8 @@ vim.opt.relativenumber = true
 -- Undofile
 vim.opt.undofile = true
 
--- Wrap enabled by default
--- vim.opt.wrap = true
-
 -- For orgmode
-vim.opt.conceallevel = 2
+-- vim.opt.conceallevel = 2
 
 -- Disable that weird effect where it changes the color of your cursor
 vim.opt.matchtime = 0
@@ -87,7 +83,7 @@ for type, icon in pairs(signs) do
 end
 -- }}}
 
--- Automatic disabling/renabling bufferline at 1> || 1< Buffers {{{
+-- Automatic disabling/renabling bufferline at 1 > Buffers ; 1 < Buffers {{{
 function ToggleTabline()
     -- Get the count of active buffers
     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
@@ -100,6 +96,12 @@ function ToggleTabline()
     end
 end
 
+TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+    'BufAdd',
+    'BufDelete',
+    'UIEnter',
+}, { command = 'lua ToggleTabline()' })
+
 function ToggleBar()
     if vim.o.showtabline == 0 then
         vim.o.showtabline = 2
@@ -111,27 +113,14 @@ function ToggleBar()
     else
         if vim.o.showtabline == 2 then
             vim.o.showtabline = 0
-            -- vim.api.nvim_clear_autocmds({ event = { 'BufAdd', 'BufDelete', 'UIEnter' } })
             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
         end
     end
 end
 
-TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
-    'BufAdd',
-    'BufDelete',
-    'UIEnter',
-}, { command = 'lua ToggleTabline()' })
-
 -- }}}
 
--- Set relative line numbers to Netrw {{{
-vim.cmd([[
-  autocmd FileType netrw set relativenumber
-]])
--- }}}
-
--- if using neovide {{{
+-- If using neovide {{{
 if vim.g.neovide then
     -- vim.o.guifont = ""
     vim.g.neovide_transparency = 0

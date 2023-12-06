@@ -97,13 +97,13 @@ cmp.setup({
 
     window = {
         completion = {
-            winhighlight = 'Normal:Pmenu,FloatBorder:SpecialChar',
             completeopt = 'menu,menuone,noinsert',
             border = 'rounded',
             scrollbar = true,
+            winhighlight = 'FloatBorder:SpecialChar',
         },
         documentation = {
-            winhighlight = 'Normal:Pmenu,FloatBorder:SpecialChar',
+            winhighlight = 'FloatBorder:SpecialChar',
             border = 'rounded',
             scrollbar = true,
         },

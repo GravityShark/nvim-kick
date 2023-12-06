@@ -4,12 +4,14 @@ return {
     opts = {
         extra_groups = {
             'NormalFloat',
-            'Pmenu',
+            -- 'Pmenu',
             'TelescopeNormal',
         },
         exclude_groups = {
             'StatusLine',
             'StatusLineNC',
+            'CursorLine',
+            'CursorLineNr',
         }
     },
 }

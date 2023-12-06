@@ -65,30 +65,6 @@ vim.api.nvim_set_keymap(
 )
 -- }}}
 
--- Harpoon {{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>a',
-    '<CMD> lua require("harpoon.mark").add_file() <CR>',
-    { noremap = true, desc = 'Harpoon [a]dd' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>`',
-    '<CMD> lua require("harpoon.ui").toggle_quick_menu() <CR>',
-    { noremap = true, desc = 'Harpoon Open Menu' }
-)
-for i = 1, 6, 1 do
-    vim.api.nvim_set_keymap(
-        'n',
-        '<leader>' .. i,
-        '<CMD> lua require("harpoon.ui").nav_file(' .. i .. ') <CR>',
-        { noremap = true, desc = 'Harpoon open buffer ' .. i }
-    )
-end
-
--- }}}
-
 -- LSP {{{
 vim.api.nvim_set_keymap(
     'n',
@@ -326,45 +302,6 @@ vim.api.nvim_set_keymap(
 )
 -- }}}
 
--- Troublin{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>xx',
-    '<cmd>TroubleToggle<cr>',
-    { noremap = true, desc = 'Trouble [x] Toggle' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>xw',
-    '<cmd>TroubleToggle workspace_diagnostics<cr>',
-    { noremap = true, desc = 'Trouble [w]orkspace Diagnostics' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>xd',
-    '<cmd>TroubleToggle document_diagnostics<cr>',
-    { noremap = true, desc = 'Trouble [d]ocument Diagnostics' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>xq',
-    '<cmd>TroubleToggle quickfix<cr>',
-    { noremap = true, desc = 'Trouble [q]uick Fix' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>xl',
-    '<cmd>TroubleToggle loclist<cr>',
-    { noremap = true, desc = 'Trouble [l]OC/Diagnostic List' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    'gR',
-    '<cmd>TroubleToggle lsp_references<cr>',
-    { noremap = true, desc = 'Trouble LSP [R]eferences' }
-)
--- }}}
-
 -- Diagnostic keymaps{{{
 -- vim.keymap.set(
 --     'n',
@@ -393,47 +330,13 @@ vim.api.nvim_set_keymap(
 -- }}}
 
 -- Luasnips{{{
-vim.keymap.set({ 'i' }, '<C-K>', function()
-    require('luasnip').expand()
-end, { silent = true })
-vim.keymap.set({ 's' }, '<Tab>', function()
-    require('luasnip').jump(1)
-end, { silent = true })
-vim.keymap.set({ 's' }, '<S-Tab>', function()
-    require('luasnip').jump(-1)
-end, { silent = true })
+vim.keymap.set({"i"}, "<C-K>", function() require('luasnip').expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() require('luasnip').jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() require('luasnip').jump(-1) end, {silent = true})
 
-vim.keymap.set({ 'i', 's' }, '<C-e>', function()
-    if require('luasnip').choice_active() then
-        require('luasnip').change_choice(1)
-    end
-end, { silent = true }) -- }}}
-
--- Undotree {{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>u',
-    '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
-    { noremap = true, desc = '[u]ndotree Toggle' }
-) -- }}}
-
--- NvTerm {{{
--- vim.keymap.set(
---     { 'n', 't' },
---     '<A-v>',
---     '<cmd> lua require("nvterm.terminal").toggle (\'vertical\')<CR>',
---     { noremap = true, desc = 'Terminal [v]ertical' }
--- )
--- vim.keymap.set(
---     { 'n', 't' },
---     '<A-h>',
---     '<cmd> lua require("nvterm.terminal").toggle (\'horizontal\')<CR>',
---     { noremap = true, desc = 'Terminal [s]plit Horizontally' }
--- )
--- vim.keymap.set(
---     { 'n', 't' },
---     '<A-f>',
---     '<cmd> lua require("nvterm.terminal").toggle (\'float\')<CR>',
---     { noremap = true, desc = 'Terminal [f]loating' }
--- )
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if require('luasnip').choice_active() then
+		require('luasnip').change_choice(1)
+	end
+end, {silent = true})
 -- }}}

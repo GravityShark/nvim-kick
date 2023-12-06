@@ -30,39 +30,60 @@ return {
             diff_text = '#4e432f',
             brown = '#4e432f',
         }
+
+        local custom_hlgroupers = {
+            TelescopeBorder = { fg = paletter.pink },
+            FloatBorder = { fg = paletter.pink },
+            LineNrAbove = { fg = paletter.orange },
+            LineNrBelow = { fg = paletter.orange },
+            MiniTablineModifiedHidden = { fg = paletter.pink },
+            MiniTablineModifiedCurrent = {
+                bg = paletter.base4,
+                fg = paletter.pink,
+            },
+            MiniStatuslineModeInsert = {
+                fg = paletter.base1,
+                bg = paletter.aqua,
+            },
+            MiniStatuslineModeVisual = {
+                fg = paletter.base1,
+                bg = paletter.purple,
+            },
+            MiniStatuslineModeCommand = {
+                fg = paletter.white,
+                bg = paletter.black,
+            },
+            StatusLine = {
+                bg = paletter.base2,
+            },
+            StatusLineNC = {
+                bg = paletter.base1,
+            },
+            FidgetTitle = { fg = paletter.pink },
+            PmenuThumb = { bg = paletter.base4 },
+            CursorLine = { bg = paletter.base2 },
+
+        }
+        -- local function transparency(tabled)
+        --     local transparent = {
+        --         'Normal', 'NormalNC', 'Comment', 'Constant',
+        --         'Special', 'Identifier', 'Statement', 'PreProc', 'Type',
+        --         'Underlined', 'Todo', 'String', 'Function', 'Conditional',
+        --         'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+        --         'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+        --     }
+        --
+        --     for i = 1, #transparent, 1 do
+        --         transparent[i] = {}
+        --
+        --         table.insert(tabled,)
+        --     end
+        -- end
+        -- transparency(custom_hlgroupers)
+
         require('monokai').setup({
             palette = paletter,
-            custom_hlgroups = {
-                TelescopeBorder = { fg = paletter.pink },
-                FloatBorder = { fg = paletter.pink },
-                LineNrAbove = { fg = paletter.orange },
-                LineNrBelow = { fg = paletter.orange },
-                MiniTablineModifiedHidden = { fg = paletter.pink },
-                MiniTablineModifiedCurrent = {
-                    bg = paletter.base4,
-                    fg = paletter.pink,
-                },
-                MiniStatuslineModeInsert = {
-                    fg = paletter.base1,
-                    bg = paletter.aqua,
-                },
-                MiniStatuslineModeVisual = {
-                    fg = paletter.base1,
-                    bg = paletter.purple,
-                },
-                MiniStatuslineModeCommand = {
-                    fg = paletter.white,
-                    bg = paletter.black,
-                },
-                StatusLine = {
-                    bg = paletter.base2,
-                },
-                StatusLineNC = {
-                    bg = paletter.base1,
-                },
-                FidgetTitle = { fg = paletter.pink },
-                PmenuThumb = { bg = paletter.base4 },
-            },
+            custom_hlgroups = custom_hlgroupers,
         })
     end,
 }
