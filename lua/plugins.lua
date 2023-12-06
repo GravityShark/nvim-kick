@@ -27,7 +27,7 @@ return {
 	-- go to the lua/colorscheme dir to see more
 	-- vim.cmd.colorscheme('habamax'),
 	require('colorscheme.monokai'),
-	require('colorscheme.transparent'),
+	-- require('colorscheme.transparent'),
 
 	-- }}}
 

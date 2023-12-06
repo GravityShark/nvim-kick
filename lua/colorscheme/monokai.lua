@@ -4,6 +4,8 @@ return {
     config = function()
         -- local monokai = require('monokai')
         -- local paletter = monokai.pro
+
+        -- Custom palette{{{
         local paletter = {
             black = '#181a1c',
             base1 = '#252630',
@@ -29,8 +31,9 @@ return {
             diff_change = '#354157',
             diff_text = '#4e432f',
             brown = '#4e432f',
-        }
+        } -- }}}
 
+        -- List of custom highlights {{{
         local custom_hlgroupers = {
             TelescopeBorder = { fg = paletter.pink },
             FloatBorder = { fg = paletter.pink },
@@ -61,25 +64,40 @@ return {
             },
             FidgetTitle = { fg = paletter.pink },
             PmenuThumb = { bg = paletter.base4 },
-            CursorLine = { bg = paletter.base2 },
+            -- CursorLine = { bg = paletter.base2 },
+        } -- }}}
 
+        -- Turn all items in list to have transparent backgrounds{{{
+        local transparent = {
+            'Normal',
+            'NormalNC',
+            'NormalFloat',
+            'Comment',
+            'Constant',
+            'Special',
+            'Identifier',
+            'Statement',
+            'PreProc',
+            'Type',
+            'Underlined',
+            'Todo',
+            'String',
+            'Function',
+            'Conditional',
+            'Repeat',
+            'Operator',
+            'Structure',
+            'LineNr',
+            'NonText',
+            'SignColumn',
+            'EndOfBuffer',
+            'TelescopeNormal',
         }
-        -- local function transparency(tabled)
-        --     local transparent = {
-        --         'Normal', 'NormalNC', 'Comment', 'Constant',
-        --         'Special', 'Identifier', 'Statement', 'PreProc', 'Type',
-        --         'Underlined', 'Todo', 'String', 'Function', 'Conditional',
-        --         'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-        --         'SignColumn', 'CursorLineNr', 'EndOfBuffer',
-        --     }
-        --
-        --     for i = 1, #transparent, 1 do
-        --         transparent[i] = {}
-        --
-        --         table.insert(tabled,)
-        --     end
-        -- end
-        -- transparency(custom_hlgroupers)
+
+        for i = 1, #transparent do
+            custom_hlgroupers[transparent[i]] = { bg = 'none' }
+        end
+        -- }}}
 
         require('monokai').setup({
             palette = paletter,

@@ -12,7 +12,7 @@ vim.opt.relativenumber = true
 vim.opt.undofile = true
 
 -- For orgmode
--- vim.opt.conceallevel = 2
+vim.opt.conceallevel = 2
 
 -- Disable that weird effect where it changes the color of your cursor
 vim.opt.matchtime = 0
