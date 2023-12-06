@@ -45,8 +45,6 @@ miniclue.setup({
         { mode = 'n', keys = '<Leader>ga', desc = 'Git [a]dd' },
         { mode = 'n', keys = '<Leader>x', desc = '+[x] is Trouble' },
         { mode = 'n', keys = '<Leader>o', desc = '+[o]rg' },
-        { mode = 'n', keys = '<C-w>t', desc = '+[t]erminal' },
-        { mode = 't', keys = '<C-w>t', desc = '+[t]erminal' },
     },
     window = {
         -- Floating window config

@@ -3,18 +3,18 @@
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- X Remap for dealing with word wrap{{{
-vim.api.nvim_set_keymap(
-    'n',
-    'k',
-    "v:count == 0 ? 'gk' : 'k'",
-    { expr = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    'j',
-    "v:count == 0 ? 'gj' : 'j'",
-    { expr = true, silent = true }
-)
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     'k',
+--     "v:count == 0 ? 'gk' : 'k'",
+--     { expr = true, silent = true }
+-- )
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     'j',
+--     "v:count == 0 ? 'gj' : 'j'",
+--     { expr = true, silent = true }
+-- )
 -- }}}
 
 -- Easier visual mode indents {{{
@@ -78,42 +78,15 @@ vim.api.nvim_set_keymap(
     '<CMD> lua require("harpoon.ui").toggle_quick_menu() <CR>',
     { noremap = true, desc = 'Harpoon Open Menu' }
 )
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>1',
-    '<CMD> lua require("harpoon.ui").nav_file(1) <CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>2',
-    '<CMD> lua require("harpoon.ui").nav_file(2) <CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>3',
-    '<CMD> lua require("harpoon.ui").nav_file(3) <CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>4',
-    '<CMD> lua require("harpoon.ui").nav_file(4) <CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>5',
-    '<CMD> lua require("harpoon.ui").nav_file(5) <CR>',
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>6',
-    '<CMD> lua require("harpoon.ui").nav_file(6) <CR>',
-    { noremap = true }
-)
+for i = 1, 6, 1 do
+    vim.api.nvim_set_keymap(
+        'n',
+        '<leader>' .. i,
+        '<CMD> lua require("harpoon.ui").nav_file(' .. i .. ') <CR>',
+        { noremap = true, desc = 'Harpoon open buffer ' .. i }
+    )
+end
+
 -- }}}
 
 -- LSP {{{
@@ -251,6 +224,12 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>.',
+    '<cmd>Sex<CR>',
+    { noremap = true, desc = 'SEEX!!!' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>n',
     '<cmd>Sex!<CR>',
     { noremap = true, desc = 'SEEX!!!' }
 )
@@ -292,6 +271,13 @@ vim.api.nvim_set_keymap(
     '<leader>c',
     '<cmd>lua BufRem(0)<CR>',
     { noremap = true, desc = '[c]lose current buffer' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>b',
+    '<cmd>lua ToggleBar()<CR>',
+    { noremap = true, desc = 'Toggle buffer [b]ar' }
 )
 -- }}}
 
@@ -432,22 +418,22 @@ vim.api.nvim_set_keymap(
 ) -- }}}
 
 -- NvTerm {{{
-vim.keymap.set(
-    { 'n', 't' },
-    '<C-w>tv',
-    '<cmd> lua require("nvterm.terminal").toggle (\'vertical\')<CR>',
-    { noremap = true, desc = 'Terminal [v]ertical' }
-)
-vim.keymap.set(
-    { 'n', 't' },
-    '<C-w>ts',
-    '<cmd> lua require("nvterm.terminal").toggle (\'horizontal\')<CR>',
-    { noremap = true, desc = 'Terminal [s]plit Horizontally' }
-)
-vim.keymap.set(
-    { 'n', 't' },
-    '<C-w>tf',
-    '<cmd> lua require("nvterm.terminal").toggle (\'float\')<CR>',
-    { noremap = true, desc = 'Terminal [f]loating' }
-)
+-- vim.keymap.set(
+--     { 'n', 't' },
+--     '<A-v>',
+--     '<cmd> lua require("nvterm.terminal").toggle (\'vertical\')<CR>',
+--     { noremap = true, desc = 'Terminal [v]ertical' }
+-- )
+-- vim.keymap.set(
+--     { 'n', 't' },
+--     '<A-h>',
+--     '<cmd> lua require("nvterm.terminal").toggle (\'horizontal\')<CR>',
+--     { noremap = true, desc = 'Terminal [s]plit Horizontally' }
+-- )
+-- vim.keymap.set(
+--     { 'n', 't' },
+--     '<A-f>',
+--     '<cmd> lua require("nvterm.terminal").toggle (\'float\')<CR>',
+--     { noremap = true, desc = 'Terminal [f]loating' }
+-- )
 -- }}}

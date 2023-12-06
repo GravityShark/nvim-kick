@@ -35,13 +35,14 @@ vim.o.breakindent = true
 vim.o.completeopt = 'menuone,noselect'
 vim.opt.colorcolumn = '80'
 
-vim.opt.splitbelow = true     -- Put new windows below current
-vim.opt.splitright = true     -- Put new vertical splits to right
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new vertical splits to right
 
-vim.opt.expandtab = true      -- Use spaces by default
-vim.opt.shiftwidth = 4        -- Set amount of space characters, when we press "<" or ">"
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4           -- 1 tab equal 2 spaces
+vim.opt.expandtab = true  -- Use spaces by default
+vim.opt.shiftwidth = 8    -- Set amount of space characters, when we press "<" or ">"
+
+vim.opt.softtabstop = 8
+vim.opt.tabstop = 8           -- 1 tab equal 2 spaces
 vim.opt.smartindent = true    -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldmethod = 'marker' -- Good
@@ -99,11 +100,29 @@ function ToggleTabline()
     end
 end
 
-vim.api.nvim_create_autocmd({
+function ToggleBar()
+    if vim.o.showtabline == 0 then
+        vim.o.showtabline = 2
+        TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+            'BufAdd',
+            'BufDelete',
+            'UIEnter',
+        }, { command = 'lua ToggleTabline()' })
+    else
+        if vim.o.showtabline == 2 then
+            vim.o.showtabline = 0
+            -- vim.api.nvim_clear_autocmds({ event = { 'BufAdd', 'BufDelete', 'UIEnter' } })
+            vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
+        end
+    end
+end
+
+TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
     'BufAdd',
     'BufDelete',
-    -- 'BufEnter',
+    'UIEnter',
 }, { command = 'lua ToggleTabline()' })
+
 -- }}}
 
 -- Set relative line numbers to Netrw {{{
@@ -114,6 +133,6 @@ vim.cmd([[
 
 -- if using neovide {{{
 if vim.g.neovide then
-    -- vim.o.guifont = "UbuntuMono Nerd Font:h14"
+    -- vim.o.guifont = ""
     vim.g.neovide_transparency = 0
 end -- }}}

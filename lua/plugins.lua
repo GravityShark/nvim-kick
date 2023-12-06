@@ -27,7 +27,7 @@ return {
     -- go to the lua/colorscheme dir to see more
     -- vim.cmd.colorscheme('habamax'),
     require('colorscheme.monokai'),
-    -- require('colorscheme.mini'),
+    require('colorscheme.transparent'),
 
     -- }}}
 
@@ -179,7 +179,10 @@ return {
     -- }}}
 
     -- Diagnostic Viewer {{{
-    { 'folke/trouble.nvim',  cmd = { 'TroubleToggle' } },
+    {
+        'folke/trouble.nvim',
+        cmd = { 'TroubleToggle' }
+    },
     -- }}}
 
     -- Completion {{{
@@ -193,13 +196,14 @@ return {
 
             -- Adds LSP completion capabilities
             'hrsh7th/cmp-nvim-lsp',
-            --
+
             -- Adds the built-in vim auto-complete
             'hrsh7th/cmp-buffer',
 
             -- Snippet Engine & its associated nvim-cmp source
             'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
+
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
         },
@@ -224,9 +228,6 @@ return {
             },
             -- Shows a diff of all undo changes
             'debugloop/telescope-undo.nvim',
-
-            -- Shows all projects / folders
-            'nvim-telescope/telescope-project.nvim',
         },
         config = function()
             local telescope = require('telescope')
@@ -245,7 +246,6 @@ return {
             })
             pcall(telescope.load_extension('fzf'))
             pcall(telescope.load_extension('undo'))
-            pcall(telescope.load_extension('project'))
         end,
     },
     -- }}}
@@ -377,10 +377,11 @@ return {
     -- }}}
 
     -- NvTerm{{{
-    {
-        'NvChad/nvterm',
-        opts = {},
-    },
+    -- I realized i hate this
+    -- {
+    --     'NvChad/nvterm',
+    --     opts = {},
+    -- },
     -- }}}
 
     -- require 'kickstart.plugins.autoformat',

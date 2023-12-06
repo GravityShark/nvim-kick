@@ -85,6 +85,7 @@ require('lazy').setup({ import = 'plugins' }, {
                 -- "matchparen",
                 -- "netrwPlugin",
                 'rplugin',
+                'fzf',
                 'man',
                 'spellfile',
                 'tarPlugin',

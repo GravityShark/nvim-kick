@@ -1,16 +1,6 @@
 return {
     'tanvirtin/monokai.nvim',
     lazy = false,
-    dependencies = {
-        'xiyaowong/transparent.nvim',
-        opts = {
-            extra_groups = {
-                'NormalFloat',
-                'Pmenu',
-                'TelescopeNormal',
-            },
-        },
-    },
     config = function()
         -- local monokai = require('monokai')
         -- local paletter = monokai.pro
