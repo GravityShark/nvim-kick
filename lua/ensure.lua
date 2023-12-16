@@ -20,7 +20,7 @@ M.treesitter = {
     'org',
     -- 'rust',
     -- 'go',
-}-- }}}
+} -- }}}
 
 -- Mason ensure_installed{{{
 if not vim.g.is_termux then
@@ -28,7 +28,7 @@ if not vim.g.is_termux then
         pylsp = {},
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
-        tailwindcss = {},
+        cssls = {},
         -- gopls = {},
 
         -- rust_analyzer = {},
@@ -48,7 +48,7 @@ else -- Termux
         tailwindcss = {},
         -- gopls = {},
     }
-end-- }}}
+end -- }}}
 
 -- none-ls sources{{{
 function M.null()
@@ -62,6 +62,6 @@ function M.null()
         formatting.stylua,
         -- lint.shellcheck,
     }
-end-- }}}
+end -- }}}
 
 return M
