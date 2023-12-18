@@ -25,7 +25,8 @@ M.treesitter = {
 -- Mason ensure_installed{{{
 if not vim.g.is_termux then
     M.mason = {
-        pylsp = {},
+        pyright = {},
+        -- pylsp = {},
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         cssls = {},
