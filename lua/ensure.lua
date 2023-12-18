@@ -28,7 +28,7 @@ if not vim.g.is_termux then
         pyright = {},
         -- pylsp = {},
         tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        html = { filetypes = { 'html', 'htmldjango' } },
         cssls = {},
         -- gopls = {},
 
@@ -45,8 +45,9 @@ else -- Termux
     M.mason = {
         pylsp = {},
         tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
-        tailwindcss = {},
+        html = { filetypes = { 'html', 'htmldjango' } },
+        cssls = {},
+        -- tailwindcss = { filetypes = { 'html', 'css', 'htmldjango' } },
         -- gopls = {},
     }
 end -- }}}
