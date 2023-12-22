@@ -182,31 +182,37 @@ return {
 	{
 		'folke/trouble.nvim',
 		cmd = { 'TroubleToggle' },
-		keys = { {
-			'<leader>x',
-			'<CMD>TroubleToggle<CR>',
-			desc = 'Trouble [x] Toggle',
-		}, {
-			'<leader>xw',
-			'<cmd>TroubleToggle workspace_diagnostics<cr>',
-			desc = 'Trouble [w]orkspace Diagnostics',
-		}, {
-			'<leader>xd',
-			'<cmd>TroubleToggle document_diagnostics<cr>',
-			desc = 'Trouble [d]ocument Diagnostics',
-		}, {
-			'<leader>xq',
-			'<cmd>TroubleToggle quickfix<cr>',
-			desc = 'Trouble [q]uickfix',
-		}, {
-			'<leader>xl',
-			'<cmd>TroubleToggle loclist<cr>',
-			desc = 'Trouble [l]OC/Diagnostic List',
-		}, {
-			'gR',
-			'<cmd>TroubleToggle lsp_references<cr>',
-			desc = 'Trouble LSP [R]eferences',
-		}
+		keys = {
+			{
+				'<leader>x',
+				'<CMD>TroubleToggle<CR>',
+				desc = 'Trouble [x] Toggle',
+			},
+			{
+				'<leader>xw',
+				'<cmd>TroubleToggle workspace_diagnostics<cr>',
+				desc = 'Trouble [w]orkspace Diagnostics',
+			},
+			{
+				'<leader>xd',
+				'<cmd>TroubleToggle document_diagnostics<cr>',
+				desc = 'Trouble [d]ocument Diagnostics',
+			},
+			{
+				'<leader>xq',
+				'<cmd>TroubleToggle quickfix<cr>',
+				desc = 'Trouble [q]uickfix',
+			},
+			{
+				'<leader>xl',
+				'<cmd>TroubleToggle loclist<cr>',
+				desc = 'Trouble [l]OC/Diagnostic List',
+			},
+			{
+				'gR',
+				'<cmd>TroubleToggle lsp_references<cr>',
+				desc = 'Trouble LSP [R]eferences',
+			},
 		},
 	},
 	-- }}}
@@ -227,7 +233,12 @@ return {
 			'hrsh7th/cmp-buffer',
 
 			-- Snippet Engine & its associated nvim-cmp source
-			'L3MON4D3/LuaSnip',
+			{
+				'L3MON4D3/LuaSnip',
+				config = function()
+					require('luasnip').filetype_extend('htmldjango', { 'html' })
+				end,
+			},
 			'saadparwaiz1/cmp_luasnip',
 
 			-- Adds a number of user-friendly snippets
@@ -338,31 +349,46 @@ return {
 			{
 				'<leader>o',
 				'<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-				desc = 'C[o]lorize Colors'
-			}
-		}
+				desc = 'C[o]lorize Colors',
+			},
+		},
 	}, -- }}}
 
 	-- Blazingly fast {{{
 	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		keys = { '<leader>`', '<leader>a', '<A-1>', '<A-2>', '<A-3>', '<A-4>', '<A-5>', '<A-6>', },
-		requires = { { "nvim-lua/plenary.nvim" } },
+		'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		keys = {
+			'<leader>`',
+			'<leader>a',
+			'<A-1>',
+			'<A-2>',
+			'<A-3>',
+			'<A-4>',
+			'<A-5>',
+			'<A-6>',
+		},
+		requires = { { 'nvim-lua/plenary.nvim' } },
 		opts = function()
-			local harpoon = require("harpoon")
+			local harpoon = require('harpoon')
 			harpoon:setup()
 
-			vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
-			vim.keymap.set("n", "<leader>`", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+			vim.keymap.set('n', '<leader>a', function()
+				harpoon:list():append()
+			end)
+			vim.keymap.set('n', '<leader>`', function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end)
 
 			for i = 1, 6, 1 do
-				vim.keymap.set('n', '<A-' .. i .. '>',
-					function() harpoon:list():select(i) end,
-					{ noremap = true, desc = 'Harpoon open buffer ' .. i }
-				)
+				vim.keymap.set('n', '<A-' .. i .. '>', function()
+					harpoon:list():select(i)
+				end, {
+					noremap = true,
+					desc = 'Harpoon open buffer ' .. i,
+				})
 			end
-		end
+		end,
 	},
 
 	{
@@ -375,11 +401,13 @@ return {
 	{
 		'mbbill/undotree',
 		cmd = { 'UndotreeToggle', 'UndotreeFocus' },
-		keys = { {
-			'<leader>u',
-			'<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
-			desc = '[u]ndotree Toggle'
-		} },
+		keys = {
+			{
+				'<leader>u',
+				'<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
+				desc = '[u]ndotree Toggle',
+			},
+		},
 	},
 	-- }}}
 
@@ -410,11 +438,13 @@ return {
 	{
 		'folke/zen-mode.nvim',
 		cmd = { 'ZenMode' },
-		keys = { {
-			'<leader>z',
-			'<CMD>ZenMode<CR>',
-			desc = '[z]enmode Toggle',
-		} },
+		keys = {
+			{
+				'<leader>z',
+				'<CMD>ZenMode<CR>',
+				desc = '[z]enmode Toggle',
+			},
+		},
 		opts = {
 			window = {
 				width = 85, -- width of the Zen window
