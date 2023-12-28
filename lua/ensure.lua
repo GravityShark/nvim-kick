@@ -63,7 +63,9 @@ function M.null()
         formatting.prettier,
         formatting.stylua,
         formatting.blue,
-        lint.eslint_d,
+        -- lint.eslint_d,
+        formatting.djlint,
+        lint.djlint,
     }
 end -- }}}
 
