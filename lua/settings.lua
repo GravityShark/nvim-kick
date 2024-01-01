@@ -34,19 +34,19 @@ vim.opt.colorcolumn = '80'
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new vertical splits to right
 
-vim.opt.expandtab = true  -- Use spaces by default
-vim.opt.shiftwidth = 8    -- Set amount of space characters, when we press "<" or ">"
+vim.opt.expandtab = true -- Use spaces by default
+vim.opt.shiftwidth = 8 -- Set amount of space characters, when we press "<" or ">"
 
 vim.opt.softtabstop = 8
-vim.opt.tabstop = 8           -- 1 tab equal 2 spaces
-vim.opt.smartindent = true    -- Turn on smart indentation. See in the docs for more info
+vim.opt.tabstop = 8 -- 1 tab equal 2 spaces
+vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldmethod = 'marker' -- Good
 
-vim.opt.ignorecase = true     -- Ignore case if all characters in lower case
-vim.opt.joinspaces = false    -- Join multiple spaces in search
-vim.opt.smartcase = true      -- When there is a one capital letter search for exact match
-vim.opt.showmatch = true      -- Highlight search instances
+vim.opt.ignorecase = true -- Ignore case if all characters in lower case
+vim.opt.joinspaces = false -- Join multiple spaces in search
+vim.opt.smartcase = true -- When there is a one capital letter search for exact match
+vim.opt.showmatch = true -- Highlight search instances
 
 -- Undotree Layout
 vim.g.undotree_WindowLayout = 3
@@ -84,44 +84,44 @@ end
 -- }}}
 
 -- Automatic disabling/renabling bufferline at 1 > Buffers ; 1 < Buffers {{{
-function ToggleTabline()
-    -- Get the count of active buffers
-    local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
-
-    if buffers == 1 then
-        vim.o.showtabline = 0
-    elseif buffers > 1 then
-        require('mini.tabline').setup()
-        vim.o.showtabline = 2
-    end
-end
-
-TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
-    'BufAdd',
-    'BufDelete',
-    'UIEnter',
-}, { command = 'lua ToggleTabline()' })
-
-function ToggleBar()
-    if vim.o.showtabline == 0 then
-        vim.o.showtabline = 2
-        TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
-            'BufAdd',
-            'BufDelete',
-            'UIEnter',
-        }, { command = 'lua ToggleTabline()' })
-    else
-        if vim.o.showtabline == 2 then
-            vim.o.showtabline = 0
-            vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
-        end
-    end
-end
+-- function ToggleTabline()
+--     -- Get the count of active buffers
+--     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+--
+--     if buffers == 1 then
+--         vim.o.showtabline = 0
+--     elseif buffers > 1 then
+--         require('mini.tabline').setup()
+--         vim.o.showtabline = 2
+--     end
+-- end
+--
+-- TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+--     'BufAdd',
+--     'BufDelete',
+--     'UIEnter',
+-- }, { command = 'lua ToggleTabline()' })
+--
+-- function ToggleBar()
+--     if vim.o.showtabline == 0 then
+--         vim.o.showtabline = 2
+--         TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+--             'BufAdd',
+--             'BufDelete',
+--             'UIEnter',
+--         }, { command = 'lua ToggleTabline()' })
+--     else
+--         if vim.o.showtabline == 2 then
+--             vim.o.showtabline = 0
+--             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
+--         end
+--     end
+-- end
 
 -- }}}
 
 -- If using neovide {{{
-if vim.g.neovide then
-    -- vim.o.guifont = ""
-    vim.g.neovide_transparency = 0
-end -- }}}
+-- if vim.g.neovide then
+--     -- vim.o.guifont = ""
+--     vim.g.neovide_transparency = 0
+-- end -- }}}
