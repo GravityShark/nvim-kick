@@ -1,6 +1,6 @@
 local ft = require('guard.filetype')
+-- local lint = require('guard.lint')
 
--- Assuming you have guard-collection
 ft('css', 'html', 'json', 'javascript', 'markdown', 'typescript', 'yaml'):fmt(
     'prettier'
 )
@@ -16,14 +16,26 @@ ft('lua'):fmt('stylua')
 ft('c', 'cpp'):fmt('clang-format')
 ft('gdscript'):fmt({
     cmd = 'gdformat',
-    args = { '-l 78', '-' },
+    args = { '--line-length=78', '-' },
     stdin = true,
 })
+--     :lint({
+--     cmd = 'gdlint',
+--     -- stdin = true,
+--     fname = true,
+--     parse = lint.from_regex({
+--         -- regex = '(.+):(%d+):%s+(%a+):%s+(.+)(%(.-%))',
+--         regex = '.+:(%d+):%s+(%a+):%s+(.-)(%(.-%))',
+--         col = 0,
+--         -- groups = { 'source', 'lnum', 'severity', 'message', 'code' },
+--         groups = { 'lnum', 'severity', 'message', 'code' },
+--         severities = {
+--             Error = lint.severities.error,
+--         },
+--     }),
+-- })
 
--- Call setup() LAST!
 require('guard').setup({
-    -- the only options for the setup function
     fmt_on_save = true,
-    -- Use lsp if no formatter was defined for this filetype
     lsp_as_default_formatter = false,
 })
