@@ -343,9 +343,9 @@ vim.api.nvim_set_keymap(
 -- vim-fugtive {{{
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>gg',
+    '<leader>gs',
     '<cmd>Git<CR>',
-    { noremap = true, desc = '[g]it' }
+    { noremap = true, desc = 'Git [s]how' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -371,12 +371,12 @@ vim.api.nvim_set_keymap(
     '<cmd>Git add %<CR>',
     { noremap = true, desc = 'Git Add [c]urrent buffer' }
 )
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>gs',
-    '<cmd>Git show<CR>',
-    { noremap = true, desc = 'Git [s]how' }
-)
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>gs',
+--     '<cmd>Git show<CR>',
+--     { noremap = true, desc = 'Git [s]how' }
+-- )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gp',

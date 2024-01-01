@@ -121,23 +121,23 @@ return {
 
     -- }}}
     -- Which-key but kinda good but bad??{{{
-    {
-        'echasnovski/mini.clue',
-        keys = {
-            '<leader>',
-            'z',
-            'g',
-            "'",
-            '"',
-            '`',
-            '<C-w>',
-            { '<C-r>', mode = 'i' },
-            { '<C-x>', mode = 'i' },
-        },
-        config = function()
-            require('pluggers.mini-clue')
-        end,
-    },
+    -- {
+    --     'echasnovski/mini.clue',
+    --     keys = {
+    --         '<leader>',
+    --         'z',
+    --         'g',
+    --         "'",
+    --         '"',
+    --         '`',
+    --         '<C-w>',
+    --         { '<C-r>', mode = 'i' },
+    --         { '<C-x>', mode = 'i' },
+    --     },
+    --     config = function()
+    --         require('pluggers.mini-clue')
+    --     end,
+    -- },
     -- }}}
     -- Illuminate same words{{{
     {
@@ -493,6 +493,19 @@ return {
     },
     -- }}}
 
+    {
+        'folke/which-key.nvim',
+        event = 'VeryLazy',
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),
     -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
