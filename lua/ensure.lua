@@ -18,39 +18,59 @@ M.treesitter = {
     'markdown',
     'gitcommit',
     'org',
+    'gdscript',
+    'html',
+    'htmldjango',
     -- 'rust',
     -- 'go',
 } -- }}}
 
 -- Mason ensure_installed{{{
-if not vim.g.is_termux then
-    M.mason = {
-        pyright = {},
-        -- pylsp = {},
-        tsserver = {},
-        html = { filetypes = { 'html', 'htmldjango' } },
-        cssls = {},
-        -- gopls = {},
-
-        -- rust_analyzer = {},
-        clangd = {},
-        lua_ls = {
-            Lua = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
-            },
+-- if not vim.g.is_termux then
+M.servers = {
+    pyright = {},
+    tsserver = {},
+    html = { filetypes = { 'html', 'htmldjango' } },
+    cssls = {},
+    clangd = {},
+    lua_ls = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
         },
-    }
-else -- Termux
-    M.mason = {
-        pylsp = {},
-        tsserver = {},
-        html = { filetypes = { 'html', 'htmldjango' } },
-        cssls = {},
-        -- tailwindcss = { filetypes = { 'html', 'css', 'htmldjango' } },
-        -- gopls = {},
-    }
-end -- }}}
+    },
+    gdscript = {},
+    -- pylsp = {},
+    -- gopls = {},
+    -- rust_analyzer = {},
+}
+
+M.mason = {
+    -- pylsp,
+    -- gopls,
+    -- rust_analyzer,
+    'pyright',
+    'typescript-language-server',
+    'html-lsp',
+    'css-lsp',
+    'clangd',
+    'lua-language-server',
+    'clang-format',
+    'blue',
+    'gdtoolkit',
+    'prettier',
+    'stylua',
+}
+-- else -- Termux
+--     M.servers = {
+--         pylsp = {},
+--         tsserver = {},
+--         html = { filetypes = { 'html', 'htmldjango' } },
+--         cssls = {},
+--         -- tailwindcss = { filetypes = { 'html', 'css', 'htmldjango' } },
+--         -- gopls = {},
+--     }
+-- end -- }}}
 
 -- none-ls sources{{{
 function M.null()
@@ -60,12 +80,7 @@ function M.null()
     local lint = null_ls.builtins.diagnostics
 
     return {
-        formatting.prettier,
-        formatting.stylua,
-        formatting.blue,
-        -- lint.eslint_d,
-        formatting.djlint,
-        lint.djlint,
+        lint.gdlint,
     }
 end -- }}}
 

@@ -1,43 +1,37 @@
 -- Minimum config for LSP & Mason
 
-local mason_lspconfig = require('mason-lspconfig')
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = require('ensure').mason
-
-mason_lspconfig.setup({
-    ensure_installed = vim.tbl_keys(servers),
+require('mason-tool-installer').setup({
+    ensure_installed = require('ensure').mason,
 })
 
-require('neodev').setup({})
+-- require('neodev').setup({})
 
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        require('lspconfig')[server_name].setup({
-            capabilities = capabilities,
-            -- on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-        })
-    end,
-})
-
-if vim.g.is_termux then
-    -- Manual setup
-    local lspconfig = require('lspconfig')
-    lspconfig.lua_ls.setup({
-        settings = {
-            Lua = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
-            },
-        },
+for server_name, server_settings in pairs(require('ensure').servers) do
+    require('lspconfig')[server_name].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = server_settings,
+        filetypes = (server_settings or {}).filetypes,
     })
-    lspconfig.clangd.setup({})
-    lspconfig.rust_analyzer.setup({})
 end
+
+-- if vim.g.is_termux then
+--     -- Manual setup
+--     local lspconfig = require('lspconfig')
+--     lspconfig.lua_ls.setup({
+--         settings = {
+--             Lua = {
+--                 workspace = { checkThirdParty = false },
+--                 telemetry = { enable = false },
+--             },
+--         },
+--     })
+--     lspconfig.clangd.setup({})
+--     lspconfig.rust_analyzer.setup({})
+-- end
 
 -- mason_lspconfig.setup_handlers({
 -- 	function(server_name)

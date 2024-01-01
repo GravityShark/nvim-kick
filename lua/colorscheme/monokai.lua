@@ -41,8 +41,14 @@ return {
             LineNrBelow = { fg = paletter.orange },
             MiniTablineModifiedHidden = { fg = paletter.pink },
             MiniTablineModifiedCurrent = {
-                bg = paletter.base4,
+                bg = paletter.base7,
                 fg = paletter.pink,
+            },
+            MiniTablineCurrent = {
+                bg = paletter.base7,
+            },
+            MiniTablineVisible = {
+                bg = paletter.grey,
             },
             MiniStatuslineModeInsert = {
                 fg = paletter.base1,
