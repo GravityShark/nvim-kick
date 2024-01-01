@@ -38,28 +38,30 @@ cmp.setup({
             luasnip.lsp_expand(args.body)
         end,
     },
+
+    behavior = cmp.SelectBehavior.Select,
     mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Turn on autocomplete on <C-y>
         ['<C-Space>'] = cmp.mapping.complete({}),
-        ['<CR>'] = cmp.mapping({
-            i = function(fallback)
-                if cmp.visible() and cmp.get_active_entry() then
-                    cmp.confirm({
-                        behavior = cmp.ConfirmBehavior.Replace,
-                        select = false,
-                    })
-                else
-                    fallback()
-                end
-            end,
-            s = cmp.mapping.confirm({ select = true }),
-            c = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
-            }),
-        }),
+        -- ['<CR>'] = cmp.mapping({
+        --     i = function(fallback)
+        --         if cmp.visible() and cmp.get_active_entry() then
+        --             cmp.confirm({
+        --                 behavior = cmp.ConfirmBehavior.Replace,
+        --                 select = false,
+        --             })
+        --         else
+        --             fallback()
+        --         end
+        --     end,
+        --     s = cmp.mapping.confirm({ select = true }),
+        --     c = cmp.mapping.confirm({
+        --         behavior = cmp.ConfirmBehavior.Replace,
+        --         select = true,
+        --     }),
+        -- }),
     }),
 
     sources = {
@@ -68,7 +70,7 @@ cmp.setup({
         { name = 'path' },
         { name = 'buffer' },
         -- Org mode
-        { name = 'orgmode' },
+        -- { name = 'orgmode' },
     },
 
     ---@diagnostic disable-next-line: missing-fields
@@ -95,6 +97,9 @@ cmp.setup({
         end,
     },
 
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+    },
     window = {
         completion = {
             completeopt = 'menu,menuone,noinsert',
