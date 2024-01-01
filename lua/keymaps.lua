@@ -96,20 +96,59 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
-        local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set(
+            'n',
+            'gD',
+            vim.lsp.buf.declaration,
+            { buffer = ev.buf, desc = '[g]et [D]eclaration' }
+        )
+        vim.keymap.set(
+            'n',
+            'gd',
+            vim.lsp.buf.definition,
+            { buffer = ev.buf, desc = '[g]et [D]efinition' }
+        )
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<space>vws', vim.lsp.buf.workspace_symbol, opts)
-        vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '<space>vca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<space>vrr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<space>vrn', vim.lsp.buf.rename, opts)
-        -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
+        vim.keymap.set(
+            'i',
+            '<C-h>',
+            vim.lsp.buf.signature_help,
+            { buffer = ev.buf }
+        )
+        vim.keymap.set(
+            'n',
+            '<space>vw',
+            vim.lsp.buf.workspace_symbol,
+            { buffer = ev.buf, desc = 'Vim LSP [w]orkspace Symbol' }
+        )
+        vim.keymap.set(
+            'n',
+            '<space>vd',
+            vim.diagnostic.open_float,
+            { buffer = ev.buf, desc = 'Vim LSP [d]iagnostics' }
+        )
+        vim.keymap.set(
+            'n',
+            '<space>vc',
+            vim.lsp.buf.code_action,
+            { buffer = ev.buf, desc = 'Vim LSP [c]ode actions' }
+        )
+        vim.keymap.set(
+            'n',
+            '<space>vrr',
+            vim.lsp.buf.references,
+            { buffer = ev.buf, desc = 'Vim LSP references' }
+        )
+        vim.keymap.set(
+            'n',
+            '<space>vrn',
+            vim.lsp.buf.rename,
+            { buffer = ev.buf, desc = 'Vim LSP rename' }
+        )
+        -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer= ev.buf })
+        -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { buffer= ev.buf })
         -- vim.keymap.set(
         --     'n',
         --     '<space>wr',
@@ -323,7 +362,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gaa',
-    '<cmd>Git add %<CR>',
+    '<cmd>Git add .<CR>',
     { noremap = true, desc = 'Git Add [a]ll' }
 )
 vim.api.nvim_set_keymap(

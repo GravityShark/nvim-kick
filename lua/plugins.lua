@@ -392,17 +392,17 @@ return {
 
             vim.keymap.set('n', '<leader>a', function()
                 harpoon:list():append()
-            end)
+            end, { desc = '[a]ppend to Harpoon' })
             vim.keymap.set('n', '<leader>`', function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
-            end)
+            end, { desc = '[`] Open Harpoon Menu' })
 
             for i = 1, 6, 1 do
                 vim.keymap.set('n', '<A-' .. i .. '>', function()
                     harpoon:list():select(i)
                 end, {
                     noremap = true,
-                    desc = 'Harpoon open buffer ' .. i,
+                    -- desc = 'Harpoon open buffer ' .. i,
                 })
             end
             vim.keymap.set('n', '<S-Tab>', function()
