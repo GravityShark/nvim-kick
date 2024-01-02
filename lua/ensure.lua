@@ -29,6 +29,7 @@ M.treesitter = {
 -- if not vim.g.is_termux then
 M.servers = {
     pyright = {},
+    -- pylsp = {},
     tsserver = {},
     html = { filetypes = { 'html', 'htmldjango' } },
     cssls = {},
@@ -40,7 +41,6 @@ M.servers = {
         },
     },
     gdscript = {},
-    -- pylsp = {},
     -- gopls = {},
     -- rust_analyzer = {},
 }

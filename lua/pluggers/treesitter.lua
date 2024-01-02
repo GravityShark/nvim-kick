@@ -7,7 +7,7 @@ vim.defer_fn(function()
             enable = true,
             use_languagetree = true,
         },
-        indent = { enable = true },
+        indent = { enable = true, disable = { 'gdscript' } },
     })
 end, 0)
 
