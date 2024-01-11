@@ -84,39 +84,39 @@ end
 -- }}}
 
 -- Automatic disabling/renabling bufferline at 1 > Buffers ; 1 < Buffers {{{
--- function ToggleTabline()
---     -- Get the count of active buffers
---     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
---
---     if buffers == 1 then
---         vim.o.showtabline = 0
---     elseif buffers > 1 then
---         require('mini.tabline').setup()
---         vim.o.showtabline = 2
---     end
--- end
---
--- TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
---     'BufAdd',
---     'BufDelete',
---     'UIEnter',
--- }, { command = 'lua ToggleTabline()' })
---
--- function ToggleBar()
---     if vim.o.showtabline == 0 then
---         vim.o.showtabline = 2
---         TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
---             'BufAdd',
---             'BufDelete',
---             'UIEnter',
---         }, { command = 'lua ToggleTabline()' })
---     else
---         if vim.o.showtabline == 2 then
---             vim.o.showtabline = 0
---             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
---         end
---     end
--- end
+function ToggleTabline()
+    -- Get the count of active buffers
+    local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+
+    if buffers == 1 then
+        vim.o.showtabline = 0
+    elseif buffers > 1 then
+        require('mini.tabline').setup()
+        vim.o.showtabline = 2
+    end
+end
+
+TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+    'BufAdd',
+    'BufDelete',
+    'UIEnter',
+}, { command = 'lua ToggleTabline()' })
+
+function ToggleBar()
+    if vim.o.showtabline == 0 then
+        vim.o.showtabline = 2
+        TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+            'BufAdd',
+            'BufDelete',
+            'UIEnter',
+        }, { command = 'lua ToggleTabline()' })
+    else
+        if vim.o.showtabline == 2 then
+            vim.o.showtabline = 0
+            vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
+        end
+    end
+end
 
 -- }}}
 

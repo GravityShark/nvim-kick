@@ -303,8 +303,8 @@ vim.api.nvim_set_keymap(
 
 -- Buffers {{{
 -- Tabs to move around buffers
--- vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true })
 
 function BufRem(number)
     local bufremove = require('mini.bufremove')
@@ -322,7 +322,7 @@ function BufRem(number)
             bufremove.delete(number, true)
         end
     end
-    -- ToggleTabline()
+    ToggleTabline()
 end
 
 vim.api.nvim_set_keymap(
@@ -332,12 +332,12 @@ vim.api.nvim_set_keymap(
     { noremap = true, desc = '[c]lose current buffer' }
 )
 
--- vim.api.nvim_set_keymap(
---     'n',
---     '<leader>b',
---     '<cmd>lua ToggleBar()<CR>',
---     { noremap = true, desc = 'Toggle buffer [b]ar' }
--- )
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>b',
+    '<cmd>lua ToggleBar()<CR>',
+    { noremap = true, desc = 'Toggle buffer [b]ar' }
+)
 -- }}}
 
 -- vim-fugtive {{{
@@ -383,6 +383,9 @@ vim.api.nvim_set_keymap(
     '<cmd>Git push<CR>',
     { noremap = true, desc = 'Git [p]ush' }
 )
+
+vim.api.nvim_set_keymap('n', 'gu', '<cmd>diffget //2<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gh', '<cmd>diffget //3<CR>', { noremap = true })
 -- }}}
 
 -- Diagnostic keymaps{{{

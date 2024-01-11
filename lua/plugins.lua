@@ -74,12 +74,12 @@ return {
     },
     -- }}}
     -- Fast bufferline{{{
-    -- {
-    --     'echasnovski/mini.tabline',
-    --     -- event = { 'BufReadPost', 'BufNewFile' },
-    --     dependencies = 'nvim-tree/nvim-web-devicons',
-    --     opts = { set_vim_settings = false },
-    -- },
+    {
+        'echasnovski/mini.tabline',
+        -- event = { 'BufReadPost', 'BufNewFile' },
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        opts = { set_vim_settings = false },
+    },
     -- }}}
     -- Kill buffers and preserve window layout{{{
     { 'echasnovski/mini.bufremove' },
@@ -269,7 +269,7 @@ return {
         cmd = 'Telescope',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            'nvim-tree/nvim-web-devicons',
+            -- 'nvim-tree/nvim-web-devicons',
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 build = 'make',
@@ -405,12 +405,12 @@ return {
                     -- desc = 'Harpoon open buffer ' .. i,
                 })
             end
-            vim.keymap.set('n', '<S-Tab>', function()
-                harpoon:list():prev()
-            end)
-            vim.keymap.set('n', '<Tab>', function()
-                harpoon:list():next()
-            end)
+            -- vim.keymap.set('n', '<S-Tab>', function()
+            --     harpoon:list():prev()
+            -- end)
+            -- vim.keymap.set('n', '<Tab>', function()
+            --     harpoon:list():next()
+            -- end)
         end,
     },
 
