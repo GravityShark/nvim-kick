@@ -31,7 +31,22 @@ M.servers = {
     pyright = {},
     -- pylsp = {},
     tsserver = {},
-    html = { filetypes = { 'html', 'htmldjango' } },
+    -- html = { filetypes = { 'html', 'htmldjango' } },
+    emmet_language_server = {
+        filetypes = {
+            'css',
+            'eruby',
+            'html',
+            'htmldjango',
+            'javascript',
+            'javascriptreact',
+            'less',
+            'sass',
+            'scss',
+            'pug',
+            'typescriptreact',
+        },
+    },
     cssls = {},
     clangd = {},
     lua_ls = {
@@ -51,7 +66,7 @@ M.mason = {
     -- rust_analyzer,
     'pyright',
     'typescript-language-server',
-    'html-lsp',
+    -- 'html-lsp',
     'css-lsp',
     'clangd',
     'lua-language-server',
@@ -60,6 +75,7 @@ M.mason = {
     'gdtoolkit',
     'prettier',
     'stylua',
+    'emmet-language-server',
 }
 -- else -- Termux
 --     M.servers = {
