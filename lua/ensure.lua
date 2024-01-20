@@ -2,80 +2,80 @@ M = {}
 
 -- Treesitter ensure_installed{{{
 M.treesitter = {
-    'lua',
-    'python',
-    'c',
-    'cpp',
-    'javascript',
-    -- 'typescript',
-    -- 'tsx',
-    'css',
-    'vim',
-    'vimdoc',
-    'bash',
-    -- 'sql',
-    'json',
-    'markdown',
-    'gitcommit',
-    'org',
-    'gdscript',
-    'html',
-    'htmldjango',
-    -- 'rust',
-    -- 'go',
+	"lua",
+	"python",
+	"c",
+	"cpp",
+	"javascript",
+	-- 'typescript',
+	-- 'tsx',
+	"css",
+	"vim",
+	"vimdoc",
+	"bash",
+	-- 'sql',
+	"json",
+	"markdown",
+	"gitcommit",
+	"org",
+	"gdscript",
+	"html",
+	"htmldjango",
+	-- 'rust',
+	-- 'go',
 } -- }}}
 
 -- Mason ensure_installed{{{
 -- if not vim.g.is_termux then
 M.servers = {
-    pyright = {},
-    -- pylsp = {},
-    tsserver = {},
-    -- html = { filetypes = { 'html', 'htmldjango' } },
-    emmet_language_server = {
-        filetypes = {
-            'css',
-            'eruby',
-            'html',
-            'htmldjango',
-            'javascript',
-            'javascriptreact',
-            'less',
-            'sass',
-            'scss',
-            'pug',
-            'typescriptreact',
-        },
-    },
-    cssls = {},
-    clangd = {},
-    lua_ls = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
-    },
-    gdscript = {},
-    -- gopls = {},
-    -- rust_analyzer = {},
+	pyright = {},
+	-- pylsp = {},
+	tsserver = {},
+	html = { filetypes = { "html", "htmldjango" } },
+	emmet_language_server = {
+		filetypes = {
+			"css",
+			"eruby",
+			"html",
+			"htmldjango",
+			"javascript",
+			"javascriptreact",
+			"less",
+			"sass",
+			"scss",
+			"pug",
+			"typescriptreact",
+		},
+	},
+	cssls = {},
+	clangd = {},
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
+	gdscript = {},
+	-- gopls = {},
+	-- rust_analyzer = {},
 }
 
 M.mason = {
-    -- pylsp,
-    -- gopls,
-    -- rust_analyzer,
-    'pyright',
-    'typescript-language-server',
-    -- 'html-lsp',
-    'css-lsp',
-    'clangd',
-    'lua-language-server',
-    'clang-format',
-    'blue',
-    'gdtoolkit',
-    'prettier',
-    'stylua',
-    'emmet-language-server',
+	-- pylsp,
+	-- gopls,
+	-- rust_analyzer,
+	"pyright",
+	"typescript-language-server",
+	"html-lsp",
+	"css-lsp",
+	"clangd",
+	"lua-language-server",
+	"clang-format",
+	"blue",
+	"gdtoolkit",
+	"prettier",
+	"stylua",
+	"emmet-language-server",
 }
 -- else -- Termux
 --     M.servers = {
@@ -90,14 +90,14 @@ M.mason = {
 
 -- none-ls sources{{{
 function M.null()
-    local null_ls = require('null-ls')
+	local null_ls = require("null-ls")
 
-    -- local formatting = null_ls.builtins.formatting
-    local lint = null_ls.builtins.diagnostics
+	-- local formatting = null_ls.builtins.formatting
+	local lint = null_ls.builtins.diagnostics
 
-    return {
-        lint.gdlint,
-    }
+	return {
+		lint.gdlint,
+	}
 end -- }}}
 
 return M
