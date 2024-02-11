@@ -2,6 +2,7 @@ return {
     'nvim-orgmode/orgmode',
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        -- { 'akinsho/org-bullets.nvim', opts = {} },
     },
     ft = 'org',
     keys = '<leader>o',
@@ -28,11 +29,15 @@ return {
         require('orgmode').setup({
             org_agenda_files = agenda_files,
             org_default_notes_file = default_notes_file,
-        })
-
-        require('cmp').setup({
-            sources = {
-                { name = 'orgmode' },
+            org_todo_keywords = {
+                'TODO',
+                'NEXT',
+                'HOLD',
+                'WAIT',
+                'INC',
+                '|',
+                'DONE',
+                'CANCEL',
             },
         })
     end,
