@@ -319,54 +319,15 @@ return {
     },
     -- }}}
 
-    -- Orgmode{{{
-    -- {
-    --     'nvim-orgmode/orgmode',
-    --     -- Disabled for now
-    --     enabled = false,
-    --     dependencies = {
-    --         { 'nvim-treesitter/nvim-treesitter', lazy = true },
-    --     },
-    --     ft = 'org',
-    --     keys = '<leader>o',
-    --     config = function()
-    --         -- Load treesitter grammar for org
-    --         require('orgmode').setup_ts_grammar()
-    --
-    --         -- Setup treesitter
-    --         require('nvim-treesitter.configs').setup({
-    --             highlight = {
-    --                 enable = true,
-    --                 additional_vim_regex_highlighting = { 'org' },
-    --             },
-    --             ensure_installed = { 'org' },
-    --         })
-    --
-    --         -- Setup orgmode
-    --         local agenda_files = '~/Notes/**/*'
-    --         local default_notes_file = '~/Notes/refile.org'
-    --         if vim.g.is_termux then
-    --             local agenda_files = '/storage/self/primary/**/*'
-    --             local default_notes_file = '/storage/self/primary/refile.org'
-    --         else
-    --         end
-    --         require('orgmode').setup({
-    --             org_agenda_files = agenda_files,
-    --             org_default_notes_file = default_notes_file,
-    --         })
-    --     end,
-    -- },
-    -- }}}
-
     -- Color the background of color codes {{{
     {
         'norcalli/nvim-colorizer.lua',
         cmd = { 'ColorizerToggle' },
         keys = {
             {
-                '<leader>o',
+                '<leader>l',
                 '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-                desc = 'C[o]lorize Colors',
+                desc = 'Co[l]orize Colors',
             },
         },
     }, -- }}}
@@ -376,8 +337,8 @@ return {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
         keys = {
-            '<leader>`',
-            '<leader>a',
+            { '<leader>`', desc = '[`] Open Harpoon Menu' },
+            { '<leader>a', desc = '[a]ppend to Harpoon' },
             '<A-1>',
             '<A-2>',
             '<A-3>',
@@ -392,10 +353,10 @@ return {
 
             vim.keymap.set('n', '<leader>a', function()
                 harpoon:list():append()
-            end, { desc = '[a]ppend to Harpoon' })
+            end)
             vim.keymap.set('n', '<leader>`', function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
-            end, { desc = '[`] Open Harpoon Menu' })
+            end)
 
             for i = 1, 6, 1 do
                 vim.keymap.set('n', '<A-' .. i .. '>', function()
@@ -493,6 +454,7 @@ return {
     },
     -- }}}
 
+    -- which-key {{{
     {
         'folke/which-key.nvim',
         event = 'VeryLazy',
@@ -505,8 +467,9 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-    },
+    }, -- }}}
     -- require 'kickstart.plugins.autoformat',
     -- require('kickstart.plugins.debug'),
+    require('pluggers.org'),
     -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 }

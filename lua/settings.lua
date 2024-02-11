@@ -13,6 +13,7 @@ vim.opt.undofile = true
 
 -- For orgmode
 vim.opt.conceallevel = 2
+vim.opt.concealcursor = 'nc'
 
 -- Disable that weird effect where it changes the color of your cursor
 vim.opt.matchtime = 0

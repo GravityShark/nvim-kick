@@ -35,6 +35,15 @@ return {
 
         -- List of custom highlights {{{
         local custom_hlgroupers = {
+            Title = { fg = paletter.aqua },
+            Constant = { fg = paletter.orange },
+            Identifier = { fg = paletter.yellow },
+            Statement = { fg = paletter.green },
+            PreProc = { fg = paletter.aqua },
+            Type = { fg = paletter.purple },
+            Special = { fg = paletter.red },
+            String = { fg = paletter.orange },
+
             TelescopeBorder = { fg = paletter.pink },
             FloatBorder = { fg = paletter.pink },
             LineNrAbove = { fg = paletter.orange },
@@ -73,6 +82,10 @@ return {
             -- CursorLine = { bg = paletter.base2 },
         } -- }}}
 
+        require('monokai').setup({
+            palette = paletter,
+            custom_hlgroups = custom_hlgroupers,
+        })
         -- Turn all items in list to have transparent backgrounds{{{
         local transparent = {
             'Normal',
@@ -100,14 +113,29 @@ return {
             'TelescopeNormal',
         }
 
-        for i = 1, #transparent do
-            custom_hlgroupers[transparent[i]] = { bg = 'none' }
+        -- from https://github.com/xiyaowong/transparent.nvim/blob/main/lua/transparent/init.lua
+        local groups = type(transparent) == 'string' and { transparent }
+            or transparent
+        for _, v in ipairs(groups) do
+            local ok, prev_attrs = pcall(vim.api.nvim_get_hl_by_name, v, true)
+            if
+                ok
+                and (
+                    prev_attrs.background
+                    or prev_attrs.bg
+                    or prev_attrs.ctermbg
+                )
+            then
+                local attrs = vim.tbl_extend(
+                    'force',
+                    prev_attrs,
+                    { bg = 'NONE', ctermbg = 'NONE' }
+                )
+                attrs[true] = nil
+                vim.api.nvim_set_hl(0, v, attrs)
+            end
         end
+        --
         -- }}}
-
-        require('monokai').setup({
-            palette = paletter,
-            custom_hlgroups = custom_hlgroupers,
-        })
     end,
 }

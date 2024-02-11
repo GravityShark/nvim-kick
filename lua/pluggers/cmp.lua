@@ -70,7 +70,7 @@ cmp.setup({
         { name = 'path' },
         { name = 'buffer' },
         -- Org mode
-        -- { name = 'orgmode' },
+        { name = 'orgmode' },
     },
 
     ---@diagnostic disable-next-line: missing-fields
@@ -84,6 +84,7 @@ cmp.setup({
                 luasnip = '[LuaSnip]',
                 nvim_lua = '[Lua]',
                 path = '[Path]',
+                orgmode = '[Org]',
             })[entry.source.name]
             vim_item.menu = '(' .. vim_item.kind .. ') ' .. sources
             vim_item.kind = kind_icons[vim_item.kind] .. ' '
