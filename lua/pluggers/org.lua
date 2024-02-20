@@ -39,6 +39,12 @@ return {
                 'DONE',
                 'CANCEL',
             },
+            mappings = {
+                org = {
+                    org_cycle = false,
+                    org_global_cycle = false
+                }
+            }
         })
     end,
 }
