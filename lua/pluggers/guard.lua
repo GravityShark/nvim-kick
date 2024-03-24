@@ -1,17 +1,21 @@
 local ft = require('guard.filetype')
--- local lint = require('guard.lint')
 
 ft('css', 'html', 'json', 'javascript', 'markdown', 'typescript', 'yaml'):fmt(
     'prettier'
 )
 
-ft('python'):fmt({
-    cmd = 'blue',
-    args = { '--quiet', '-' },
-    stdin = true,
-})
-
 ft('lua'):fmt('stylua')
+
+ft('python'):fmt({
+    cmd = 'ruff',
+    args = { 'format', '--config', '~/.ruff.toml', '-' },
+    stdin = true,
+}):lint('ruff')
+
+-- ft('sh', 'bash', 'mksh'):fmt({
+--     cmd = 'beautysh',
+--     stin = true,
+-- })
 
 ft('c', 'cpp'):fmt('clang-format')
 ft('gdscript'):fmt({
