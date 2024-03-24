@@ -66,33 +66,6 @@ vim.api.nvim_set_keymap(
 -- }}}
 
 -- LSP {{{
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
--- vim.api.nvim_set_keymap(
---     'n',
---     'K',
---     '<cmd>lua vim.lsp.buf.hover()<CR>',
---     { noremap = true }
--- ) -- Hover object
--- vim.api.nvim_set_keymap(
---     'n',
---     'ga',
---     '<cmd>lua vim.lsp.buf.code_action()<CR>',
---     { noremap = true, desc = 'Diagnostic Code [a]ction' }
--- ) -- Code actions
--- vim.api.nvim_set_keymap(
---     'n',
---     'gR',
---     '<cmd>lua vim.lsp.buf.rename()<CR>',
---     { noremap = true }
--- ) -- Rename an object
--- vim.api.nvim_set_keymap(
---     'n',
---     'gD',
---     '<cmd>lua vim.lsp.buf.definition()<cr>',
---     { noremap = true }
--- ) -- Go to declaration
---
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
@@ -147,22 +120,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.buf.rename,
             { buffer = ev.buf, desc = 'Vim LSP rename' }
         )
-        -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer= ev.buf })
-        -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { buffer= ev.buf })
-        -- vim.keymap.set(
-        --     'n',
-        --     '<space>wr',
-        --     vim.lsp.buf.remove_workspace_folder,
-        --     opts
-        -- )
-        -- vim.keymap.set('n', '<space>wl', function()
-        --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- end, opts)
+        vim.keymap.set(
+            'n',
+            'gi',
+            vim.lsp.buf.implementation,
+            { buffer = ev.buf }
+        )
         -- vim.keymap.set('n', '<space>f', function()
         --     vim.lsp.buf.format({ async = true })
         -- end, opts)
     end,
 })
+
+-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder)
+-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+-- vim.keymap.set('n', '<space>wl', function()
+--     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+-- end, opts)
 
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
