@@ -3,6 +3,7 @@ local ft = require('guard.filetype')
 ft('css', 'html', 'json', 'javascript', 'markdown', 'typescript', 'yaml'):fmt(
     'prettier'
 )
+ft('html'):fmt('prettier')
 
 ft('lua'):fmt('stylua')
 
