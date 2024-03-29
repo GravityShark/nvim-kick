@@ -18,6 +18,7 @@ ft('python'):fmt({
 -- })
 
 ft('c', 'cpp'):fmt('clang-format')
+ft('go'):fmt('gofmt')
 ft('gdscript'):fmt({
     cmd = 'gdformat',
     args = { '--line-length=78', '-' },
