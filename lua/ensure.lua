@@ -22,14 +22,12 @@ M.treesitter = {
     'html',
     'htmldjango',
     -- 'rust',
-    -- 'go',
+    'go',
 } -- }}}
 
 -- Mason ensure_installed{{{
--- if not vim.g.is_termux then
 M.servers = {
     pyright = {},
-    -- pylsp = {},
     tsserver = {},
     html = { filetypes = { 'html', 'htmldjango' } },
     emmet_language_server = {
@@ -48,6 +46,7 @@ M.servers = {
         },
     },
     cssls = {},
+    tailwindcss = {},
     clangd = {},
     lua_ls = {
         Lua = {
@@ -70,6 +69,7 @@ M.mason = {
     'html-lsp',
     'htmx-lsp',
     'css-lsp',
+    'tailwindcss-language-server',
     'clangd',
     'lua-language-server',
     'clang-format',
@@ -79,16 +79,6 @@ M.mason = {
     'stylua',
     'emmet-language-server',
 }
--- else -- Termux
---     M.servers = {
---         pylsp = {},
---         tsserver = {},
---         html = { filetypes = { 'html', 'htmldjango' } },
---         cssls = {},
---         -- tailwindcss = { filetypes = { 'html', 'css', 'htmldjango' } },
---         -- gopls = {},
---     }
--- end -- }}}
 
 -- none-ls sources{{{
 function M.null()

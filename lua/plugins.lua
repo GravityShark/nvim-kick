@@ -321,13 +321,18 @@ return {
 
     -- Color the background of color codes {{{
     {
-        'norcalli/nvim-colorizer.lua',
+        'JosefLitos/colorizer.nvim',
         cmd = { 'ColorizerToggle' },
         keys = {
             {
                 '<leader>l',
                 '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
                 desc = 'Co[l]orize Colors',
+            },
+        },
+        config = {
+            user_default_options = {
+                names = 'tailwind',
             },
         },
     }, -- }}}
