@@ -341,6 +341,7 @@ return {
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
         keys = {
             { '<leader>`', desc = '[`] Open Harpoon Menu' },
             { '<leader>a', desc = '[a]ppend to Harpoon' },
@@ -351,7 +352,6 @@ return {
             '<A-5>',
             '<A-6>',
         },
-        requires = { { 'nvim-lua/plenary.nvim' } },
         opts = function()
             local harpoon = require('harpoon')
             harpoon:setup()
