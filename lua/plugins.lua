@@ -330,7 +330,7 @@ return {
                 desc = 'Co[l]orize Colors',
             },
         },
-        config = {
+        opts = {
             user_default_options = {
                 names = 'tailwind',
             },

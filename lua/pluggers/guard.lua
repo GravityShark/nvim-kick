@@ -13,10 +13,10 @@ ft('python'):fmt({
     stdin = true,
 }):lint('ruff')
 
--- ft('sh', 'bash', 'mksh'):fmt({
---     cmd = 'beautysh',
---     stin = true,
--- })
+ft('sh', 'bash', 'mksh'):fmt({
+    cmd = 'beautysh',
+    stin = true,
+})
 
 ft('c', 'cpp'):fmt('clang-format')
 ft('go'):fmt('gofmt')

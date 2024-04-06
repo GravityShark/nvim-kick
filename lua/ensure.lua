@@ -13,7 +13,7 @@ M.treesitter = {
     'vim',
     'vimdoc',
     'bash',
-    -- 'sql',
+    'sql',
     'json',
     'markdown',
     'gitcommit',
@@ -21,6 +21,7 @@ M.treesitter = {
     'gdscript',
     'html',
     'htmldjango',
+    'diff',
     -- 'rust',
     'go',
 } -- }}}
@@ -78,6 +79,7 @@ M.mason = {
     'prettier',
     'stylua',
     'emmet-language-server',
+    'beautysh',
 }
 
 -- none-ls sources{{{
