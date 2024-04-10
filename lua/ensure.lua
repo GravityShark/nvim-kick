@@ -58,6 +58,7 @@ M.servers = {
     gdscript = {},
     gopls = {},
     htmx = {},
+    -- eslint = {},
     -- rust_analyzer = {},
 }
 
@@ -79,7 +80,7 @@ M.mason = {
     'prettier',
     'stylua',
     'emmet-language-server',
-    'beautysh',
+    -- 'eslint_d',
 }
 
 -- none-ls sources{{{

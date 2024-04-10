@@ -1,9 +1,6 @@
 local ft = require('guard.filetype')
 
-ft('css', 'html', 'json', 'javascript', 'markdown', 'typescript', 'yaml'):fmt(
-    'prettier'
-)
-ft('html'):fmt('prettier')
+ft('css,html,json,markdown,yaml,typescript,javascript'):fmt('prettier')
 
 ft('lua'):fmt('stylua')
 
@@ -13,12 +10,7 @@ ft('python'):fmt({
     stdin = true,
 }):lint('ruff')
 
-ft('sh', 'bash', 'mksh'):fmt({
-    cmd = 'beautysh',
-    stin = true,
-})
-
-ft('c', 'cpp'):fmt('clang-format')
+ft('c,cpp'):fmt('clang-format')
 ft('go'):fmt('gofmt')
 ft('gdscript'):fmt({
     cmd = 'gdformat',
