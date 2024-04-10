@@ -182,12 +182,12 @@ return {
                 end,
             },
             -- Most popular Linter
-            {
-                'nvimtools/none-ls.nvim',
-                config = function()
-                    require('pluggers.none-ls')
-                end,
-            },
+            -- {
+            --     'nvimtools/none-ls.nvim',
+            --     config = function()
+            --         require('pluggers.none-ls')
+            --     end,
+            -- },
         },
     },
 
@@ -227,6 +227,15 @@ return {
                 '<leader>xr',
                 '<cmd>TroubleToggle lsp_references<cr>',
                 desc = 'Trouble LSP [r]eferences',
+            },
+        },
+        opts = {
+            signs = {
+                error = ' ',
+                warn = ' ',
+                hint = '󰌵 ',
+                information = '󰋼 ',
+                other = '',
             },
         },
     },
@@ -357,13 +366,13 @@ return {
             harpoon:setup()
 
             vim.keymap.set('n', '<leader>a', function()
-                harpoon:list():append()
+                harpoon:list():add()
             end)
             vim.keymap.set('n', '<leader>`', function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
             end)
 
-            for i = 1, 6, 1 do
+            for i = 1, 9 do
                 vim.keymap.set('n', '<A-' .. i .. '>', function()
                     harpoon:list():select(i)
                 end, {
@@ -466,15 +475,42 @@ return {
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
+            require('which-key').setup({
+                window = {
+                    border = 'single', -- none, single, double, shadow
+                    position = 'bottom', -- bottom, top
+                    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+                    padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+                    winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+                    zindex = 1000, -- positive value to position WhichKey above other floating windows.
+                },
+                layout = {
+                    height = { min = 4, max = 25 }, -- min and max height of the columns
+                    width = { min = 20, max = 50 }, -- min and max width of the columns
+                    spacing = 3, -- spacing between columns
+                    align = 'center', -- align columns left, center or right
+                },
+
+                icons = {
+                    breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
+                    separator = '»', -- symbol used between a key and it's label
+                    group = '+', -- symbol prepended to a group
+                },
+            })
         end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
+        opts = function()
+            local wk = require('which-key')
+            wk.register({
+                f = { name = '[f]ind' },
+                r = { name = '[r]un' },
+                o = { name = '[o]rg' },
+                g = { name = '[g]it' },
+            }, { prefix = '<leader>' })
+        end,
     }, -- }}}
-    -- require 'kickstart.plugins.autoformat',
-    -- require('kickstart.plugins.debug'),
+
+    -- Extra stuff that maybe i dont want all the time to be enabled
+    require('pluggers.debug'),
     require('pluggers.org'),
     -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 }

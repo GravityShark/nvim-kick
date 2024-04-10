@@ -1,23 +1,21 @@
 local ft = require('guard.filetype')
 
 ft('css,html,json,markdown,yaml,typescript,javascript'):fmt('prettier')
-
 ft('lua'):fmt('stylua')
-
+ft('c,cpp'):fmt('clang-format')
+ft('go'):fmt('gofmt')
 ft('python'):fmt({
     cmd = 'ruff',
     args = { 'format', '--config', '~/.ruff.toml', '-' },
     stdin = true,
 }):lint('ruff')
 
-ft('c,cpp'):fmt('clang-format')
-ft('go'):fmt('gofmt')
-ft('gdscript'):fmt({
-    cmd = 'gdformat',
-    args = { '--line-length=78', '-' },
-    stdin = true,
-})
---     :lint({
+
+-- ft('gdscript'):fmt({
+--     cmd = 'gdformat',
+--     args = { '--line-length=80', '-' },
+--     stdin = true,
+-- }):lint({
 --     cmd = 'gdlint',
 --     -- stdin = true,
 --     fname = true,

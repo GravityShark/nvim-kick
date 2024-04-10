@@ -18,7 +18,7 @@ for server_name, server_settings in pairs(require('ensure').servers) do
     })
 end
 
-require('lspconfig')['tailwindcss'].setup({})
+-- require('lspconfig')['tailwindcss'].setup({})
 
 -- if vim.g.is_termux then
 --     -- Manual setup

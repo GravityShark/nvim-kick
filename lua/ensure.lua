@@ -6,93 +6,87 @@ M.treesitter = {
     'python',
     'c',
     'cpp',
-    'javascript',
-    -- 'typescript',
-    -- 'tsx',
+    'html',
+    'htmldjango',
     'css',
+    'javascript',
+    'typescript',
     'vim',
     'vimdoc',
     'bash',
     'sql',
     'json',
+    'yaml',
     'markdown',
     'gitcommit',
     'org',
-    'gdscript',
-    'html',
-    'htmldjango',
     'diff',
-    -- 'rust',
     'go',
+    -- 'gdscript',
+    -- 'rust',
 } -- }}}
 
 -- Mason ensure_installed{{{
 M.servers = {
     pyright = {},
-    tsserver = {},
-    html = { filetypes = { 'html', 'htmldjango' } },
-    emmet_language_server = {
-        filetypes = {
-            'css',
-            'eruby',
-            'html',
-            'htmldjango',
-            'javascript',
-            'javascriptreact',
-            'less',
-            'sass',
-            'scss',
-            'pug',
-            'typescriptreact',
-        },
+
+    gopls = {
+        gopls = { usePlaceholders = true, analyses = { unusedparams = true } },
     },
+
+    html = {},
+    emmet_language_server = {},
     cssls = {},
     tailwindcss = {},
+    tsserver = {},
+    -- htmx = {},
+
     clangd = {},
+
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
         },
     },
-    gdscript = {},
-    gopls = {},
-    htmx = {},
-    -- eslint = {},
-    -- rust_analyzer = {},
 }
 
 M.mason = {
-    -- 'rust_analyzer',
-    -- pylsp,
+    'ruff',
     'pyright',
+
     'gopls',
-    'typescript-language-server',
+
     'html-lsp',
-    'htmx-lsp',
+    'emmet-language-server',
     'css-lsp',
     'tailwindcss-language-server',
-    'clangd',
-    'lua-language-server',
-    'clang-format',
-    'ruff',
-    'gdtoolkit',
+    'typescript-language-server',
     'prettier',
+    -- 'htmx-lsp',
+
+    'clangd',
+    'clang-format',
+
+    'lua-language-server',
     'stylua',
-    'emmet-language-server',
-    -- 'eslint_d',
+}
+
+M.mason_dap = {
+    -- 'delve',
+    'cppdbg',
 }
 
 -- none-ls sources{{{
-function M.null()
-    local null_ls = require('null-ls')
-
-    -- local formatting = null_ls.builtins.formatting
-    local lint = null_ls.builtins.diagnostics
-
-    return {
-        lint.gdlint,
-    }
-end -- }}}
+-- function M.null()
+--     local null_ls = require('null-ls')
+--
+--     -- local formatting = null_ls.builtins.formatting
+--     local lint = null_ls.builtins.diagnostics
+--
+--     return {
+--         lint.gdlint,
+--     }
+-- end -- }}}
 
 return M

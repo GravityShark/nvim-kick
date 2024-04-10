@@ -64,6 +64,21 @@ vim.api.nvim_set_keymap(
     { noremap = false, silent = true }
 )
 -- }}}
+--
+-- run code inside{{{
+-- vim.keymap.set(
+--     'n',
+--     '<leader>rc',
+--     '<CMD>!chmod +x %<CR>',
+--     { noremap = true, silent = true, desc = 'run ' }
+-- )
+vim.keymap.set(
+    'n',
+    '<leader>rx',
+    '<CMD>!chmod +x %<CR>',
+    { noremap = true, silent = true, desc = 'chmod +[x] %' }
+)
+-- }}}
 
 -- LSP {{{
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -308,7 +323,7 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>b',
+    'gb',
     '<cmd>lua ToggleBar()<CR>',
     { noremap = true, desc = 'Toggle buffer [b]ar' }
 )
@@ -406,3 +421,10 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
     end
 end, { silent = true })
 -- }}}
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>F',
+    '<cmd>GuardFmt<CR>',
+    { noremap = true, desc = '[F]ormat code' }
+)
