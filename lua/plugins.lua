@@ -502,7 +502,9 @@ return {
             local wk = require('which-key')
             wk.register({
                 f = { name = '[f]ind' },
-                r = { name = '[r]un' },
+                r = { name = '[r]un', g = {
+                    name = '[g]cc'
+                }},
                 o = { name = '[o]rg' },
                 g = { name = '[g]it' },
             }, { prefix = '<leader>' })

@@ -18,8 +18,8 @@
 -- }}}
 
 -- Easier visual mode indents {{{
-vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
+vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 
 -- Space + y|d yanks or cuts to system clipboard{{{
@@ -27,13 +27,13 @@ vim.keymap.set(
     { 'n', 'v' },
     '<leader>y',
     '"+y',
-    { noremap = true, silent = true, desc = '[y]ank to system clipboard' }
+    { desc = '[y]ank to system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     '<leader>d',
     '"+d',
-    { noremap = true, silent = true, desc = '[d]elete to system clipboard' }
+    { desc = '[d]elete to system clipboard' }
 ) -- }}}
 
 -- Correct Pasting{{{
@@ -41,42 +41,58 @@ vim.keymap.set(
     { 'n', 'v' },
     '<leader>p',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-    { noremap = true, silent = true, desc = '[p]aste System Clipboard' }
+    { desc = '[p]aste System Clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     '<leader>P',
     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { noremap = true, silent = true, desc = '[P]aste System Clipboard' }
+    { desc = '[P]aste System Clipboard' }
 ) -- }}}
 
 -- Middle positioned C+ D/U{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-d>',
-    '<C-d>zz',
-    { noremap = false, silent = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-u>',
-    '<C-u>zz',
-    { noremap = false, silent = true }
-)
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = false })
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = false })
 -- }}}
---
--- run code inside{{{
--- vim.keymap.set(
---     'n',
---     '<leader>rc',
---     '<CMD>!chmod +x %<CR>',
---     { noremap = true, silent = true, desc = 'run ' }
--- )
+
+-- Run/Compile code inside{{{
+vim.keymap.set(
+    'n',
+    '<leader>rgc',
+    function()
+        local file = vim.api.nvim_buf_get_name(0)
+        local file_noext = file:match('^(.+)%.+')
+        os.execute('gcc ' .. file .. ' --debug -o ' .. file_noext)
+        vim.api.nvim_command('echo "Compiled to ' .. file_noext .. '"')
+    end,
+    -- '<CMD>!gcc % --debug -o %<CR>',
+    { desc = '[c]ompile' }
+)
+vim.keymap.set(
+    'n',
+    '<leader>rgr',
+    "<CMD>!gcc % --debug -o /tmp/a.out<CR><CMD>!'/tmp/a.out<CR>'",
+    { desc = '[r]un' } -- runs in
+)
+vim.keymap.set(
+    'n',
+    '<leader>rgR',
+    function()
+        os.execute(
+            'gcc ' .. vim.api.nvim_buf_get_name(0) .. ' --debug -o /tmp/a.out'
+        )
+        vim.ui.input({ prompt = 'Prompt: ' }, function(input)
+            vim.api.nvim_command('!/tmp/a.out ' .. input)
+        end)
+    end,
+    { desc = '[R]un with parameters' } -- runs in
+)
+-- vim.keymap.set('n', '<leader>rgd', '<CMD><CR>', { desc = '[d]ebug' })
 vim.keymap.set(
     'n',
     '<leader>rx',
     '<CMD>!chmod +x %<CR>',
-    { noremap = true, silent = true, desc = 'chmod +[x] %' }
+    { desc = 'chmod +[x] %' }
 )
 -- }}}
 
@@ -175,25 +191,25 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fr',
     '<cmd>Telescope oldfiles<CR>',
-    { noremap = true, desc = 'Find [r]ecent' }
+    { desc = 'Find [r]ecent' }
 ) -- Show recent files
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fj',
     '<cmd>Telescope git_files<CR>',
-    { noremap = true, desc = 'Find [j]it Files' }
+    { desc = 'Find [j]it Files' }
 ) -- Search for a file in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ff',
     '<cmd>Telescope find_files<CR>',
-    { noremap = true, desc = 'Find [f]iles' }
+    { desc = 'Find [f]iles' }
 ) -- Search for a file (ignoring dotfiles)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fa',
     '<cmd>Telescope find_files hidden=true no_ignore=true<CR>',
-    { noremap = true, desc = 'Find [a]ll Files' }
+    { desc = 'Find [a]ll Files' }
 ) -- Search for a file (with dotfiles)
 -- vim.api.nvim_set_keymap(
 -- 	'n',
@@ -211,31 +227,31 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fg',
     '<cmd>Telescope live_grep<CR>',
-    { noremap = true, desc = 'Find text using [g]rep' }
+    { desc = 'Find text using [g]rep' }
 ) -- Find a string in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fb',
     '<cmd>Telescope buffers<CR>',
-    { noremap = true, desc = 'Find [b]uffers' }
+    { desc = 'Find [b]uffers' }
 ) -- Show all buffers
 vim.api.nvim_set_keymap(
     'n',
     '<leader>f?',
     '<cmd>Telescope<CR>',
-    { noremap = true, desc = 'Find ?' }
+    { desc = 'Find ?' }
 ) -- Show all commands
 -- vim.api.nvim_set_keymap(
 --     'n',
 --     '<leader>fs',
 --     '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
---     { noremap = true, desc = 'Find [s]ymbls' }
+--     { desc = 'Find [s]ymbls' }
 -- ) -- Search for dynamic symbols
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fu',
     '<cmd>Telescope undo<CR>',
-    { noremap = true, desc = 'Find [u]ndo History' }
+    { desc = 'Find [u]ndo History' }
 ) -- Show undotree
 -- vim.api.nvim_set_keymap(
 -- 	'n',
@@ -247,13 +263,13 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>fp',
     '<cmd>Telescope project<CR>',
-    { noremap = true, desc = 'Find [p]rojects' }
+    { desc = 'Find [p]rojects' }
 ) -- Show projects
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fd',
     '<cmd>Telescope diagnostics<CR>',
-    { noremap = true, desc = 'Find [d]iagnostics' }
+    { desc = 'Find [d]iagnostics' }
 ) -- Show diagnostics
 vim.keymap.set('n', '<leader>f/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -269,24 +285,14 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- netrw {{{
 -- Open netrw on the right
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>.',
-    '<cmd>Sex<CR>',
-    { noremap = true, desc = 'SEEX!!!' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>n',
-    '<cmd>Sex!<CR>',
-    { noremap = true, desc = 'SEEX!!!' }
-)
+vim.api.nvim_set_keymap('n', '<leader>.', '<cmd>Sex<CR>', { desc = 'SEEX!!!' })
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Sex!<CR>', { desc = 'SEEX!!!' })
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
     '<leader>e',
     '<cmd>Ex<CR>',
-    { noremap = true, desc = '[e]xplorer in current window' }
+    { desc = '[e]xplorer in current window' }
 )
 -- }}}
 
@@ -318,14 +324,14 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
     '<cmd>lua BufRem(0)<CR>',
-    { noremap = true, desc = '[c]lose current buffer' }
+    { desc = '[c]lose current buffer' }
 )
 
 vim.api.nvim_set_keymap(
     'n',
     'gb',
     '<cmd>lua ToggleBar()<CR>',
-    { noremap = true, desc = 'Toggle buffer [b]ar' }
+    { desc = 'Toggle buffer [b]ar' }
 )
 -- }}}
 
@@ -334,43 +340,43 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>gs',
     '<cmd>Git<CR>',
-    { noremap = true, desc = 'Git [s]how' }
+    { desc = 'Git [s]how' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gd',
     '<cmd>Git diff<CR>',
-    { noremap = true, desc = 'Git [d]iff' }
+    { desc = 'Git [d]iff' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gc',
     '<cmd>Git commit<CR>',
-    { noremap = true, desc = 'Git [c]ommit' }
+    { desc = 'Git [c]ommit' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gaa',
     '<cmd>Git add .<CR>',
-    { noremap = true, desc = 'Git Add [a]ll' }
+    { desc = 'Git Add [a]ll' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gac',
     '<cmd>Git add %<CR>',
-    { noremap = true, desc = 'Git Add [c]urrent buffer' }
+    { desc = 'Git Add [c]urrent buffer' }
 )
 -- vim.api.nvim_set_keymap(
 --     'n',
 --     '<leader>gs',
 --     '<cmd>Git show<CR>',
---     { noremap = true, desc = 'Git [s]how' }
+--     { desc = 'Git [s]how' }
 -- )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gp',
     '<cmd>Git push<CR>',
-    { noremap = true, desc = 'Git [p]ush' }
+    { desc = 'Git [p]ush' }
 )
 
 vim.api.nvim_set_keymap('n', 'gu', '<cmd>diffget //2<CR>', { noremap = true })
@@ -422,9 +428,10 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
 end, { silent = true })
 -- }}}
 
+-- Guard{{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>F',
     '<cmd>GuardFmt<CR>',
-    { noremap = true, desc = '[F]ormat code' }
-)
+    { desc = '[F]ormat code' }
+) -- }}}
