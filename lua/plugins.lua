@@ -502,13 +502,30 @@ return {
             local wk = require('which-key')
             wk.register({
                 f = { name = '[f]ind' },
-                r = { name = '[r]un', g = {
-                    name = '[g]cc'
-                }},
+                r = {
+                    name = '[r]un',
+                    g = {
+                        name = '[g]cc',
+                    },
+                },
                 o = { name = '[o]rg' },
                 g = { name = '[g]it' },
             }, { prefix = '<leader>' })
         end,
+    }, -- }}}
+    -- G.nvim{{{
+    {
+        'ray-x/go.nvim',
+        dependencies = { -- optional packages
+            'ray-x/guihua.lua',
+            'neovim/nvim-lspconfig',
+            'nvim-treesitter/nvim-treesitter',
+        },
+        config = function()
+            require('go').setup()
+        end,
+        ft = { 'go', 'gomod' },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     }, -- }}}
 
     -- Extra stuff that maybe i dont want all the time to be enabled

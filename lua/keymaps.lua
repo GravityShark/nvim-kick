@@ -51,8 +51,18 @@ vim.keymap.set(
 ) -- }}}
 
 -- Middle positioned C+ D/U{{{
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = false })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = false })
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-d>',
+    '<C-d>zz',
+    { noremap = false, silent = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-u>',
+    '<C-u>zz',
+    { noremap = false, silent = true }
+)
 -- }}}
 
 -- Run/Compile code inside{{{

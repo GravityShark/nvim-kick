@@ -10,6 +10,10 @@ ft('python'):fmt({
     stdin = true,
 }):lint('ruff')
 
+require('guard').setup({
+    fmt_on_save = true,
+    lsp_as_default_formatter = false,
+})
 
 -- ft('gdscript'):fmt({
 --     cmd = 'gdformat',
@@ -30,8 +34,3 @@ ft('python'):fmt({
 --         },
 --     }),
 -- })
-
-require('guard').setup({
-    fmt_on_save = true,
-    lsp_as_default_formatter = false,
-})
