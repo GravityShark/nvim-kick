@@ -13,32 +13,35 @@
   - [ ] python
   - [ ] bash?
   - [ ] javascript
-- [ ] nvim-treesitter-textobjects
-- [ ] when i ever need it nvim-ts-context-commentstring
-- [ ] [neotest](https://github.com/nvim-neotest/neotest) (very interesting)
+- [ ] [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+- [ ] [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
+- [ ] [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
+- [ ] [Trouble V3](https://github.com/folke/trouble.nvim)
+- [ ] [Codeium](https://github.com/Exafunction/codeium.nvim)
+- [ ] [Todo Comments](https://github.com/folke/todo-comments.nvim)
+- [ ] [Neoconf](https://github.com/folke/neoconf.nvim)
+> but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
 
 #### mini.nvim
 
 - [ ] mini.base16 -- coolors
-- [ ] mini.colors or lush.nvim
-- [ ] mini.hues
 - [ ] mini.bracketed -- better bracket movement
+- [ ] mini.colors or[lush](https://github.com/rktjmp/lush.nvim)
 - [x] mini.cursorword -- lighter vim-illuminate
-- [ ] mini.files -- like a netrw
+- [ ] [mini.diff](https://github.com/echasnovski/mini.diff) Replace git signs
+- [ ] mini.hues
 - [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
 - [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
 - [ ] mini.sessions -- persistence.nvim
-- [ ] mini.starter or alpha-nvim -starting tihg
 - [ ] mini.splitjoin -- cool way of like splitting lines like
-  > but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
 
 ### TODO
-
 - [ ] instead of harpoon have a function tha like lists the buffers in order and allows me to like do <a-1> to <a-9> and select that buffer in my tabline
-- [ ] try to use mini.[colors/base16/hues]
-- [ ] and have it use telescope as a selector of themes like nvchad
+- [ ] try to use mini.[colors/base16/hues] or (lush)[https://github.com/rktjmp/lush.nvim]
+  - [ ] and have it use telescope as a selector of themes like nvchad
 - [ ] setup treesitter keybindings and such
   - [ ] nvim-treesitter/nvim-treesitter-context
+- [ ] Maybe new status bar and bufferline, but i kinda like mine right now, maybe later
 
 ### also remember [neovide](https://neovide.dev/)
 
