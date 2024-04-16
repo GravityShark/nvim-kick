@@ -23,23 +23,38 @@ return {
             if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                 return
             end
-            -- if slow_format_filetypes[vim.bo[bufnr].filetype] then
-            --     return
-            -- end
-            -- local function on_format(err)
-            --     if err and err:match('timeout$') then
-            --         slow_format_filetypes[vim.bo[bufnr].filetype] = true
-            --     end
-            -- end
-            --
-            -- return { timeout_ms = 200, lsp_fallback = true }, on_format
+
+            -- Hide errors if formatting failed
+            if
+                #vim.diagnostic.get(
+                    0,
+                    { severity = { min = vim.diagnostic.severity.ERROR } }
+                ) > 0
+            then
+                return
+            end
+
+            --[[ For slow formatters
+            if slow_format_filetypes[vim.bo[bufnr].filetype] then
+                return
+            end
+            local function on_format(err)
+                if err and err:match('timeout$') then
+                    slow_format_filetypes[vim.bo[bufnr].filetype] = true
+                end
+            end
+
+            return { timeout_ms = 200, lsp_fallback = true }, on_format
+            ]]
             return { timeout_ms = 200, lsp_fallback = true }
         end,
-        -- format_after_save = function(bufnr)
-        --     if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-        --         return
-        --     end
-        --     return { lsp_fallback = true }
-        -- end,
+        --[[ For slow formatters
+        format_after_save = function(bufnr)
+            if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+                return
+            end
+            return { lsp_fallback = true }
+        end,
+        ]]
     },
 }
