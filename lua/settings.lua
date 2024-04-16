@@ -1,6 +1,9 @@
 -- See `:help vim.o`
 
 -- Opts {{{
+-- Allow switching buffers without saving them
+vim.o.hidden = true
+
 -- Global statusline
 vim.opt.laststatus = 3
 
@@ -85,14 +88,14 @@ end
 -- }}}
 
 -- Automatic disabling/renabling bufferline at 1 > Buffers ; 1 < Buffers {{{
-function ToggleTabline()
+
+function CheckTabline()
     -- Get the count of active buffers
     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 
     if buffers == 1 then
         vim.o.showtabline = 0
     elseif buffers > 1 then
-        require('mini.tabline').setup()
         vim.o.showtabline = 2
     end
 end
@@ -101,7 +104,7 @@ TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
     'BufAdd',
     'BufDelete',
     'UIEnter',
-}, { command = 'lua ToggleTabline()' })
+}, { callback = CheckTabline })
 
 function ToggleBar()
     if vim.o.showtabline == 0 then
@@ -110,7 +113,7 @@ function ToggleBar()
             'BufAdd',
             'BufDelete',
             'UIEnter',
-        }, { command = 'lua ToggleTabline()' })
+        }, { callback = CheckTabline })
     else
         if vim.o.showtabline == 2 then
             vim.o.showtabline = 0

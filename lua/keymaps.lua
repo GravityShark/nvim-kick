@@ -2,6 +2,10 @@
 -- See `:help vim.api.nvim_set_keymap()`
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+-- Allow for using t inside nvim {{{
+vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>!t<CR>', { silent = true })
+-- }}}
+
 -- X Remap for dealing with word wrap{{{
 -- vim.api.nvim_set_keymap(
 --     'n',
@@ -54,13 +58,13 @@ vim.keymap.set(
 vim.api.nvim_set_keymap(
     'n',
     '<C-d>',
-    '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-d>zz")<CR>',
+    '<C-d>zz',
     { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<C-u>',
-    '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-u>zz")<CR>',
+    '<C-u>zz',
     { noremap = true, silent = true }
 )
 -- }}}
@@ -326,7 +330,7 @@ function BufRem(number)
             bufremove.delete(number, true)
         end
     end
-    ToggleTabline()
+    CheckTabline()
 end
 
 vim.api.nvim_set_keymap(
@@ -342,6 +346,15 @@ vim.api.nvim_set_keymap(
     '<CMD>lua ToggleBar()<CR>',
     { desc = 'Toggle buffer [b]ar' }
 )
+
+local keys = 'asdfjkl;'
+
+for i = 1, #keys do
+    local c = keys:sub(i, i)
+    vim.keymap.set('n', string.format('<A-%s>', c), function()
+        MiniTabline.select(i)
+    end, { silent = true })
+end
 -- }}}
 
 -- vim-fugtive {{{

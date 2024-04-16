@@ -1,21 +1,17 @@
 -- Shows how to use the DAP plugin to debug your code.
 
 return {
-    -- NOTE: Yes, you can install new plugins here!
     'mfussenegger/nvim-dap',
-    -- NOTE: And you can specify dependencies as well
     -- event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
     ft = { 'cpp', 'c' },
     dependencies = {
         -- Creates a beautiful debugger UI
-        --
         {
             'rcarriga/nvim-dap-ui',
             dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
         },
 
         -- Installs the debug adapters for you
-        --
         {
             'jay-babu/mason-nvim-dap.nvim',
             dependencies = {

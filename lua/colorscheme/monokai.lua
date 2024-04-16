@@ -13,6 +13,7 @@ return {
             base3 = '#333648',
             base4 = '#363a4e',
             base5 = '#393e53',
+            base6ed = '#3f445b',
             -- base6 = '#3f445b',
             base7 = '#5a5e7a',
             pink = '#ff6188',
@@ -56,16 +57,23 @@ return {
             FloatBorder = { fg = paletter.pink },
             LineNrAbove = { fg = paletter.orange },
             LineNrBelow = { fg = paletter.orange },
-            MiniTablineModifiedHidden = { fg = paletter.pink },
-            MiniTablineModifiedCurrent = {
-                bg = paletter.base7,
-                fg = paletter.pink,
-            },
+
             MiniTablineCurrent = {
                 bg = paletter.base7,
             },
             MiniTablineVisible = {
-                bg = paletter.grey,
+                bg = paletter.base6ed,
+            },
+            MiniTablineModifiedCurrent = {
+                bg = paletter.base7,
+                fg = paletter.pink,
+            },
+            MiniTablineModifiedVisible = {
+                bg = paletter.base6ed,
+                fg = paletter.pink,
+            },
+            MiniTablineModifiedHidden = {
+                fg = paletter.pink,
             },
             MiniStatuslineModeInsert = {
                 fg = paletter.base1,

@@ -1,117 +1,8 @@
 local LazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile' }
 local VeryLazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile', 'VeryLazy' }
 
--- Please Read the README.md
+-- Maybe read the README.md
 return {
-    -- Fun stuff {{{
-    { -- StartupTime{{{
-        'dstein64/vim-startuptime',
-        cmd = 'StartupTime',
-        init = function()
-            vim.g.startuptime_tries = 100
-        end,
-    }, -- }}}
-
-    { -- Funny floppin and plippin
-        'Eandrju/cellular-automaton.nvim',
-        cmd = 'CellularAutomaton',
-    },
-    -- }}}
-
-    -- Theme {{{
-    -- Statusline {{{
-    {
-        'echasnovski/mini.statusline',
-        opts = { set_vim_settings = false },
-        lazy = false,
-    },
-    -- }}}
-    -- Illuminate same words{{{
-    {
-        'echasnovski/mini.cursorword',
-        event = VeryLazyFile,
-        opts = {},
-    },
-    -- }}}
-    -- Animations on things{{{
-    {
-        'echasnovski/mini.animate',
-        lazy = false,
-        opts = {},
-    },
-
-    -- }}}
-    -- go to the lua/colorscheme dir to see more
-    -- vim.cmd.colorscheme('habamax'),
-    require('colorscheme.monokai'),
-    -- require('colorscheme.transparent'),
-    -- }}}
-
-    -- mini.nvim {{{
-    -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
-    -- }}}
-    -- better f/F and t/T{{{
-    {
-        'echasnovski/mini.jump',
-        keys = { 'f', 'F', 't', 'T', ';' },
-        opts = { highlight = 0 },
-    },
-    -- }}}
-    -- Auto pairs (){{{
-    {
-        'echasnovski/mini.pairs',
-        event = 'InsertEnter',
-        opts = {},
-    }, -- }}}
-    -- Indent indicators{{{
-    {
-        'echasnovski/mini.indentscope',
-        event = LazyFile,
-        opts = {
-            -- symbol = '▎',
-            -- symbol = "▏",
-            symbol = '│',
-            options = { try_as_border = true },
-        },
-    },
-    -- }}}
-    -- "gcc/gc" to comment visual regions/lines{{{
-    {
-        'echasnovski/mini.comment',
-        keys = { 'gcc', { 'gc', mode = 'v' } },
-        opts = {},
-    },
-    -- }}}
-    -- Fast bufferline{{{
-    {
-        'echasnovski/mini.tabline',
-        -- event = { 'BufReadPost', 'BufNewFile' },
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        opts = { set_vim_settings = false },
-    },
-    -- }}}
-    -- Kill buffers and preserve window layout{{{
-    { 'echasnovski/mini.bufremove' },
-    -- }}}
-    -- 's' to surround with '' or (){{{
-    {
-        'echasnovski/mini.surround',
-        keys = {
-            { 'sa', mode = 'v' },
-            'sa',
-            'sd',
-            'sr',
-            'sf',
-            'sF',
-            'sh',
-            'sn',
-        },
-        opts = {},
-    },
-    -- }}}
-    -- }}}
-
     -- Main{{{
     -- LSP & Mason {{{
     {
@@ -142,14 +33,14 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         event = VeryLazyFile,
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
+        -- dependencies = {
+        --     'nvim-treesitter/nvim-treesitter-textobjects',
+        -- },
         config = function()
             require('pluggers.treesitter')
         end,
     },
-    {
+    { -- I should use emmet instead of this tbh but might aswell have it
         'windwp/nvim-ts-autotag',
         ft = { 'html', 'javascript', 'markdown' },
         opts = {},
@@ -307,6 +198,9 @@ return {
             '<A-4>',
             '<A-5>',
             '<A-6>',
+            '<A-7>',
+            '<A-8>',
+            '<A-9>',
         },
         opts = function()
             local harpoon = require('harpoon')
@@ -456,6 +350,130 @@ return {
     }, -- }}}
     -- }}}
 
+    -- mini.nvim improvements {{{
+    -- better (a)round and (i)nside commands{{{
+    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+    -- }}}
+    -- better f/F and t/T{{{
+    {
+        'echasnovski/mini.jump',
+        keys = { 'f', 'F', 't', 'T', ';' },
+        opts = { highlight = 0 },
+    },
+    -- }}}
+    -- Auto pairs (){{{
+    {
+        'echasnovski/mini.pairs',
+        event = 'InsertEnter',
+        opts = {},
+    }, -- }}}
+    -- "gcc/gc" to comment visual regions/lines{{{
+    {
+        'echasnovski/mini.comment',
+        keys = { 'gcc', { 'gc', mode = 'v' } },
+        opts = {},
+    },
+    -- }}}
+    -- Fast bufferline{{{
+    {
+        'GravityShark0/mini.tabline-select',
+        -- event = { 'BufReadPost', 'BufNewFile' },
+        event = LazyFile,
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        opts = { set_vim_settings = false },
+    },
+    -- }}}
+    -- Kill buffers and preserve window layout{{{
+    { 'echasnovski/mini.bufremove' },
+    -- }}}
+    -- 's' to surround with '' or (){{{
+    {
+        'echasnovski/mini.surround',
+        keys = {
+            { 'sa', mode = 'v' },
+            'sa',
+            'sd',
+            'sr',
+            'sf',
+            'sF',
+            'sh',
+            'sn',
+        },
+        opts = {},
+    },
+    -- }}}
+    -- }}}
+
+    -- Theme / Visual {{{
+    -- Statusline {{{
+    {
+        'echasnovski/mini.statusline',
+        opts = { set_vim_settings = false },
+        lazy = false,
+    },
+    -- }}}
+    -- Illuminate same words{{{
+    {
+        'echasnovski/mini.cursorword',
+        event = VeryLazyFile,
+        opts = {},
+    },
+    -- }}}
+    -- Animations on things{{{
+    {
+        'echasnovski/mini.animate',
+        -- enabled = false,
+        event = 'VeryLazy',
+        opts = function()
+            local animate = require('mini.animate')
+            vim.api.nvim_set_keymap(
+                'n',
+                '<C-d>',
+                '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-d>zz")<CR>',
+                { noremap = true, silent = true }
+            )
+            vim.api.nvim_set_keymap(
+                'n',
+                '<C-u>',
+                '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-u>zz")<CR>',
+                { noremap = true, silent = true }
+            )
+            return {
+                scroll = {
+                    timing = animate.gen_timing.quadratic({
+                        duration = 100,
+                        unit = 'total',
+                    }),
+                },
+                cursor = {
+                    timing = animate.gen_timing.quadratic({
+                        duration = 100,
+                        unit = 'total',
+                    }),
+                },
+            }
+        end,
+    },
+
+    -- }}}
+    -- Indent indicators{{{
+    {
+        'echasnovski/mini.indentscope',
+        event = LazyFile,
+        opts = {
+            -- symbol = '▎',
+            -- symbol = "▏",
+            symbol = '│',
+            options = { try_as_border = true },
+        },
+    },
+    -- }}}
+    -- go to the lua/colorscheme dir to see more
+    require('colorscheme.monokai'),
+    -- vim.cmd.colorscheme('habamax'),
+    -- require('colorscheme.transparent'),
+    -- }}}
+
     -- Filetype specific plugins{{{
     -- X go.nvim{{{
     -- {
@@ -471,12 +489,26 @@ return {
     --     ft = { 'go', 'gomod' },
     --     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     -- }, -- }}}
-    -- neodev.nvim When developing in neovim config files{{{
-    -- { 'folke/neodev.nvim', opts = {} }, -- }}}
+    -- X neodev.nvim When developing in neovim config files{{{
+    { 'folke/neodev.nvim', opts = {} }, -- }}}
+    -- }}}
+
+    -- Fun stuff {{{
+    { -- StartupTime{{{
+        'dstein64/vim-startuptime',
+        cmd = 'StartupTime',
+        init = function()
+            vim.g.startuptime_tries = 100
+        end,
+    }, -- }}}
+    { -- Funny floppin and plippin{{{
+        'Eandrju/cellular-automaton.nvim',
+        cmd = 'CellularAutomaton',
+    }, -- }}}
     -- }}}
 
     -- I might not want all the time{{{
     require('pluggers.debug'),
-    require('pluggers.org'), -- }}}
-    -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+    require('pluggers.org'),
+    -- }}}
 }
