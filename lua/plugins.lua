@@ -499,7 +499,7 @@ return {
     --     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     -- }, -- }}}
     -- neodev.nvim When developing in neovim config files{{{
-    { 'folke/neodev.nvim', opts = {} }, -- }}}
+    -- { 'folke/neodev.nvim', opts = {} }, -- }}}
     -- }}}
 
     -- I might not want all the time{{{
