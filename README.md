@@ -44,42 +44,71 @@ rd -r ~\AppData\Local\nvim-data
 
 ### plugins to look into
 
-- [ ] noice, notify
-  - [ ] dressing.nvim
-- [ ] nvim-dap
-- [ ] none-ls/ linting, format
-- [ ] navic / barbeque
+# - [X] noice, notify
+
+# - [X] dressing.nvim
+
+- [?] nvim-dap
+  - [/] C, C++
+  - [ ] go
+
+# - [X] none-ls/ linting, format
+
+# - [X] navic / barbeque
+
 - [ ] nvim-treesitter-textobjects
 - [ ] under mini.comments. nvim-ts-context-commentstring
-- [x] neoconf (i dont think i need this)
-- [x] terminal in neovim
-- [ ] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
-- [ ] ("eandrju/cellular-automaton.nvim") fun
+- [/] neoconf (enable it only when its needed)
+
+# - [X] terminal in neovim
+
+# - [X] [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) is very interesting
+
+- [/] ("eandrju/cellular-automaton.nvim") fun
 
 #### mini.nvim
 
-- [ ] mini.base16 -- coolors
-  - [ ] mini.colors
-  - [ ] mini.hues
-- [ ] mini.bracketed -- better bracket movement
-- [x] mini.cursorword -- lighter vim-illuminate
-- [ ] mini.files -- like a netrw
-- [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
-- [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-- [ ] mini.sessions -- persistence.nvim
-- [ ] mini.starter or alpha-nvim -starting tihg
-- [ ] mini.splitjoin -- cool way of like splitting lines like
-  > but basically anything from https://www.lazyvim.org/plugins/ or lunarvim
+# - [ ] mini.base16 -- coolors
+
+# - [ ] mini.colors
+
+# - [ ] mini.hues
+
+# - [ ] mini.bracketed -- better bracket movement
+
+# - [x] mini.cursorword -- lighter vim-illuminate
+
+# - [ ] mini.files -- like a netrw
+
+# - [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
+
+# - [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
+
+# - [ ] mini.sessions -- persistence.nvim
+
+# - [ ] mini.starter or alpha-nvim -starting tihg
+
+# - [ ] mini.splitjoin -- cool way of like splitting lines like
+
+# > but basically anything from https://www.lazyvim.org/plugins/ or lunarvim
 
 ### TODO
 
-- [ ] a option to set for like 'lite' and 'full' graphics
-- [ ] and also have mini.colors/base16 easy otions
-  - [ ] setup highlighting to be better but thats like on the colors part idk
-  - [ ] and have it use telescope as a selector of themes like nvchad
-- [ ] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
-- [ ] make nvim-lsp lighter and faster (probably can never change)
-- [x] get html lsp to work
+# - [ ] a option to set for like 'lite' and 'full' graphics
+
+# - [ ] and also have mini.colors/base16 easy otions
+
+# - [ ] setup highlighting to be better but thats like on the colors part idk
+
+# - [ ] and have it use telescope as a selector of themes like nvchad
+
+# - [/] maybe replace like the mini.clue with which-key or another whichkey cause mini.clue is very limited
+
+- [/] make nvim-lsp lighter and faster (probably can never change)
+  - its as light as it can be
+
+# - [/] get html lsp to work
+
 - [ ] setup treesitter keybindings and such
   - [ ] nvim-treesitter/nvim-treesitter-context
   - [ ] nvim-treesitter/playground
@@ -118,8 +147,7 @@ Distribution Alternatives:
 
 ### Installation
 
-> **NOTE**
-> [Backup](#FAQ) your previous configuration (if any exists)
+> **NOTE** > [Backup](#FAQ) your previous configuration (if any exists)
 
 Requirements:
 

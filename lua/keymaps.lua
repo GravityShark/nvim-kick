@@ -227,12 +227,12 @@ vim.api.nvim_set_keymap(
 -- 	'<cmd>Telescope jumplist<CR>',
 -- 	{ noremap = true }
 -- ) -- Show jumplist (previous locations)
--- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'<leader>fb',
--- 	'<cmd>Telescope git_branches<CR>',
--- 	{ noremap = true }
--- ) -- Show git branches
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>fb',
+    '<cmd>Telescope git_branches<CR>',
+    { noremap = true }
+) -- Show git branches
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fg',
@@ -257,12 +257,6 @@ vim.api.nvim_set_keymap(
 --     '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
 --     { desc = 'Find [s]ymbls' }
 -- ) -- Search for dynamic symbols
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>fu',
-    '<cmd>Telescope undo<CR>',
-    { desc = 'Find [u]ndo History' }
-) -- Show undotree
 -- vim.api.nvim_set_keymap(
 -- 	'n',
 -- 	'<leader>fn',
@@ -295,8 +289,13 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- netrw {{{
 -- Open netrw on the right
-vim.api.nvim_set_keymap('n', '<leader>.', '<cmd>Sex<CR>', { desc = 'SEEX!!!' })
 vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Sex!<CR>', { desc = 'SEEX!!!' })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>l',
+    '<cmd>Lex<CR><Cmd',
+    { desc = 'Lex??' }
+)
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
@@ -437,11 +436,3 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
     end
 end, { silent = true })
 -- }}}
-
--- Guard{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>F',
-    '<cmd>GuardFmt<CR>',
-    { desc = '[F]ormat code' }
-) -- }}}

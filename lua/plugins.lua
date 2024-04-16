@@ -1,10 +1,9 @@
-local LazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile' }
-local VeryLazyFile = { 'BufReadPost', 'BufWritePost', 'BufNewFile', 'VeryLazy' }
+local LazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile' }
+local VeryLazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile', 'VeryLazy' }
 
 -- Please Read the README.md
 return {
-
-    -- Starttime Makes me feel good {{{
+    -- Fun stuff {{{
     {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
@@ -37,7 +36,6 @@ return {
     -- }}}
 
     -- mini.nvim {{{
-
     -- better (a)round and (i)nside commands{{{
     { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
     -- }}}
@@ -101,17 +99,10 @@ return {
     },
     -- }}}
     -- Animations on things{{{
-
     {
         'echasnovski/mini.animate',
         event = 'VeryLazy',
-        enabled = function()
-            if vim.g.neovide then
-                return false
-            else
-                return true
-            end
-        end,
+        enabled = function() end,
         opts = {
             scroll = {
                 enable = false,
@@ -120,7 +111,7 @@ return {
     },
 
     -- }}}
-    -- Which-key but kinda good but bad??{{{
+    -- X Which-key but kinda good but bad??{{{
     -- {
     --     'echasnovski/mini.clue',
     --     keys = {
@@ -146,9 +137,9 @@ return {
         opts = {},
     },
     -- }}}
-
     -- }}}
 
+    -- Main{{{
     -- LSP & Mason {{{
     {
         -- LSP Configuration & Plugins
@@ -165,34 +156,75 @@ return {
                     { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
                 },
             },
-
             -- Shows a little widget showing the status of LSP
             -- { 'j-hui/fidget.nvim', opts = {} },
-            -- 'folke/neodev.nvim',
-
-            -- Allows the usage of Linters and Formatters
-            -- Fast formatting
-            {
-                'nvimdev/guard.nvim',
-                dependencies = {
-                    'nvimdev/guard-collection',
-                },
-                config = function()
-                    require('pluggers.guard')
-                end,
-            },
-            -- Most popular Linter
-            -- {
-            --     'nvimtools/none-ls.nvim',
-            --     config = function()
-            --         require('pluggers.none-ls')
-            --     end,
-            -- },
         },
     },
 
     -- }}}
 
+    -- Treesitter {{{
+    {
+        -- Highlight, edit, and navigate code
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        event = VeryLazyFile,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        config = function()
+            require('pluggers.treesitter')
+        end,
+    },
+    {
+        'windwp/nvim-ts-autotag',
+        ft = { 'html', 'javascript', 'markdown' },
+        opts = {},
+    },
+    -- }}}
+
+    -- Text Completion {{{
+    {
+        -- Autocompletion
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        dependencies = {
+            -- Adds paths to sources
+            'hrsh7th/cmp-path',
+
+            -- Adds LSP completion capabilities
+            'hrsh7th/cmp-nvim-lsp',
+
+            -- Adds the built-in vim auto-complete
+            'hrsh7th/cmp-buffer',
+
+            -- Snippet Engine & its associated nvim-cmp source
+            {
+                'L3MON4D3/LuaSnip',
+                version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                build = 'make install_jsregexp',
+                dependencies = {
+                    {
+                        'rafamadriz/friendly-snippets',
+                        config = function()
+                            require('luasnip.loaders.from_vscode').lazy_load()
+                        end,
+                    },
+                },
+            },
+            'saadparwaiz1/cmp_luasnip',
+        },
+        config = function()
+            require('pluggers.cmp')
+        end,
+    }, -- }}}
+
+    -- Formatting and Linting{{{
+    require('pluggers.conform'),
+    require('pluggers.lint'), -- }}}
+    --}}}
+
+    -- Other {{{
     -- Trouble Diagnostic Viewer {{{
     {
         'folke/trouble.nvim',
@@ -240,54 +272,17 @@ return {
         },
     },
     -- }}}
-
-    -- Completion {{{
-    {
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        event = 'InsertEnter',
-        dependencies = {
-            -- Adds paths to sources
-            'hrsh7th/cmp-path',
-
-            -- Adds LSP completion capabilities
-            'hrsh7th/cmp-nvim-lsp',
-
-            -- Adds the built-in vim auto-complete
-            'hrsh7th/cmp-buffer',
-
-            -- Snippet Engine & its associated nvim-cmp source
-            {
-                'L3MON4D3/LuaSnip',
-                dependencies = { 'rafamadriz/friendly-snippets' },
-                config = function()
-                    require('luasnip').filetype_extend('htmldjango', { 'html' })
-                end,
-            },
-            'saadparwaiz1/cmp_luasnip',
-        },
-        config = function()
-            require('pluggers.cmp')
-        end,
-    }, -- }}}
-
-    -- Fuzzy Finder (files, lsp, etc) {{{
+    -- Telescope / Fuzzy Finder {{{
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         cmd = 'Telescope',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            -- 'nvim-tree/nvim-web-devicons',
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'make',
-                cond = function()
-                    return vim.fn.executable('make') == 1
-                end,
+                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
             },
-            -- Shows a diff of all undo changes
-            'debugloop/telescope-undo.nvim',
         },
         config = function()
             local telescope = require('telescope')
@@ -305,38 +300,18 @@ return {
                 },
             })
             pcall(telescope.load_extension('fzf'))
-            pcall(telescope.load_extension('undo'))
         end,
     },
     -- }}}
-
-    -- Treesitter {{{
-    {
-        -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        event = VeryLazyFile,
-        dependencies = {
-            {
-                'nvim-treesitter/nvim-treesitter-textobjects',
-                ft = { 'html', 'htmldjango' },
-            },
-        },
-        config = function()
-            require('pluggers.treesitter')
-        end,
-        build = ':TSUpdate',
-    },
-    -- }}}
-
     -- Color the background of color codes {{{
     {
         'JosefLitos/colorizer.nvim',
         cmd = { 'ColorizerToggle' },
         keys = {
             {
-                '<leader>l',
+                '<leader>C',
                 '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-                desc = 'Co[l]orize Colors',
+                desc = '[C]olorize Colors',
             },
         },
         opts = {
@@ -345,8 +320,7 @@ return {
             },
         },
     }, -- }}}
-
-    -- Blazingly fast {{{
+    -- Harpoon {{{
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
@@ -394,7 +368,6 @@ return {
         cmd = { 'VimBeGood' },
     },
     -- }}}
-
     -- Undotree {{{
     {
         'mbbill/undotree',
@@ -408,7 +381,6 @@ return {
         },
     },
     -- }}}
-
     -- Git related plugins {{{
     -- Git Signs{{{
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -424,18 +396,17 @@ return {
         dependencies = 'tpope/vim-rhubarb',
     }, -- }}}
     -- }}}
-
     -- vim-sleuth Detect tabstop and shiftwidth automatically {{{
     {
         'tpope/vim-sleuth',
         event = LazyFile,
     },
     --}}}
-
     -- ZenMode{{{
     {
         'folke/zen-mode.nvim',
         cmd = { 'ZenMode' },
+        -- dependencies = 'folke/twilight.nvim',
         keys = {
             {
                 '<leader>z',
@@ -446,28 +417,25 @@ return {
         opts = {
             window = {
                 width = 85, -- width of the Zen window
+                options = {
+                    colorcolumn = '0',
+                },
             },
             plugins = {
                 options = {
                     enabled = true,
                     ruler = false, -- disables the ruler text in the cmd line area
-                    showcmd = true, -- disables the command in the last line of the screen
-                    -- you may turn on/off statusline in zen mode by setting 'laststatus'
-                    -- statusline will be shown only if 'laststatus' == 3
-                    laststatus = 1, -- turn off the statusline in zen mode
+                    showcmd = false, -- disables the command in the last line of the screen
+                    laststatus = 0, -- turn off the statusline in zen mode
                     showmode = true,
                 },
+                -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
                 gitsigns = { enabled = true },
                 tmux = { enabled = true },
             },
-
-            -- on_open = function(win)
-            --     vim.fn.system('st')
-            -- end
         },
     },
     -- }}}
-
     -- which-key {{{
     {
         'folke/which-key.nvim',
@@ -513,23 +481,29 @@ return {
             }, { prefix = '<leader>' })
         end,
     }, -- }}}
-    -- G.nvim{{{
-    {
-        'ray-x/go.nvim',
-        dependencies = { -- optional packages
-            'ray-x/guihua.lua',
-            'neovim/nvim-lspconfig',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        config = function()
-            require('go').setup()
-        end,
-        ft = { 'go', 'gomod' },
-        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    }, -- }}}
+    -- }}}
 
-    -- Extra stuff that maybe i dont want all the time to be enabled
+    -- Filetype specific plugins{{{
+    -- X go.nvim{{{
+    -- {
+    --     'ray-x/go.nvim',
+    --     dependencies = { -- optional packages
+    --         'ray-x/guihua.lua',
+    --         'neovim/nvim-lspconfig',
+    --         'nvim-treesitter/nvim-treesitter',
+    --     },
+    --     config = function()
+    --         require('go').setup()
+    --     end,
+    --     ft = { 'go', 'gomod' },
+    --     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    -- }, -- }}}
+    -- neodev.nvim When developing in neovim config files{{{
+    { 'folke/neodev.nvim', opts = {} }, -- }}}
+    -- }}}
+
+    -- I might not want all the time{{{
     require('pluggers.debug'),
-    require('pluggers.org'),
+    require('pluggers.org'), -- }}}
     -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 }

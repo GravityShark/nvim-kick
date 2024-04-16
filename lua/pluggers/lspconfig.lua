@@ -1,5 +1,8 @@
 -- Minimum config for LSP & Mason
 
+-- If neodev exists
+require('neodev').setup({})
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -7,7 +10,6 @@ require('mason-tool-installer').setup({
     ensure_installed = require('ensure').mason,
 })
 
--- require('neodev').setup({})
 
 for server_name, server_settings in pairs(require('ensure').servers) do
     require('lspconfig')[server_name].setup({
