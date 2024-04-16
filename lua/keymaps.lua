@@ -54,14 +54,14 @@ vim.keymap.set(
 vim.api.nvim_set_keymap(
     'n',
     '<C-d>',
-    '<C-d>zz',
-    { noremap = false, silent = true }
+    '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-d>zz")<CR>',
+    { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<C-u>',
-    '<C-u>zz',
-    { noremap = false, silent = true }
+    '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-u>zz")<CR>',
+    { noremap = true, silent = true }
 )
 -- }}}
 
@@ -194,85 +194,85 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- vim.api.nvim_set_keymap(
 -- 	'n',
 -- 	'gd',
--- 	'<cmd>Telescope lsp_definitions<CR>',
+-- 	'<CMD>Telescope lsp_definitions<CR>',
 -- 	{ noremap = true }
 -- ) -- Goto declaration
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fr',
-    '<cmd>Telescope oldfiles<CR>',
+    '<CMD>Telescope oldfiles<CR>',
     { desc = 'Find [r]ecent' }
 ) -- Show recent files
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fj',
-    '<cmd>Telescope git_files<CR>',
+    '<CMD>Telescope git_files<CR>',
     { desc = 'Find [j]it Files' }
 ) -- Search for a file in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>ff',
-    '<cmd>Telescope find_files<CR>',
+    '<CMD>Telescope find_files<CR>',
     { desc = 'Find [f]iles' }
 ) -- Search for a file (ignoring dotfiles)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fa',
-    '<cmd>Telescope find_files hidden=true no_ignore=true<CR>',
+    '<CMD>Telescope find_files hidden=true no_ignore=true<CR>',
     { desc = 'Find [a]ll Files' }
 ) -- Search for a file (with dotfiles)
 -- vim.api.nvim_set_keymap(
 -- 	'n',
 -- 	'<leader>fp',
--- 	'<cmd>Telescope jumplist<CR>',
+-- 	'<CMD>Telescope jumplist<CR>',
 -- 	{ noremap = true }
 -- ) -- Show jumplist (previous locations)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fb',
-    '<cmd>Telescope git_branches<CR>',
+    '<CMD>Telescope git_branches<CR>',
     { noremap = true }
 ) -- Show git branches
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fg',
-    '<cmd>Telescope live_grep<CR>',
+    '<CMD>Telescope live_grep<CR>',
     { desc = 'Find text using [g]rep' }
 ) -- Find a string in project
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fb',
-    '<cmd>Telescope buffers<CR>',
+    '<CMD>Telescope buffers<CR>',
     { desc = 'Find [b]uffers' }
 ) -- Show all buffers
 vim.api.nvim_set_keymap(
     'n',
     '<leader>f?',
-    '<cmd>Telescope<CR>',
+    '<CMD>Telescope<CR>',
     { desc = 'Find ?' }
 ) -- Show all commands
 -- vim.api.nvim_set_keymap(
 --     'n',
 --     '<leader>fs',
---     '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
+--     '<CMD>Telescope lsp_dynamic_workspace_symbols<CR>',
 --     { desc = 'Find [s]ymbls' }
 -- ) -- Search for dynamic symbols
 -- vim.api.nvim_set_keymap(
 -- 	'n',
 -- 	'<leader>fn',
--- 	'<cmd>Telescope notify<CR>',
+-- 	'<CMD>Telescope notify<CR>',
 -- 	{ noremap = true , desc = 'Find [N]otification History' }
 -- ) -- Show nvim-notify history
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fp',
-    '<cmd>Telescope project<CR>',
+    '<CMD>Telescope project<CR>',
     { desc = 'Find [p]rojects' }
 ) -- Show projects
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fd',
-    '<cmd>Telescope diagnostics<CR>',
+    '<CMD>Telescope diagnostics<CR>',
     { desc = 'Find [d]iagnostics' }
 ) -- Show diagnostics
 vim.keymap.set('n', '<leader>f/', function()
@@ -289,26 +289,26 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- netrw {{{
 -- Open netrw on the right
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>Sex!<CR>', { desc = 'SEEX!!!' })
+vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Sex!<CR>', { desc = 'SEEX!!!' })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>l',
-    '<cmd>Lex<CR><Cmd',
+    '<CMD>Lex<CR><CMD>vertical resize 50<CR>',
     { desc = 'Lex??' }
 )
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
     '<leader>e',
-    '<cmd>Ex<CR>',
+    '<CMD>Ex<CR>',
     { desc = '[e]xplorer in current window' }
 )
 -- }}}
 
 -- Buffers {{{
 -- Tabs to move around buffers
-vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>bprev<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Tab>', '<CMD>bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<CMD>bprev<CR>', { noremap = true })
 
 function BufRem(number)
     local bufremove = require('mini.bufremove')
@@ -332,14 +332,14 @@ end
 vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
-    '<cmd>lua BufRem(0)<CR>',
+    '<CMD>lua BufRem(0)<CR>',
     { desc = '[c]lose current buffer' }
 )
 
 vim.api.nvim_set_keymap(
     'n',
     'gb',
-    '<cmd>lua ToggleBar()<CR>',
+    '<CMD>lua ToggleBar()<CR>',
     { desc = 'Toggle buffer [b]ar' }
 )
 -- }}}
@@ -348,48 +348,48 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gs',
-    '<cmd>Git<CR>',
+    '<CMD>Git<CR>',
     { desc = 'Git [s]how' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gd',
-    '<cmd>Git diff<CR>',
+    '<CMD>Git diff<CR>',
     { desc = 'Git [d]iff' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gc',
-    '<cmd>Git commit<CR>',
+    '<CMD>Git commit<CR>',
     { desc = 'Git [c]ommit' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gaa',
-    '<cmd>Git add .<CR>',
+    '<CMD>Git add .<CR>',
     { desc = 'Git Add [a]ll' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gac',
-    '<cmd>Git add %<CR>',
+    '<CMD>Git add %<CR>',
     { desc = 'Git Add [c]urrent buffer' }
 )
 -- vim.api.nvim_set_keymap(
 --     'n',
 --     '<leader>gs',
---     '<cmd>Git show<CR>',
+--     '<CMD>Git show<CR>',
 --     { desc = 'Git [s]how' }
 -- )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gp',
-    '<cmd>Git push<CR>',
+    '<CMD>Git push<CR>',
     { desc = 'Git [p]ush' }
 )
 
-vim.api.nvim_set_keymap('n', 'gu', '<cmd>diffget //2<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gh', '<cmd>diffget //3<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gu', '<CMD>diffget //2<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gh', '<CMD>diffget //3<CR>', { noremap = true })
 -- }}}
 
 -- Diagnostic keymaps{{{

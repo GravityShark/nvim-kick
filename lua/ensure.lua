@@ -103,7 +103,7 @@ M.format = {
 
     lua = { 'stylua' },
     c = { 'clang-format' },
-    cpp = { 'stylua' },
+    cpp = { 'clang-format' },
 
     go = { 'gofmt' },
     python = { 'ruff_format' },

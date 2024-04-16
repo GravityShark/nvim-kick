@@ -4,22 +4,21 @@ local VeryLazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile', 'VeryLazy' }
 -- Please Read the README.md
 return {
     -- Fun stuff {{{
-    {
+    { -- StartupTime{{{
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
         init = function()
             vim.g.startuptime_tries = 100
         end,
-    },
+    }, -- }}}
 
-    {
+    { -- Funny floppin and plippin
         'Eandrju/cellular-automaton.nvim',
         cmd = 'CellularAutomaton',
     },
     -- }}}
 
     -- Theme {{{
-
     -- Statusline {{{
     {
         'echasnovski/mini.statusline',
@@ -27,12 +26,25 @@ return {
         lazy = false,
     },
     -- }}}
+    -- Illuminate same words{{{
+    {
+        'echasnovski/mini.cursorword',
+        event = VeryLazyFile,
+        opts = {},
+    },
+    -- }}}
+    -- Animations on things{{{
+    {
+        'echasnovski/mini.animate',
+        lazy = false,
+        opts = {},
+    },
 
+    -- }}}
     -- go to the lua/colorscheme dir to see more
     -- vim.cmd.colorscheme('habamax'),
     require('colorscheme.monokai'),
     -- require('colorscheme.transparent'),
-
     -- }}}
 
     -- mini.nvim {{{
@@ -95,45 +107,6 @@ return {
             'sh',
             'sn',
         },
-        opts = {},
-    },
-    -- }}}
-    -- Animations on things{{{
-    {
-        'echasnovski/mini.animate',
-        event = 'VeryLazy',
-        enabled = function() end,
-        opts = {
-            scroll = {
-                enable = false,
-            },
-        },
-    },
-
-    -- }}}
-    -- X Which-key but kinda good but bad??{{{
-    -- {
-    --     'echasnovski/mini.clue',
-    --     keys = {
-    --         '<leader>',
-    --         'z',
-    --         'g',
-    --         "'",
-    --         '"',
-    --         '`',
-    --         '<C-w>',
-    --         { '<C-r>', mode = 'i' },
-    --         { '<C-x>', mode = 'i' },
-    --     },
-    --     config = function()
-    --         require('pluggers.mini-clue')
-    --     end,
-    -- },
-    -- }}}
-    -- Illuminate same words{{{
-    {
-        'echasnovski/mini.cursorword',
-        event = VeryLazyFile,
         opts = {},
     },
     -- }}}
