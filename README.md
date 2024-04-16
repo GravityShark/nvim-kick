@@ -5,8 +5,8 @@
 > its ACTUALLY practically done now
 
 ### plugins to look into
-- [?] nvim-dap
-  - [/] C, C++
+- [ ] nvim-dap
+  - [X] C, C++
   - [ ] go
   - [ ] python
   - [ ] bash?
