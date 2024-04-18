@@ -1,8 +1,22 @@
 return {
     'folke/tokyonight.nvim',
     lazy = false,
-    config = function()
+    priority = 1000,
+    init = function()
         vim.cmd.colorscheme('tokyonight')
-        return { style = 'moon' }
     end,
+    opts = {
+        style = 'moon',
+        on_highlights = function(hl, c)
+            hl.LineNr = {
+                fg = c.fg,
+            }
+            hl.LineNrBelow = {
+                fg = c.fg,
+            }
+            hl.LineNrAbove = {
+                fg = c.fg,
+            }
+        end,
+    },
 }
