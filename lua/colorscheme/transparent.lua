@@ -12,6 +12,6 @@ return {
             'StatusLineNC',
             'CursorLine',
             'CursorLineNr',
-        }
+        },
     },
 }

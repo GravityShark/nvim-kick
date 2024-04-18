@@ -83,12 +83,54 @@ return {
         end,
     }, -- }}}
 
-    -- Formatting and Linting{{{
+    -- Formatting, Linting, Debugging and Orgmode {{{
     require('pluggers.conform'),
-    require('pluggers.lint'), -- }}}
+    require('pluggers.lint'),
+    require('pluggers.debug'),
+    -- Orgmode is lazy loaded and this would never trigger if you just never use it
+    require('pluggers.org'),
     --}}}
+    -- }}}
 
     -- Other {{{
+    -- Color the background of color codes {{{
+    {
+        'JosefLitos/colorizer.nvim',
+        cmd = { 'ColorizerToggle' },
+        keys = {
+            {
+                '<leader>C',
+                '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
+                desc = '[C]olorize Colors',
+            },
+        },
+        opts = {
+            user_default_options = {
+                names = 'tailwind',
+            },
+        },
+    }, -- }}}
+    -- Git related plugins {{{
+    -- Git Signs{{{
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    {
+        'lewis6991/gitsigns.nvim',
+        event = LazyFile,
+        opts = require('pluggers.gitsigns'),
+    }, -- }}}
+    -- Fugitive {{{
+    {
+        'tpope/vim-fugitive',
+        cmd = { 'Git', 'GBrowse' },
+        dependencies = 'tpope/vim-rhubarb',
+    }, -- }}}
+    -- }}}
+    --{{{ Sessions
+    {
+        'olimorris/persisted.nvim',
+        lazy = false, -- make sure the plugin is always loaded at startup
+        opts = { autoload = true, use_git_branch = true, silent = true },
+    }, -- }}}
     -- Trouble Diagnostic Viewer {{{
     {
         'folke/trouble.nvim',
@@ -99,31 +141,36 @@ return {
                 '<CMD>TroubleToggle<CR>',
                 desc = 'Trouble [x] Toggle',
             },
-            {
-                '<leader>xw',
-                '<cmd>TroubleToggle workspace_diagnostics<cr>',
-                desc = 'Trouble [w]orkspace Diagnostics',
-            },
-            {
-                '<leader>xd',
-                '<cmd>TroubleToggle document_diagnostics<cr>',
-                desc = 'Trouble [d]ocument Diagnostics',
-            },
-            {
-                '<leader>xq',
-                '<cmd>TroubleToggle quickfix<cr>',
-                desc = 'Trouble [q]uickfix',
-            },
-            {
-                '<leader>xl',
-                '<cmd>TroubleToggle loclist<cr>',
-                desc = 'Trouble [l]OC/Diagnostic List',
-            },
-            {
-                '<leader>xr',
-                '<cmd>TroubleToggle lsp_references<cr>',
-                desc = 'Trouble LSP [r]eferences',
-            },
+            -- {
+            --     '<leader>xx',
+            --     '<CMD>TroubleToggle<CR>',
+            --     desc = 'Trouble [x] Toggle',
+            -- },
+            -- {
+            --     '<leader>xw',
+            --     '<cmd>TroubleToggle workspace_diagnostics<cr>',
+            --     desc = 'Trouble [w]orkspace Diagnostics',
+            -- },
+            -- {
+            --     '<leader>xd',
+            --     '<cmd>TroubleToggle document_diagnostics<cr>',
+            --     desc = 'Trouble [d]ocument Diagnostics',
+            -- },
+            -- {
+            --     '<leader>xq',
+            --     '<cmd>TroubleToggle quickfix<cr>',
+            --     desc = 'Trouble [q]uickfix',
+            -- },
+            -- {
+            --     '<leader>xl',
+            --     '<cmd>TroubleToggle loclist<cr>',
+            --     desc = 'Trouble [l]OC/Diagnostic List',
+            -- },
+            -- {
+            --     '<leader>xr',
+            --     '<cmd>TroubleToggle lsp_references<cr>',
+            --     desc = 'Trouble LSP [r]eferences',
+            -- },
         },
         opts = {
             signs = {
@@ -168,39 +215,6 @@ return {
         end,
     },
     -- }}}
-    -- Color the background of color codes {{{
-    {
-        'JosefLitos/colorizer.nvim',
-        cmd = { 'ColorizerToggle' },
-        keys = {
-            {
-                '<leader>C',
-                '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-                desc = '[C]olorize Colors',
-            },
-        },
-        opts = {
-            user_default_options = {
-                names = 'tailwind',
-            },
-        },
-    }, -- }}}
-    --{{{ Sessions
-    {
-        'olimorris/persisted.nvim',
-        lazy = false, -- make sure the plugin is always loaded at startup
-        opts = { autoload = true, use_git_branch = true, silent = true },
-    }, -- }}}
-    -- {
-    --     'echasnovski/mini.sessions',
-    --     version = false,
-    --     lazy = false,
-    --     opts = {
-    --         autoread = true,
-    --     },
-    -- },
-    --
-    --
     -- Undotree {{{
     {
         'mbbill/undotree',
@@ -214,61 +228,12 @@ return {
         },
     },
     -- }}}
-    -- Git related plugins {{{
-    -- Git Signs{{{
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    {
-        'lewis6991/gitsigns.nvim',
-        event = LazyFile,
-        opts = require('pluggers.gitsigns'),
-    }, -- }}}
-    -- Fugitive {{{
-    {
-        'tpope/vim-fugitive',
-        cmd = { 'Git', 'GBrowse' },
-        dependencies = 'tpope/vim-rhubarb',
-    }, -- }}}
-    -- }}}
     -- vim-sleuth Detect tabstop and shiftwidth automatically {{{
     {
         'tpope/vim-sleuth',
         event = LazyFile,
     },
     --}}}
-    -- ZenMode{{{
-    {
-        'folke/zen-mode.nvim',
-        cmd = { 'ZenMode' },
-        -- dependencies = 'folke/twilight.nvim',
-        keys = {
-            {
-                '<leader>z',
-                '<CMD>ZenMode<CR>',
-                desc = '[z]enmode Toggle',
-            },
-        },
-        opts = {
-            window = {
-                width = 85, -- width of the Zen window
-                options = {
-                    colorcolumn = '0',
-                },
-            },
-            plugins = {
-                options = {
-                    enabled = true,
-                    ruler = false, -- disables the ruler text in the cmd line area
-                    showcmd = false, -- disables the command in the last line of the screen
-                    laststatus = 0, -- turn off the statusline in zen mode
-                    showmode = true,
-                },
-                -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-                gitsigns = { enabled = true },
-                tmux = { enabled = true },
-            },
-        },
-    },
-    -- }}}
     -- which-key {{{
     {
         'folke/which-key.nvim',
@@ -316,11 +281,45 @@ return {
             }
         end,
     }, -- }}}
+    -- ZenMode{{{
+    {
+        'folke/zen-mode.nvim',
+        cmd = { 'ZenMode' },
+        -- dependencies = 'folke/twilight.nvim',
+        keys = {
+            {
+                '<leader>z',
+                '<CMD>ZenMode<CR>',
+                desc = '[z]enmode Toggle',
+            },
+        },
+        opts = {
+            window = {
+                width = 85, -- width of the Zen window
+                options = {
+                    colorcolumn = '0',
+                },
+            },
+            plugins = {
+                options = {
+                    enabled = true,
+                    ruler = false, -- disables the ruler text in the cmd line area
+                    showcmd = false, -- disables the command in the last line of the screen
+                    laststatus = 0, -- turn off the statusline in zen mode
+                    showmode = true,
+                },
+                -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+                gitsigns = { enabled = true },
+                tmux = { enabled = true },
+            },
+        },
+    },
+    -- }}}
     -- }}}
 
     -- mini.nvim improvements {{{
     -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = 'VeryLazy', opts = {} },
+    { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
     -- }}}
     -- better f/F and t/T{{{
     {
@@ -345,8 +344,7 @@ return {
     -- Fast bufferline{{{
     {
         'GravityShark0/mini.tabline',
-        -- event = { 'BufReadPost', 'BufNewFile' },
-        event = LazyFile,
+        event = { 'BufAdd', 'BufDelete', 'UIEnter' },
         dependencies = 'nvim-tree/nvim-web-devicons',
         opts = { set_vim_settings = false },
     },
@@ -354,7 +352,7 @@ return {
     -- Kill buffers and preserve window layout{{{
     { 'echasnovski/mini.bufremove' },
     -- }}}
-    -- 's' to surround with '' or (){{{
+    -- 's' to surround text with any character {{{
     {
         'echasnovski/mini.surround',
         keys = {
@@ -373,6 +371,17 @@ return {
     -- }}}
 
     -- Theme / Visual {{{
+    -- Themes {{{
+    -- go to the lua/colorscheme dir to see more
+    -- require('colorscheme.monokai'),
+    -- require('colorscheme.catppuccin'),
+    -- require('colorscheme.sonokai'),
+    -- require('colorscheme.mini'),
+    require('colorscheme.tokyonight'),
+    -- vim.cmd.colorscheme('habamax'),
+    -- Enable and run :TransparentEnable to enable transparency on any theme
+    require('colorscheme.transparent'),
+    -- }}}
     -- Statusline {{{
     {
         'echasnovski/mini.statusline',
@@ -387,7 +396,19 @@ return {
         opts = {},
     },
     -- }}}
-    -- Animations on things{{{
+    -- Indent indicators{{{
+    {
+        'echasnovski/mini.indentscope',
+        event = LazyFile,
+        opts = {
+            -- symbol = '▎',
+            -- symbol = "▏",
+            symbol = '│',
+            options = { try_as_border = true },
+        },
+    },
+    -- }}}
+    -- X Animations on things{{{
     {
         'echasnovski/mini.animate',
         enabled = false,
@@ -424,33 +445,13 @@ return {
     },
 
     -- }}}
-    -- Indent indicators{{{
-    {
-        'echasnovski/mini.indentscope',
-        event = LazyFile,
-        opts = {
-            -- symbol = '▎',
-            -- symbol = "▏",
-            symbol = '│',
-            options = { try_as_border = true },
-        },
-    },
     -- }}}
-    -- go to the lua/colorscheme dir to see more
-    require('colorscheme.monokai'),
-    -- vim.cmd.colorscheme('habamax'),
-    -- require('colorscheme.transparent'),
-    -- }}}
-
-    -- I might not want all the time{{{
-    require('pluggers.debug'),
-    require('pluggers.org'),
 
     -- Filetype specific plugins{{{
-    -- go.nvim{{{
+    -- X go.nvim {{{
     {
         'ray-x/go.nvim',
-        enabled = true,
+        enabled = false,
         dependencies = { -- optional packages
             'ray-x/guihua.lua',
             'neovim/nvim-lspconfig',
@@ -462,9 +463,8 @@ return {
         ft = { 'go', 'gomod' },
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     }, -- }}}
-    -- neodev.nvim When developing in neovim config files{{{
-    { 'folke/neodev.nvim', enabled = true, opts = {} }, -- }}}
-    -- }}}
+    -- X neodev.nvim {{{
+    { 'folke/neodev.nvim', enabled = false, opts = {} }, -- }}}
     -- }}}
 
     -- Fun stuff {{{
@@ -479,5 +479,9 @@ return {
         'Eandrju/cellular-automaton.nvim',
         cmd = 'CellularAutomaton',
     }, -- }}}
+    {
+        'ThePrimeagen/vim-be-good',
+        cmd = 'VimBeGood',
+    },
     -- }}}
 }

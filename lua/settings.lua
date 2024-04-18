@@ -91,7 +91,8 @@ vim.opt.termguicolors = true
 
 -- vim.opt.pumblend = 10
 vim.opt.pumheight = 10
--- vim.opt.winblend = 10}}}
+-- vim.opt.winblend = 10
+-- }}}
 
 -- [[ Highlight on yank ]]{{{
 -- See `:help vim.highlight.on_yank()`

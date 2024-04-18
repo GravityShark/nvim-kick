@@ -1,15 +1,8 @@
 return {
     'folke/tokyonight.nvim',
-    event = 'VeryLazy',
+    lazy = false,
     config = function()
-        require('tokyonight').setup({
-            transparent = true,
-            styles = {
-                sidebars = 'transparent',
-                floats = 'transparent',
-            },
-            style = 'moon',
-        })
         vim.cmd.colorscheme('tokyonight')
+        return { style = 'moon' }
     end,
 }

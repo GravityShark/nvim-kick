@@ -1,12 +1,13 @@
 return {
     'catppuccin/nvim',
-    enabled = false,
     lazy = false,
     name = 'catppuccin',
     priority = 1000,
-    config = function()
-        vim.opt.termguicolors = true
-        require('pluggers.catppuccin')
+    init = function()
         vim.cmd.colorscheme('catppuccin')
+        -- vim.opt.pumblend = 10
+        -- vim.opt.winblend = 10
+        --
     end,
+    config = {},
 }
