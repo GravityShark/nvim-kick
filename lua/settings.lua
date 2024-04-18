@@ -27,12 +27,13 @@ vim.opt.scrolloff = 8
 -- Decrease update time
 vim.o.updatetime = 250 -- 50
 vim.o.timeoutlen = 300
+vim.o.timeout = true -- whichkey
 
 -- Enable break indent
 vim.o.breakindent = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.opt.colorcolumn = '80'
 
 vim.opt.splitbelow = true -- Put new windows below current
@@ -65,6 +66,32 @@ vim.opt.showmode = false
 -- Set wildcharm to trigger the wildmenu
 -- vim.o.wildcharm = string.byte('<Tab>')
 -- }}}
+
+-- mini.basics{{{
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.mouse = 'a'
+vim.opt.cursorline = true
+vim.opt.linebreak = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.ruler = false
+vim.opt.wrap = false
+
+vim.opt.signcolumn = 'yes'
+vim.opt.fillchars = 'eob: '
+
+-- Editing
+-- vim.opt.incsearch = true
+-- vim.opt.infercase = true
+vim.opt.virtualedit = 'block'
+vim.opt.formatoptions = 'qjl1'
+
+vim.opt.termguicolors = true
+
+-- vim.opt.pumblend = 10
+vim.opt.pumheight = 10
+-- vim.opt.winblend = 10}}}
 
 -- [[ Highlight on yank ]]{{{
 -- See `:help vim.highlight.on_yank()`

@@ -163,7 +163,8 @@ return {
                     },
                 },
             })
-            pcall(telescope.load_extension('fzf'))
+            pcall(telescope.load_extension, 'fzf')
+            pcall(telescope.load_extension, 'persisted')
         end,
     },
     -- }}}
@@ -184,57 +185,22 @@ return {
             },
         },
     }, -- }}}
-    -- Harpoon {{{
+    --{{{ Sessions
     {
-        'ThePrimeagen/harpoon',
-        branch = 'harpoon2',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        keys = {
-            { '<leader>`', desc = '[`] Open Harpoon Menu' },
-            { '<leader>a', desc = '[a]ppend to Harpoon' },
-            '<A-1>',
-            '<A-2>',
-            '<A-3>',
-            '<A-4>',
-            '<A-5>',
-            '<A-6>',
-            '<A-7>',
-            '<A-8>',
-            '<A-9>',
-        },
-        opts = function()
-            local harpoon = require('harpoon')
-            harpoon:setup()
-
-            vim.keymap.set('n', '<leader>a', function()
-                harpoon:list():add()
-            end)
-            vim.keymap.set('n', '<leader>`', function()
-                harpoon.ui:toggle_quick_menu(harpoon:list())
-            end)
-
-            for i = 1, 9 do
-                vim.keymap.set('n', '<A-' .. i .. '>', function()
-                    harpoon:list():select(i)
-                end, {
-                    noremap = true,
-                    -- desc = 'Harpoon open buffer ' .. i,
-                })
-            end
-            -- vim.keymap.set('n', '<S-Tab>', function()
-            --     harpoon:list():prev()
-            -- end)
-            -- vim.keymap.set('n', '<Tab>', function()
-            --     harpoon:list():next()
-            -- end)
-        end,
-    },
-
-    {
-        'ThePrimeagen/vim-be-good',
-        cmd = { 'VimBeGood' },
-    },
-    -- }}}
+        'olimorris/persisted.nvim',
+        lazy = false, -- make sure the plugin is always loaded at startup
+        opts = { autoload = true, use_git_branch = true, silent = true },
+    }, -- }}}
+    -- {
+    --     'echasnovski/mini.sessions',
+    --     version = false,
+    --     lazy = false,
+    --     opts = {
+    --         autoread = true,
+    --     },
+    -- },
+    --
+    --
     -- Undotree {{{
     {
         'mbbill/undotree',
@@ -307,10 +273,26 @@ return {
     {
         'folke/which-key.nvim',
         event = 'VeryLazy',
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require('which-key').setup({
+        opts = function()
+            require('which-key').register({
+                l = { name = '[l]sp' },
+                f = { name = '[f]ind' },
+                r = {
+                    name = '[r]un',
+                    g = {
+                        name = '[g]cc',
+                    },
+                },
+                o = { name = '[o]rg' },
+                g = {
+                    name = '[g]it',
+                    a = {
+                        name = 'Git [a]dd',
+                    },
+                },
+                b = { name = 'de[b]ug' },
+            }, { prefix = '<leader>' })
+            return {
                 window = {
                     border = 'single', -- none, single, double, shadow
                     position = 'bottom', -- bottom, top
@@ -331,21 +313,7 @@ return {
                     separator = '»', -- symbol used between a key and it's label
                     group = '+', -- symbol prepended to a group
                 },
-            })
-        end,
-        opts = function()
-            local wk = require('which-key')
-            wk.register({
-                f = { name = '[f]ind' },
-                r = {
-                    name = '[r]un',
-                    g = {
-                        name = '[g]cc',
-                    },
-                },
-                o = { name = '[o]rg' },
-                g = { name = '[g]it' },
-            }, { prefix = '<leader>' })
+            }
         end,
     }, -- }}}
     -- }}}
@@ -376,7 +344,7 @@ return {
     -- }}}
     -- Fast bufferline{{{
     {
-        'GravityShark0/mini.tabline-select',
+        'GravityShark0/mini.tabline',
         -- event = { 'BufReadPost', 'BufNewFile' },
         event = LazyFile,
         dependencies = 'nvim-tree/nvim-web-devicons',
@@ -422,7 +390,7 @@ return {
     -- Animations on things{{{
     {
         'echasnovski/mini.animate',
-        -- enabled = false,
+        enabled = false,
         event = 'VeryLazy',
         opts = function()
             local animate = require('mini.animate')
@@ -441,13 +409,13 @@ return {
             return {
                 scroll = {
                     timing = animate.gen_timing.quadratic({
-                        duration = 100,
+                        duration = 50,
                         unit = 'total',
                     }),
                 },
                 cursor = {
                     timing = animate.gen_timing.quadratic({
-                        duration = 100,
+                        duration = 50,
                         unit = 'total',
                     }),
                 },
@@ -474,23 +442,29 @@ return {
     -- require('colorscheme.transparent'),
     -- }}}
 
+    -- I might not want all the time{{{
+    require('pluggers.debug'),
+    require('pluggers.org'),
+
     -- Filetype specific plugins{{{
-    -- X go.nvim{{{
-    -- {
-    --     'ray-x/go.nvim',
-    --     dependencies = { -- optional packages
-    --         'ray-x/guihua.lua',
-    --         'neovim/nvim-lspconfig',
-    --         'nvim-treesitter/nvim-treesitter',
-    --     },
-    --     config = function()
-    --         require('go').setup()
-    --     end,
-    --     ft = { 'go', 'gomod' },
-    --     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    -- }, -- }}}
-    -- X neodev.nvim When developing in neovim config files{{{
-    { 'folke/neodev.nvim', opts = {} }, -- }}}
+    -- go.nvim{{{
+    {
+        'ray-x/go.nvim',
+        enabled = true,
+        dependencies = { -- optional packages
+            'ray-x/guihua.lua',
+            'neovim/nvim-lspconfig',
+            'nvim-treesitter/nvim-treesitter',
+        },
+        config = function()
+            require('go').setup()
+        end,
+        ft = { 'go', 'gomod' },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    }, -- }}}
+    -- neodev.nvim When developing in neovim config files{{{
+    { 'folke/neodev.nvim', enabled = true, opts = {} }, -- }}}
+    -- }}}
     -- }}}
 
     -- Fun stuff {{{
@@ -505,10 +479,5 @@ return {
         'Eandrju/cellular-automaton.nvim',
         cmd = 'CellularAutomaton',
     }, -- }}}
-    -- }}}
-
-    -- I might not want all the time{{{
-    require('pluggers.debug'),
-    require('pluggers.org'),
     -- }}}
 }

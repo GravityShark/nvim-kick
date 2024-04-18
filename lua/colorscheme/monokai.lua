@@ -95,7 +95,8 @@ return {
             },
             FidgetTitle = { fg = paletter.pink },
             PmenuThumb = { bg = paletter.base4 },
-            -- CursorLine = { bg = paletter.base2 },
+            CursorLine = { bg = paletter.base2 },
+            ColorColumn = { bg = paletter.base2 },
         } -- }}}
 
         require('monokai').setup({

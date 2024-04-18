@@ -1,6 +1,6 @@
 -- Keymaps for better default experience
 -- See `:help vim.api.nvim_set_keymap()`
--- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>!t<CR>', { silent = true })
@@ -26,32 +26,30 @@ vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 
--- Space + y|d yanks or cuts to system clipboard{{{
+-- g[y|d|p|P] uses to system clipboard{{{
 vim.keymap.set(
     { 'n', 'v' },
-    '<leader>y',
+    'gy',
     '"+y',
     { desc = '[y]ank to system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
-    '<leader>d',
+    'gd',
     '"+d',
     { desc = '[d]elete to system clipboard' }
-) -- }}}
-
--- Correct Pasting{{{
+)
 vim.keymap.set(
     { 'n', 'v' },
-    '<leader>p',
+    'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
     { desc = '[p]aste System Clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
-    '<leader>P',
+    'gP',
     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = '[P]aste System Clipboard' }
+    { desc = 'reverse [P]aste System Clipboard' }
 ) -- }}}
 
 -- Middle positioned C+ D/U{{{
@@ -116,18 +114,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         vim.keymap.set(
             'n',
-            'gD',
+            '<leader>lD',
             vim.lsp.buf.declaration,
-            { buffer = ev.buf, desc = '[g]et [D]eclaration' }
+            { buffer = ev.buf, desc = 'LSP [D]eclaration' }
         )
         vim.keymap.set(
             'n',
-            'gd',
+            '<leader>ld',
             vim.lsp.buf.definition,
-            { buffer = ev.buf, desc = '[g]et [D]efinition' }
+            { buffer = ev.buf, desc = 'LSP [d]efinition' }
         )
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+        vim.keymap.set(
+            'n',
+            '[d',
+            vim.diagnostic.goto_prev,
+            { desc = 'Previous diagnostic' }
+        )
+        vim.keymap.set(
+            'n',
+            ']d',
+            vim.diagnostic.goto_next,
+            { desc = 'Next diagnostic' }
+        )
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
         vim.keymap.set(
             'i',
@@ -137,33 +145,33 @@ vim.api.nvim_create_autocmd('LspAttach', {
         )
         vim.keymap.set(
             'n',
-            '<space>vw',
+            '<leader>lw',
             vim.lsp.buf.workspace_symbol,
-            { buffer = ev.buf, desc = 'Vim LSP [w]orkspace Symbol' }
+            { buffer = ev.buf, desc = 'LSP [w]orkspace Symbol' }
         )
         vim.keymap.set(
             'n',
-            '<space>vd',
+            '<leader>ld',
             vim.diagnostic.open_float,
-            { buffer = ev.buf, desc = 'Vim LSP [d]iagnostics' }
+            { buffer = ev.buf, desc = 'LSP [d]iagnostics' }
         )
         vim.keymap.set(
             'n',
-            '<space>vc',
+            '<leader>lc',
             vim.lsp.buf.code_action,
-            { buffer = ev.buf, desc = 'Vim LSP [c]ode actions' }
+            { buffer = ev.buf, desc = 'LSP [c]ode actions' }
         )
         vim.keymap.set(
             'n',
-            '<space>vrr',
+            '<leader>lr',
             vim.lsp.buf.references,
-            { buffer = ev.buf, desc = 'Vim LSP references' }
+            { buffer = ev.buf, desc = 'LSP re[f]erences' }
         )
         vim.keymap.set(
             'n',
-            '<space>vrn',
+            '<leader>lr',
             vim.lsp.buf.rename,
-            { buffer = ev.buf, desc = 'Vim LSP rename' }
+            { buffer = ev.buf, desc = 'LSP [r]ename' }
         )
         vim.keymap.set(
             'n',
@@ -171,35 +179,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.buf.implementation,
             { buffer = ev.buf }
         )
-        -- vim.keymap.set('n', '<space>f', function()
-        --     vim.lsp.buf.format({ async = true })
-        -- end, opts)
     end,
 })
 
--- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder)
--- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
--- vim.keymap.set('n', '<space>wl', function()
---     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
--- end, opts)
-
--- vim.api.nvim_create_autocmd('LspAttach', {
---     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
---     callback = function(ev)
---         local opts = { buffer = ev.buf, remap = false }
---         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
---         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
---         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
---     end,
--- })
 -- }}}
 
 -- Telescope {{{
 -- vim.api.nvim_set_keymap(
--- 	'n',
--- 	'gd',
--- 	'<CMD>Telescope lsp_definitions<CR>',
--- 	{ noremap = true }
+--     'n',
+--     '<leader>fD',
+--     '<CMD>Telescope lsp_definitions<CR>',
+--     { noremap = true }
 -- ) -- Goto declaration
 vim.api.nvim_set_keymap(
     'n',
@@ -209,9 +199,9 @@ vim.api.nvim_set_keymap(
 ) -- Show recent files
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>fj',
+    '<leader>fg',
     '<CMD>Telescope git_files<CR>',
-    { desc = 'Find [j]it Files' }
+    { desc = 'Find [g]it Files' }
 ) -- Search for a file in project
 vim.api.nvim_set_keymap(
     'n',
@@ -239,22 +229,28 @@ vim.api.nvim_set_keymap(
 ) -- Show git branches
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>fg',
+    '<leader>fl',
     '<CMD>Telescope live_grep<CR>',
-    { desc = 'Find text using [g]rep' }
+    { desc = 'Find text using [l]ive grep' }
 ) -- Find a string in project
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>fb',
-    '<CMD>Telescope buffers<CR>',
-    { desc = 'Find [b]uffers' }
-) -- Show all buffers
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>fb',
+--     '<CMD>Telescope buffers<CR>',
+--     { desc = 'Find [b]uffers' }
+-- ) -- Show all buffers
 vim.api.nvim_set_keymap(
     'n',
     '<leader>f?',
     '<CMD>Telescope<CR>',
     { desc = 'Find ?' }
 ) -- Show all commands
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>fs',
+    '<CMD>Telescope persisted<CR>',
+    { desc = 'Find sessions' }
+) -- Show all sessions
 -- vim.api.nvim_set_keymap(
 --     'n',
 --     '<leader>fs',
@@ -267,39 +263,42 @@ vim.api.nvim_set_keymap(
 -- 	'<CMD>Telescope notify<CR>',
 -- 	{ noremap = true , desc = 'Find [N]otification History' }
 -- ) -- Show nvim-notify history
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>fp',
-    '<CMD>Telescope project<CR>',
-    { desc = 'Find [p]rojects' }
-) -- Show projects
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>fp',
+--     '<CMD>Telescope project<CR>',
+--     { desc = 'Find [p]rojects' }
+-- ) -- Show projects
 vim.api.nvim_set_keymap(
     'n',
     '<leader>fd',
     '<CMD>Telescope diagnostics<CR>',
     { desc = 'Find [d]iagnostics' }
 ) -- Show diagnostics
-vim.keymap.set('n', '<leader>f/', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    require('telescope.builtin').current_buffer_fuzzy_find(
-        require('telescope.themes').get_dropdown({
-            winblend = 10,
-            previewer = false,
-        })
-    )
-end, { desc = '[/] Fuzzily search in current buffer' })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>f/',
+    '<CMD>Telescope current_buffer_fuzzy_find<CR>',
+    { desc = '[/] Fuzzily search in current buffer' }
+) -- Show diagnostics
+-- vim.keymap.set('n', '<leader>f/', function()
+--     -- You can pass additional configuration to telescope to change theme, layout, etc.
+--     require('telescope.builtin').current_buffer_fuzzy_find(
+--         require('telescope.themes').get_dropdown({})
+--     )
+-- end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- }}}
 
 -- netrw {{{
 -- Open netrw on the right
 vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Sex!<CR>', { desc = 'SEEX!!!' })
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>l',
-    '<CMD>Lex<CR><CMD>vertical resize 50<CR>',
-    { desc = 'Lex??' }
-)
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>l',
+--     '<CMD>Lex<CR><CMD>vertical resize 50<CR>',
+--     { desc = 'Lex??' }
+-- )
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
@@ -314,29 +313,30 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap('n', '<Tab>', '<CMD>bnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', '<CMD>bprev<CR>', { noremap = true })
 
-function BufRem(number)
-    local bufremove = require('mini.bufremove')
-    if not bufremove.delete(number, false) then
-        local choice = vim.fn.confirm(
-            'Save changes to ' .. vim.fn.expand('%:p'),
-            '&Yes\n&No\n&Cancel',
-            3
-        )
-
-        if choice == 1 then
-            vim.cmd('update')
-            bufremove.delete(number, false)
-        elseif choice == 2 then
-            bufremove.delete(number, true)
-        end
-    end
-    CheckTabline()
-end
+-- function BufRem(number)
+--     local bufremove = require('mini.bufremove')
+--     if not bufremove.delete(number, false) then
+--         local choice = vim.fn.confirm(
+--             'Save changes to ' .. vim.fn.expand('%:p'),
+--             '&Yes\n&No\n&Cancel',
+--             3
+--         )
+--
+--         if choice == 1 then
+--             vim.cmd('update')
+--             bufremove.delete(number, false)
+--         elseif choice == 2 then
+--             bufremove.delete(number, true)
+--         end
+--     end
+--     CheckTabline()
+-- end
 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
-    '<CMD>lua BufRem(0)<CR>',
+    -- '<CMD>lua BufRem(0)<CR>',
+    "<CMD>lua require('mini.bufremove').delete(); CheckTabline()<CR>",
     { desc = '[c]lose current buffer' }
 )
 
@@ -347,22 +347,30 @@ vim.api.nvim_set_keymap(
     { desc = 'Toggle buffer [b]ar' }
 )
 
-local keys = 'asdfjkl;'
-
-for i = 1, #keys do
-    local c = keys:sub(i, i)
-    vim.keymap.set('n', string.format('<A-%s>', c), function()
-        MiniTabline.select(i)
-    end, { silent = true })
+for i = 0, 9 - 1 do
+    vim.api.nvim_set_keymap(
+        'n',
+        '<A-' .. i .. '>',
+        -- '<CMD>lua if MiniTabline ~= nil then MiniTabline.select, ('
+        --     .. i
+        --     .. ') end<CR>',
+        -- '<CMD>lua if MiniTabline ~= nil then pcall(MiniTabline.select, '
+        --     .. i
+        --     .. ') end<CR>',
+        '<CMD>lua pcall(MiniTabline.select, '
+            .. i
+            .. ')<CR>',
+        { silent = true }
+    )
 end
 -- }}}
 
 -- vim-fugtive {{{
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>gs',
+    '<leader>gg',
     '<CMD>Git<CR>',
-    { desc = 'Git [s]how' }
+    { desc = 'Git [g]it' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -388,12 +396,12 @@ vim.api.nvim_set_keymap(
     '<CMD>Git add %<CR>',
     { desc = 'Git Add [c]urrent buffer' }
 )
--- vim.api.nvim_set_keymap(
---     'n',
---     '<leader>gs',
---     '<CMD>Git show<CR>',
---     { desc = 'Git [s]how' }
--- )
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>gs',
+    '<CMD>Git show<CR>',
+    { desc = 'Git [s]how' }
+)
 vim.api.nvim_set_keymap(
     'n',
     '<leader>gp',
@@ -449,3 +457,70 @@ vim.keymap.set({ 'i', 's' }, '<C-E>', function()
     end
 end, { silent = true })
 -- }}}
+
+-- Resize windows {{{
+-- https://github.com/echasnovski/mini.basics
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-Left>',
+    '"<Cmd>vertical resize -" . v:count1 . "<CR>"',
+    { expr = true, replace_keycodes = false, desc = 'Decrease window width' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-Down>',
+    '"<Cmd>resize -"          . v:count1 . "<CR>"',
+    { expr = true, replace_keycodes = false, desc = 'Decrease window height' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-Up>',
+    '"<Cmd>resize +"          . v:count1 . "<CR>"',
+    { expr = true, replace_keycodes = false, desc = 'Increase window height' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-Right>',
+    '"<Cmd>vertical resize +" . v:count1 . "<CR>"',
+    { expr = true, replace_keycodes = false, desc = 'Increase window width' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-H>',
+    '<C-w>h',
+    { desc = 'Focus on left window' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-J>',
+    '<C-w>j',
+    { desc = 'Focus on below window' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-K>',
+    '<C-w>k',
+    { desc = 'Focus on above window' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-L>',
+    '<C-w>l',
+    { desc = 'Focus on right window' }
+)
+-- }}}
+
+-- Org{{{
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>oc',
+    '<Cmd>lua require("orgmode").action("capture.prompt")<CR>',
+    { desc = 'Org [c]reate note' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>oa',
+    '<Cmd>lua require("orgmode").action("agenda.prompt")<CR>',
+    { desc = 'Org [a]genda' }
+) -- }}}
