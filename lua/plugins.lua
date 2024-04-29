@@ -240,7 +240,6 @@ return {
         event = 'VeryLazy',
         opts = function()
             require('which-key').register({
-                l = { name = '[l]sp' },
                 f = { name = '[f]ind' },
                 r = {
                     name = '[r]un',

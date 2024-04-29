@@ -81,7 +81,7 @@ M.mason = {
 }
 
 M.mason_dap = {
-    -- 'delve',
+    'delve',
     'cppdbg',
 }
 

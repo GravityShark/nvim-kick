@@ -22,7 +22,7 @@ return {
 
         -- Add your own debuggers here
         -- 'mfussenegger/nvim-dap-python',
-        -- 'leoluz/nvim-dap-go',
+        'leoluz/nvim-dap-go',
     },
     config = function()
         local dap = require('dap')
@@ -87,7 +87,7 @@ return {
         )
 
         -- Install golang specific config
-        -- require('dap-go').setup()
+        require('dap-go').setup()
         -- require('dap-python').setup()
     end,
 }

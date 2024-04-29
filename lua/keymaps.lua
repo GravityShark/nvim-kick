@@ -2,6 +2,32 @@
 -- See `:help vim.api.nvim_set_keymap()`
 -- vim.keymap.set({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>w',
+    '<CMD>w<CR>',
+    { silent = true, desc = '[w]rite current buffer' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>W',
+    '<CMD>wa<CR>',
+    { silent = true, desc = '[W]rite all buffer' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>q',
+    '<CMD>q<CR>',
+    { silent = true, desc = '[q]uit buffer' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>Q',
+    '<CMD>wqa<CR>',
+    { silent = true, desc = 'write and [Q]uit all buffers' }
+)
+
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>!t<CR>', { silent = true })
 -- }}}
@@ -179,6 +205,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.buf.implementation,
             { buffer = ev.buf }
         )
+        require('which-key').register({
+            l = { name = '[l]sp' },
+        }, { prefix = '<leader>' })
     end,
 })
 
