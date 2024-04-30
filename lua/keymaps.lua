@@ -18,8 +18,8 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
-    '<CMD>q<CR>',
-    { silent = true, desc = '[q]uit buffer' }
+    '<CMD>wq<CR>',
+    { silent = true, desc = 'write and [q]uit buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
