@@ -12,20 +12,20 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>W',
     '<CMD>wa<CR>',
-    { silent = true, desc = '[W]rite all buffer' }
+    { silent = true, desc = '[W]rite all buffers' }
 )
 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
     '<CMD>wq<CR>',
-    { silent = true, desc = 'write and [q]uit buffer' }
+    { silent = true, desc = 'write and [q]uit' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>Q',
     '<CMD>wqa<CR>',
-    { silent = true, desc = 'write and [Q]uit all buffers' }
+    { silent = true, desc = 'write all and [Q]uit buffers' }
 )
 
 -- Allow for using t inside nvim {{{

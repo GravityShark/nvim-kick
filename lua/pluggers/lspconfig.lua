@@ -1,9 +1,9 @@
 -- Minimum config for LSP & Mason
 
 -- If neodev exists
-local neodev, _ = pcall(require, 'neodev')
-if neodev then
-    neodev.setup()
+local ok, _ = pcall(require, 'neodev')
+if ok then
+    require('neodev').setup({})
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

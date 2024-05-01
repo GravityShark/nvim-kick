@@ -1,5 +1,10 @@
 -- See `:help vim.o`
 
+-- Mouse stuff
+vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
+vim.cmd.aunmenu('PopUp.-1-')
+vim.cmd.aunmenu('PopUp.Delete')
+
 -- Opts {{{
 -- Allow switching buffers without saving them
 vim.o.hidden = true

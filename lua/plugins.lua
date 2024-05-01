@@ -372,11 +372,11 @@ return {
     -- Theme / Visual {{{
     -- Themes {{{
     -- go to the lua/colorscheme dir to see more
-    -- require('colorscheme.monokai'),
+    require('colorscheme.monokai'),
     -- require('colorscheme.catppuccin'),
     -- require('colorscheme.sonokai'),
     -- require('colorscheme.mini'),
-    require('colorscheme.tokyonight'),
+    -- require('colorscheme.tokyonight'),
     -- vim.cmd.colorscheme('habamax'),
     -- Enable and run :TransparentEnable to enable transparency on any theme
     require('colorscheme.transparent'),
@@ -463,7 +463,7 @@ return {
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     }, -- }}}
     -- X neodev.nvim {{{
-    { 'folke/neodev.nvim', enabled = false, opts = {} }, -- }}}
+    { 'folke/neodev.nvim', enabled = true, opts = {} }, -- }}}
     -- }}}
 
     -- Fun stuff {{{
@@ -482,5 +482,6 @@ return {
         'ThePrimeagen/vim-be-good',
         cmd = 'VimBeGood',
     },
+    -- require('dragmove'),
     -- }}}
 }
