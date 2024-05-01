@@ -19,6 +19,9 @@ return {
                 org_agenda = false,
                 org_capture = false,
             },
+            org = {
+                org_open_at_point = '<CR>',
+            },
         },
     },
 }
