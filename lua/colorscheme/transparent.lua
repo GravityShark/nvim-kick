@@ -6,6 +6,7 @@ return {
             'NormalFloat',
             -- 'Pmenu',
             'TelescopeNormal',
+            'Folded',
         },
         exclude_groups = {
             'StatusLine',
