@@ -1,13 +1,53 @@
 -- See `:help vim.o`
 
--- Mouse stuff
-vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
-vim.cmd.aunmenu('PopUp.-1-')
-vim.cmd.aunmenu('PopUp.Delete')
+-- vim.cmd([[
+--   autocmd BufReadPost *.png :silent !feh % &
+-- ]])
+-- vim.cmd([[
+--   autocmd BufReadPost *.jpg :silent !feh % &<CR>:bdelete<CR>
+-- ]])
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { '*.pdf' },
+    command = ':silent !librewolf % &',
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { '*.docx', '*.pptx' },
+    command = ':silent !flatpak run org.libreoffice.LibreOffice % &',
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { '*.png', '*.jpg', '*.webp', '*.svg' },
+    command = ':silent !feh % &',
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = {
+        '*.pdf',
+        '*.docx',
+        '*.pptx',
+        '*.png',
+        '*.jpg',
+        '*.webp',
+        '*.svg',
+    },
+    callback = function()
+        require('mini.bufremove').delete()
+        CheckTabline()
+    end,
+})
+
+-- Mouse stuff{{{
+-- vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
+-- vim.cmd.aunmenu('PopUp.-1-')
+-- vim.cmd.aunmenu('PopUp.Delete')}}}
 
 -- Opts {{{
+-- What data is saved when saving a session
+vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos'
+
 -- Allow switching buffers without saving them
-vim.o.hidden = true
+vim.opt.hidden = true
 
 -- Global statusline
 vim.opt.laststatus = 3
@@ -30,15 +70,15 @@ vim.opt.matchtime = 0
 vim.opt.scrolloff = 8
 
 -- Decrease update time
-vim.o.updatetime = 250 -- 50
-vim.o.timeoutlen = 300
-vim.o.timeout = true -- whichkey
+vim.opt.updatetime = 250 -- 50
+vim.opt.timeoutlen = 300
+vim.opt.timeout = true -- whichkey
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noinsert,noselect'
+vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.colorcolumn = '80'
 
 vim.opt.splitbelow = true -- Put new windows below current
@@ -66,10 +106,10 @@ vim.opt.showmode = false
 
 -- [[ Wild Menu ]]
 -- already is the defalut in neovim
--- vim.o.wildmenu = true
+-- vim.opt.wildmenu = true
 
 -- Set wildcharm to trigger the wildmenu
--- vim.o.wildcharm = string.byte('<Tab>')
+-- vim.opt.wildcharm = string.byte('<Tab>')
 -- }}}
 
 -- mini.basics{{{
@@ -127,9 +167,9 @@ function CheckTabline()
     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 
     if buffers == 1 then
-        vim.o.showtabline = 0
+        vim.opt.showtabline = 0
     elseif buffers > 1 then
-        vim.o.showtabline = 2
+        vim.opt.showtabline = 2
     end
 end
 
@@ -140,16 +180,16 @@ TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
 }, { callback = CheckTabline })
 
 function ToggleBar()
-    if vim.o.showtabline == 0 then
-        vim.o.showtabline = 2
+    if vim.opt.showtabline == 0 then
+        vim.opt.showtabline = 2
         TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
             'BufAdd',
             'BufDelete',
             'UIEnter',
         }, { callback = CheckTabline })
     else
-        if vim.o.showtabline == 2 then
-            vim.o.showtabline = 0
+        if vim.opt.showtabline == 2 then
+            vim.opt.showtabline = 0
             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
         end
     end

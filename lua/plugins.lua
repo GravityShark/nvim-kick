@@ -129,7 +129,8 @@ return {
     {
         'olimorris/persisted.nvim',
         lazy = false, -- make sure the plugin is always loaded at startup
-        opts = { autoload = true, use_git_branch = true, silent = true },
+        -- opts = { autoload = true, use_git_branch = true, silent = true },
+        opts = {},
     }, -- }}}
     -- Trouble Diagnostic Viewer {{{
     {
@@ -241,6 +242,8 @@ return {
         opts = function()
             require('which-key').register({
                 f = { name = '[f]ind' },
+                l = { name = '[l]sp' },
+                s = { name = '[s]ession' },
                 r = {
                     name = '[r]un',
                     g = {

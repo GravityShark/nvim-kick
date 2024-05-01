@@ -2,6 +2,55 @@
 -- See `:help vim.api.nvim_set_keymap()`
 -- vim.keymap.set({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 
+-- Sessions{{{
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>sd',
+    '<CMD>SessionDelete<CR>',
+    { desc = 'Session [d]elete' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>st',
+    '<CMD>SessionToggle<CR>',
+    { desc = 'Session [t]oggle' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>sl',
+    '<CMD>SessionLoad<CR>',
+    { desc = 'Session [l]oad' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>sL',
+    '<CMD>SessionLoadLast<CR>',
+    { desc = 'Session [L]oad last session' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>sp',
+    '<CMD>SessionStop<CR>',
+    { desc = 'Session [p]ause' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>sr',
+    '<CMD>SessionStart<CR>',
+    { desc = 'Session [r]ecord' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>ss',
+    '<CMD>SessionSave<CR>',
+    { desc = 'Session [s]ave' }
+) -- }}}
+
+-- Write and quit binings{{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
@@ -26,7 +75,7 @@ vim.api.nvim_set_keymap(
     '<leader>Q',
     '<CMD>wqa<CR>',
     { silent = true, desc = 'write all and [Q]uit buffers' }
-)
+) -- }}}
 
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>!t<CR>', { silent = true })
@@ -367,6 +416,14 @@ vim.api.nvim_set_keymap(
     -- '<CMD>lua BufRem(0)<CR>',
     "<CMD>lua require('mini.bufremove').delete(); CheckTabline()<CR>",
     { desc = '[c]lose current buffer' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>X',
+    -- '<CMD>lua BufRem(0)<CR>',
+    "<CMD>lua require('mini.bufremove').delete(0, true); CheckTabline()<CR>",
+    { desc = '[X] force close current buffer' }
 )
 
 vim.api.nvim_set_keymap(
