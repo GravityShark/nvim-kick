@@ -2,21 +2,53 @@ return {
     'nvim-orgmode/orgmode',
     ft = 'org',
     dependencies = {
-        'kevinhwang91/nvim-ufo',
-        ft = 'org',
-        dependencies = 'kevinhwang91/promise-async',
-        opts = function()
-            vim.opt.foldcolumn = '1'
-            vim.opt.foldlevel = 99
-            vim.opt.foldlevelstart = 99
-            require('ufo').setup({
-                provider_selector = function(bufnr, filetype, buftype)
-                    return { 'treesitter', 'indent' }
-                end,
-                open_fold_hl_timeout = 0,
-            })
-        end,
-        --
+        {
+            'kevinhwang91/nvim-ufo',
+            dependencies = 'kevinhwang91/promise-async',
+            opts = function()
+                -- vim.opt.foldcolumn = '1'
+                vim.opt.foldlevel = 99
+                vim.opt.foldlevelstart = 99
+                vim.opt.foldenable = true
+                require('ufo').setup({
+                    provider_selector = function()
+                        return ''
+                    end,
+                    open_fold_hl_timeout = 0,
+                })
+            end,
+            --
+        },
+        {
+            'akinsho/org-bullets.nvim',
+            opts = {
+                concealcursor = true,
+                symbols = {
+                    -- list symbol
+                    list = '•',
+                    -- headlines can be a list
+                    headlines = {
+                        '󰄰',
+                        '󰪞',
+                        '󰪟',
+                        '󰪠',
+                        '󰪡',
+                        '󰪢',
+                        '󰪣',
+                        '󰪤',
+                        '󰪥',
+                    },
+                    -- or a function that receives the defaults and returns a list
+                    -- headlines = function(default_list)
+                    --     table.insert(default_list, '♥')
+                    --     return default_list
+                    -- end,
+                    -- or false to disable the symbol. Works for all symbols
+                    -- headlines = false,
+                    checkboxes = false,
+                },
+            },
+        },
     },
 
     config = {
