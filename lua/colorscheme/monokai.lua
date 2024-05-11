@@ -31,6 +31,8 @@ return {
             diff_remove = '#55393d',
             diff_change = '#354157',
             diff_text = '#4e432f',
+            diff_purple = '#3a3446',
+            diff_yellow = '#444634',
             brown = '#4e432f',
         } -- }}}
 
@@ -44,7 +46,10 @@ return {
             -- Type = { fg = paletter.purple },
             -- Special = { fg = paletter.red },
             -- String = { fg = paletter.orange },
-            ['@org.headline.level1'] = { fg = paletter.aqua },
+            ['@org.headline.level1'] = {
+                fg = paletter.aqua,
+                bg = paletter.diff_change,
+            },
             ['@org.headline.level2'] = { fg = paletter.green },
             ['@org.headline.level3'] = { fg = paletter.purple },
             ['@org.headline.level4'] = { fg = paletter.red },
@@ -63,6 +68,15 @@ return {
             ['@org.properties'] = { fg = paletter.pink },
             ['@org.priority.default'] = { fg = paletter.yellow },
             ['@org.priority.lowest'] = { fg = paletter.green },
+
+            Headline1 = { bg = paletter.diff_change },
+            Headline2 = { bg = paletter.diff_add },
+            Headline3 = { bg = paletter.diff_purple },
+            Headline4 = { bg = paletter.diff_remove },
+            Headline5 = { bg = paletter.diff_text },
+            Headline6 = { bg = paletter.diff_yellow },
+            Headline7 = { bg = paletter.diff_change },
+            Headline8 = { bg = paletter.diff_add },
 
             TelescopeBorder = { fg = paletter.pink },
             FloatBorder = { fg = paletter.pink },

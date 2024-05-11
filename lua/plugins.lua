@@ -4,30 +4,9 @@ local VeryLazyFile = { 'BufReadPost', 'BufWritePre', 'BufNewFile', 'VeryLazy' }
 -- Maybe read the README.md
 return {
     -- Main{{{
-    -- LSP & Mason {{{
-    {
-        -- LSP Configuration & Plugins
-        'neovim/nvim-lspconfig',
-        event = LazyFile,
-        config = function()
-            require('pluggers.lspconfig')
-        end,
-        dependencies = {
-            -- Easy installation of LSPs and more
-            {
-                'WhoIsSethDaniel/mason-tool-installer.nvim',
-                dependencies = {
-                    { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
-                },
-            },
-            -- Shows a little widget showing the status of LSP
-            -- { 'j-hui/fidget.nvim', opts = {} },
-        },
-    },
-
-    -- }}}
-
-    -- Treesitter {{{
+    -- Language server
+    require('pluggers.mason'),
+    -- nvim-treesitter Text Highlighting and more {{{
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
@@ -46,54 +25,21 @@ return {
         opts = {},
     },
     -- }}}
-
-    -- Text Completion {{{
-    {
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        event = 'InsertEnter',
-        dependencies = {
-            -- Adds paths to sources
-            'hrsh7th/cmp-path',
-
-            -- Adds LSP completion capabilities
-            'hrsh7th/cmp-nvim-lsp',
-
-            -- Adds the built-in vim auto-complete
-            'hrsh7th/cmp-buffer',
-
-            -- Snippet Engine & its associated nvim-cmp source
-            {
-                'L3MON4D3/LuaSnip',
-                version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-                build = 'make install_jsregexp',
-                dependencies = {
-                    {
-                        'rafamadriz/friendly-snippets',
-                        config = function()
-                            require('luasnip.loaders.from_vscode').lazy_load()
-                        end,
-                    },
-                },
-            },
-            'saadparwaiz1/cmp_luasnip',
-        },
-        config = function()
-            require('pluggers.cmp')
-        end,
-    }, -- }}}
-
-    -- Formatting, Linting, Debugging and Orgmode {{{
+    -- nvim-cmp Text Completion
+    require('pluggers.cmp'),
+    -- confomrm.nvim Formatting
     require('pluggers.conform'),
+    -- nvim-lint Linting
     require('pluggers.lint'),
-    require('pluggers.debug'),
+    -- Debugging (not really finished)
+    ---require('pluggers.debug'),
     -- Orgmode is lazy loaded and this would never trigger if you just never use it
     require('pluggers.org'),
-    --}}}
+    -- telescope.nvim Fuzzy Finder
+    require('pluggers.telescope'),
     -- }}}
-
     -- Other {{{
-    -- Color the background of color codes {{{
+    -- coloizer.nvim Visualize color codes in code {{{
     {
         'JosefLitos/colorizer.nvim',
         cmd = { 'ColorizerToggle' },
@@ -111,28 +57,120 @@ return {
         },
     }, -- }}}
     -- Git related plugins {{{
-    -- Git Signs{{{
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    -- gitsigns.nvim Adds git related signs to the gutter, as well as utilities for managing changes {{{
     {
         'lewis6991/gitsigns.nvim',
         event = LazyFile,
         opts = require('pluggers.gitsigns'),
     }, -- }}}
-    -- Fugitive {{{
+    -- Fugitive adds commands for doing git stuff{{{
     {
         'tpope/vim-fugitive',
+        keys = {
+            {
+                '<leader>gg',
+                '<CMD>Git<CR>',
+                desc = 'Git [g]it',
+            },
+            {
+                '<leader>gd',
+                '<CMD>Git diff<CR>',
+                desc = 'Git [d]iff',
+            },
+            {
+                '<leader>gc',
+                '<CMD>Git commit<CR>',
+                { desc = 'Git [c]ommit' },
+            },
+            {
+                '<leader>gaa',
+                '<CMD>Git add .<CR>',
+                { desc = 'Git Add [a]ll' },
+            },
+            {
+                '<leader>gac',
+                '<CMD>Git add %<CR>',
+                { desc = 'Git Add [c]urrent buffer' },
+            },
+            {
+                '<leader>gs',
+                '<CMD>Git show<CR>',
+                { desc = 'Git [s]how' },
+            },
+            {
+                '<leader>gp',
+                '<CMD>Git push<CR>',
+                { desc = 'Git [p]ush' },
+            },
+            {
+                'gu',
+                '<CMD>diffget //2<CR>',
+                { noremap = true },
+            },
+            {
+                'gh',
+                '<CMD>diffget //3<CR>',
+                { noremap = true },
+            },
+        },
         cmd = { 'Git', 'GBrowse' },
         dependencies = 'tpope/vim-rhubarb',
     }, -- }}}
     -- }}}
-    --{{{ Sessions
+    -- persisted.nvim Session management{{{
     {
         'olimorris/persisted.nvim',
         lazy = false, -- make sure the plugin is always loaded at startup
         -- opts = { autoload = true, use_git_branch = true, silent = true },
-        opts = {},
+        keys = {
+            {
+                '<leader>sd',
+                '<CMD>SessionDelete<CR>',
+                desc = 'Session [d]elete',
+            },
+            {
+                '<leader>st',
+                '<CMD>SessionToggle<CR>',
+                desc = 'Session [t]oggle',
+            },
+            {
+
+                '<leader>sl',
+                '<CMD>SessionLoad<CR>',
+                desc = 'Session [l]oad',
+            },
+            {
+
+                '<leader>sL',
+                '<CMD>SessionLoadLast<CR>',
+                desc = 'Session [L]oad last session',
+            },
+            {
+                '<leader>sp',
+                '<CMD>SessionStop<CR>',
+                desc = 'Session [p]ause',
+            },
+            {
+                '<leader>sr',
+                '<CMD>SessionStart<CR>',
+                desc = 'Session [r]ecord',
+            },
+            {
+                '<leader>ss',
+                '<CMD>SessionSave<CR>',
+                desc = 'Session [s]ave',
+            },
+        },
+        opts = {
+            autoload = true,
+            silent = true,
+            allowed_dirs = {
+                '~/Other/pumpndump/',
+                '~/Code',
+            },
+        },
     }, -- }}}
-    -- Trouble Diagnostic Viewer {{{
+    -- trouble.nvim Diagnostic Viewer {{{
     {
         'folke/trouble.nvim',
         cmd = { 'TroubleToggle' },
@@ -184,39 +222,7 @@ return {
         },
     },
     -- }}}
-    -- Telescope / Fuzzy Finder {{{
-    {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        cmd = 'Telescope',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-            },
-        },
-        config = function()
-            local telescope = require('telescope')
-            telescope.setup({
-                defaults = {
-                    layout_config = {
-                        horizontal = {
-                            preview_width = 0.55,
-                            results_width = 0.5,
-                        },
-                        width = 0.95,
-                        height = 0.90,
-                        preview_cutoff = 120,
-                    },
-                },
-            })
-            pcall(telescope.load_extension, 'fzf')
-            pcall(telescope.load_extension, 'persisted')
-        end,
-    },
-    -- }}}
-    -- Undotree {{{
+    -- undotree Shows a tree, of your undos {{{
     {
         'mbbill/undotree',
         cmd = { 'UndotreeToggle', 'UndotreeFocus' },
@@ -283,7 +289,7 @@ return {
             }
         end,
     }, -- }}}
-    -- ZenMode{{{
+    -- zen-mode.nvim {{{
     {
         'folke/zen-mode.nvim',
         cmd = { 'ZenMode' },
@@ -298,12 +304,10 @@ return {
         opts = {
             window = {
                 width = 85, -- width of the Zen window
-                options = {
-                    colorcolumn = '0',
-                },
             },
             plugins = {
                 options = {
+                    colorcolumn = 0,
                     enabled = true,
                     ruler = false, -- disables the ruler text in the cmd line area
                     showcmd = false, -- disables the command in the last line of the screen
@@ -318,7 +322,6 @@ return {
     },
     -- }}}
     -- }}}
-
     -- mini.nvim improvements {{{
     -- better (a)round and (i)nside commands{{{
     { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
@@ -359,30 +362,31 @@ return {
         'echasnovski/mini.surround',
         keys = {
             { 'sa', mode = 'v' },
-            'sa',
-            'sd',
-            'sr',
-            'sf',
-            'sF',
-            'sh',
-            'sn',
+            { 'sa', description = 'Add surrounding' },
+            { 'sd', description = 'Delete surrounding' },
+            { 'sr', description = 'Surround replace' },
+            { 'sf', description = 'Find right surrounding' },
+            { 'sF', description = 'Find left surrounding' },
+            { 'sh', description = 'Highlight surrounding' },
+            { 'sn', description = 'Update `MiniSurround.config.n_lines`' },
         },
         opts = {},
     },
     -- }}}
     -- }}}
-
     -- Theme / Visual {{{
     -- Themes {{{
     -- go to the lua/colorscheme dir to see more
-    require('colorscheme.monokai'),
+    -- require('colorscheme.monokai'), -- Favorite
     -- require('colorscheme.catppuccin'),
     -- require('colorscheme.sonokai'),
     -- require('colorscheme.mini'),
     -- require('colorscheme.tokyonight'),
+    require('colorscheme.rosepine'),
     -- vim.cmd.colorscheme('habamax'),
     -- Enable and run :TransparentEnable to enable transparency on any theme
-    require('colorscheme.transparent'),
+    -- require('colorscheme.transparent-plugin'),
+    -- Look in settings.lua for the different transparentcy
     -- }}}
     -- Statusline {{{
     {
@@ -448,27 +452,10 @@ return {
 
     -- }}}
     -- }}}
-
     -- Filetype specific plugins{{{
-    -- X go.nvim {{{
-    {
-        'ray-x/go.nvim',
-        enabled = false,
-        dependencies = { -- optional packages
-            'ray-x/guihua.lua',
-            'neovim/nvim-lspconfig',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        config = function()
-            require('go').setup()
-        end,
-        ft = { 'go', 'gomod' },
-        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    }, -- }}}
-    -- X neodev.nvim {{{
-    { 'folke/neodev.nvim', enabled = true, opts = {} }, -- }}}
+    -- neodev.nvim {{{
+    { 'folke/neodev.nvim', opts = {} }, -- }}}
     -- }}}
-
     -- Fun stuff {{{
     { -- StartupTime{{{
         'dstein64/vim-startuptime',
@@ -481,10 +468,10 @@ return {
         'Eandrju/cellular-automaton.nvim',
         cmd = 'CellularAutomaton',
     }, -- }}}
-    {
+    { -- Blazingly training???{{{
         'ThePrimeagen/vim-be-good',
         cmd = 'VimBeGood',
-    },
+    }, -- }}}
     -- require('dragmove'),
     -- }}}
 }

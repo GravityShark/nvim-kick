@@ -1,7 +1,6 @@
 M = {}
 
--- Treesitter ensure_installed{{{
-M.treesitter = {
+M.treesitter = { -- {{{
     'lua',
     'python',
     'c',
@@ -31,8 +30,7 @@ M.treesitter = {
     -- 'rust',
 } -- }}}
 
--- Mason ensure_installed{{{
-M.servers = {
+M.servers = { -- {{{
     pyright = {},
 
     gopls = {
@@ -50,7 +48,7 @@ M.servers = {
 
     lua_ls = {
         Lua = {
-            completion = { autoRequire = true, callSnippet = 'replace' },
+            completion = { autoRequire = true, callSnippet = 'Replace' },
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
         },
@@ -78,14 +76,14 @@ M.mason = {
 
     'lua-language-server',
     'stylua',
-}
+} -- }}}
 
-M.mason_dap = {
+M.mason_dap = { -- {{{
     'delve',
     'cppdbg',
-}
+} -- }}}
 
-M.format = {
+M.format = { -- {{{
     -- angular = {"prettierd"},
     css = { 'prettierd' },
     -- flow = {"prettierd"},
@@ -115,25 +113,13 @@ M.formatextra = {
     python = {
         prepend_args = { '--config', '~/.ruff.toml' },
     },
-}
+} -- }}}
 
-M.lint = {
+M.lint = { -- {{{
     python = { 'ruff' },
     javascript = { 'eslint_d' },
     go = { 'golangcilint' },
     -- gdscript = { 'gdlint' },
-}
-
--- none-ls sources{{{
--- function M.null()
---     local null_ls = require('null-ls')
---
---     -- local formatting = null_ls.builtins.formatting
---     local lint = null_ls.builtins.diagnostics
---
---     return {
---         lint.gdlint,
---     }
--- end -- }}}
+} -- }}}
 
 return M

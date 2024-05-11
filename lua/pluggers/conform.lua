@@ -1,7 +1,7 @@
 -- local slow_format_filetypes = {}
 return {
     'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
+    event = 'BufWritePre',
     cmd = { 'ConformInfo' },
     keys = {
         {

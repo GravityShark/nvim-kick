@@ -1,12 +1,8 @@
 -- See `:help vim.o`
+-- Enable transparency
+require('colorscheme.transparent')
 
--- vim.cmd([[
---   autocmd BufReadPost *.png :silent !feh % &
--- ]])
--- vim.cmd([[
---   autocmd BufReadPost *.jpg :silent !feh % &<CR>:bdelete<CR>
--- ]])
-
+-- When in allow for these applications when opening a respective file type{{{
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern = { '*.pdf' },
     command = ':silent !librewolf % &',
@@ -35,7 +31,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
         require('mini.bufremove').delete()
         CheckTabline()
     end,
-})
+}) -- }}}
 
 -- Mouse stuff{{{
 -- vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
@@ -43,6 +39,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
 -- vim.cmd.aunmenu('PopUp.Delete')}}}
 
 -- Opts {{{
+-- Enable nerd font
+vim.g.have_nerd_font = false
+--
 -- What data is saved when saving a session
 vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos'
 
@@ -142,15 +141,15 @@ vim.opt.pumheight = 10
 
 -- [[ Highlight on yank ]]{{{
 -- See `:help vim.highlight.on_yank()`
-local highlight_group =
-    vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
+-- local highlight_group =
+--     vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--     callback = function()
+--         vim.highlight.on_yank()
+--     end,
+--     group = highlight_group,
+--     pattern = '*',
+-- })
 --}}}
 
 -- LSP Diagnostics Signs {{{
