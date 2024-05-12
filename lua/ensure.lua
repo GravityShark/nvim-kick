@@ -68,7 +68,7 @@ M.mason = {
     'tailwindcss-language-server',
     'typescript-language-server',
     'prettierd',
-    'eslint_d',
+    'quick-lint-js',
     -- 'htmx-lsp',
 
     'clangd',
@@ -117,7 +117,7 @@ M.formatextra = {
 
 M.lint = { -- {{{
     python = { 'ruff' },
-    javascript = { 'eslint_d' },
+    javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
     -- gdscript = { 'gdlint' },
 } -- }}}

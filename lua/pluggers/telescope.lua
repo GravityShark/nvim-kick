@@ -126,6 +126,10 @@ return {
                 mappings = {
                     i = {
                         ['<CR>'] = select_one_or_multi,
+                        ['<Tab>'] = require('telescope.actions').toggle_selection
+                            + require('telescope.actions').move_selection_better,
+                        ['<S-Tab>'] = require('telescope.actions').toggle_selection
+                            + require('telescope.actions').move_selection_worse,
                     },
                 },
                 layout_config = {
