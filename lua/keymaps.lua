@@ -31,7 +31,7 @@ vim.api.nvim_set_keymap(
     { silent = true, desc = '[Q]uit without saving' }
 ) -- }}}
 -- Allow for using t inside nvim {{{
-vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>!t<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
 -- }}}
 -- Easier visual mode indents {{{
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
@@ -112,7 +112,7 @@ vim.keymap.set(
 vim.keymap.set(
     'n',
     '<leader>rx',
-    '<CMD>!chmod +x %<CR>',
+    '<CMD>silent !chmod +x %<CR>',
     { desc = 'chmod +[x] %' }
 )
 -- }}}
