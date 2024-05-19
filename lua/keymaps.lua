@@ -4,6 +4,13 @@
 --
 -- Plugin remaps are located in the respective plugin definition under their init function
 
+vim.api.nvim_set_keymap(
+    'n',
+    '<esc>',
+    ':noh<return><esc>',
+    { silent = true, noremap = true }
+)
+
 -- Write and quit binings{{{
 vim.api.nvim_set_keymap(
     'n',

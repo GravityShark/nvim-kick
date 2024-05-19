@@ -26,6 +26,11 @@ M.treesitter = { -- {{{
     'org',
     'diff',
     'go',
+    'godot_resource',
+    'gomod',
+    'gosum',
+    'templ',
+    'svelte',
     -- 'gdscript',
     -- 'rust',
 } -- }}}
@@ -42,6 +47,7 @@ M.servers = { -- {{{
     cssls = {},
     tailwindcss = {},
     tsserver = {},
+    svelte = {},
     -- htmx = {},
 
     clangd = {},
@@ -67,6 +73,7 @@ M.mason = {
     'css-lsp',
     'tailwindcss-language-server',
     'typescript-language-server',
+    'svelte-language-server',
     'prettierd',
     'quick-lint-js',
     -- 'htmx-lsp',
