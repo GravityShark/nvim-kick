@@ -443,7 +443,7 @@ return {
 
     -- }}}
     -- }}}
-    -- Filetype specific plugins -- {{{}}}
+    -- Filetype specific plugins -- {{{
     -- neodev.nvim
     { 'folke/neodev.nvim', enabled = false, opts = {} }, -- }}}
     -- Fun stuff {{{

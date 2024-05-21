@@ -1,9 +1,9 @@
 -- See `:help vim.o`
 -- Enable transparency{{{
--- require('colorscheme.transparent')
+require('colorscheme.transparent')
 -- If no transparency is enabled enable winblend instead
-vim.opt.pumblend = 10
-vim.opt.winblend = 10 -- }}}
+-- vim.opt.pumblend = 10
+-- vim.opt.winblend = 10 -- }}}
 
 -- Terminal Helpers{{{
 -- Disable line numbers when opening a Terminal

@@ -39,6 +39,7 @@
 
 ### TODO
 
+- [ ] Setup run commands to be integreated with :term
 - [x] instead of harpoon have a function tha like lists the buffers in order and allows me to like do <a-1> to <a-9> and select that buffer in my tabline
 - [ ] try to use mini.[colors/base16/hues] or (lush)[https://github.com/rktjmp/lush.nvim]
   - [ ] and have it use telescope as a selector of themes like nvchad
