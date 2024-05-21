@@ -1,5 +1,7 @@
 # nvim-kick
 
+> use neovim 0.10
+
 ## my own neovim config from kickstart
 
 > its pratically done ngl
@@ -20,7 +22,7 @@
 - [ ] [Codeium](https://github.com/Exafunction/codeium.nvim)
 - [ ] [Todo Comments](https://github.com/folke/todo-comments.nvim)
 - [ ] [Neoconf](https://github.com/folke/neoconf.nvim)
-> but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
+  > but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
 
 #### mini.nvim
 
@@ -36,7 +38,8 @@
 - [ ] mini.splitjoin -- cool way of like splitting lines like
 
 ### TODO
-- [ ] instead of harpoon have a function tha like lists the buffers in order and allows me to like do <a-1> to <a-9> and select that buffer in my tabline
+
+- [x] instead of harpoon have a function tha like lists the buffers in order and allows me to like do <a-1> to <a-9> and select that buffer in my tabline
 - [ ] try to use mini.[colors/base16/hues] or (lush)[https://github.com/rktjmp/lush.nvim]
   - [ ] and have it use telescope as a selector of themes like nvchad
 - [ ] setup treesitter keybindings and such

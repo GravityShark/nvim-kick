@@ -4,13 +4,14 @@
 --
 -- Plugin remaps are located in the respective plugin definition under their init function
 
+vim.keymap.set('t', '<C-space>', '<C-\\><C-n><C-w>h', { silent = true })
+-- Remove highlighting with escape{{{
 vim.api.nvim_set_keymap(
     'n',
     '<esc>',
     ':noh<return><esc>',
     { silent = true, noremap = true }
-)
-
+) -- }}}
 -- Write and quit binings{{{
 vim.api.nvim_set_keymap(
     'n',

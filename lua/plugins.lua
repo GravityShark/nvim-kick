@@ -121,7 +121,6 @@ return {
     {
         'olimorris/persisted.nvim',
         lazy = false, -- make sure the plugin is always loaded at startup
-        -- opts = { autoload = true, use_git_branch = true, silent = true },
         keys = {
             {
                 '<leader>sd',
@@ -162,7 +161,6 @@ return {
             },
         },
         opts = {
-            autoload = true,
             silent = true,
             allowed_dirs = {
                 '~/Other/pumpndump/',
@@ -241,54 +239,6 @@ return {
         event = LazyFile,
     },
     --}}}
-    -- which-key {{{
-    {
-        'folke/which-key.nvim',
-        event = 'VeryLazy',
-        opts = function()
-            require('which-key').register({
-                f = { name = '[f]ind' },
-                l = { name = '[l]sp' },
-                s = { name = '[s]ession' },
-                r = {
-                    name = '[r]un',
-                    g = {
-                        name = '[g]cc',
-                    },
-                },
-                o = { name = '[o]rg' },
-                g = {
-                    name = '[g]it',
-                    a = {
-                        name = 'Git [a]dd',
-                    },
-                },
-                b = { name = 'de[b]ug' },
-            }, { prefix = '<leader>' })
-            return {
-                window = {
-                    border = 'single', -- none, single, double, shadow
-                    position = 'bottom', -- bottom, top
-                    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
-                    padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-                    winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-                    zindex = 1000, -- positive value to position WhichKey above other floating windows.
-                },
-                layout = {
-                    height = { min = 4, max = 25 }, -- min and max height of the columns
-                    width = { min = 20, max = 50 }, -- min and max width of the columns
-                    spacing = 3, -- spacing between columns
-                    align = 'center', -- align columns left, center or right
-                },
-
-                icons = {
-                    breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
-                    separator = '»', -- symbol used between a key and it's label
-                    group = '+', -- symbol prepended to a group
-                },
-            }
-        end,
-    }, -- }}}
     -- zen-mode.nvim {{{
     {
         'folke/zen-mode.nvim',
@@ -321,7 +271,50 @@ return {
         },
     },
     -- }}}
-    -- }}}
+    -- which-key.nvim Keymap hints {{{
+    {
+        'folke/which-key.nvim',
+        event = 'VeryLazy',
+        opts = function()
+            require('which-key').register({
+                f = { name = '[f]ind' },
+                s = { name = '[s]ession' },
+                r = {
+                    name = '[r]un',
+                    g = {
+                        name = '[g]cc',
+                    },
+                },
+                o = { name = '[o]rg' },
+                g = {
+                    name = '[g]it',
+                    a = {
+                        name = 'Git [a]dd',
+                    },
+                },
+                b = { name = 'de[b]ug' },
+            }, { prefix = '<leader>' })
+            return {
+                window = {
+                    border = 'single', -- none, single, double, shadow
+                    position = 'bottom', -- bottom, top
+                    margin = { 0, 0, 0, 0.5 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+                    padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
+                    zindex = 1000, -- positive value to position WhichKey above other floating windows.
+                },
+                layout = {
+                    spacing = 1, -- spacing between columns
+                    align = 'center', -- align columns left, center or right
+                },
+
+                icons = {
+                    breadcrumb = '➜', -- symbol used in the command line area that shows your active key combo
+                    separator = '»', -- symbol used between a key and it's label
+                    group = '+', -- symbol prepended to a group
+                },
+            }
+        end,
+    }, -- }}}
     -- mini.nvim improvements {{{
     -- better (a)round and (i)nside commands{{{
     { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
@@ -333,20 +326,14 @@ return {
         opts = { highlight = 0 },
     },
     -- }}}
-    -- Auto pairs (){{{
+    -- Auto pairs () {{{
     {
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
         opts = {},
     }, -- }}}
-    -- "gcc/gc" to comment visual regions/lines{{{
-    {
-        'echasnovski/mini.comment',
-        keys = { 'gcc', { 'gc', mode = 'v' } },
-        opts = {},
-    },
-    -- }}}
     -- Fast bufferline{{{
+    -- r
     {
         'GravityShark0/mini.tabline',
         event = { 'BufAdd', 'BufDelete', 'UIEnter' },
@@ -372,6 +359,8 @@ return {
         },
         opts = {},
     },
+
+    -- }}}
     -- }}}
     -- }}}
     -- Theme / Visual {{{
@@ -382,8 +371,10 @@ return {
     -- require('colorscheme.sonokai'),
     -- require('colorscheme.mini'),
     -- require('colorscheme.tokyonight'),
-    require('colorscheme.rosepine'),
+    -- require('colorscheme.rosepine'),
     -- vim.cmd.colorscheme('habamax'),
+    -- vim.cmd.colorscheme('habamax'),
+    vim.cmd.colorscheme('default'),
     -- Enable and run :TransparentEnable to enable transparency on any theme
     -- require('colorscheme.transparent-plugin'),
     -- Look in settings.lua for the different transparentcy
@@ -395,7 +386,7 @@ return {
         lazy = false,
     },
     -- }}}
-    -- Illuminate same words{{{
+    -- Illuminate words that are the same {{{
     {
         'echasnovski/mini.cursorword',
         event = VeryLazyFile,
@@ -452,10 +443,9 @@ return {
 
     -- }}}
     -- }}}
-    -- Filetype specific plugins{{{
-    -- neodev.nvim {{{
-    { 'folke/neodev.nvim', opts = {} }, -- }}}
-    -- }}}
+    -- Filetype specific plugins -- {{{}}}
+    -- neodev.nvim
+    { 'folke/neodev.nvim', enabled = false, opts = {} }, -- }}}
     -- Fun stuff {{{
     { -- StartupTime{{{
         'dstein64/vim-startuptime',

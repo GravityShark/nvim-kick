@@ -21,6 +21,7 @@ local transparent = {
     'NonText',
     'SignColumn',
     'EndOfBuffer',
+    -- Plugins
     'TelescopeNormal',
     'TelescopeBorder',
     'TelescopeSelectionCaret',
@@ -51,19 +52,3 @@ for _, v in ipairs(transparent) do
         vim.api.nvim_set_hl(0, v, attrs)
     end
 end
--- local groups = type(transparent) == 'string' and { transparent } or transparent
--- for _, v in ipairs(groups) do
---     local ok, prev_attrs = pcall(vim.api.nvim_get_hl_by_name, v, true)
---     if
---         ok
---         and (prev_attrs.background or prev_attrs.bg or prev_attrs.ctermbg)
---     then
---         local attrs = vim.tbl_extend(
---             'force',
---             prev_attrs,
---             { bg = 'NONE', ctermbg = 'NONE' }
---         )
---         attrs[true] = nil
---         vim.api.nvim_set_hl(0, v, attrs)
---     end
--- end

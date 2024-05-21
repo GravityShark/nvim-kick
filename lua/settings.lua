@@ -1,10 +1,30 @@
 -- See `:help vim.o`
--- Enable transparency
-require('colorscheme.transparent')
+-- Enable transparency{{{
+-- require('colorscheme.transparent')
+-- If no transparency is enabled enable winblend instead
+vim.opt.pumblend = 10
+vim.opt.winblend = 10 -- }}}
+
+-- Terminal Helpers{{{
+-- Disable line numbers when opening a Terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+    callback = function()
+        vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+    end,
+})
+-- Automatically opening as insert mode when the buffer is a terminal
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        if vim.api.nvim_buf_get_option(0, 'buftype') == 'terminal' then
+            vim.cmd.startinsert()
+        end
+    end,
+}) -- }}}
 
 -- When in allow for these applications when opening a respective file type{{{
 vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = { '*.pdf' },
+    pattern = '*.pdf',
     command = ':silent !librewolf % &',
 })
 
@@ -33,14 +53,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end,
 }) -- }}}
 
--- Mouse stuff{{{
--- vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
--- vim.cmd.aunmenu('PopUp.-1-')
--- vim.cmd.aunmenu('PopUp.Delete')}}}
-
 -- Opts {{{
 -- Enable nerd font
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 --
 -- What data is saved when saving a session
 vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos'
@@ -70,7 +85,7 @@ vim.opt.scrolloff = 8
 
 -- Decrease update time
 vim.opt.updatetime = 250 -- 50
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 0
 vim.opt.timeout = true -- whichkey
 
 -- Enable break indent
@@ -215,3 +230,8 @@ end, {
 
     desc = 'Re-enable autoformat-on-save',
 }) -- }}}
+
+-- Mouse stuff{{{
+-- vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
+-- vim.cmd.aunmenu('PopUp.-1-')
+-- vim.cmd.aunmenu('PopUp.Delete')}}}

@@ -60,22 +60,22 @@ return {
                 },
             },
         },
-        {
-            'chipsenkbeil/org-roam.nvim',
-            config = {
-                directory = '~/Notes',
-                database = {
-                    path = '~/Notes/.db',
-                },
-                templates = {
-                    d = {
-                        description = 'default',
-                        template = '*',
-                        target = '%<%Y%m%d%H%M%S>-%[slug].org',
-                    },
-                },
-            },
-        },
+        -- {
+        --     'chipsenkbeil/org-roam.nvim',
+        --     opts = {
+        --         directory = '~/Notes',
+        --         database = {
+        --             path = '~/Notes/.db',
+        --         },
+        --         templates = {
+        --             d = {
+        --                 description = 'default',
+        --                 template = '*',
+        --                 target = '%<%Y%m%d%H%M%S>-%[slug].org',
+        --             },
+        --         },
+        --     },
+        -- },
         -- {
         --     'akinsho/org-bullets.nvim',
         --     opts = {
@@ -108,7 +108,7 @@ return {
         -- },
     },
 
-    config = {
+    opts = {
         org_agenda_files = '~/Notes/**/*',
         org_default_notes_file = '~/Notes/refile.org',
         org_todo_keywords = {

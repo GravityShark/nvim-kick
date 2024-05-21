@@ -15,12 +15,12 @@ return {
         }, -- Search for a file in project
         {
             '<leader>ff',
-            '<CMD>Telescope find_files<CR>',
+            '<CMD>Telescope find_files find_command=fd<CR>',
             desc = 'Find [f]iles',
         }, -- Search for a file (ignoring dotfiles)
         {
             '<leader>fa',
-            '<CMD>Telescope find_files hidden=true no_ignore=true<CR>',
+            '<CMD>Telescope find_files find_command=fd, hidden=true no_ignore=true<CR>',
             desc = 'Find [a]ll Files',
         }, -- Search for a file (with dotfiles)
         -- vim.api.nvim_set_keymap(
@@ -32,7 +32,7 @@ return {
         {
             '<leader>fb',
             '<CMD>Telescope git_branches<CR>',
-            noremap = true,
+            desc = 'Find git [b]ranches',
         },
         -- Show git branches
         {
@@ -100,6 +100,13 @@ return {
         {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        },
+        {
+            'prochri/telescope-all-recent.nvim',
+            dependencies = {
+                'kkharji/sqlite.lua',
+            },
+            opts = {},
         },
     },
     config = function()

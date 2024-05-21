@@ -19,19 +19,19 @@ return {
                     vim.lsp.buf.definition,
                     { buffer = ev.buf, desc = 'LSP [d]efinition' }
                 )
-                vim.keymap.set(
-                    'n',
-                    '[d',
-                    vim.diagnostic.goto_prev,
-                    { desc = 'Previous diagnostic' }
-                )
-                vim.keymap.set(
-                    'n',
-                    ']d',
-                    vim.diagnostic.goto_next,
-                    { desc = 'Next diagnostic' }
-                )
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
+                -- vim.keymap.set(
+                --     'n',
+                --     '[d',
+                --     vim.diagnostic.goto_prev,
+                --     { desc = 'Previous diagnostic' }
+                -- )
+                -- vim.keymap.set(
+                --     'n',
+                --     ']d',
+                --     vim.diagnostic.goto_next,
+                --     { desc = 'Next diagnostic' }
+                -- )
+                -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
                 vim.keymap.set(
                     'i',
                     '<C-h>',
@@ -44,6 +44,12 @@ return {
                     vim.lsp.buf.workspace_symbol,
                     { buffer = ev.buf, desc = 'LSP [w]orkspace Symbol' }
                 )
+                -- vim.keymap.set(
+                --     'n',
+                --     '<leader>lh',
+                --     vim.lsp.buf.inlay_hint.is_enabled(),
+                --     { buffer = ev.buf, desc = 'LSP [i]nlay hint' }
+                -- )
                 vim.keymap.set(
                     'n',
                     '<leader>ld',
