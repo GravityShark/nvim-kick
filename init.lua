@@ -1,6 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Initialize lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -14,6 +11,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+-- }}}
+
+-- Setup plugins {{{
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- It's at lua/plugins.lua
 require('lazy').setup({ import = 'plugins' }, {
@@ -33,6 +35,7 @@ require('lazy').setup({ import = 'plugins' }, {
                 -- "matchit",
                 -- "matchparen",
                 -- "netrwPlugin",
+                -- "shada",
                 'rplugin',
                 'fzf',
                 'man',
@@ -41,6 +44,7 @@ require('lazy').setup({ import = 'plugins' }, {
                 'tohtml',
                 'tutor',
                 'zipPlugin',
+                'osc52',
             },
         },
     },

@@ -6,7 +6,8 @@ return {
     -- Main{{{
     -- Language server
     require('pluggers.mason'),
-    -- nvim-treesitter Text Highlighting and more {{{
+    -- nvim-treesitter Text Highlighting and more
+    -- {{{
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
@@ -56,21 +57,20 @@ return {
             },
         },
     }, -- }}}
-    -- Git related plugins {{{
     -- gitsigns.nvim Adds git related signs to the gutter, as well as utilities for managing changes {{{
     {
         'lewis6991/gitsigns.nvim',
         event = LazyFile,
         opts = require('pluggers.gitsigns'),
     }, -- }}}
-    -- Fugitive adds commands for doing git stuff{{{
+    -- vim-fugitive adds commands for doing git stuff{{{
     {
         'tpope/vim-fugitive',
         keys = {
             {
-                '<leader>gg',
+                '<leader>gs',
                 '<CMD>Git<CR>',
-                desc = 'Git [g]it',
+                desc = 'Git [s]tatus',
             },
             {
                 '<leader>gd',
@@ -93,80 +93,56 @@ return {
                 { desc = 'Git Add [c]urrent buffer' },
             },
             {
-                '<leader>gs',
-                '<CMD>Git show<CR>',
-                { desc = 'Git [s]how' },
+                '<leader>gb',
+                '<CMD>Git blame<CR>',
+                { desc = 'Git [b]lame' },
             },
+            -- {
+            --     '<leader>gs',
+            --     '<CMD>Git show<CR>',
+            --     { desc = 'Git [s]how' },
+            -- },
             {
                 '<leader>gp',
                 '<CMD>Git push<CR>',
                 { desc = 'Git [p]ush' },
             },
             {
-                'gu',
+                'gl',
                 '<CMD>diffget //2<CR>',
-                { noremap = true },
+                { desc = 'diffget //2', noremap = true },
             },
             {
                 'gh',
                 '<CMD>diffget //3<CR>',
-                { noremap = true },
+                { desc = 'diffget //3', noremap = true },
             },
         },
         cmd = { 'Git', 'GBrowse' },
         dependencies = 'tpope/vim-rhubarb',
     }, -- }}}
-    -- }}}
-    -- persisted.nvim Session management{{{
+    -- persistence.nvim Session management{{{
     {
-        'olimorris/persisted.nvim',
-        lazy = false, -- make sure the plugin is always loaded at startup
+        'folke/persistence.nvim',
+        event = 'BufReadPre', -- this will only start session saving when an actual file was opened
         keys = {
             {
-                '<leader>sd',
-                '<CMD>SessionDelete<CR>',
-                desc = 'Session [d]elete',
-            },
-            {
-                '<leader>st',
-                '<CMD>SessionToggle<CR>',
-                desc = 'Session [t]oggle',
-            },
-            {
-
                 '<leader>sl',
-                '<CMD>SessionLoad<CR>',
+                '<CMD>lua require("persistence").load()<CR>',
                 desc = 'Session [l]oad',
             },
             {
-
                 '<leader>sL',
-                '<CMD>SessionLoadLast<CR>',
+                '<CMD>lua require("persistence").load({ last = true })<CR>',
                 desc = 'Session [L]oad last session',
             },
             {
                 '<leader>sp',
-                '<CMD>SessionStop<CR>',
+                '<CMD>lua require("persistence").stop()<CR>',
                 desc = 'Session [p]ause',
             },
-            {
-                '<leader>sr',
-                '<CMD>SessionStart<CR>',
-                desc = 'Session [r]ecord',
-            },
-            {
-                '<leader>ss',
-                '<CMD>SessionSave<CR>',
-                desc = 'Session [s]ave',
-            },
         },
-        opts = {
-            silent = true,
-            allowed_dirs = {
-                '~/Other/pumpndump/',
-                '~/Code',
-            },
-        },
+        opts = {},
     }, -- }}}
     -- trouble.nvim Diagnostic Viewer {{{
     {
@@ -178,36 +154,6 @@ return {
                 '<CMD>TroubleToggle<CR>',
                 desc = 'Trouble [x] Toggle',
             },
-            -- {
-            --     '<leader>xx',
-            --     '<CMD>TroubleToggle<CR>',
-            --     desc = 'Trouble [x] Toggle',
-            -- },
-            -- {
-            --     '<leader>xw',
-            --     '<cmd>TroubleToggle workspace_diagnostics<cr>',
-            --     desc = 'Trouble [w]orkspace Diagnostics',
-            -- },
-            -- {
-            --     '<leader>xd',
-            --     '<cmd>TroubleToggle document_diagnostics<cr>',
-            --     desc = 'Trouble [d]ocument Diagnostics',
-            -- },
-            -- {
-            --     '<leader>xq',
-            --     '<cmd>TroubleToggle quickfix<cr>',
-            --     desc = 'Trouble [q]uickfix',
-            -- },
-            -- {
-            --     '<leader>xl',
-            --     '<cmd>TroubleToggle loclist<cr>',
-            --     desc = 'Trouble [l]OC/Diagnostic List',
-            -- },
-            -- {
-            --     '<leader>xr',
-            --     '<cmd>TroubleToggle lsp_references<cr>',
-            --     desc = 'Trouble LSP [r]eferences',
-            -- },
         },
         opts = {
             signs = {
@@ -293,6 +239,7 @@ return {
                     },
                 },
                 b = { name = 'de[b]ug' },
+                l = { name = '[l]sp' },
             }, { prefix = '<leader>' })
             return {
                 window = {
@@ -316,24 +263,40 @@ return {
         end,
     }, -- }}}
     -- mini.nvim improvements {{{
-    -- better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
-    -- }}}
-    -- better f/F and t/T{{{
-    {
-        'echasnovski/mini.jump',
-        keys = { 'f', 'F', 't', 'T', ';' },
-        opts = { highlight = 0 },
-    },
-    -- }}}
     -- Auto pairs () {{{
     {
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
         opts = {},
     }, -- }}}
+    -- Better (a)round and (i)nside commands{{{
+    { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
+    -- }}}
+    -- Better f/F and t/T{{{
+    {
+        'echasnovski/mini.jump',
+        keys = { 'f', 'F', 't', 'T', ';' },
+        opts = { highlight = 0 },
+    },
+    -- }}}
+    -- Extra commands {{{
+    {
+        'echasnovski/mini.operators',
+        keys = {
+            { 'g=', mode = 'v', desc = 'Evaluate operator' },
+            { 'gx', mode = 'v', desc = 'Exchange operator' },
+            { 'gm', mode = 'v', desc = 'Multiply operator' },
+            { 'gr', mode = 'v', desc = 'Replace operator' },
+            { 'gs', mode = 'v', desc = 'Sort operator' },
+            { 'g=', desc = 'Evaluate operator' },
+            { 'gx', desc = 'Exchange operator' },
+            { 'gm', desc = 'Multiply operator' },
+            { 'gr', desc = 'Replace operator' },
+            { 'gs', desc = 'Sort operator' },
+        },
+        opts = {},
+    }, -- }}}
     -- Fast bufferline{{{
-    -- r
     {
         'GravityShark0/mini.tabline',
         event = { 'BufAdd', 'BufDelete', 'UIEnter' },
@@ -344,18 +307,18 @@ return {
     -- Kill buffers and preserve window layout{{{
     { 'echasnovski/mini.bufremove' },
     -- }}}
-    -- 's' to surround text with any character {{{
+    -- Surround text with any character {{{
     {
         'echasnovski/mini.surround',
         keys = {
             { 'sa', mode = 'v' },
-            { 'sa', description = 'Add surrounding' },
-            { 'sd', description = 'Delete surrounding' },
-            { 'sr', description = 'Surround replace' },
-            { 'sf', description = 'Find right surrounding' },
-            { 'sF', description = 'Find left surrounding' },
-            { 'sh', description = 'Highlight surrounding' },
-            { 'sn', description = 'Update `MiniSurround.config.n_lines`' },
+            { 'sa', desc = 'Add surrounding' },
+            { 'sd', desc = 'Delete surrounding' },
+            { 'sr', desc = 'Surround replace' },
+            { 'sf', desc = 'Find right surrounding' },
+            { 'sF', desc = 'Find left surrounding' },
+            { 'sh', desc = 'Highlight surrounding' },
+            { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
         },
         opts = {},
     },
@@ -371,10 +334,10 @@ return {
     -- require('colorscheme.sonokai'),
     -- require('colorscheme.mini'),
     -- require('colorscheme.tokyonight'),
-    -- require('colorscheme.rosepine'),
+    require('colorscheme.rosepine'),
     -- vim.cmd.colorscheme('habamax'),
     -- vim.cmd.colorscheme('habamax'),
-    vim.cmd.colorscheme('default'),
+    -- vim.cmd.colorscheme('default'),
     -- Enable and run :TransparentEnable to enable transparency on any theme
     -- require('colorscheme.transparent-plugin'),
     -- Look in settings.lua for the different transparentcy
@@ -382,8 +345,8 @@ return {
     -- Statusline {{{
     {
         'echasnovski/mini.statusline',
-        opts = { set_vim_settings = false },
         lazy = false,
+        opts = { set_vim_settings = false },
     },
     -- }}}
     -- Illuminate words that are the same {{{
@@ -405,7 +368,30 @@ return {
         },
     },
     -- }}}
-    -- X Animations on things{{{
+    -- }}}
+    -- Development -- {{{
+    -- neodev.nvim
+    { 'folke/neodev.nvim', enabled = false, opts = {} },
+    -- mini.doc when developing docs in mini plugins
+    -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
+    -- }}}
+    -- Fun stuff {{{
+    { -- StartupTime {{{
+        'dstein64/vim-startuptime',
+        cmd = 'StartupTime',
+        init = function()
+            vim.g.startuptime_tries = 100
+        end,
+    }, -- }}}
+    { -- Funny floppin and plippin{{{
+        'Eandrju/cellular-automaton.nvim',
+        cmd = 'CellularAutomaton',
+    }, -- }}}
+    { -- Blazingly training??? {{{
+        'ThePrimeagen/vim-be-good',
+        cmd = 'VimBeGood',
+    }, -- }}}
+    -- Animations on things{{{
     {
         'echasnovski/mini.animate',
         enabled = false,
@@ -442,26 +428,6 @@ return {
     },
 
     -- }}}
-    -- }}}
-    -- Filetype specific plugins -- {{{
-    -- neodev.nvim
-    { 'folke/neodev.nvim', enabled = false, opts = {} }, -- }}}
-    -- Fun stuff {{{
-    { -- StartupTime{{{
-        'dstein64/vim-startuptime',
-        cmd = 'StartupTime',
-        init = function()
-            vim.g.startuptime_tries = 100
-        end,
-    }, -- }}}
-    { -- Funny floppin and plippin{{{
-        'Eandrju/cellular-automaton.nvim',
-        cmd = 'CellularAutomaton',
-    }, -- }}}
-    { -- Blazingly training???{{{
-        'ThePrimeagen/vim-be-good',
-        cmd = 'VimBeGood',
-    }, -- }}}
     -- require('dragmove'),
     -- }}}
 }

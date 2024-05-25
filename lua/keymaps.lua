@@ -4,87 +4,7 @@
 --
 -- Plugin remaps are located in the respective plugin definition under their init function
 
-vim.keymap.set('t', '<C-space>', '<C-\\><C-n><C-w>h', { silent = true })
--- Remove highlighting with escape{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<esc>',
-    ':noh<return><esc>',
-    { silent = true, noremap = true }
-) -- }}}
--- Write and quit binings{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>w',
-    '<CMD>w<CR>',
-    { silent = true, desc = '[w]rite current buffer' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>W',
-    '<CMD>wa<CR>',
-    { silent = true, desc = '[W]rite all buffers' }
-)
-
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>q',
-    '<CMD>wq<CR>',
-    { silent = true, desc = 'write and [q]uit' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>Q',
-    '<CMD>qa<CR>',
-    { silent = true, desc = '[Q]uit without saving' }
-) -- }}}
--- Allow for using t inside nvim {{{
-vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
--- }}}
--- Easier visual mode indents {{{
-vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
-vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
--- }}}
--- g[y|d|p|P] uses to system clipboard{{{
-vim.keymap.set(
-    { 'n', 'v' },
-    'gy',
-    '"+y',
-    { desc = '[y]ank to system clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
-    'gd',
-    '"+d',
-    { desc = '[d]elete to system clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
-    'gp',
-    '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-    { desc = '[p]aste System Clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
-    'gP',
-    '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = 'reverse [P]aste System Clipboard' }
-) -- }}}
--- Middle positioned C+ D/U{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-d>',
-    '<C-d>zz',
-    { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-u>',
-    '<C-u>zz',
-    { noremap = true, silent = true }
-)
--- }}}
--- Run/Compile code inside{{{
+-- Run/Compile code inside {{{
 vim.keymap.set(
     'n',
     '<leader>rgc',
@@ -124,7 +44,90 @@ vim.keymap.set(
     { desc = 'chmod +[x] %' }
 )
 -- }}}
--- netrw {{{
+-- Exit term mode{{{
+vim.keymap.set('t', '<C-space>', '<C-\\><C-n><C-w>h', { silent = true }) -- }}}
+-- Remove highlighting with escape{{{
+vim.api.nvim_set_keymap(
+    'n',
+    '<esc>',
+    ':noh<return><esc>',
+    { silent = true, noremap = true }
+) -- }}}
+-- Save and quit binings{{{
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>w',
+    '<CMD>w<CR>',
+    { silent = true, desc = '[w]rite current buffer' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>W',
+    '<CMD>wa<CR>',
+    { silent = true, desc = '[W]rite all buffers' }
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>q',
+    '<CMD>wq<CR>',
+    { silent = true, desc = 'write and [q]uit' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>Q',
+    '<CMD>qa!<CR>',
+    { silent = true, desc = '[Q]uit without saving' }
+) -- }}}
+-- Allow for using t inside nvim {{{
+vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
+-- }}}
+-- Visual mode indents reenters visual mode {{{
+vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
+vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
+-- }}}
+-- g[y|d|p|P] uses to system clipboard{{{
+vim.keymap.set(
+    { 'n', 'v' },
+    'gy',
+    '"+y',
+    { desc = '[y]ank to system clipboard' }
+)
+vim.keymap.set(
+    { 'n', 'v' },
+    'gd',
+    '"+d',
+    { desc = '[d]elete to system clipboard' }
+)
+vim.keymap.set(
+    { 'n', 'v' },
+    'gp',
+    '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
+    { desc = '[p]aste System Clipboard' }
+)
+vim.keymap.set(
+    { 'n', 'v' },
+    'gP',
+    '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
+    { desc = 'reverse [P]aste System Clipboard' }
+) -- }}}
+-- Middle positioned C+[D/U] and [n/N] {{{
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-d>',
+    '<C-d>zz',
+    { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<C-u>',
+    '<C-u>zz',
+    { noremap = true, silent = true }
+)
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+-- }}}
+-- Netrw {{{
 -- Open netrw on the right
 vim.api.nvim_set_keymap('n', '<leader>.', '<CMD>Sex!<CR>', { desc = 'SEEX!!!' })
 -- vim.api.nvim_set_keymap(
@@ -271,10 +274,8 @@ vim.api.nvim_set_keymap(
 -- )
 -- }}}
 -- Blazingly fast remaps {{{
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+-- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- Unmoving cursor while doing J
 vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
-
 -- }}}

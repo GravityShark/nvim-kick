@@ -51,11 +51,6 @@ return {
             '<CMD>Telescope<CR>',
             desc = 'Find ?',
         }, -- Show all commands
-        {
-            '<leader>fs',
-            '<CMD>Telescope persisted<CR>',
-            desc = 'Find sessions',
-        }, -- Show all sessions
         -- vim.api.nvim_set_keymap(
         --     'n',
         --     '<leader>fs',
@@ -151,6 +146,5 @@ return {
             },
         })
         pcall(telescope.load_extension, 'fzf')
-        pcall(telescope.load_extension, 'persisted')
     end,
 }

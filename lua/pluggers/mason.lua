@@ -80,9 +80,6 @@ return {
                     vim.lsp.buf.implementation,
                     { buffer = ev.buf }
                 )
-                require('which-key').register({
-                    l = { name = '[l]sp' },
-                }, { prefix = '<leader>' })
             end,
         })
 
