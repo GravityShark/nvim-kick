@@ -142,7 +142,9 @@ return {
                 desc = 'Session [p]ause',
             },
         },
-        opts = {},
+        opts = {
+            options = { 'buffers,curdir,folds,tabpages,winpos,winsize' },
+        },
     }, -- }}}
     -- trouble.nvim Diagnostic Viewer {{{
     {
