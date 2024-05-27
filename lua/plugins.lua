@@ -373,6 +373,12 @@ return {
     -- }}}
     -- Development -- {{{
     -- neodev.nvim
+    {
+        'ray-x/go.nvim',
+        ft = { 'go', 'gomod', 'gosum' },
+        enabled = false,
+        opts = {},
+    },
     { 'folke/neodev.nvim', enabled = false, opts = {} },
     -- mini.doc when developing docs in mini plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
