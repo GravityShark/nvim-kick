@@ -1,64 +1,12 @@
--- See `:help vim.o`
--- Enable transparency{{{
+-- Enable transparency
 require('colorscheme.transparent')
 -- If no transparency is enabled enable winblend instead
 -- vim.opt.pumblend = 10
--- vim.opt.winblend = 10 -- }}}
-
--- Terminal Helpers{{{
--- Disable line numbers when opening a Terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-    callback = function()
-        vim.opt_local.relativenumber = false
-        vim.opt_local.number = false
-    end,
-})
--- Automatically opening as insert mode when the buffer is a terminal
-vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-        if vim.api.nvim_buf_get_option(0, 'buftype') == 'terminal' then
-            vim.cmd.startinsert()
-        end
-    end,
-}) -- }}}
-
--- When in allow for these applications when opening a respective file type{{{
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = '*.pdf',
-    command = ':silent !librewolf % &',
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = { '*.docx', '*.pptx' },
-    command = ':silent !flatpak run org.libreoffice.LibreOffice % &',
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = { '*.png', '*.jpg', '*.webp', '*.svg' },
-    command = ':silent !feh % &',
-})
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = {
-        '*.pdf',
-        '*.docx',
-        '*.pptx',
-        '*.png',
-        '*.jpg',
-        '*.webp',
-        '*.svg',
-    },
-    callback = function()
-        require('mini.bufremove').delete()
-        CheckTabline()
-    end,
-}) -- }}}
+-- vim.opt.winblend = 10
 
 -- Opts {{{
--- Enable nerd font
-vim.g.have_nerd_font = true
---
 -- What data is saved when saving a session
-vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos'
+-- vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos' -- Not used
 
 -- Allow switching buffers without saving them
 vim.opt.hidden = true
@@ -113,21 +61,21 @@ vim.opt.joinspaces = false -- Join multiple spaces in search
 vim.opt.smartcase = true -- When there is a one capital letter search for exact match
 vim.opt.showmatch = true -- Highlight search instances
 
--- Undotree Layout
-vim.g.undotree_WindowLayout = 3
-
 -- Disable showing --Insert-- or --Visual-- in the cmdline
 vim.opt.showmode = false
 
--- [[ Wild Menu ]]
--- already is the defalut in neovim
--- vim.opt.wildmenu = true
-
+-- Wild menu
+-- vim.opt.wildmenu = true -- already default
 -- Set wildcharm to trigger the wildmenu
 -- vim.opt.wildcharm = string.byte('<Tab>')
--- }}}
 
--- mini.basics{{{
+-- Enable nerd font
+vim.g.have_nerd_font = true
+
+-- Undotree Layout
+vim.g.undotree_WindowLayout = 3
+
+-- mini.basics
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.mouse = 'a'
@@ -142,41 +90,63 @@ vim.opt.signcolumn = 'yes'
 vim.opt.fillchars = 'eob: '
 
 -- Editing
--- vim.opt.incsearch = true
--- vim.opt.infercase = true
+-- vim.opt.incsearch = true -- already default
+-- vim.opt.infercase = true -- already default
 vim.opt.virtualedit = 'block'
 vim.opt.formatoptions = 'qjl1'
 
 vim.opt.termguicolors = true
 
--- vim.opt.pumblend = 10
 vim.opt.pumheight = 10
--- vim.opt.winblend = 10
+
 -- }}}
+-- Terminal Helpers{{{
+-- Disable line numbers when opening a Terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+    callback = function()
+        vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+    end,
+})
+-- Automatically opening as insert mode when the buffer is a terminal
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        if vim.api.nvim_buf_get_option(0, 'buftype') == 'terminal' then
+            vim.cmd.startinsert()
+        end
+    end,
+}) -- }}}
+-- When in allow for these applications when opening a respective file type{{{
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = '*.pdf',
+    command = ':silent !librewolf % &',
+})
 
--- [[ Highlight on yank ]]{{{
--- See `:help vim.highlight.on_yank()`
--- local highlight_group =
---     vim.api.nvim_create_augroup('YankHighlight', { clear = true })
--- vim.api.nvim_create_autocmd('TextYankPost', {
---     callback = function()
---         vim.highlight.on_yank()
---     end,
---     group = highlight_group,
---     pattern = '*',
--- })
---}}}
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { '*.docx', '*.pptx' },
+    command = ':silent !flatpak run org.libreoffice.LibreOffice % &',
+})
 
--- LSP Diagnostics Signs {{{
-local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = '󰋼 ' }
-for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
--- }}}
-
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { '*.png', '*.jpg', '*.webp', '*.svg' },
+    command = ':silent !feh % &',
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = {
+        '*.pdf',
+        '*.docx',
+        '*.pptx',
+        '*.png',
+        '*.jpg',
+        '*.webp',
+        '*.svg',
+    },
+    callback = function()
+        require('mini.bufremove').delete()
+        CheckTabline()
+    end,
+}) -- }}}
 -- Automatic disabling/renabling bufferline at 1 > Buffers ; 1 < Buffers {{{
-
 function CheckTabline()
     -- Get the count of active buffers
     local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
@@ -209,29 +179,15 @@ function ToggleBar()
         end
     end
 end
-
 -- }}}
-
--- Formatting disable and enable{{{
-vim.api.nvim_create_user_command('FormatDisable', function(args)
-    if args.bang then
-        vim.b.disable_autoformat = true
-    else
-        vim.g.disable_autoformat = true
-    end
-end, {
-    desc = 'Disable autoformat-on-save',
-    bang = true,
-})
-vim.api.nvim_create_user_command('FormatEnable', function()
-    vim.b.disable_autoformat = false
-    vim.g.disable_autoformat = false
-end, {
-
-    desc = 'Re-enable autoformat-on-save',
-}) -- }}}
-
--- Mouse stuff{{{
--- vim.cmd.aunmenu('PopUp.How-to\\ disable\\ mouse')
--- vim.cmd.aunmenu('PopUp.-1-')
--- vim.cmd.aunmenu('PopUp.Delete')}}}
+-- LSP Diagnostics Signs {{{
+for type, icon in pairs({
+    Error = ' ',
+    Warn = ' ',
+    Hint = '󰌵 ',
+    Info = '󰋼 ',
+}) do
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+-- }}}

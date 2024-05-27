@@ -63,7 +63,7 @@ return {
         event = LazyFile,
         opts = require('pluggers.gitsigns'),
     }, -- }}}
-    -- vim-fugitive adds commands for doing git stuff{{{
+    -- vim-fugitive Adds commands for doing git stuff {{{
     {
         'tpope/vim-fugitive',
         keys = {
@@ -121,7 +121,7 @@ return {
         cmd = { 'Git', 'GBrowse' },
         dependencies = 'tpope/vim-rhubarb',
     }, -- }}}
-    -- persistence.nvim Session management{{{
+    -- persistence.nvim Session management {{{
     {
         'folke/persistence.nvim',
         event = 'BufReadPre', -- this will only start session saving when an actual file was opened
@@ -187,7 +187,7 @@ return {
         event = LazyFile,
     },
     --}}}
-    -- zen-mode.nvim {{{
+    -- zen-mode.nvim Stay in the zenmode with <leader>z {{{
     {
         'folke/zen-mode.nvim',
         cmd = { 'ZenMode' },
@@ -285,16 +285,11 @@ return {
     {
         'echasnovski/mini.operators',
         keys = {
-            { 'g=', mode = 'v', desc = 'Evaluate operator' },
-            { 'gx', mode = 'v', desc = 'Exchange operator' },
-            { 'gm', mode = 'v', desc = 'Multiply operator' },
-            { 'gr', mode = 'v', desc = 'Replace operator' },
-            { 'gs', mode = 'v', desc = 'Sort operator' },
-            { 'g=', desc = 'Evaluate operator' },
-            { 'gx', desc = 'Exchange operator' },
-            { 'gm', desc = 'Multiply operator' },
-            { 'gr', desc = 'Replace operator' },
-            { 'gs', desc = 'Sort operator' },
+            { 'g=', mode = '', desc = 'Evaluate operator' },
+            { 'gx', mode = '', desc = 'Exchange operator' },
+            { 'gm', mode = '', desc = 'Multiply operator' },
+            { 'gr', mode = '', desc = 'Replace operator' },
+            { 'gs', mode = '', desc = 'Sort operator' },
         },
         opts = {},
     }, -- }}}
@@ -309,11 +304,11 @@ return {
     -- Kill buffers and preserve window layout{{{
     { 'echasnovski/mini.bufremove' },
     -- }}}
-    -- Surround text with any character {{{
+    -- Surround text with any character{{{
     {
         'echasnovski/mini.surround',
         keys = {
-            { 'sa', mode = 'v' },
+            { 'sa', mode = 'v', desc = 'Add surrounding' },
             { 'sa', desc = 'Add surrounding' },
             { 'sd', desc = 'Delete surrounding' },
             { 'sr', desc = 'Surround replace' },
@@ -371,31 +366,28 @@ return {
     },
     -- }}}
     -- }}}
-    -- Development -- {{{
-    -- neodev.nvim
-    {
-        'ray-x/go.nvim',
-        ft = { 'go', 'gomod', 'gosum' },
-        enabled = false,
-        opts = {},
-    },
+    -- Development {{{
+    -- neodev.nvim Helps in neovim development
     { 'folke/neodev.nvim', enabled = false, opts = {} },
-    -- mini.doc when developing docs in mini plugins
+    -- mini.doc When developing docs in mini.nvim plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
     -- }}}
     -- Fun stuff {{{
-    { -- StartupTime {{{
+    -- StartupTime {{{
+    {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
         init = function()
             vim.g.startuptime_tries = 100
         end,
     }, -- }}}
-    { -- Funny floppin and plippin{{{
+    -- Funny floppin and plippin{{{
+    {
         'Eandrju/cellular-automaton.nvim',
         cmd = 'CellularAutomaton',
     }, -- }}}
-    { -- Blazingly training??? {{{
+    -- Blazingly training??? {{{
+    {
         'ThePrimeagen/vim-be-good',
         cmd = 'VimBeGood',
     }, -- }}}

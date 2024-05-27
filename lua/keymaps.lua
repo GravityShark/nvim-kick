@@ -70,8 +70,8 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
-    '<CMD>wq<CR>',
-    { silent = true, desc = 'write and [q]uit' }
+    '<CMD>w<CR><CMD>q<CR>',
+    { silent = true, desc = 'write and or [q]uit' }
 )
 vim.api.nvim_set_keymap(
     'n',
