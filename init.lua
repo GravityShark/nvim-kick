@@ -38,7 +38,7 @@ require('lazy').setup({ import = 'plugins' }, {
                 -- "shada",
                 'rplugin',
                 'fzf',
-                'man',
+                -- 'man',
                 'spellfile',
                 'tarPlugin',
                 'tohtml',
