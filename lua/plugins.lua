@@ -153,7 +153,7 @@ return {
         keys = {
             {
                 '<leader>x',
-                '<CMD>Trouble diagnostics<CR>',
+                '<CMD>Trouble diagnostics toggle<CR>',
                 desc = 'Trouble [x] Toggle',
             },
         },
