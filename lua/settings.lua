@@ -54,6 +54,7 @@ vim.opt.tabstop = 8 -- 1 tab equal 2 spaces
 vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldmethod = 'marker' -- Good
+-- vim.opt.foldmethod = 'syntax' -- Bad >:1
 -- vim.opt.foldenable = true
 
 vim.opt.ignorecase = true -- Ignore case if all characters in lower case

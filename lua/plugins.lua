@@ -149,7 +149,7 @@ return {
     -- trouble.nvim Diagnostic Viewer {{{
     {
         'folke/trouble.nvim',
-        cmd = { 'Trouble' },
+        cmd = 'Trouble',
         keys = {
             {
                 '<leader>x',
@@ -158,13 +158,13 @@ return {
             },
         },
         opts = {
-            signs = {
-                error = ' ',
-                warn = ' ',
-                hint = '󰌵 ',
-                information = '󰋼 ',
-                other = '',
-            },
+            -- signs = {
+            --     error = ' ',
+            --     warn = ' ',
+            --     hint = '󰌵 ',
+            --     information = '󰋼 ',
+            --     other = '',
+            -- },
         },
     },
     -- }}}
@@ -264,6 +264,12 @@ return {
             }
         end,
     }, -- }}}
+    {
+        'kevinhwang91/nvim-ufo',
+        event = VeryLazyFile,
+        dependencies = 'kevinhwang91/promise-async',
+        opts = {},
+    },
     -- mini.nvim improvements {{{
     -- Auto pairs () {{{
     {
