@@ -230,7 +230,7 @@ return {
                 r = {
                     name = '[r]un',
                     g = {
-                        name = '[g]cc',
+                        name = 'run [g]cc',
                     },
                 },
                 o = { name = '[o]rg' },

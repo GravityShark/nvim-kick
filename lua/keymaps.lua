@@ -5,23 +5,50 @@
 -- Plugin remaps are located in the respective plugin definition under their init function
 
 -- Run/Compile code inside {{{
+vim.keymap.set('n', '<leader>t', '<CMD>split term://$SHELL<CR>')
 vim.keymap.set(
     'n',
     '<leader>rgc',
     function()
         local file = vim.api.nvim_buf_get_name(0)
         local file_noext = file:match('^(.+)%.+')
-        os.execute('gcc ' .. file .. ' --debug -o ' .. file_noext)
-        vim.api.nvim_command('echo "Compiled to ' .. file_noext .. '"')
+
+        vim.cmd.split(
+            'term://gcc '
+                .. file
+                .. ' --debug -o '
+                .. file_noext
+                .. '&& echo "Compiled to '
+                .. file
+                .. ' "'
+        )
     end,
     -- '<CMD>!gcc % --debug -o %<CR>',
-    { desc = '[c]ompile' }
+    { desc = 'GCC [c]ompile' }
+)
+vim.keymap.set(
+    'n',
+    '<leader>rgC',
+    function()
+        local file = vim.api.nvim_buf_get_name(0)
+        local file_noext = file:match('^(.+)%.+')
+
+        vim.cmd.split(
+            'term://gcc ' .. file .. ' --debug -o ' .. file_noext .. '&& fish'
+        )
+        vim.api.nvim_chan_send(
+            vim.api.nvim_get_current_buf(),
+            file_noext .. ' '
+        )
+    end,
+    -- '<CMD>!gcc % --debug -o %<CR>',
+    { desc = 'GCC [C]ompile and run' }
 )
 vim.keymap.set(
     'n',
     '<leader>rgr',
-    "<CMD>!gcc % --debug -o /tmp/a.out<CR><CMD>!'/tmp/a.out<CR>'",
-    { desc = '[r]un' } -- runs in
+    '<CMD>split term://gcc % --debug -o /tmp/a.out && /tmp/a.out<CR>',
+    { desc = 'GCC [r]un' }
 )
 vim.keymap.set(
     'n',
@@ -31,17 +58,31 @@ vim.keymap.set(
             'gcc ' .. vim.api.nvim_buf_get_name(0) .. ' --debug -o /tmp/a.out'
         )
         vim.ui.input({ prompt = 'Prompt: ' }, function(input)
-            vim.api.nvim_command('!/tmp/a.out ' .. input)
+            vim.cmd.split('term:///tmp/a.out ' .. input)
         end)
     end,
-    { desc = '[R]un with parameters' } -- runs in
+    { desc = 'GCC [R]un with parameters' } -- runs in
 )
+
 -- vim.keymap.set('n', '<leader>rgd', '<CMD><CR>', { desc = '[d]ebug' })
 vim.keymap.set(
     'n',
     '<leader>rx',
     '<CMD>silent !chmod +x %<CR>',
     { desc = 'chmod +[x] %' }
+)
+
+vim.keymap.set(
+    'n',
+    '<leader>rs',
+    '<CMD>split term://%<CR>',
+    { desc = 'Run [s]hell' }
+)
+vim.keymap.set(
+    'n',
+    '<leader>rS',
+    '<CMD>split term://fish<CR>' .. vim.api.nvim_buf_get_name(0) .. ' ',
+    { desc = 'Run [S]hell with parameters' }
 )
 -- }}}
 -- Exit term mode{{{
@@ -71,7 +112,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
     '<CMD>w<CR><CMD>q<CR>',
-    { silent = true, desc = 'write and or [q]uit' }
+    { silent = true, desc = 'write and [q]uit' }
 )
 vim.api.nvim_set_keymap(
     'n',
