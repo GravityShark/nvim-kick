@@ -96,7 +96,5 @@ return {
                 { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
             },
         },
-        -- Shows a little widget showing the status of LSP
-        { 'j-hui/fidget.nvim', opts = {} },
     },
 }

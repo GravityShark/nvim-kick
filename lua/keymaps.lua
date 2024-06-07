@@ -50,6 +50,13 @@ vim.keymap.set(
     '<CMD>split term://gcc % --debug -o /tmp/a.out && /tmp/a.out<CR>',
     { desc = 'GCC [r]un' }
 )
+
+vim.keymap.set(
+    'n',
+    '<leader>rG',
+    '<CMD>split term://go run %<CR>',
+    { desc = '[G]o run' }
+)
 vim.keymap.set(
     'n',
     '<leader>rgR',

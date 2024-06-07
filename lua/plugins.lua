@@ -201,14 +201,14 @@ return {
         },
         opts = {
             window = {
-                width = 85, -- width of the Zen window
+                width = 120, -- width of the Zen window
             },
             plugins = {
                 options = {
                     colorcolumn = 0,
                     enabled = true,
-                    ruler = false, -- disables the ruler text in the cmd line area
-                    showcmd = false, -- disables the command in the last line of the screen
+                    ruler = true, -- disables the ruler text in the cmd line area
+                    showcmd = true, -- disables the command in the last line of the screen
                     laststatus = 0, -- turn off the statusline in zen mode
                     showmode = true,
                 },
