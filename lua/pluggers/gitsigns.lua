@@ -1,37 +1,43 @@
 return {
     signs = {
-        add = {
-            hl = 'gitsignsadd',
-            text = '▎',
-            numhl = 'gitsignsaddnr',
-            linehl = 'gitsignsaddln',
-        },
-        change = {
-            hl = 'gitsignschange',
-            text = '▎',
-            numhl = 'gitsignschangenr',
-            linehl = 'gitsignschangeln',
-        },
-        delete = {
-            hl = 'gitsignsdelete',
-            text = '󰐊',
-            numhl = 'gitsignsdeletenr',
-            linehl = 'gitsignsdeleteln',
-        },
-        topdelete = {
-            hl = 'gitsignsdelete',
-            text = '󰐊',
-            numhl = 'gitsignsdeletenr',
-            linehl = 'gitsignsdeleteln',
-        },
-        changedelete = {
-            hl = 'gitsignschange',
-            text = '▎',
-            numhl = 'gitsignschangenr',
-            linehl = 'gitsignschangeln',
-        },
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '󰐊' },
+        topdelete = { text = '󰐊' },
+        changedelete = { text = '▎' },
+        untracked = { text = '┆' },
+        -- add = {
+        --     hl = 'gitsignsadd',
+        --     text = '▎',
+        --     numhl = 'gitsignsaddnr',
+        --     linehl = 'gitsignsaddln',
+        -- },
+        -- change = {
+        --     hl = 'gitsignschange',
+        --     text = '▎',
+        --     numhl = 'gitsignschangenr',
+        --     linehl = 'gitsignschangeln',
+        -- },
+        -- delete = {
+        --     hl = 'gitsignsdelete',
+        --     text = '󰐊',
+        --     numhl = 'gitsignsdeletenr',
+        --     linehl = 'gitsignsdeleteln',
+        -- },
+        -- topdelete = {
+        --     hl = 'gitsignsdelete',
+        --     text = '󰐊',
+        --     numhl = 'gitsignsdeletenr',
+        --     linehl = 'gitsignsdeleteln',
+        -- },
+        -- changedelete = {
+        --     hl = 'gitsignschange',
+        --     text = '▎',
+        --     numhl = 'gitsignschangenr',
+        --     linehl = 'gitsignschangeln',
+        -- },
     },
-    on_attach = function(bufnr)
+    --[[on_attach = function(bufnr)
         vim.keymap.set(
             'n',
             '<leader>gh',
@@ -69,5 +75,6 @@ return {
         -- 	buffer = bufnr,
         -- 	desc = 'Jump to previous hunk',
         -- })
-    end,
+    end, ]]
+    --
 }

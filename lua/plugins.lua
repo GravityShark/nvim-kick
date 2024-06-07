@@ -264,12 +264,6 @@ return {
             }
         end,
     }, -- }}}
-    {
-        'kevinhwang91/nvim-ufo',
-        event = VeryLazyFile,
-        dependencies = 'kevinhwang91/promise-async',
-        opts = {},
-    },
     -- mini.nvim improvements {{{
     -- Auto pairs () {{{
     {
