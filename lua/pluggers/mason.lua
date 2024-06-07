@@ -97,6 +97,6 @@ return {
             },
         },
         -- Shows a little widget showing the status of LSP
-        -- { 'j-hui/fidget.nvim', opts = {} },
+        { 'j-hui/fidget.nvim', opts = {} },
     },
 }
