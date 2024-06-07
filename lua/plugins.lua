@@ -149,11 +149,11 @@ return {
     -- trouble.nvim Diagnostic Viewer {{{
     {
         'folke/trouble.nvim',
-        cmd = { 'TroubleToggle' },
+        cmd = { 'Trouble' },
         keys = {
             {
                 '<leader>x',
-                '<CMD>TroubleToggle<CR>',
+                '<CMD>Trouble diagnostics<CR>',
                 desc = 'Trouble [x] Toggle',
             },
         },
