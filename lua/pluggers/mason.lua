@@ -19,19 +19,25 @@ return {
                     vim.lsp.buf.definition,
                     { buffer = ev.buf, desc = 'LSP [d]efinition' }
                 )
-                -- vim.keymap.set(
-                --     'n',
-                --     '[d',
-                --     vim.diagnostic.goto_prev,
-                --     { desc = 'Previous diagnostic' }
-                -- )
-                -- vim.keymap.set(
-                --     'n',
-                --     ']d',
-                --     vim.diagnostic.goto_next,
-                --     { desc = 'Next diagnostic' }
-                -- )
-                -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
+                vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, {
+                    buffer = ev.buf,
+                    desc = 'LSP [t]ype definition',
+                })
+                --[[ Neovim 10.0 has these as default
+                vim.keymap.set(
+                    'n',
+                    '[d',
+                    vim.diagnostic.goto_prev,
+                    { desc = 'Previous diagnostic' }
+                )
+                vim.keymap.set(
+                    'n',
+                    ']d',
+                    vim.diagnostic.goto_next,
+                    { desc = 'Next diagnostic' }
+                )
+                vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf }) ]]
+                --
                 vim.keymap.set(
                     'i',
                     '<C-h>',
@@ -40,21 +46,9 @@ return {
                 )
                 vim.keymap.set(
                     'n',
-                    '<leader>lw',
-                    vim.lsp.buf.workspace_symbol,
-                    { buffer = ev.buf, desc = 'LSP [w]orkspace Symbol' }
-                )
-                -- vim.keymap.set(
-                --     'n',
-                --     '<leader>lh',
-                --     vim.lsp.buf.inlay_hint.is_enabled(),
-                --     { buffer = ev.buf, desc = 'LSP [i]nlay hint' }
-                -- )
-                vim.keymap.set(
-                    'n',
-                    '<leader>ld',
-                    vim.diagnostic.open_float,
-                    { buffer = ev.buf, desc = 'LSP [d]iagnostics' }
+                    '<leader>ll',
+                    vim.lsp.codelens.run,
+                    { buffer = ev.buf, desc = 'LSP code[l]ens' }
                 )
                 vim.keymap.set(
                     'n',
@@ -62,24 +56,20 @@ return {
                     vim.lsp.buf.code_action,
                     { buffer = ev.buf, desc = 'LSP [c]ode actions' }
                 )
-                vim.keymap.set(
-                    'n',
-                    '<leader>lr',
-                    vim.lsp.buf.references,
-                    { buffer = ev.buf, desc = 'LSP re[f]erences' }
-                )
+                vim.keymap.set('n', '<leader>lm', vim.lsp.buf.references, {
+                    buffer = ev.buf,
+                    desc = 'LSP [m]entioned (Where a symbol is used, reverse of [i]mplementation)',
+                })
                 vim.keymap.set(
                     'n',
                     '<leader>lr',
                     vim.lsp.buf.rename,
                     { buffer = ev.buf, desc = 'LSP [r]ename' }
                 )
-                vim.keymap.set(
-                    'n',
-                    'gi',
-                    vim.lsp.buf.implementation,
-                    { buffer = ev.buf }
-                )
+                vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, {
+                    buffer = ev.buf,
+                    desc = 'LSP [i]mplementation (Where a symbol came from, reverse of [m]entions)',
+                })
             end,
         })
 

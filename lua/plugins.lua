@@ -285,11 +285,11 @@ return {
     {
         'echasnovski/mini.operators',
         keys = {
-            { 'g=', mode = '', desc = 'Evaluate operator' },
-            { 'gx', mode = '', desc = 'Exchange operator' },
-            { 'gm', mode = '', desc = 'Multiply operator' },
-            { 'gr', mode = '', desc = 'Replace operator' },
-            { 'gs', mode = '', desc = 'Sort operator' },
+            { 'g=', mode = '', desc = 'Mini Evaluate operator' },
+            { 'gx', mode = '', desc = 'Mini Exchange operator' },
+            { 'gm', mode = '', desc = 'Mini Multiply operator' },
+            { 'gr', mode = '', desc = 'Mini Replace operator' },
+            { 'gs', mode = '', desc = 'Mini Sort operator' },
         },
         opts = {},
     }, -- }}}
