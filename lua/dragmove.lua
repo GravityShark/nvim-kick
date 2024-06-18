@@ -6,7 +6,6 @@ vim.cmd.aunmenu('PopUp.Delete')
 
 return {
     'echasnovski/mini.move',
-    version = false,
     opts = {},
     event = { 'VeryLazy' },
 }
