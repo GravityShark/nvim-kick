@@ -368,7 +368,7 @@ return {
     -- }}}
     -- Development {{{
     -- neodev.nvim Helps in neovim development
-    { 'folke/neodev.nvim', enabled = true, opts = {} },
+    { 'folke/neodev.nvim', enabled = false, opts = {} },
     -- mini.doc When developing docs in mini.nvim plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
     -- }}}
