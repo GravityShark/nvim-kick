@@ -4,11 +4,11 @@
 --
 -- Plugin remaps are located in the respective plugin definition under their init function
 
-vim.keymap.set(
-    'n',
-    '<leader><leader>s',
-    '<CMD>source ~/.config/nvim/after/plugin/luasnip.lua<CR>'
-)
+-- vim.keymap.set(
+--     'n',
+--     '<leader><leader>s',
+--     '<CMD>source ~/.config/nvim/after/plugin/luasnip.lua<CR>'
+-- )
 -- Run/Compile code inside {{{
 vim.keymap.set('n', '<leader>t', '<CMD>split term://$SHELL<CR>')
 vim.keymap.set(

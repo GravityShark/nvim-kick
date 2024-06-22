@@ -368,9 +368,17 @@ return {
     -- }}}
     -- Development {{{
     -- neodev.nvim Helps in neovim development
-    { 'folke/neodev.nvim', enabled = false, opts = {} },
+    -- { 'folke/neodev.nvim', enabled = false, opts = {} },
     -- mini.doc When developing docs in mini.nvim plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
+    {
+        'lervag/vimtex',
+        -- lazy = false, -- we don't want to lazy load VimTeX
+        event = VeryLazyFile,
+        init = function()
+            vim.g.vimtex_view_method = 'zathura'
+        end,
+    },
     -- }}}
     -- Fun stuff {{{
     -- StartupTime {{{

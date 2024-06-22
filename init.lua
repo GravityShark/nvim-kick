@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins {{{
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- vim.g.maplocalleader = ' '
 
 -- It's at lua/plugins.lua
 require('lazy').setup({ import = 'plugins' }, {
