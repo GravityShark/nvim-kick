@@ -113,11 +113,28 @@ for server_name, server in pairs(ensure.servers) do
     -- This handles overriding only values explicitly passed
     -- by the server configuration above. Useful when disabling
     -- certain features of an LSP (for example, turning off formatting for tsserver)
-    server.capabilities = vim.tbl_deep_extend(
-        'force',
-        {},
-        capabilities,
-        server.capabilities or {}
-    )
-    require('lspconfig')[server_name].setup(server)
+
+    local server_filetypes = require('lspconfig/configs')['tsserver'].filetypes
+    table.insert(server_filetypes, 'some_filetype')
+    table.insert(server_filetypes, 'some_other_filetype')
+
+    require('lspconfig').tsserver.setup({
+        filetypes = server_filetypes,
+    })
+
+    server.capabilities =
+        vim.tbl_deep_extend('force', capabilities, server.capabilities or {})
+
+    if server.filetypes ~= {} then
+        server.filetypes = vim.tbl_deep_extend(
+            'force',
+            {},
+            lspconfig[server_name].default_config.filetypes or {},
+            server.filetypes or {}
+        )
+    end
+
+    lsp[server_name].setup(server)
 end
+
+-- vim:foldmethod=marker:

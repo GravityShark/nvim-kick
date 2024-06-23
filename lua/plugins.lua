@@ -429,11 +429,11 @@ return {
     -- mini.doc When developing docs in mini.nvim plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
     {
-        'lervag/vimtex',
-        -- lazy = false, -- we don't want to lazy load VimTeX
-        event = VeryLazyFile,
-        init = function()
-            vim.g.vimtex_view_method = 'zathura'
+        'chomosuke/typst-preview.nvim',
+        ft = 'typst',
+        version = '0.3.*',
+        build = function()
+            require('typst-preview').update()
         end,
     },
     -- }}}
@@ -496,3 +496,5 @@ return {
     -- require('dragmove'),
     -- }}}
 }
+
+-- vim:foldmethod=marker:

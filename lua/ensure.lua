@@ -25,7 +25,7 @@ M.treesitter = { -- {{{
     'gomod',
     'gosum',
     'templ',
-    'latex',
+    'typst',
 } -- }}}
 
 M.servers = { -- {{{
@@ -67,8 +67,30 @@ M.servers = { -- {{{
         },
     },
 
-    ltex = {},
-    texlab = {},
+    ltex = {
+        filetypes = {
+            {
+                'gitcommit',
+                'markdown',
+                'org',
+                'html',
+                'text',
+                'typst',
+                -- 'bib',
+                -- 'plaintex',
+                -- 'rst',
+                -- 'rnoweb',
+                -- 'tex',
+                -- 'pandoc',
+                -- 'quarto',
+                -- 'rmd',
+                -- 'context',
+                -- 'xhtml',
+                -- 'mail',
+            },
+        },
+    },
+    tinymist = {},
 }
 
 M.mason = {
@@ -93,14 +115,14 @@ M.mason = {
     'lua-language-server',
     'stylua',
 
-    'texlab',
     'ltex-ls',
+    'tinymist',
 } -- }}}
 
-M.mason_dap = { -- {{{
-    'delve',
-    'cppdbg',
-} -- }}}
+-- M.mason_dap = { -- {{{
+--     'delve',
+--     'cppdbg',
+-- } -- }}}
 
 M.format = { -- {{{
     css = { 'prettierd' },
