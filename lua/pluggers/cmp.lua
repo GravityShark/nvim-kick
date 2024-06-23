@@ -77,10 +77,10 @@ return {
                 fields = { 'abbr', 'kind', 'menu' },
                 format = function(entry, vim_item)
                     vim_item.menu = ({
-                        buffer = 'Buffer',
+                        buffer = 'Buf',
                         nvim_lsp = 'LSP',
-                        luasnip = 'LuaSnip',
-                        async_path = 'Path',
+                        luasnip = 'Snp',
+                        async_path = 'Pth',
                         orgmode = 'Org',
                     })[entry.source.name]
                     vim_item.kind = string.format(
