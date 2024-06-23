@@ -5,23 +5,18 @@ return {
     ft = { 'cpp', 'c', 'go' },
     dependencies = {
         -- Creates a beautiful debugger UI
-        {
-            'rcarriga/nvim-dap-ui',
-            dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-        },
+        'rcarriga/nvim-dap-ui',
+
+        -- Required dependency for nvim-dap-ui
+        'nvim-neotest/nvim-nio',
 
         -- Installs the debug adapters for you
-        {
-            'jay-babu/mason-nvim-dap.nvim',
-            dependencies = {
-                'williamboman/mason.nvim',
-                'mfussenegger/nvim-dap',
-            },
-        },
+        'williamboman/mason.nvim',
+        'jay-babu/mason-nvim-dap.nvim',
 
         -- Add your own debuggers here
+        'leoluz/nvim-dap-go',
         -- 'mfussenegger/nvim-dap-python',
-        -- 'leoluz/nvim-dap-go',
     },
     config = function()
         local dap = require('dap')
@@ -30,8 +25,7 @@ return {
         -- Basic debugging keymaps, feel free to change to your liking!
         ---@diagnostic disable-next-line: missing-fields
         require('mason-nvim-dap').setup({
-            automatic_setup = true,
-            -- see mason-nvim-dap README for more information
+            automatic_installation = true,
             handlers = {},
             ensure_installed = require('ensure').mason_dap,
         })
@@ -86,8 +80,8 @@ return {
             { desc = 'Debug: See last session result.' }
         )
 
-        -- Install ang specific config
-        -- require('dap-go').setup()
+        -- Install golang specific config
+        require('dap-go').setup()
         -- require('dap-python').setup()
     end,
 }

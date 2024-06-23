@@ -15,9 +15,7 @@ return {
     -- nvim-lint Linting
     require('pluggers.lint'),
     -- Debugging (not really finished)
-    require('pluggers.debug'),
-    -- TODO balls time
-    -- TODO balls timing
+    -- require('pluggers.debug'),
     -- Orgmode is lazy loaded and this would never trigger if you just never use it
     require('pluggers.org'),
     -- telescope.nvim Fuzzy Finder
