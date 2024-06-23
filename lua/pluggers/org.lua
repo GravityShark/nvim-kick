@@ -13,24 +13,7 @@ return {
             desc = 'Org [a]genda',
         },
     },
-    dependencies = {
-        {
-            'kevinhwang91/nvim-ufo',
-            dependencies = 'kevinhwang91/promise-async',
-            opts = function()
-                -- vim.opt.foldcolumn = '1'
-                vim.opt.foldlevel = 99
-                vim.opt.foldlevelstart = 99
-                vim.opt.foldenable = true
-                require('ufo').setup({
-                    provider_selector = function()
-                        return ''
-                    end,
-                    open_fold_hl_timeout = 0,
-                })
-            end,
-            --
-        },
+    dependencies = { -- {{{
         {
             'lukas-reineke/headlines.nvim',
             opts = {
@@ -60,53 +43,7 @@ return {
                 },
             },
         },
-        -- {
-        --     'chipsenkbeil/org-roam.nvim',
-        --     opts = {
-        --         directory = '~/Notes',
-        --         database = {
-        --             path = '~/Notes/.db',
-        --         },
-        --         templates = {
-        --             d = {
-        --                 description = 'default',
-        --                 template = '*',
-        --                 target = '%<%Y%m%d%H%M%S>-%[slug].org',
-        --             },
-        --         },
-        --     },
-        -- },
-        -- {
-        --     'akinsho/org-bullets.nvim',
-        --     opts = {
-        --         concealcursor = true,
-        --         symbols = {
-        --             -- list symbol
-        --             list = '•',
-        --             -- headlines can be a list
-        --             headlines = {
-        --                 '󰄰',
-        --                 '󰪞',
-        --                 '󰪟',
-        --                 '󰪠',
-        --                 '󰪡',
-        --                 '󰪢',
-        --                 '󰪣',
-        --                 '󰪤',
-        --                 '󰪥',
-        --             },
-        --             -- or a function that receives the defaults and returns a list
-        --             -- headlines = function(default_list)
-        --             --     table.insert(default_list, '♥')
-        --             --     return default_list
-        --             -- end,
-        --             -- or false to disable the symbol. Works for all symbols
-        --             -- headlines = false,
-        --             checkboxes = false,
-        --         },
-        --     },
-        -- },
-    },
+    }, -- }}}
 
     opts = {
         org_agenda_files = '~/Notes/**/*',
@@ -129,6 +66,19 @@ return {
             org = {
                 org_open_at_point = '<CR>',
             },
+        },
+        org_capture_templates = {
+            t = {
+                description = 'Todo',
+                template = '* TODO %?\nSCHEDULED: %t\n\tDEADLINE: %^{Deadline}t\n\t%u\n\t',
+                target = '~/Notes/todo.org',
+            },
+            r = {
+                description = 'Reminder',
+                template = '* TODO %?\n\tSCHEDULED: %^{When happening?}t\n\t%u\n\t',
+                target = '~/Notes/reminders.org',
+            },
+            n = { description = 'Note', template = '* %?\n  %u' },
         },
     },
 }

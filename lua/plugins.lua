@@ -7,25 +7,7 @@ return {
     -- Language server
     require('pluggers.mason'),
     -- nvim-treesitter Text Highlighting and more
-    -- {{{
-    {
-        -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        event = VeryLazyFile,
-        -- dependencies = {
-        --     'nvim-treesitter/nvim-treesitter-textobjects',
-        -- },
-        config = function()
-            require('pluggers.treesitter')
-        end,
-    },
-    { -- I should use emmet instead of this tbh but might aswell have it
-        'windwp/nvim-ts-autotag',
-        ft = { 'html', 'javascript', 'markdown' },
-        opts = {},
-    },
-    -- }}}
+    require('pluggers.treesitter'),
     -- nvim-cmp Text Completion
     require('pluggers.cmp'),
     -- confomrm.nvim Formatting
@@ -33,30 +15,15 @@ return {
     -- nvim-lint Linting
     require('pluggers.lint'),
     -- Debugging (not really finished)
-    ---require('pluggers.debug'),
+    require('pluggers.debug'),
+    -- TODO balls time
+    -- TODO balls timing
     -- Orgmode is lazy loaded and this would never trigger if you just never use it
     require('pluggers.org'),
     -- telescope.nvim Fuzzy Finder
     require('pluggers.telescope'),
     -- }}}
     -- Other {{{
-    -- coloizer.nvim Visualize color codes in code {{{
-    {
-        'JosefLitos/colorizer.nvim',
-        cmd = { 'ColorizerToggle' },
-        keys = {
-            {
-                '<leader>C',
-                '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-                desc = '[C]olorize Colors',
-            },
-        },
-        opts = {
-            user_default_options = {
-                names = 'tailwind',
-            },
-        },
-    }, -- }}}
     -- gitsigns.nvim Adds git related signs to the gutter, as well as utilities for managing changes {{{
     {
         'lewis6991/gitsigns.nvim',
@@ -205,38 +172,6 @@ return {
         event = LazyFile,
     },
     --}}}
-    -- zen-mode.nvim Stay in the zenmode with <leader>z {{{
-    {
-        'folke/zen-mode.nvim',
-        cmd = { 'ZenMode' },
-        -- dependencies = 'folke/twilight.nvim',
-        keys = {
-            {
-                '<leader>z',
-                '<CMD>ZenMode<CR>',
-                desc = '[z]enmode Toggle',
-            },
-        },
-        opts = {
-            window = {
-                width = 120, -- width of the Zen window
-            },
-            plugins = {
-                options = {
-                    colorcolumn = 0,
-                    enabled = true,
-                    ruler = true, -- disables the ruler text in the cmd line area
-                    showcmd = true, -- disables the command in the last line of the screen
-                    laststatus = 0, -- turn off the statusline in zen mode
-                    showmode = true,
-                },
-                -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-                gitsigns = { enabled = true },
-                tmux = { enabled = true },
-            },
-        },
-    },
-    -- }}}
     -- which-key.nvim Keymap hints {{{
     {
         'folke/which-key.nvim',
@@ -283,46 +218,26 @@ return {
         end,
     }, -- }}}
     -- mini.nvim improvements {{{
-    -- Auto pairs () {{{
+    -- mini.pairs Auto pairs ()[]{} {{{
     {
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
-        opts = {},
+        config = true,
     }, -- }}}
-    -- Better (a)round and (i)nside commands{{{
-    { 'echasnovski/mini.ai', event = VeryLazyFile, opts = {} },
+    -- mini.ai Better (a)round and (i)nside commands{{{
+    { 'echasnovski/mini.ai', event = VeryLazyFile, config = true },
     -- }}}
-    -- Better f/F and t/T{{{
+    -- mini.jump Better f/F and t/T{{{
     {
         'echasnovski/mini.jump',
         keys = { 'f', 'F', 't', 'T', ';' },
         opts = { highlight = 0 },
     },
     -- }}}
-    -- Extra commands {{{
-    {
-        'echasnovski/mini.operators',
-        keys = {
-            { 'g=', mode = '', desc = 'Mini Evaluate operator' },
-            { 'gx', mode = '', desc = 'Mini Exchange operator' },
-            { 'gm', mode = '', desc = 'Mini Multiply operator' },
-            { 'gr', mode = '', desc = 'Mini Replace operator' },
-            { 'gs', mode = '', desc = 'Mini Sort operator' },
-        },
-        opts = {},
-    }, -- }}}
-    -- Fast bufferline{{{
-    {
-        'GravityShark0/mini.tabline',
-        event = { 'BufAdd', 'BufDelete', 'UIEnter' },
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        opts = { set_vim_settings = false },
-    },
-    -- }}}
-    -- Kill buffers and preserve window layout{{{
+    -- mini.bufremove Kill buffers and preserve window layout{{{
     { 'echasnovski/mini.bufremove' },
     -- }}}
-    -- Surround text with any character{{{
+    -- mini.surround Surround text with any character{{{
     {
         'echasnovski/mini.surround',
         keys = {
@@ -335,7 +250,7 @@ return {
             { 'sh', desc = 'Highlight surrounding' },
             { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
         },
-        opts = {},
+        config = true,
     },
 
     -- }}}
@@ -357,21 +272,29 @@ return {
     -- require('colorscheme.transparent-plugin'),
     -- Look in settings.lua for the different transparentcy
     -- }}}
-    -- Statusline {{{
+    -- mini.statusline Statusline {{{
     {
         'echasnovski/mini.statusline',
         lazy = false,
         opts = { set_vim_settings = false },
     },
     -- }}}
-    -- Illuminate words that are the same {{{
+    -- mini.tabline Fast bufferline{{{
+    {
+        'GravityShark0/mini.tabline',
+        event = { 'BufAdd', 'BufDelete', 'UIEnter' },
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        opts = { set_vim_settings = false },
+    },
+    -- }}}
+    -- mini.cursorword Illuminate words that are the same {{{
     {
         'echasnovski/mini.cursorword',
         event = VeryLazyFile,
-        opts = {},
+        config = true,
     },
     -- }}}
-    -- Indent indicators{{{
+    -- mini.indentscope Indent indicators{{{
     {
         'echasnovski/mini.indentscope',
         event = LazyFile,
@@ -383,10 +306,128 @@ return {
         },
     },
     -- }}}
+    -- colorizer.nvim Visualize color codes in code {{{
+    {
+        'JosefLitos/colorizer.nvim',
+        cmd = { 'ColorizerToggle' },
+        keys = {
+            {
+                '<leader>C',
+                '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
+                desc = '[C]olorize Colors',
+            },
+        },
+        opts = {
+            user_default_options = {
+                names = 'tailwind',
+            },
+        },
+    }, -- }}}
+    -- zen-mode.nvim Stay in the zenmode with <leader>z {{{
+    {
+        'folke/zen-mode.nvim',
+        cmd = { 'ZenMode' },
+        -- dependencies = 'folke/twilight.nvim',
+        keys = {
+            {
+                '<leader>z',
+                '<CMD>ZenMode<CR>',
+                desc = '[z]enmode Toggle',
+            },
+        },
+        opts = {
+            window = {
+                width = 120, -- width of the Zen window
+                options = {
+                    signcolumn = 'no', -- disable signcolumn
+                    -- number = false, -- disable number column
+                    -- relativenumber = false, -- disable relative numbers
+                    -- cursorline = false, -- disable cursorline
+                    -- cursorcolumn = 0', -- disable cursor column
+                    colorcolumn = '0', -- disable cursor column
+                    -- foldcolumn = "0", -- disable fold column
+                    -- list = false, -- disable whitespace characters
+                },
+            },
+            plugins = {
+                options = {
+                    enabled = true,
+                    ruler = false, -- disables the ruler text in the cmd line area
+                    showcmd = false, -- disables the command in the last line of the screen
+                    laststatus = 0, -- turn off the statusline in zen mode
+                },
+                -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+                gitsigns = { enabled = true },
+                tmux = { enabled = true },
+            },
+        },
+    },
+    -- }}}
+    -- todo-comments.nvim Highlighted todo comments {{{
+    {
+        'folke/todo-comments.nvim',
+        event = VeryLazyFile,
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = true,
+    }, -- }}}
+    -- nvim-ufo Better folds {{{
+    {
+        'kevinhwang91/nvim-ufo',
+        event = VeryLazyFile,
+        dependencies = 'kevinhwang91/promise-async',
+        opts = function()
+            vim.opt.foldmethod = 'expr'
+            vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+            vim.opt.foldenable = false
+            vim.opt.foldlevel = 99
+            vim.opt.foldlevelstart = 99
+
+            local handler = function(virtText, lnum, endLnum, width, truncate)
+                local newVirtText = {}
+                local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+                local sufWidth = vim.fn.strdisplaywidth(suffix)
+                local targetWidth = width - sufWidth
+                local curWidth = 0
+                for _, chunk in ipairs(virtText) do
+                    local chunkText = chunk[1]
+                    local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                    if targetWidth > curWidth + chunkWidth then
+                        table.insert(newVirtText, chunk)
+                    else
+                        chunkText = truncate(chunkText, targetWidth - curWidth)
+                        local hlGroup = chunk[2]
+                        table.insert(newVirtText, { chunkText, hlGroup })
+                        chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                        -- str width returned from truncate() may less than 2nd argument, need padding
+                        if curWidth + chunkWidth < targetWidth then
+                            suffix = suffix
+                                .. (' '):rep(
+                                    targetWidth - curWidth - chunkWidth
+                                )
+                        end
+                        break
+                    end
+                    curWidth = curWidth + chunkWidth
+                end
+                table.insert(newVirtText, { suffix, 'MoreMsg' })
+                return newVirtText
+            end
+
+            return {
+                provider_selector = function(bufnr, filetype, buftype)
+                    return { 'treesitter', 'indent' }
+                end,
+
+                fold_virt_text_handler = handler,
+                open_fold_hl_timeout = 0,
+            }
+        end,
+        --
+    }, -- }}}
     -- }}}
     -- Development {{{
     -- neodev.nvim Helps in neovim development
-    -- { 'folke/neodev.nvim', enabled = false, opts = {} },
+    { 'folke/neodev.nvim', enabled = true, opts = {} },
     -- mini.doc When developing docs in mini.nvim plugins
     -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
     {

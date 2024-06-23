@@ -159,27 +159,27 @@ function CheckTabline()
     end
 end
 
-TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+vim.api.nvim_create_autocmd({
     'BufAdd',
     'BufDelete',
     'UIEnter',
 }, { callback = CheckTabline })
 
-function ToggleBar()
-    if vim.opt.showtabline == 0 then
-        vim.opt.showtabline = 2
-        TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
-            'BufAdd',
-            'BufDelete',
-            'UIEnter',
-        }, { callback = CheckTabline })
-    else
-        if vim.opt.showtabline == 2 then
-            vim.opt.showtabline = 0
-            vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
-        end
-    end
-end
+-- function ToggleBar()
+--     if vim.opt.showtabline == 0 then
+--         vim.opt.showtabline = 2
+--         TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
+--             'BufAdd',
+--             'BufDelete',
+--             'UIEnter',
+--         }, { callback = CheckTabline })
+--     else
+--         if vim.opt.showtabline == 2 then
+--             vim.opt.showtabline = 0
+--             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
+--         end
+--     end
+-- end
 -- }}}
 -- LSP Diagnostics Signs {{{
 for type, icon in pairs({

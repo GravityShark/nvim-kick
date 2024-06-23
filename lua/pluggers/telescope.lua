@@ -101,7 +101,7 @@ return {
             dependencies = {
                 'kkharji/sqlite.lua',
             },
-            opts = {},
+            config = true,
         },
     },
     config = function()

@@ -2,8 +2,7 @@
 
 return {
     'mfussenegger/nvim-dap',
-    -- event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
-    ft = { 'cpp', 'c' },
+    ft = { 'cpp', 'c', 'go' },
     dependencies = {
         -- Creates a beautiful debugger UI
         {
@@ -29,6 +28,7 @@ return {
         local dapui = require('dapui')
 
         -- Basic debugging keymaps, feel free to change to your liking!
+        ---@diagnostic disable-next-line: missing-fields
         require('mason-nvim-dap').setup({
             automatic_setup = true,
             -- see mason-nvim-dap README for more information

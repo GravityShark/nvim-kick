@@ -4,13 +4,9 @@ M.treesitter = { -- {{{
     'lua',
     'python',
     'c',
-    'cpp',
     'html',
-    'htmldjango',
     'css',
     'javascript',
-    'typescript',
-    'tsx',
     'vim',
     'vimdoc',
     'bash',
@@ -26,20 +22,31 @@ M.treesitter = { -- {{{
     'org',
     'diff',
     'go',
-    'godot_resource',
     'gomod',
     'gosum',
     'templ',
-    -- 'svelte',
-    -- 'gdscript',
-    -- 'rust',
+    'latex',
 } -- }}}
 
 M.servers = { -- {{{
+    --[[ Example
+    x_language_server = {
+      cmd = {...},
+      filetypes = { ...},
+      capabilities = {},
+      settings = {...},
+    },
+    ]]
+
     pyright = {},
 
     gopls = {
-        gopls = { usePlaceholders = true, analyses = { unusedparams = true } },
+        settings = {
+            gopls = {
+                usePlaceholders = true,
+                analyses = { unusedparams = true },
+            },
+        },
     },
 
     html = {},
@@ -47,18 +54,21 @@ M.servers = { -- {{{
     cssls = {},
     tailwindcss = {},
     tsserver = {},
-    -- svelte = {},
     -- htmx = {},
 
     clangd = {},
 
     lua_ls = {
-        Lua = {
-            completion = { autoRequire = true, callSnippet = 'Replace' },
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
+        settings = {
+            Lua = {
+                completion = { autoRequire = true, callSnippet = 'Replace' },
+                workspace = { checkThirdParty = false },
+            },
         },
     },
+
+    ltex = {},
+    texlab = {},
 }
 
 M.mason = {
@@ -73,7 +83,6 @@ M.mason = {
     'css-lsp',
     'tailwindcss-language-server',
     'typescript-language-server',
-    -- 'svelte-language-server',
     'prettierd',
     'quick-lint-js',
     -- 'htmx-lsp',
@@ -83,6 +92,9 @@ M.mason = {
 
     'lua-language-server',
     'stylua',
+
+    'texlab',
+    'ltex-ls',
 } -- }}}
 
 M.mason_dap = { -- {{{
@@ -91,20 +103,14 @@ M.mason_dap = { -- {{{
 } -- }}}
 
 M.format = { -- {{{
-    -- angular = {"prettierd"},
     css = { 'prettierd' },
-    -- flow = {"prettierd"},
-    -- graphql = {"prettierd"},
     html = { 'prettierd' },
     json = { 'prettierd' },
-    -- jsx = { 'prettierd' },
     javascript = { 'prettierd' },
-    less = { 'prettierd' },
     markdown = { 'prettierd' },
-    scss = { 'prettierd' },
-    typescript = { 'prettierd' },
-    -- vue = {"prettierd"},
     yaml = { 'prettierd' },
+    -- scss = { 'prettierd' },
+    -- typescript = { 'prettierd' },
 
     lua = { 'stylua' },
     c = { 'clang-format' },
@@ -112,8 +118,6 @@ M.format = { -- {{{
 
     go = { 'gofmt' },
     python = { 'ruff_format' },
-
-    -- gdscript = { 'gdformat' },
 }
 
 M.formatextra = {
@@ -126,7 +130,6 @@ M.lint = { -- {{{
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
-    -- gdscript = { 'gdlint' },
 } -- }}}
 
 return M
