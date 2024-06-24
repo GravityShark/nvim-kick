@@ -11,5 +11,6 @@ return {
             'MiniCursorword',
             { default = true, bg = '#403d52' }
         )
+        require('color.transparent')
     end,
 }

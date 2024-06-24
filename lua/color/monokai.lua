@@ -2,9 +2,6 @@ return {
     'tanvirtin/monokai.nvim',
     lazy = false,
     config = function()
-        -- local monokai = require('monokai')
-        -- local paletter = monokai.pro
-
         -- Custom palette{{{
         local paletter = {
             black = '#181a1c',
@@ -128,56 +125,7 @@ return {
             palette = paletter,
             custom_hlgroups = custom_hlgroupers,
         })
-        -- Turn all items in list to have transparent backgrounds{{{
-        -- local transparent = {
-        --     'Normal',
-        --     'NormalNC',
-        --     'NormalFloat',
-        --     'Comment',
-        --     'Constant',
-        --     'Special',
-        --     'Identifier',
-        --     'Statement',
-        --     'PreProc',
-        --     'Type',
-        --     'Underlined',
-        --     'Todo',
-        --     'String',
-        --     'Function',
-        --     'Conditional',
-        --     'Repeat',
-        --     'Operator',
-        --     'Structure',
-        --     'LineNr',
-        --     'NonText',
-        --     'SignColumn',
-        --     'EndOfBuffer',
-        --     'TelescopeNormal',
-        -- }
 
-        -- from https://github.com/xiyaowong/transparent.nvim/blob/main/lua/transparent/init.lua
-        -- local groups = type(transparent) == 'string' and { transparent }
-        --     or transparent
-        -- for _, v in ipairs(groups) do
-        --     local ok, prev_attrs = pcall(vim.api.nvim_get_hl_by_name, v, true)
-        --     if
-        --         ok
-        --         and (
-        --             prev_attrs.background
-        --             or prev_attrs.bg
-        --             or prev_attrs.ctermbg
-        --         )
-        --     then
-        --         local attrs = vim.tbl_extend(
-        --             'force',
-        --             prev_attrs,
-        --             { bg = 'NONE', ctermbg = 'NONE' }
-        --         )
-        --         attrs[true] = nil
-        --         vim.api.nvim_set_hl(0, v, attrs)
-        --     end
-        -- end
-        --
-        -- }}}
+        require('color.transparent')
     end,
 }

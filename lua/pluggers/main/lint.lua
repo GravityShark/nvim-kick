@@ -1,6 +1,6 @@
 return { -- Linting
     'mfussenegger/nvim-lint',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }, -- LazyFile
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" }, -- LazyFile
     config = function()
         local lint = require('lint')
         lint.linters_by_ft = require('ensure').lint
