@@ -6,6 +6,9 @@
 
 > its pratically done ngl
 > its ACTUALLY practically done now
+> its pratical and weird but its FAST BABY
+> I know using symlinks may be a weird way of adding and not adding plugins
+> but i promise its fire
 
 ### plugins to look into
 
@@ -15,13 +18,14 @@
   - [ ] python
   - [ ] bash?
   - [ ] javascript
-- [ ] [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+- [x] [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 - [ ] [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
 - [ ] [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
-- [ ] [Trouble V3](https://github.com/folke/trouble.nvim)
-- [ ] [Codeium](https://github.com/Exafunction/codeium.nvim)
-- [ ] [Todo Comments](https://github.com/folke/todo-comments.nvim)
+- [ ] [Neogen](https://github.com/danymat/neogen) (kinda interesting)
 - [ ] [Neoconf](https://github.com/folke/neoconf.nvim)
+- [ ] [Codeium](https://github.com/Exafunction/codeium.nvim)
+- [/] [Trouble V3](https://github.com/folke/trouble.nvim)
+- [/] [Todo Comments](https://github.com/folke/todo-comments.nvim)
   > but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
 
 #### mini.nvim

@@ -1,8 +1,8 @@
-    -- neodev.nvim Helps in neovim development
+-- Plugins that involve development in a specific environment
 return {
-    { 'folke/neodev.nvim', enabled = true, opts = {} },
-    -- mini.doc When developing docs in mini.nvim plugins
-    -- { 'echasnovski/mini.doc', enabled = false, opts = {} },
+    -- neodev.nvim Helps in neovim development
+    { 'folke/neodev.nvim', config = true },
+    -- typst-preview.nvim Allows for a live preview of your typst document
     {
         'chomosuke/typst-preview.nvim',
         ft = 'typst',
@@ -11,4 +11,4 @@ return {
             require('typst-preview').update()
         end,
     },
-    }
+}

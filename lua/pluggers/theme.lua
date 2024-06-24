@@ -34,7 +34,7 @@ return {
     -- mini.indentscope Indent indicators{{{
     {
         'echasnovski/mini.indentscope',
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
         opts = {
             -- symbol = '▎',
             -- symbol = "▏",
@@ -103,7 +103,7 @@ return {
     -- todo-comments.nvim Highlighted todo comments {{{
     {
         'folke/todo-comments.nvim',
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
+        event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = true,
     }, -- }}}

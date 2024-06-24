@@ -1,6 +1,5 @@
-
+-- Fun stuff
 return {
-    -- Fun stuff {{{
     -- StartupTime {{{
     {
         'dstein64/vim-startuptime',
@@ -20,5 +19,5 @@ return {
         cmd = 'VimBeGood',
     }, -- }}}
     -- require('dragmove'),
-    -- }}}
 }
+-- vim:foldmethod=marker:
