@@ -4,9 +4,6 @@
 -- vim.opt.winblend = 10
 
 -- Opts {{{
--- What data is saved when saving a session
--- vim.opt.sessionoptions = 'buffers,curdir,folds,tabpages,winsize,winpos' -- Not used
-
 -- Allow switching buffers without saving them
 vim.opt.hidden = true
 
@@ -106,22 +103,6 @@ vim.opt.pumheight = 10
 
 -- }}}
 
--- function ToggleBar()
---     if vim.opt.showtabline == 0 then
---         vim.opt.showtabline = 2
---         TABLINE_AUTOCMD_ID = vim.api.nvim_create_autocmd({
---             'BufAdd',
---             'BufDelete',
---             'UIEnter',
---         }, { callback = CheckTabline })
---     else
---         if vim.opt.showtabline == 2 then
---             vim.opt.showtabline = 0
---             vim.api.nvim_del_autocmd(TABLINE_AUTOCMD_ID)
---         end
---     end
--- end
--- }}}
 -- LSP Diagnostics Signs {{{
 for type, icon in pairs({
     Error = ' ',

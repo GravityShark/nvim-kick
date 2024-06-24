@@ -1,6 +1,7 @@
 -- persistence.nvim Session management
 return {
     'folke/persistence.nvim',
+    event = 'BufReadPre',
     keys = {
         {
             '<leader>sl',

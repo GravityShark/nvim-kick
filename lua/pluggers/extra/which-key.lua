@@ -10,23 +10,23 @@ return {
     end,
     opts = function()
         require('which-key').register({
-            f = { name = '[f]ind' },
-            s = { name = '[s]ession' },
-            r = {
-                name = '[r]un',
+            f = { name = '[f]ind...' },
+            s = { name = '[s]ession...' },
+            R = {
+                name = '[R]un...',
                 g = {
-                    name = 'run [g]cc',
+                    name = 'run [g]cc...',
                 },
             },
-            o = { name = '[o]rg' },
+            o = { name = '[o]rg...' },
             g = {
-                name = '[g]it',
+                name = '[g]it...',
                 a = {
-                    name = 'Git [a]dd',
+                    name = 'Git [a]dd...',
                 },
             },
-            b = { name = 'de[b]ug' },
-            l = { name = '[l]sp' },
+            b = { name = 'de[b]ug...' },
+            l = { name = '[l]sp...' },
         }, { prefix = '<leader>' })
         return {
             window = {

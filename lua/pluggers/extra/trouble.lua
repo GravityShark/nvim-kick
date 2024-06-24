@@ -9,13 +9,5 @@ return {
             desc = 'Trouble [x] Toggle',
         },
     },
-    opts = {
-        -- signs = {
-        --     error = ' ',
-        --     warn = ' ',
-        --     hint = '󰌵 ',
-        --     information = '󰋼 ',
-        --     other = '',
-        -- },
-    },
+    config = true,
 }

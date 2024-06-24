@@ -1,19 +1,45 @@
 -- Keymaps for better default experience
 -- See `:help vim.api.nvim_set_keymap()`
--- vim.keymap.set({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
---
+-- vim.api.nvim_set_keymap({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 -- Plugin remaps are located in the respective plugin definition under their init function
 
--- vim.keymap.set(
---     'n',
---     '<leader><leader>s',
---     '<CMD>source ~/.config/nvim/after/plugin/luasnip.lua<CR>'
--- )
 -- Run/Compile code inside {{{
-vim.keymap.set('n', '<leader>t', '<CMD>split term://$SHELL<CR>')
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>t',
+    '<CMD>split term://$SHELL<CR>',
+    { desc = '[t]erminal create' }
+)
+
 vim.keymap.set(
     'n',
-    '<leader>rgc',
+    '<leader>r',
+    function()
+        local file = vim.api.nvim_buf_get_name(0)
+        local file_noext = file:match('^(.+)%.+')
+
+        vim.ui.input(
+            { prompt = 'Prompt: ', default = vim.g.runwithparameters or '' },
+            function(input)
+                if input == '' then
+                    print('Compilation canceled')
+                    return
+                end
+                vim.g.runwithparameters = input
+                input = string.gsub(input, '$.', file)
+                input = string.gsub(input, '$,', file_noext)
+
+                vim.cmd.split('term://' .. input)
+            end
+        )
+    end,
+    { desc = '[r]un with input' } -- runs in
+)
+
+vim.keymap.set(
+    'n',
+    '<leader>Rgc',
     function()
         local file = vim.api.nvim_buf_get_name(0)
         local file_noext = file:match('^(.+)%.+')
@@ -33,7 +59,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     'n',
-    '<leader>rgC',
+    '<leader>RgC',
     function()
         local file = vim.api.nvim_buf_get_name(0)
         local file_noext = file:match('^(.+)%.+')
@@ -49,22 +75,22 @@ vim.keymap.set(
     -- '<CMD>!gcc % --debug -o %<CR>',
     { desc = 'GCC [C]ompile and run' }
 )
-vim.keymap.set(
+vim.api.nvim_set_keymap(
     'n',
-    '<leader>rgr',
+    '<leader>Rgr',
     '<CMD>split term://gcc % --debug -o /tmp/a.out && /tmp/a.out<CR>',
     { desc = 'GCC [r]un' }
 )
 
-vim.keymap.set(
+vim.api.nvim_set_keymap(
     'n',
-    '<leader>rG',
+    '<leader>RG',
     '<CMD>split term://go run %<CR>',
     { desc = '[G]o run' }
 )
 vim.keymap.set(
     'n',
-    '<leader>rgR',
+    '<leader>RgR',
     function()
         os.execute(
             'gcc ' .. vim.api.nvim_buf_get_name(0) .. ' --debug -o /tmp/a.out'
@@ -76,29 +102,34 @@ vim.keymap.set(
     { desc = 'GCC [R]un with parameters' } -- runs in
 )
 
--- vim.keymap.set('n', '<leader>rgd', '<CMD><CR>', { desc = '[d]ebug' })
-vim.keymap.set(
+-- vim.api.nvim_set_keymap('n', '<leader>Rgd', '<CMD><CR>', { desc = '[d]ebug' })
+vim.api.nvim_set_keymap(
     'n',
-    '<leader>rx',
+    '<leader>Rx',
     '<CMD>silent !chmod +x %<CR>',
     { desc = 'chmod +[x] %' }
 )
 
-vim.keymap.set(
+vim.api.nvim_set_keymap(
     'n',
-    '<leader>rs',
+    '<leader>Rs',
     '<CMD>split term://%<CR>',
     { desc = 'Run [s]hell' }
 )
-vim.keymap.set(
+vim.api.nvim_set_keymap(
     'n',
-    '<leader>rS',
+    '<leader>RS',
     '<CMD>split term://fish<CR>' .. vim.api.nvim_buf_get_name(0) .. ' ',
     { desc = 'Run [S]hell with parameters' }
 )
 -- }}}
 -- Exit term mode{{{
-vim.keymap.set('t', '<C-space>', '<C-\\><C-n><C-w>h', { silent = true }) -- }}}
+vim.api.nvim_set_keymap(
+    't',
+    '<C-space>',
+    '<C-\\><C-n><C-w>h',
+    { silent = true }
+) -- }}}
 -- Remove highlighting with escape{{{
 vim.api.nvim_set_keymap(
     'n',
@@ -177,8 +208,8 @@ vim.api.nvim_set_keymap(
     '<C-u>zz',
     { noremap = true, silent = true }
 )
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true })
+vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- }}}
 -- Netrw {{{
 -- Open netrw on the right
@@ -307,8 +338,8 @@ vim.api.nvim_set_keymap(
 )
 -- }}}
 -- Blazingly fast remaps {{{
--- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
--- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv") vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- Unmoving cursor while doing J
-vim.keymap.set('n', 'J', 'mzJ`z')
+-- vim.api.nvim_set_keymap('n', 'J', 'mzJ`z')
 -- }}}
+-- vim:foldmethod=marker:
