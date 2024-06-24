@@ -3,17 +3,13 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-        -- Adds paths to sources
+        -- Paths to sources
         'https://codeberg.org/FelipeLema/cmp-async-path',
-
-        -- Adds LSP completion capabilities
+        -- LSP completion capabilities
         'hrsh7th/cmp-nvim-lsp',
-
-        -- Adds the built-in vim auto-complete
+        -- Built-in vim auto-complete
         'hrsh7th/cmp-buffer',
-
         -- Adds snippets via luasnips
-
         'saadparwaiz1/cmp_luasnip',
         {
             'L3MON4D3/LuaSnip',

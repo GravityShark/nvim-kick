@@ -1,12 +1,4 @@
--- Enable transparency
--- If no transparency is enabled enable winblend instead
--- vim.opt.pumblend = 10
--- vim.opt.winblend = 10
-
 -- Opts {{{
--- Allow switching buffers without saving them
-vim.opt.hidden = true
-
 -- Global statusline
 vim.opt.laststatus = 3
 
@@ -22,7 +14,7 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
 -- Disable that weird effect where it changes the color of your cursor
-vim.opt.matchtime = 0
+-- vim.opt.matchtime = 0
 
 -- Leaves 8 lines of extra space
 vim.opt.scrolloff = 8
@@ -36,7 +28,6 @@ vim.opt.colorcolumn = '80'
 
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new vertical splits to right
-
 vim.opt.expandtab = true -- Use spaces by default
 vim.opt.shiftwidth = 8 -- Set amount of space characters, when we press "<" or ">"
 
@@ -45,21 +36,13 @@ vim.opt.tabstop = 8 -- 1 tab equal 2 spaces
 vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldmethod = 'marker' -- Good
--- vim.opt.foldmethod = 'syntax' -- Bad >:1
--- vim.opt.foldenable = true
 
 vim.opt.ignorecase = true -- Ignore case if all characters in lower case
-vim.opt.joinspaces = false -- Join multiple spaces in search
 vim.opt.smartcase = true -- When there is a one capital letter search for exact match
 vim.opt.showmatch = true -- Highlight search instances
 
 -- Disable showing --Insert-- or --Visual-- in the cmdline
 vim.opt.showmode = false
-
--- Wild menu
--- vim.opt.wildmenu = true -- already default
--- Set wildcharm to trigger the wildmenu
--- vim.opt.wildcharm = string.byte('<Tab>')
 
 -- Enable nerd font
 vim.g.have_nerd_font = true
@@ -76,30 +59,26 @@ vim.g.netrw_liststyle = 3
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_winsize = 20
 -- vim.g.netrw_browse_split = 4
-
 -- mini.basics
-vim.opt.backup = false
+-- vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.mouse = 'a'
 vim.opt.cursorline = true
 vim.opt.linebreak = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
 vim.opt.ruler = false
 vim.opt.wrap = false
 
 vim.opt.signcolumn = 'yes'
 vim.opt.fillchars = 'eob: '
-
 -- Editing
 -- vim.opt.incsearch = true -- already default
--- vim.opt.infercase = true -- already default
+vim.opt.infercase = true -- already default
 vim.opt.virtualedit = 'block'
 vim.opt.formatoptions = 'qjl1'
 
 vim.opt.termguicolors = true
 
-vim.opt.pumheight = 10
+vim.opt.pumheight = 15
 
 -- }}}
 

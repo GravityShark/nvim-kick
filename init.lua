@@ -50,5 +50,4 @@ require('lazy').setup({
 require('settings')
 require('keymaps')
 require('autocmd')
-
 -- vim:foldmethod=marker:
