@@ -182,13 +182,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- }}}
 -- Netrw {{{
 -- Open netrw on the right
-vim.api.nvim_set_keymap('n', '<leader>.', '<CMD>Sex!<CR>', { desc = 'SEEX!!!' })
--- vim.api.nvim_set_keymap(
---     'n',
---     '<leader>l',
---     '<CMD>Lex<CR><CMD>vertical resize 50<CR>',
---     { desc = 'Lex??' }
--- )
+vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Lex<CR>', { desc = 'Lex?' })
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',

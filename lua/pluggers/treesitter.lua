@@ -9,7 +9,13 @@ return {
             ft = { 'html', 'javascript', 'markdown' },
             config = true,
         },
-        { 'nvim-treesitter/nvim-treesitter-context', config = true },
+        {
+            'nvim-treesitter/nvim-treesitter-context',
+            opts = {
+                -- max_lines = 8,
+                multiline_threshold = 1,
+            },
+        },
     },
     opts = {
         ensure_installed = require('ensure').treesitter,
@@ -17,16 +23,6 @@ return {
             enable = true,
         },
         indent = { enable = true },
-
-        -- incremental_selection = {
-        --     enable = true,
-        --     keymaps = {
-        --         init_selection = 'gnn',
-        --         node_incremental = 'grn',
-        --         scope_incremental = 'grc',
-        --         node_decremental = 'grm',
-        --     },
-        -- },
     },
     config = function(_, opts)
         require('nvim-treesitter.install').prefer_git = true

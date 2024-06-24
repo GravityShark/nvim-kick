@@ -76,6 +76,16 @@ vim.g.have_nerd_font = true
 -- Undotree Layout
 vim.g.undotree_WindowLayout = 3
 
+-- Netrw
+vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
+vim.g.netrw_banner = 0
+vim.g.netrw_fastbrowse = 0
+vim.g.netrw_keepdir = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_localcopydircmd = 'cp -r'
+vim.g.netrw_winsize = 20
+-- vim.g.netrw_browse_split = 4
+
 -- mini.basics
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -112,7 +122,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
 -- Automatically opening as insert mode when the buffer is a terminal
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
-        if vim.api.nvim_buf_get_option(0, 'buftype') == 'terminal' then
+        if vim.api.nvim_get_option_value('buftype', {}) == 'terminal' then
             vim.cmd.startinsert()
         end
     end,
@@ -192,3 +202,42 @@ for type, icon in pairs({
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
+-- Automatically deleting unnamed buffers
+-- https://vi.stackexchange.com/questions/44617/bufferline-in-nvim-auto-close-or-hide-no-name-buffer-when-other-buffers-are-o
+-- Function to close empty and unnamed buffers
+function Close_empty_unnamed_buffers()
+    -- Get a list of all buffers
+    local buffers = vim.api.nvim_list_bufs()
+
+    -- Iterate over each buffer
+    for _, bufnr in ipairs(buffers) do
+        -- Check if the buffer is empty and doesn't have a name
+        if
+            vim.api.nvim_buf_is_loaded(bufnr)
+            and vim.api.nvim_buf_get_name(bufnr) == ''
+            and vim.api.nvim_get_option_value('buftype', {}) == ''
+        then
+            -- Get all lines in the buffer
+            local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+            -- Initialize a variable to store the total number of characters
+            local total_characters = 0
+
+            -- Iterate over each line and calculate the number of characters
+            for _, line in ipairs(lines) do
+                total_characters = total_characters + #line
+            end
+
+            -- Close the buffer if it's empty:
+            if total_characters == 0 then
+                vim.api.nvim_buf_delete(bufnr, {
+                    force = true,
+                })
+            end
+        end
+    end
+end
+
+-- Clear the mandatory, empty, unnamed buffer when a real file is opened:
+vim.api.nvim_command('autocmd BufReadPost * lua Close_empty_unnamed_buffers()')
+-- vim:foldmethod=marker:

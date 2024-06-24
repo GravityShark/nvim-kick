@@ -69,7 +69,6 @@ M.servers = { -- {{{
 
     ltex = {
         filetypes = {
-
             'gitcommit',
             'markdown',
             'org',

@@ -34,7 +34,7 @@ require('lazy').setup({ import = 'plugins' }, {
                 'gzip',
                 -- "matchit",
                 -- "matchparen",
-                -- "netrwPlugin",
+                -- 'netrwPlugin',
                 -- "shada",
                 'rplugin',
                 'fzf',

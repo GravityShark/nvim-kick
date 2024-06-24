@@ -412,7 +412,7 @@ return {
             end
 
             return {
-                provider_selector = function(bufnr, filetype, buftype)
+                provider_selector = function()
                     return { 'treesitter', 'indent' }
                 end,
 
@@ -422,6 +422,22 @@ return {
         end,
         --
     }, -- }}}
+    -- netrw.nvim Icons in netrw
+    {
+        'prichrd/netrw.nvim',
+        ft = 'netrw',
+        opts = {
+            -- Put your configuration here, or leave the object empty to take the default
+            -- configuration.
+            icons = {
+                symlink = '', -- Symlink icon (directory and file)
+                directory = '', -- Directory icon
+                file = '', -- File icon
+            },
+            use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
+            mappings = {}, -- Custom key mappings
+        },
+    },
     -- }}}
     -- Development {{{
     -- neodev.nvim Helps in neovim development
@@ -456,43 +472,6 @@ return {
         'ThePrimeagen/vim-be-good',
         cmd = 'VimBeGood',
     }, -- }}}
-    -- Animations on things{{{
-    {
-        'echasnovski/mini.animate',
-        enabled = false,
-        event = 'VeryLazy',
-        opts = function()
-            local animate = require('mini.animate')
-            vim.api.nvim_set_keymap(
-                'n',
-                '<C-d>',
-                '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-d>zz")<CR>',
-                { noremap = true, silent = true }
-            )
-            vim.api.nvim_set_keymap(
-                'n',
-                '<C-u>',
-                '<CMD>lua MiniAnimate.execute_after("scroll", "normal! <C-u>zz")<CR>',
-                { noremap = true, silent = true }
-            )
-            return {
-                scroll = {
-                    timing = animate.gen_timing.quadratic({
-                        duration = 50,
-                        unit = 'total',
-                    }),
-                },
-                cursor = {
-                    timing = animate.gen_timing.quadratic({
-                        duration = 50,
-                        unit = 'total',
-                    }),
-                },
-            }
-        end,
-    },
-
-    -- }}}
     -- require('dragmove'),
     -- }}}
 }
