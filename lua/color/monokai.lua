@@ -119,6 +119,7 @@ return {
             PmenuThumb = { bg = paletter.base4 },
             CursorLine = { bg = paletter.base2 },
             ColorColumn = { bg = paletter.base2 },
+            MiniCursorword = { bg = '#403d52' },
         } -- }}}
 
         require('monokai').setup({
