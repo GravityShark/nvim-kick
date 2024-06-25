@@ -12,30 +12,19 @@ vim.api.nvim_set_keymap(
     { desc = '[t]erminal create' }
 )
 
-vim.keymap.set(
-    'n',
-    '<leader>r',
-    function()
-        local file = vim.api.nvim_buf_get_name(0)
-        local file_noext = file:match('^(.+)%.+')
-
-        vim.ui.input(
-            { prompt = 'Prompt: ', default = vim.g.runwithparameters or '' },
-            function(input)
-                if input == '' then
-                    print('Compilation canceled')
-                    return
-                end
-                vim.g.runwithparameters = input
-                input = string.gsub(input, '$.', file)
-                input = string.gsub(input, '$,', file_noext)
-
-                vim.cmd.split('term://' .. input)
-            end
-        )
-    end,
-    { desc = '[r]un with input' } -- runs in
-)
+vim.keymap.set('n', '<leader>r', function()
+    vim.ui.input({
+        prompt = 'Prompt: ',
+        default = vim.b.runwithparameters,
+        completion = 'shellcmd',
+    }, function(input)
+        if input == nil then
+            return
+        end
+        vim.b.runwithparameters = input
+        vim.cmd.split('term://' .. input)
+    end)
+end, { desc = '[r]un and [r]emember an input' })
 
 vim.keymap.set(
     'n',
@@ -112,15 +101,15 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>Rs',
+    '<leader>Rf',
     '<CMD>split term://%<CR>',
-    { desc = 'Run [s]hell' }
+    { desc = 'Run [f]ile' }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>RS',
+    '<leader>RF',
     '<CMD>split term://fish<CR>' .. vim.api.nvim_buf_get_name(0) .. ' ',
-    { desc = 'Run [S]hell with parameters' }
+    { desc = 'Run [F]ile with parameters' }
 )
 -- }}}
 -- Exit term mode{{{
