@@ -10,5 +10,9 @@ return {
         build = function()
             require('typst-preview').update()
         end,
+        opts = {
+            debug = true,
+            open_cmd = 'flatpak run com.brave.Browser --app="%s"',
+        },
     },
 }

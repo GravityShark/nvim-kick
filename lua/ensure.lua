@@ -82,7 +82,13 @@ M.servers = { -- {{{
             'typst',
         },
     },
-    tinymist = {},
+    -- tinymist = {
+    --     single_file_support = true,
+    --     root_dir = function()
+    --         return vim.fn.getcwd()
+    --     end,
+    -- },
+    typst_lsp = {},
 
     pyright = {},
 }
@@ -115,7 +121,8 @@ M.mason = {
 
     -- Typst / General Text
     'ltex-ls',
-    'tinymist',
+    -- 'tinymist',
+    'typst-lsp',
 
     -- Python
     'ruff',
