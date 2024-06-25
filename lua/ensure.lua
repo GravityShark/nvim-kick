@@ -35,7 +35,42 @@ M.treesitter = { -- {{{
     'regex',
 } -- }}}
 
-M.servers = { -- {{{
+M.mason = {
+    -- Lua
+    'lua-language-server',
+    'stylua',
+
+    -- Go
+    'gopls',
+    'golangci-lint',
+
+    --- Webdev
+    -- HTML
+    'html-lsp',
+    'emmet-language-server',
+    -- 'htmx-lsp',
+    -- CSS
+    'css-lsp',
+    'tailwindcss-language-server',
+    -- Javascript
+    'typescript-language-server',
+    'prettierd',
+    'quick-lint-js',
+
+    -- C
+    'clangd',
+    'clang-format',
+
+    -- Typst / General Text
+    'typst-lsp',
+    'proselint',
+
+    -- Python
+    'ruff',
+    'pyright',
+} -- }}}
+
+M.lsp = { -- {{{
     --[[ Example
     x_language_server = {
       cmd = {...},
@@ -82,56 +117,18 @@ M.servers = { -- {{{
             'typst',
         },
     },
-    -- tinymist = {
-    --     single_file_support = true,
-    --     root_dir = function()
-    --         return vim.fn.getcwd()
-    --     end,
-    -- },
-    typst_lsp = {},
+    typst_lsp = {
+        settings = {
+            exportPdf = 'never', -- Choose onType, onSave or never.
+            -- serverPath = "" -- Normally, there is no need to uncomment it.
+        },
+    },
 
     pyright = {},
 }
 
-M.mason = {
-    -- Lua
-    'lua-language-server',
-    'stylua',
-
-    -- Go
-    'gopls',
-    'golangci-lint',
-
-    --- Webdev
-    -- HTML
-    'html-lsp',
-    'emmet-language-server',
-    -- 'htmx-lsp',
-    -- CSS
-    'css-lsp',
-    'tailwindcss-language-server',
-    -- Javascript
-    'typescript-language-server',
-    'prettierd',
-    'quick-lint-js',
-
-    -- C
-    'clangd',
-    'clang-format',
-
-    -- Typst / General Text
-    'ltex-ls',
-    -- 'tinymist',
-    'typst-lsp',
-
-    -- Python
-    'ruff',
-    'pyright',
-} -- }}}
-
 M.format = { -- {{{
     lua = { 'stylua' },
-
     css = { 'prettierd' },
     html = { 'prettierd' },
     json = { 'prettierd' },
@@ -154,6 +151,10 @@ M.lint = { -- {{{
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
+    typst = { 'proselint' },
+    org = { 'proselint' },
+    html = { 'proselint' },
+    markdown = { 'proselint' },
 } -- }}}
 
 -- For debuggers

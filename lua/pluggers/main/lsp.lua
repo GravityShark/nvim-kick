@@ -114,7 +114,7 @@ return {
             ensure_installed = ensure.mason,
         })
 
-        for server_name, server in pairs(ensure.servers) do
+        for server_name, server in pairs(ensure.lsp) do
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
