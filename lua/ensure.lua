@@ -116,6 +116,17 @@ M.lsp = { -- {{{
             'text',
             'typst',
         },
+        on_attach = function(client, bufnr) -- rest of your on_attach process.
+            require('ltex_extra').setup({ your_opts })
+        end,
+
+        settings = {
+            ltex = {
+                additionalRules = {
+                    languageModel = '~/Other/ngrams/',
+                },
+            },
+        },
     },
     typst_lsp = {
         settings = {

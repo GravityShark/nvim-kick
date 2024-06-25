@@ -161,29 +161,6 @@ return {
         end,
         --
     }, -- }}}
-    -- wilder.nvim make wildmenus even wilder
-    {
-        'gelguy/wilder.nvim',
-        event = 'CmdlineEnter',
-        config = function()
-            local wilder = require('wilder')
-            wilder.setup({ modes = { ':' } })
-            wilder.set_option(
-                'renderer',
-                wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-                    highlighter = wilder.basic_highlighter(),
-                    left = { ' ', wilder.popupmenu_devicons() },
-                    right = { ' ', wilder.popupmenu_scrollbar() },
-                    highlights = {
-                        border = 'Normal', -- highlight to use for the border
-                        accent = 'Special',
-                    },
-
-                    border = 'rounded',
-                }))
-            )
-        end,
-    },
     -- }}}
 }
 -- vim:foldmethod=marker:
