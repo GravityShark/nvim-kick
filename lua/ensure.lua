@@ -63,7 +63,7 @@ M.mason = {
 
     -- Typst / General Text
     'typst-lsp',
-    'proselint',
+    'ltex-ls',
 
     -- Python
     'ruff',
@@ -162,10 +162,6 @@ M.lint = { -- {{{
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
-    typst = { 'proselint' },
-    org = { 'proselint' },
-    html = { 'proselint' },
-    markdown = { 'proselint' },
 } -- }}}
 
 -- For debuggers
