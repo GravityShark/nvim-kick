@@ -12,7 +12,7 @@ return {
         end,
         opts = {
             debug = true,
-            open_cmd = 'flatpak run com.brave.Browser --app="%s"',
+            open_cmd = 'flatpak run com.brave.Browser --incognito --app="%s"',
         },
     },
 }
