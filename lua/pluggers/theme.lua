@@ -107,6 +107,7 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = true,
     }, -- }}}
+
     -- nvim-ufo Better folds {{{
     {
         'kevinhwang91/nvim-ufo',
@@ -115,9 +116,9 @@ return {
         opts = function()
             vim.opt.foldmethod = 'expr'
             vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-            vim.opt.foldenable = true
-            vim.opt.foldlevel = 99
-            vim.opt.foldlevelstart = 99
+            vim.o.foldlevel = 99
+            vim.o.foldlevelstart = 99
+            vim.o.foldenable = true
 
             local handler = function(virtText, lnum, endLnum, width, truncate)
                 local newVirtText = {}

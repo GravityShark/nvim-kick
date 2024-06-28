@@ -69,6 +69,12 @@ return {
                         vim.lsp.buf.code_action,
                         { buffer = ev.buf, desc = 'LSP [c]ode actions' }
                     )
+                    vim.keymap.set(
+                        'n',
+                        '<C-e>',
+                        vim.lsp.buf.code_action,
+                        { buffer = ev.buf }
+                    )
                     vim.keymap.set('n', '<leader>lm', vim.lsp.buf.references, {
                         buffer = ev.buf,
                         desc = 'LSP [m]entioned',
