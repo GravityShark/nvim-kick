@@ -11,6 +11,6 @@ return {
             'MiniCursorword',
             { default = true, bg = '#403d52' }
         )
-        require('color.transparent')
+        vim.api.nvim_set_hl(0, '@org.leading.stars', { fg = '#FFFFFF' })
     end,
 }

@@ -15,7 +15,7 @@ return {
         }, -- Search for a file in project
         {
             '<leader>ff',
-            '<CMD>Telescope find_files find_command=fd<CR>',
+            '<CMD>Telescope find_files<CR>',
             desc = 'Find [f]iles',
         }, -- Search for a file (ignoring dotfiles)
         {
@@ -89,6 +89,12 @@ return {
         -- end, { desc = '[/] Fuzzily search in current buffer' })
 
         -- }}}
+        {
+            'n',
+            '<leader>fo',
+            '<CMD>Telescope find_files find_command=fd,--type=f,--extension=org<CR>',
+            desc = 'Find [o]rg files',
+        },
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -123,15 +129,17 @@ return {
             end
         end
         local telescope = require('telescope')
+        local actions = require('telescope.actions')
         telescope.setup({
             defaults = {
                 mappings = {
                     i = {
                         ['<CR>'] = select_one_or_multi,
-                        ['<Tab>'] = require('telescope.actions').toggle_selection
-                            + require('telescope.actions').move_selection_better,
-                        ['<S-Tab>'] = require('telescope.actions').toggle_selection
-                            + require('telescope.actions').move_selection_worse,
+                        ['<Tab>'] = actions.toggle_selection
+                            + actions.move_selection_better,
+                        ['<S-Tab>'] = actions.toggle_selection
+                            + actions.move_selection_worse,
+                        ['<ESC>'] = actions.close,
                     },
                 },
                 layout_config = {
@@ -142,6 +150,18 @@ return {
                     width = 0.95,
                     height = 0.90,
                     preview_cutoff = 120,
+                },
+            },
+            pickers = {
+                find_org_files = {
+                    find_command = { 'fd', '-e', 'org' },
+                },
+                find_files = {
+                    run_command = 'fd',
+                },
+                find_all = {
+                    -- Use fd instead of the default find command
+                    find_command = { 'fd', '--hidden', '--no-ignore' },
                 },
             },
         })
