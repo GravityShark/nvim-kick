@@ -79,6 +79,7 @@ vim.opt.formatoptions = 'qjl1'
 vim.opt.termguicolors = true
 
 vim.opt.pumheight = 15
+vim.opt.pumblend = 10
 
 -- }}}
 
