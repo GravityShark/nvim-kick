@@ -4,47 +4,74 @@ return {
         ft = 'org',
         keys = {
             {
-                '<leader>oc',
+                '<localleader>c',
                 '<Cmd>lua require("orgmode").action("capture.prompt")<CR>',
                 desc = 'Org [c]reate note',
             },
             {
-                '<leader>oa',
+                '<localleader>a',
                 '<Cmd>lua require("orgmode").action("agenda.prompt")<CR>',
                 desc = 'Org [a]genda',
             },
         },
         dependencies = {
-            'nvim-orgmode/telescope-orgmode.nvim',
-            dependencies = {
-                'nvim-telescope/telescope.nvim',
-            },
-            config = function()
-                require('telescope').load_extension('orgmode')
+            {
+                'nvim-orgmode/telescope-orgmode.nvim',
+                dependencies = {
+                    'nvim-telescope/telescope.nvim',
+                },
+                config = function()
+                    require('telescope').load_extension('orgmode')
 
-                vim.keymap.set(
-                    'n',
-                    '<leader>oR',
-                    require('telescope').extensions.orgmode.refile_heading,
-                    { desc = 'org refile to headline' }
-                )
-                vim.keymap.set(
-                    'n',
-                    '<leader>fh',
-                    require('telescope').extensions.orgmode.search_headings,
-                    { desc = 'find org headings' }
-                )
-                vim.keymap.set(
-                    'n',
-                    '<leader>olf',
-                    require('telescope').extensions.orgmode.insert_link,
-                    { desc = 'org link refile fuzzy' }
-                )
-            end,
+                    vim.keymap.set(
+                        'n',
+                        '<localleader>R',
+                        require('telescope').extensions.orgmode.refile_heading,
+                        { desc = 'org refile to headline' }
+                    )
+                    vim.keymap.set(
+                        'n',
+                        '<localleader>fh',
+                        require('telescope').extensions.orgmode.search_headings,
+                        { desc = 'Find org [h]eadings' }
+                    )
+                    vim.keymap.set(
+                        'n',
+                        '<localleader>olf',
+                        require('telescope').extensions.orgmode.insert_link,
+                        { desc = 'org link refile fuzzy' }
+                    )
+                end,
+            },
+            { 'danilshvalov/org-modern.nvim' },
         },
+        config = function(_, opts)
+            require('orgmode.config.mappings').prefix = '<localleader>'
+            require('orgmode').setup(opts)
+        end,
         opts = {
+            ui = {
+                menu = {
+                    handler = function(data)
+                        require('org-modern.menu')
+                            :new({
+                                window = {
+                                    margin = { 1, 0, 1, 0 },
+                                    padding = { 0, 1, 0, 1 },
+                                    title_pos = 'center',
+                                    border = 'single',
+                                    zindex = 1000,
+                                },
+                                icons = {
+                                    separator = '➜',
+                                },
+                            })
+                            :open(data)
+                    end,
+                },
+            },
             org_agenda_files = '~/Notes/**/*',
-            org_archive_location = '~/Notes/archive/%s_archive',
+            org_archive_location = '~/Notes/.archive/%s_archive',
             org_default_notes_file = '~/Notes/refile.org',
             org_todo_keywords = {
                 'TODO',
@@ -58,6 +85,7 @@ return {
             org_agenda_skip_scheduled_if_done = true,
             org_agenda_skip_deadline_if_done = true,
             mappings = {
+                prefix = '\\',
                 global = {
                     org_agenda = false,
                     org_capture = false,

@@ -80,6 +80,11 @@ return {
             '<CMD>Telescope current_buffer_fuzzy_find<CR>',
             desc = '[/] Fuzzily search in current buffer',
         },
+        {
+            '<leader>fo',
+            '<CMD>Telescope find_files find_command=fd,--type=f,--extension=org<CR>',
+            desc = 'Find [o]rg files',
+        },
         -- Show diagnostics
         -- vim.keymap.set('n', '<leader>f/', function()
         --     -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -89,12 +94,6 @@ return {
         -- end, { desc = '[/] Fuzzily search in current buffer' })
 
         -- }}}
-        {
-            'n',
-            '<leader>fo',
-            '<CMD>Telescope find_files find_command=fd,--type=f,--extension=org<CR>',
-            desc = 'Find [o]rg files',
-        },
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
