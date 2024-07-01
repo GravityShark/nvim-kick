@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 -- When in allow for these applications when opening a respective file type{{{
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern = '*.pdf',
-    command = ':silent !librewolf % &',
+    command = ':silent !xdg-open % &',
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {

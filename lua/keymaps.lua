@@ -213,6 +213,7 @@ vim.api.nvim_set_keymap(
 -- }}}
 -- Buffer {{{
 -- Tabs to move around buffers
+vim.api.nvim_set_keymap('n', '<C-I>', '<Tab>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Tab>', '<CMD>bnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', '<CMD>bprev<CR>', { noremap = true })
 

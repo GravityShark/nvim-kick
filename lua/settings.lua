@@ -36,6 +36,8 @@ vim.opt.tabstop = 8 -- 1 tab equal 2 spaces
 vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldmethod = 'marker' -- Good
+-- vim.opt.foldmethod = 'expr' -- Bad 👎
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 vim.opt.ignorecase = true -- Ignore case if all characters in lower case
 vim.opt.smartcase = true -- When there is a one capital letter search for exact match

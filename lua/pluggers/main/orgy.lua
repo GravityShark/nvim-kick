@@ -37,7 +37,7 @@ return {
                     )
                     vim.keymap.set(
                         'n',
-                        '<localleader>olf',
+                        '<localleader>lf',
                         require('telescope').extensions.orgmode.insert_link,
                         { desc = 'org link refile fuzzy' }
                     )
@@ -45,10 +45,6 @@ return {
             },
             { 'danilshvalov/org-modern.nvim' },
         },
-        config = function(_, opts)
-            require('orgmode.config.mappings').prefix = '<localleader>'
-            require('orgmode').setup(opts)
-        end,
         opts = {
             ui = {
                 menu = {
@@ -85,13 +81,13 @@ return {
             org_agenda_skip_scheduled_if_done = true,
             org_agenda_skip_deadline_if_done = true,
             mappings = {
-                prefix = '\\',
+                prefix = '<localleader>',
                 global = {
                     org_agenda = false,
                     org_capture = false,
                 },
                 org = {
-                    org_open_at_point = '<CR>',
+                    org_open_at_point = { '<CR>', '<prefix>o' },
                 },
             },
             org_capture_templates = {
