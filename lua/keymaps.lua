@@ -12,16 +12,30 @@ vim.api.nvim_set_keymap(
     { desc = '[t]erminal create' }
 )
 
+-- Saved compile arguments are stolen from here
+-- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
+-- Just precreate the directory ~/.local/share/nvim/compile/
+local path = vim.fn.stdpath('data')
+    .. '/compile/'
+    .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+local exists, lines = pcall(vim.fn.readfile, path)
+if exists and #lines > 0 then
+    vim.b.runwithparameters = vim.trim(lines[1])
+end
+
 vim.keymap.set('n', '<leader>r', function()
     vim.ui.input({
-        prompt = 'Prompt: ',
+        prompt = 'Run: ',
         default = vim.b.runwithparameters,
         completion = 'shellcmd',
     }, function(input)
-        if input == nil then
+        if input == nil or input == '' then
+            print('See :h cmdline-special and :h filename-modifiers')
             return
         end
+
         vim.b.runwithparameters = input
+        vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)
     end)
 end, { desc = '[r]un and [r]emember an input' })
@@ -154,6 +168,7 @@ vim.api.nvim_set_keymap(
 ) -- }}}
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-S-t>', '<CMD>silent !T<CR>', { silent = true })
 -- }}}
 -- Visual mode indents reenters visual mode {{{
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
