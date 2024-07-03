@@ -7,9 +7,9 @@ return {
         cmd = 'Trouble',
         keys = {
             {
-                '<leader>x',
+                '<leader>t',
                 '<CMD>Trouble diagnostics toggle<CR>',
-                desc = '[X] marks the trouble',
+                desc = '[t]rouble diagnostcs',
             },
         },
         config = true,

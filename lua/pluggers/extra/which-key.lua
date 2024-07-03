@@ -19,7 +19,6 @@ return {
                     name = 'run [g]cc...',
                 },
             },
-            o = { name = '[o]rg...' },
             g = {
                 name = '[g]it...',
                 a = {
@@ -29,6 +28,11 @@ return {
             b = { name = 'de[b]ug...' },
             l = { name = '[l]sp...' },
         }, { prefix = '<leader>' })
+        require('which-key').register({
+            a = '[a]lias',
+            o = '[o]rigin',
+            d = '[d]alies',
+        }, { prefix = '<C-\\>' })
         return {
             window = {
                 border = 'single', -- none, single, double, shadow

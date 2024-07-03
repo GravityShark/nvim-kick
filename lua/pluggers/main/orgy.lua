@@ -16,6 +16,29 @@ return {
         },
         dependencies = {
             {
+                'chipsenkbeil/org-roam.nvim',
+                keys = {
+                    {
+                        '<C-\\>c',
+                        "<Cmd> lua require('org-roam').api.capture_node()<CR>",
+                        desc = 'Roam [c]apture',
+                    },
+                },
+                opts = {
+                    directory = '~/Notes/wiki',
+                    bindings = {
+                        prefix = '<C-\\>',
+                    },
+                    templates = {
+                        n = {
+                            description = 'Main Note',
+                            template = '* %?\n\t%U\n\n\n\n\n* References\n',
+                            target = '%[slug].org',
+                        },
+                    },
+                },
+            },
+            {
                 'nvim-orgmode/telescope-orgmode.nvim',
                 dependencies = {
                     'nvim-telescope/telescope.nvim',
@@ -31,9 +54,9 @@ return {
                     )
                     vim.keymap.set(
                         'n',
-                        '<localleader>fh',
+                        '<localleader>f',
                         require('telescope').extensions.orgmode.search_headings,
-                        { desc = 'Find org [h]eadings' }
+                        { desc = 'org find headings' }
                     )
                     vim.keymap.set(
                         'n',
@@ -80,28 +103,30 @@ return {
             org_agenda_start_on_weekday = false,
             org_agenda_skip_scheduled_if_done = true,
             org_agenda_skip_deadline_if_done = true,
+            org_id_link_to_org_use_id = true,
             mappings = {
                 prefix = '<localleader>',
-                global = {
-                    org_agenda = false,
-                    org_capture = false,
-                },
                 org = {
                     org_open_at_point = { '<CR>', '<prefix>o' },
+                    org_meta_return = '<prefix><CR>',
+                    org_cycle = 'za',
+                    org_global_cycle = 'zA',
                 },
             },
+
             org_capture_templates = {
                 t = {
                     description = 'Todo',
-                    template = '* TODO %?\nSCHEDULED: %t\n\tDEADLINE: %^{Deadline}t\n\t%u\n\t',
+
+                    template = '* TODO %?\nSCHEDULED: %t\n\tDEADLINE: %^{Deadline}t\n\t%U\n\t',
                     target = '~/Notes/todo.org',
                 },
                 r = {
                     description = 'Reminder',
-                    template = '* TODO %?\n\tSCHEDULED: %^{When happening?}t\n\t%u\n\t',
+                    template = '* TODO %?\n\tSCHEDULED: %^{When happening?}t\n\t%U\n\t',
                     target = '~/Notes/reminders.org',
                 },
-                n = { description = 'Note', template = '* %?\n  %u' },
+                n = { description = 'Note', template = '* %?\n\t%U' },
             },
         },
     },

@@ -36,9 +36,9 @@ vim.opt.tabstop = 8 -- 1 tab equal 8 spaces
 vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldtext = ''
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 1
-vim.opt.foldnestmax = 4
+-- vim.opt.foldlevel = 99
+-- vim.opt.foldlevelstart = 1
+-- vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr' -- Bad 👎
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
@@ -64,6 +64,7 @@ vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_winsize = 25
 vim.g.netrw_browse_split = 0
+vim.g.netrw_hide = 1
 -- mini.basics
 -- vim.opt.backup = false
 vim.opt.writebackup = false

@@ -1,2 +1,2 @@
-vim.opt_local.colorcolumn = '80,120'
-require('ufo').detach()
+vim.opt_local.colorcolumn = '50,80,120'
+vim.opt.shiftwidth = 1

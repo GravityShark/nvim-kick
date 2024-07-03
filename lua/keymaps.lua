@@ -5,12 +5,13 @@
 
 -- Run/Compile code inside {{{
 
+-- Open terminal {{{
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>t',
+    '<leader>T',
     '<CMD>split term://$SHELL<CR>',
-    { desc = '[t]erminal create' }
-)
+    { desc = '[T]erminal create' }
+) -- }}}
 
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
@@ -157,7 +158,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
-    '<CMD>wq<CR>',
+    '<CMD>wqa<CR>',
     { silent = true, desc = '[q]uit with saving' }
 )
 vim.api.nvim_set_keymap(
@@ -250,6 +251,13 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', '<CMD>bprev<CR>', { noremap = true })
 --     end
 --     CheckTabline()
 -- end
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>x',
+    '<CMD>close<CR>',
+    { desc = '[x]ross out window' }
+)
 
 vim.api.nvim_set_keymap(
     'n',
