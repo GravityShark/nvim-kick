@@ -6,7 +6,7 @@ return {
         {
             '<leader>x',
             '<CMD>Trouble diagnostics toggle<CR>',
-            desc = 'Trouble [x] Toggle',
+            desc = '[X] marks the trouble',
         },
     },
     config = true,

@@ -47,7 +47,7 @@ require('lazy').setup({
     },
 }) -- }}}
 -- Sets the settings and keymaps
-require('settings')
 require('keymaps')
+require('settings')
 require('autocmd')
 -- vim:foldmethod=marker:

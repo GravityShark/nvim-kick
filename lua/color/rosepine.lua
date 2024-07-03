@@ -5,12 +5,15 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-        vim.cmd([[colorscheme rose-pine]])
-        vim.api.nvim_set_hl(
-            0,
-            'MiniCursorword',
-            { default = true, bg = '#403d52' }
-        )
-        -- require('color.transparent')
+        require('rose-pine').setup({
+            enable = {
+                legacy_highlights = false,
+                migrations = false,
+            },
+            highlight_groups = {
+                Folded = { fg = 'muted' },
+            },
+        })
+        vim.cmd('colorscheme rose-pine')
     end,
 }

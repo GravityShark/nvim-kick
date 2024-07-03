@@ -158,13 +158,13 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
     '<CMD>wq<CR>',
-    { silent = true, desc = 'write and [q]uit' }
+    { silent = true, desc = '[q]uit with saving' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>Q',
     '<CMD>qa!<CR>',
-    { silent = true, desc = '[Q]uit without saving' }
+    { silent = true, desc = '[Q]uit forcefully' }
 ) -- }}}
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
@@ -261,10 +261,10 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>X',
+    '<leader>C',
     -- '<CMD>lua BufRem(0)<CR>',
     "<CMD>lua require('mini.bufremove').delete(0, true); CheckTabline()<CR>",
-    { desc = '[X] force close current buffer' }
+    { desc = '[C]lose forcefully current buffer' }
 )
 
 vim.api.nvim_set_keymap(

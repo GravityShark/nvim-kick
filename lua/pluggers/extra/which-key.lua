@@ -4,9 +4,10 @@ return {
     event = 'VeryLazy',
     init = function()
         -- Decrease update time
-        vim.opt.updatetime = 250 -- 50
+        -- vim.opt.updatetime = 250 -- 50
+        vim.opt.updatetime = 50
         vim.opt.timeoutlen = 0
-        vim.opt.timeout = true -- whichkey
+        vim.opt.timeout = true
     end,
     opts = function()
         require('which-key').register({
