@@ -1,4 +1,20 @@
 return {
+    -- ltex ls extra shit
+    'barreiroleo/ltex_extra.nvim',
+    -- trouble.nvim Diagnostic Viewer
+    {
+        'folke/trouble.nvim',
+        cmd = 'Trouble',
+        keys = {
+            {
+                '<leader>x',
+                '<CMD>Trouble diagnostics toggle<CR>',
+                desc = '[X] marks the trouble',
+            },
+        },
+        config = true,
+    },
+
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
@@ -163,10 +179,7 @@ return {
                 },
             },
         },
-
-        -- ltex ls extra shit
     },
-    'barreiroleo/ltex_extra.nvim',
 }
 
 -- vim:foldmethod=marker:

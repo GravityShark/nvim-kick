@@ -30,4 +30,10 @@ return {
         },
         config = true,
     },
+    -- sleuth.vim: Heuristically set buffer options
+    {
+        'tpope/vim-sleuth',
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+        -- event = { 'VeryLazy' },
+    },
 }
