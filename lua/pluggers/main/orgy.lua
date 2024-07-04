@@ -32,7 +32,7 @@ return {
                     templates = {
                         n = {
                             description = 'Main Note',
-                            template = '* %?\n\t%U\n\n\n\n\n* References\n',
+                            template = '* %?\n   %U\n\n\n* References\n',
                             target = '%[slug].org',
                         },
                     },
