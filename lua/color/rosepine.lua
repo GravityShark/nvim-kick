@@ -6,6 +6,7 @@ return {
     priority = 1000,
     config = function()
         require('rose-pine').setup({
+            variant = 'dawn',
             enable = {
                 legacy_highlights = false,
                 migrations = false,

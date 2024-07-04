@@ -29,10 +29,14 @@ return {
                     bindings = {
                         prefix = '<C-\\>',
                     },
+                    immediate = {
+                        target = '%[slug].org',
+                        template = 'AAAnatoarnotraintar ==',
+                    },
                     templates = {
                         n = {
                             description = 'Main Note',
-                            template = '* %?\n   %U\n\n\n* References\n',
+                            template = 'Created %U\n\n* %?\n\n\n\n\n* References\n',
                             target = '%[slug].org',
                         },
                     },
