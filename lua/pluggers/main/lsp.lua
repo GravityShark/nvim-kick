@@ -1,7 +1,7 @@
 return {
     -- ltex ls extra shit
     'barreiroleo/ltex_extra.nvim',
-    -- trouble.nvim Diagnostic Viewer
+    -- trouble.nvim Diagnostic Viewer{{{
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
@@ -13,12 +13,30 @@ return {
             },
         },
         config = true,
-    },
+    }, -- }}}
+    -- LSP Configuration & Plugins{{{
     {
-        -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-        config = function()
+        dependencies = { -- {{{
+            -- Easy installation of LSPs and more
+            {
+                'WhoIsSethDaniel/mason-tool-installer.nvim',
+                event = 'VeryLazy',
+                cmd = { 'MasonToolsUpdate', 'MasonToolsInstall' },
+                opts = {
+                    ensure_installed = require('ensure').mason,
+                    auto_update = true,
+                    integrations = {
+                        ['mason-null-ls'] = false,
+                        ['mason-nvim-dap'] = false,
+                    },
+                },
+            },
+            { 'williamboman/mason.nvim', cmd = 'Mason', config = true },
+            { 'j-hui/fidget.nvim', config = true },
+        }, -- }}}
+        config = function() -- {{{
             -- If neodev exists
             local ok, _ = pcall(require, 'neodev')
             if ok then
@@ -139,17 +157,7 @@ return {
                 capabilities,
                 require('cmp_nvim_lsp').default_capabilities()
             )
-            local ensure = require('ensure')
-
-            require('mason-tool-installer').setup({
-                ensure_installed = ensure.mason,
-            })
-
-            for server_name, server in pairs(ensure.lsp) do
-                -- This handles overriding only values explicitly passed
-                -- by the server configuration above. Useful when disabling
-                -- certain features of an LSP (for example, turning off formatting for tsserver)
-
+            for server_name, server in pairs(require('ensure').lsp) do
                 server.capabilities = vim.tbl_deep_extend(
                     'force',
                     {},
@@ -159,26 +167,8 @@ return {
 
                 require('lspconfig')[server_name].setup(server)
             end
-        end,
-        dependencies = {
-            -- Easy installation of LSPs and more
-            {
-                'WhoIsSethDaniel/mason-tool-installer.nvim',
-                cmd = { 'MasonToolsUpdate', 'MasonToolsInstall' },
-            },
-            { 'williamboman/mason.nvim', cmd = 'Mason', config = true },
-            {
-                'j-hui/fidget.nvim',
-                opts = {
-                    -- notification = {
-                    --     window = {
-                    --         winblend = 0,
-                    --     },
-                    -- },
-                },
-            },
-        },
-    },
+        end, -- }}}
+    }, -- }}}
 }
 
 -- vim:foldmethod=marker:

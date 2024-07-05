@@ -27,7 +27,10 @@ return {
         require('mason-nvim-dap').setup({
             automatic_installation = true,
             handlers = {},
-            ensure_installed = require('ensure').mason_dap,
+            ensure_installed = {
+                'delve',
+                'cppdbg',
+            },
         })
 
         vim.keymap.set('n', '<leader>bs', function()

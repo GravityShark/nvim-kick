@@ -67,10 +67,8 @@ M.lsp = {
         },
     },
     html = {}, -- Webdev
-    -- htmx = {},
     emmet_language_server = {},
     tailwindcss = {},
-    -- cssls = {},
     tsserver = {},
     clangd = {},
     pyright = {},
@@ -126,9 +124,5 @@ M.lint = {
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
 }
--- M.mason_dap = {
---     'delve',
---     'cppdbg',
--- }
 
 return M
