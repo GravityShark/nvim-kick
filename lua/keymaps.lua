@@ -3,8 +3,6 @@
 -- vim.api.nvim_set_keymap({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 -- Plugin remaps are located in the respective plugin definition under their init function
 
--- Run/Compile code inside {{{
-
 -- Open terminal {{{
 vim.api.nvim_set_keymap(
     'n',
@@ -12,7 +10,7 @@ vim.api.nvim_set_keymap(
     '<CMD>split term://$SHELL<CR>',
     { desc = '[T]erminal create' }
 ) -- }}}
-
+-- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
 -- Just precreate the directory ~/.local/share/nvim/compile/

@@ -14,7 +14,6 @@ return {
         },
         config = true,
     },
-
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',

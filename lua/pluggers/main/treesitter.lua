@@ -3,7 +3,7 @@ return {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        event = {  "BufReadPost", "BufNewFile", "BufWritePre" , 'VeryLazy' },
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
         dependencies = {
             {
                 'nvim-treesitter/nvim-treesitter-context',
@@ -13,17 +13,16 @@ return {
                 },
             },
         },
-        opts = {
-            ensure_installed = require('ensure').treesitter,
-            highlight = {
-                enable = true,
-            },
-            indent = { enable = true },
-        },
         config = function(_, opts)
             require('nvim-treesitter.install').prefer_git = true
             ---@diagnostic disable-next-line: missing-fields
-            require('nvim-treesitter.configs').setup(opts)
+            require('nvim-treesitter.configs').setup({
+                ensure_installed = require('ensure').treesitter,
+                highlight = {
+                    enable = true,
+                },
+                indent = { enable = true },
+            })
         end,
     },
 

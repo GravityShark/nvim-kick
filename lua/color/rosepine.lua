@@ -6,7 +6,6 @@ return {
     priority = 1000,
     config = function()
         require('rose-pine').setup({
-            variant = 'dawn',
             enable = {
                 legacy_highlights = false,
                 migrations = false,
@@ -15,6 +14,6 @@ return {
                 Folded = { fg = 'muted' },
             },
         })
-        vim.cmd('colorscheme rose-pine')
+        vim.cmd('colorscheme rose-pine-dawn')
     end,
 }

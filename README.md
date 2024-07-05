@@ -1,6 +1,7 @@
 # nvim-kick
 
 > use neovim 0.10
+> cause fuck yeah only latest baby
 
 ## my own neovim config from kickstart
 
@@ -23,7 +24,8 @@
 - [ ] [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [ ] [Neogen](https://github.com/danymat/neogen) (kinda interesting)
 - [ ] [Neoconf](https://github.com/folke/neoconf.nvim)
-- [ ] [Codeium](https://github.com/Exafunction/codeium.nvim)
+- [/] [Codeium](https://github.com/Exafunction/codeium.nvim)
+  - I don't like to fuck around with AI
 - [/] [Trouble V3](https://github.com/folke/trouble.nvim)
 - [/] [Todo Comments](https://github.com/folke/todo-comments.nvim)
   > but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)

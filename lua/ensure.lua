@@ -1,84 +1,54 @@
 -- A single file listing Treesitter, LSP, Mason, Formatting and Linting specs.
 M = {}
 
-M.treesitter = { -- {{{
-    -- Go
-    'go',
+M.treesitter = {
+    'go', -- Go
     'gomod',
     'gosum',
     'templ',
-    -- Webdev
-    'html',
+    'html', -- Webdev
     'css',
     'javascript',
-    -- Languages
-    'python',
+    'python', -- Other Languages
     'bash',
     'sql',
     'lua',
     'c',
-    -- Data/Config Formats
-    'json',
+    'json', -- Data/Config Formats
     'yaml',
     'toml',
-    -- Markup
-    'markdown',
+    'markdown', -- Markup
     'markdown_inline',
     'org',
     'typst',
-    -- Other
-    'vim',
+    'vim', -- Other
     'vimdoc',
     'diff',
     'gitcommit',
-    'query',
-    'regex',
-} -- }}}
-
+}
 M.mason = {
-    -- Lua
-    'lua-language-server',
+    'lua-language-server', -- Lua
     'stylua',
-
-    -- Go
-    'gopls',
+    'gopls', -- Go
     'golangci-lint',
-
-    --- Webdev
-    -- HTML
-    'html-lsp',
-    'emmet-language-server',
-    -- 'htmx-lsp',
-    -- CSS
-    'css-lsp',
-    'tailwindcss-language-server',
-    -- Javascript
-    'typescript-language-server',
+    'gofumpt',
+    'golines',
+    'goimports-reviser',
+    'html-lsp', -- HTML
     'prettierd',
+    'emmet-language-server',
+    'tailwindcss-language-server', -- CSS
+    'typescript-language-server', -- Javascript
     'quick-lint-js',
-
-    -- C
-    'clangd',
+    'clangd', -- C
     'clang-format',
-
-    -- Typst / General Text
-    'typst-lsp',
-    'ltex-ls',
-
-    -- Python
+    'typst-lsp', -- Typst
+    'ltex-ls', -- General Text
+    'pyright', -- Python
     'ruff',
-    'pyright',
-} -- }}}
-
-M.lsp = { -- {{{
-    --[[ Example
-    x_language_server = {
-      cmd = {...},
-      filetypes = { ...},
-      capabilities = {},
-      settings = {...},
-    },]]
-
+    'shfmt', -- Shell
+}
+M.lsp = {
     lua_ls = {
         settings = {
             Lua = {
@@ -87,26 +57,29 @@ M.lsp = { -- {{{
             },
         },
     },
-
     gopls = {
         settings = {
             gopls = {
+                completeUnimported = true,
                 usePlaceholders = true,
                 analyses = { unusedparams = true },
             },
         },
     },
-
-    -- Webdev
-    html = {},
+    html = {}, -- Webdev
     -- htmx = {},
     emmet_language_server = {},
-    cssls = {},
     tailwindcss = {},
+    -- cssls = {},
     tsserver = {},
-
     clangd = {},
-
+    pyright = {},
+    typst_lsp = {
+        settings = {
+            exportPdf = 'never', -- Choose onType, onSave or never.
+            -- serverPath = "" -- Normally, there is no need to uncomment it.
+        },
+    },
     ltex = {
         filetypes = {
             'gitcommit',
@@ -119,7 +92,6 @@ M.lsp = { -- {{{
         on_attach = function(client, bufnr) -- rest of your on_attach process.
             require('ltex_extra').setup({ your_opts })
         end,
-
         settings = {
             ltex = {
                 additionalRules = {
@@ -128,17 +100,8 @@ M.lsp = { -- {{{
             },
         },
     },
-    typst_lsp = {
-        settings = {
-            exportPdf = 'never', -- Choose onType, onSave or never.
-            -- serverPath = "" -- Normally, there is no need to uncomment it.
-        },
-    },
-
-    pyright = {},
 }
-
-M.format = { -- {{{
+M.format = {
     lua = { 'stylua' },
     css = { 'prettierd' },
     html = { 'prettierd' },
@@ -148,26 +111,24 @@ M.format = { -- {{{
     yaml = { 'prettierd' },
     c = { 'clang-format' },
     cpp = { 'clang-format' },
-    go = { 'gofmt' },
+    go = { 'gofumpt', 'golines', 'goimports_reviser' },
     python = { 'ruff_format' },
+    sh = { 'shfmt' },
+    bash = { 'shfmt' },
 }
-
 M.formatextra = {
     python = {
         prepend_args = { '--config', '~/.ruff.toml' },
     },
-} -- }}}
-
-M.lint = { -- {{{
+}
+M.lint = {
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
-} -- }}}
-
--- For debuggers
--- M.mason_dap = { -- {{{
+}
+-- M.mason_dap = {
 --     'delve',
 --     'cppdbg',
--- } -- }}}
+-- }
 
 return M

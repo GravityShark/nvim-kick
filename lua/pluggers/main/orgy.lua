@@ -122,15 +122,15 @@ return {
                 t = {
                     description = 'Todo',
 
-                    template = '* TODO %?\nSCHEDULED: %t\n\tDEADLINE: %^{Deadline}t\n\t%U\n\t',
+                    template = '* TODO %?\nSCHEDULED: %t\n  DEADLINE: %^{Deadline}t\n  %U\n  ',
                     target = '~/Notes/todo.org',
                 },
                 r = {
                     description = 'Reminder',
-                    template = '* TODO %?\n\tSCHEDULED: %^{When happening?}t\n\t%U\n\t',
+                    template = '* TODO %?\n  SCHEDULED: %^{When happening?}t\n  %U\n  ',
                     target = '~/Notes/reminders.org',
                 },
-                n = { description = 'Note', template = '* %?\n\t%U' },
+                n = { description = 'Note', template = '* %?\n  %U' },
             },
         },
     },

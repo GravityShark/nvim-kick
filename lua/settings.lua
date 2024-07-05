@@ -36,11 +36,12 @@ vim.opt.tabstop = 8 -- 1 tab equal 8 spaces
 vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
 
 vim.opt.foldtext = ''
--- vim.opt.foldlevel = 99
--- vim.opt.foldlevelstart = 1
--- vim.opt.foldnestmax = 4
+vim.opt.foldlevel = 99
+-- vim.opt.foldlevelstart = 99
+vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr' -- Bad 👎
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldenable = true
 
 vim.opt.ignorecase = true -- Ignore case if all characters in lower case
 vim.opt.smartcase = true -- When there is a one capital letter search for exact match
@@ -99,4 +100,24 @@ for type, icon in pairs({
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
+-- User commands {{{
+vim.api.nvim_create_user_command('Foldisolate', function()
+    vim.opt.foldlevel = 0
+    for i = 1, vim.o.foldnestmax, 1 do
+        local ok = pcall(vim.cmd, 'foldopen')
+        if ok == false then
+            return
+        end
+    end
+    vim.cmd('norm zz')
+end, {
+    desc = 'Isolate the folds to the current cursor',
+})
+
+vim.api.nvim_set_keymap(
+    'n',
+    'zI',
+    '<CMD>Foldisolate<CR>',
+    { desc = 'Isolate folding' }
+) -- }}}
 -- vim:foldmethod=marker:
