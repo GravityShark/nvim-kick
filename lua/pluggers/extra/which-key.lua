@@ -24,6 +24,8 @@ return {
                 a = {
                     name = 'Git [a]dd...',
                 },
+                h = { name = 'Git [h]unk' },
+                t = { name = 'Git [t]oggle' },
             },
             b = { name = 'de[b]ug...' },
             l = { name = '[l]sp...' },

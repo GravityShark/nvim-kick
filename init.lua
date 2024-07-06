@@ -1,6 +1,12 @@
--- Setsup lazy.nvim{{{
--- Initialize lazy.nvim
+-- The experimental plugin loader
+vim.loader.enable()
 
+-- Sets the settings and autocmd before running lazy
+require('settings')
+require('autocmd')
+
+-- Setsup lazy.nvim {{{
+-- Initialize lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -22,9 +28,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         os.exit(1)
     end
 end
-vim.opt.rtp:prepend(lazypath)
-
--- Setup plugins
+vim.opt.rtp:prepend(lazypath) -- }}}
+-- Setup plugins {{{
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
@@ -60,10 +65,10 @@ require('lazy').setup({
                 -- "shada",
             },
         },
-    },
+    }, -- }}}
 }) -- }}}
--- Sets the keymaps and settings
+
+-- Keymaps only works after loading lazy
 require('keymaps')
-require('settings')
-require('autocmd')
+
 -- vim:foldmethod=marker:

@@ -66,6 +66,12 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_winsize = 25
 vim.g.netrw_browse_split = 0
 vim.g.netrw_hide = 1
+
+-- Remove som errors with checkhealth
+-- vim.g.loaded_perl_provider = 0
+-- vim.g.loaded_node_provider = 0
+-- vim.g.loaded_python3_provider = 0
+-- vim.g.loaded_ruby_provider = 0
 -- mini.basics
 -- vim.opt.backup = false
 vim.opt.writebackup = false
