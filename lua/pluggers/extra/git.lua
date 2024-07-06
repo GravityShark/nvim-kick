@@ -123,6 +123,11 @@ return {
                 desc = 'Git [s]tatus',
             },
             {
+                '<leader>gS',
+                '<CMD>Git show<CR>',
+                { desc = 'Git [S]how' },
+            },
+            {
                 '<leader>gd',
                 '<CMD>Git diff<CR>',
                 desc = 'Git [d]iff',
@@ -147,11 +152,6 @@ return {
                 '<CMD>Git blame<CR>',
                 desc = 'Git [b]lame',
             },
-            -- {
-            --     '<leader>gs',
-            --     '<CMD>Git show<CR>',
-            --     { desc = 'Git [s]how' },
-            -- },
             {
                 '<leader>gp',
                 '<CMD>Git push<CR>',
