@@ -1,1 +1,1 @@
-./extra/mini.lua
+extra/mini.lua

@@ -1,1 +1,1 @@
-./main/lsp.lua
+main/lsp.lua

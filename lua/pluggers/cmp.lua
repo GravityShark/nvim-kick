@@ -1,1 +1,1 @@
-./main/cmp.lua
+main/cmp.lua

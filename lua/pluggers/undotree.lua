@@ -1,1 +1,1 @@
-./extra/undotree.lua
+extra/undotree.lua

@@ -1,1 +1,1 @@
-./main/orgy.lua
+main/orgy.lua
