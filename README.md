@@ -65,7 +65,7 @@
 - on Linux and Mac
 
 ```bash
-git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/GravityShark0/nvim-kick.git ~/.config/nvim
 ```
 
 - on Windows or i think it would work cause i havent tried
