@@ -9,13 +9,41 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         -- Built-in vim auto-complete
         'hrsh7th/cmp-buffer',
-        -- Add Snippets as possible completion
+        -- Adds snippets via luasnips
+        'saadparwaiz1/cmp_luasnip',
         {
-            'garymjr/nvim-snippets',
-            opts = {
-                friendly_snippets = true,
-            },
-            dependencies = { 'rafamadriz/friendly-snippets' },
+            'L3MON4D3/LuaSnip',
+            build = 'make install_jsregexp',
+            dependencies = 'rafamadriz/friendly-snippets',
+            config = function()
+                local luasnip = require('luasnip')
+                require('luasnip.loaders.from_vscode').lazy_load()
+
+                luasnip.config.setup({
+                    keep_roots = true,
+                    link_roots = true,
+                    link_children = true,
+                    exit_roots = false,
+                    update_events = { 'TextChanged', 'TextChangedI' },
+                })
+                vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+                    if luasnip.expand_or_jumpable() then
+                        luasnip.expand_or_jump()
+                    end
+                end, { silent = true })
+                vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+                    if luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    end
+                end, { silent = true })
+                vim.keymap.set({ 'i', 's' }, '<C-l>', function()
+                    if luasnip.choice_active() then
+                        luasnip.change_choice(1)
+                    end
+                end, { silent = true })
+
+                require('snippets')
+            end,
         },
         -- }}}
     },
@@ -52,39 +80,23 @@ return {
 
         ---@diagnostic disable-next-line: missing-fields
         cmp.setup({
-
-            preselect = true and cmp.PreselectMode.Item
-                or cmp.PreselectMode.None,
-
-            window = {
-                completion = {
-                    completeopt = 'menu,menuone,noinsert',
-                    border = 'rounded',
-                    scrollbar = true,
-                    winhighlight = 'FloatBorder:SpecialChar',
-                },
-                documentation = {
-                    winhighlight = 'FloatBorder:SpecialChar',
-                    border = 'rounded',
-                    scrollbar = true,
-                },
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
             },
 
+            behavior = cmp.SelectBehavior.Select,
             mapping = cmp.mapping.preset.insert({
                 ['<C-d>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-Space>'] = cmp.mapping.complete({}),
             }),
-            behavior = cmp.SelectBehavior.Select,
-
-            completion = {
-                completeopt = 'menu,menuone,noinsert',
-            },
 
             sources = {
                 { name = 'nvim_lsp' },
-                { name = 'snippets' },
+                { name = 'luasnip' },
                 { name = 'async_path' },
                 { name = 'buffer' },
                 -- Org mode
@@ -98,7 +110,7 @@ return {
                     vim_item.menu = ({
                         buffer = 'Buf',
                         nvim_lsp = 'LSP',
-                        snippets = 'Snp',
+                        luasnip = 'Snp',
                         async_path = 'Pth',
                         orgmode = 'Org',
                     })[entry.source.name]
@@ -111,9 +123,20 @@ return {
                 end,
             },
 
-            experimental = {
-                ghost_text = {
-                    hl_group = 'CmpGhostText',
+            completion = {
+                completeopt = 'menu,menuone,noinsert',
+            },
+            window = {
+                completion = {
+                    completeopt = 'menu,menuone,noinsert',
+                    border = 'rounded',
+                    scrollbar = true,
+                    winhighlight = 'FloatBorder:SpecialChar',
+                },
+                documentation = {
+                    winhighlight = 'FloatBorder:SpecialChar',
+                    border = 'rounded',
+                    scrollbar = true,
                 },
             },
         })

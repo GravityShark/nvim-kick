@@ -40,10 +40,6 @@ require('lazy').setup({
     defaults = { lazy = true, version = false },
     change_detection = { notify = false },
     rocks = { enabled = false },
-    checker = {
-        enabled = true,
-        notify = true, -- get a notification when new updates are found
-    },
 
     performance = {
         rtp = {

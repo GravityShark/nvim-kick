@@ -37,7 +37,6 @@ vim.opt.smartindent = true -- Turn on smart indentation. See in the docs for mor
 
 vim.opt.foldtext = ''
 vim.opt.foldlevel = 99
--- vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr' -- Bad 👎
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -95,7 +94,7 @@ vim.opt.pumheight = 15
 vim.opt.pumblend = 10
 
 -- }}}
--- LSP Diagnostics Signs {{{
+-- LSP Configs {{{
 for type, icon in pairs({
     Error = ' ',
     Warn = ' ',
@@ -105,6 +104,10 @@ for type, icon in pairs({
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+vim.diagnostic.config({
+    update_in_insert = true,
+})
+
 -- }}}
 -- User commands {{{
 vim.api.nvim_create_user_command('Foldisolate', function()

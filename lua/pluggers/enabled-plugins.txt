@@ -1,0 +1,14 @@
+./main/cmp.lua
+./main/conform.lua
+./main/lint.lua
+./main/lsp.lua
+./main/orgy.lua
+./main/telescope.lua
+./main/treesitter.lua
+./extra/dev.lua
+./extra/git.lua
+./extra/mini.lua
+./extra/persistence.lua
+./extra/undotree.lua
+./extra/which-key.lua
+../colors/rose-pine.lua

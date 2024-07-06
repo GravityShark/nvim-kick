@@ -1,6 +1,5 @@
--- gitsigns.nvim Adds git related signs to the gutter, as well as utilities for managing changes
 return {
-    {
+    { -- gitsigns.nvim Adds git related signs to the gutter, as well as utilities for managing changes
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
         opts = {
@@ -107,14 +106,14 @@ return {
                 )
                 map(
                     'n',
-                    '<leader>tD',
+                    '<leader>gtD',
                     gitsigns.toggle_deleted,
                     { desc = '[T]oggle git show [D]eleted' }
                 )
             end,
         },
     },
-    {
+    { -- Adds Git and Gbrowse
         'tpope/vim-fugitive',
         keys = {
             {

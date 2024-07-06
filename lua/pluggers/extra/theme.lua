@@ -10,27 +10,18 @@ return {
     -- mini.tabline Fast bufferline{{{
     {
         'GravityShark0/mini.tabline',
-        -- event = { 'BufAdd', 'BufDelete', 'UIEnter' },
         event = 'VeryLazy',
+        dependencies = {
+            'echasnovski/mini.icons',
+            config = true,
+            init = function()
+                package.preload['nvim-web-devicons'] = function()
+                    require('mini.icons').mock_nvim_web_devicons()
+                    return package.loaded['nvim-web-devicons']
+                end
+            end,
+        },
         opts = { set_vim_settings = false },
-    },
-    {
-        'echasnovski/mini.icons',
-        lazy = true,
-        opts = {},
-        init = function()
-            package.preload['nvim-web-devicons'] = function()
-                require('mini.icons').mock_nvim_web_devicons()
-                return package.loaded['nvim-web-devicons']
-            end
-        end,
-    },
-    -- }}}
-    -- mini.cursorword Illuminate words that are the same {{{
-    {
-        'echasnovski/mini.cursorword',
-        event = 'VeryLazy',
-        config = true,
     },
     -- }}}
     -- mini.indentscope Indent indicators{{{

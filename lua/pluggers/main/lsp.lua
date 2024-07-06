@@ -27,27 +27,17 @@ return {
                 opts = {
                     ensure_installed = require('ensure').mason,
                     auto_update = true,
-                    integrations = {
-                        ['mason-null-ls'] = false,
-                        ['mason-nvim-dap'] = false,
-                    },
                 },
             },
             { 'williamboman/mason.nvim', cmd = 'Mason', config = true },
             { 'j-hui/fidget.nvim', config = true },
         }, -- }}}
         config = function() -- {{{
-            -- If neodev exists
-            local ok, _ = pcall(require, 'neodev')
-            if ok then
-                require('neodev').setup({})
-            end
-
-            -- LspAttach autocmd Keybindings {{{
-            -- Keybindings{{{
+            -- LspAttach{{
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
+                    -- Keybindings{{{
                     vim.keymap.set(
                         'n',
                         '<leader>lD',
@@ -126,14 +116,19 @@ return {
                             buffer = ev.buf,
                             desc = 'LSP [i]mplementation',
                         }
-                    )
-                    --}}}
+                    ) --}}}
 
-                    -- The following autocommand is used to enable inlay hints in your
-                    -- code, if the language server you are using supports them
-                    --
-                    -- This may be unwanted, since they displace some of your code
-                    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                    vim.keymap.set(
+                        'n',
+                        '<leader>le',
+                        vim.diagnostic.open_float,
+                        { desc = 'LSP view [e]rror' }
+                    )
+                    -- The following autocommand is used to enable inlay hints
+                    -- in your code, if the language server you are using
+                    -- supports them. This may be unwanted, since they
+                    -- displace some of your code.
+                    local client = vim.lsp.get_client_by_id(ev.data.client_id) -- {{{
                     if
                         client
                         and client.server_capabilities.inlayHintProvider
@@ -141,16 +136,15 @@ return {
                     then
                         vim.keymap.set('n', '<leader>lh', function()
                             vim.lsp.inlay_hint.enable(
-                                not vim.lsp.inlay_hint.is_enabled()
+                                not vim.lsp.inlay_hint.is_enabled
                             )
                         end, {
                             buffer = ev.buf,
                             desc = 'LSP Toggle Inlay [H]ints',
                         })
-                    end
+                    end -- }}}
                 end,
             }) -- }}}
-
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend(
                 'force',
@@ -166,7 +160,7 @@ return {
                 )
 
                 require('lspconfig')[server_name].setup(server)
-            end
+            end -- }}}
         end, -- }}}
     }, -- }}}
 }

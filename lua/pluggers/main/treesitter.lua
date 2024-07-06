@@ -25,7 +25,6 @@ return {
             })
         end,
     },
-
     { -- I should use emmet instead of this tbh but might aswell have it
         'windwp/nvim-ts-autotag',
         ft = { 'html', 'javascript', 'markdown' },

@@ -47,8 +47,9 @@ M.mason = {
     'pyright', -- Python
     'ruff',
     'shfmt', -- Shell
+    'json-lsp', -- JSON
 }
-M.lsp = {
+M.lsp = { --:h lspconfig-all
     lua_ls = {
         settings = {
             Lua = {
@@ -98,6 +99,7 @@ M.lsp = {
             },
         },
     },
+    jsonls = {},
 }
 M.format = {
     lua = { 'stylua' },

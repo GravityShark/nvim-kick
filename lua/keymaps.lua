@@ -3,6 +3,22 @@
 -- vim.api.nvim_set_keymap({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 -- Plugin remaps are located in the respective plugin definition under their init function
 
+-- Add snippet keybindings {{{
+vim.keymap.set({ 'i' }, '<C-j>', function()
+    if vim.snippet.active({ direction = 1 }) then
+        vim.snippet.jump(1)
+    end
+end, { expr = true })
+
+vim.keymap.set({ 's' }, '<C-j>', function()
+    vim.snippet.jump(1)
+end, { expr = true })
+
+vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+    vim.snippet.jump(-1)
+end, { expr = true })
+
+-- }}}
 -- Open terminal {{{
 vim.api.nvim_set_keymap(
     'n',
@@ -14,15 +30,14 @@ vim.api.nvim_set_keymap(
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
 -- Just precreate the directory ~/.local/share/nvim/compile/
-local path = vim.fn.stdpath('data')
-    .. '/compile/'
-    .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
-local exists, lines = pcall(vim.fn.readfile, path)
-if exists and #lines > 0 then
-    vim.b.runwithparameters = vim.trim(lines[1])
-end
-
 vim.keymap.set('n', '<leader>r', function()
+    local path = vim.fn.stdpath('data')
+        .. '/compile/'
+        .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+    local exists, lines = pcall(vim.fn.readfile, path)
+    if exists and #lines > 0 then
+        vim.b.runwithparameters = vim.trim(lines[1])
+    end
     vim.ui.input({
         prompt = 'Run: ',
         default = vim.b.runwithparameters,
@@ -32,7 +47,6 @@ vim.keymap.set('n', '<leader>r', function()
             print('See :h cmdline-special and :h filename-modifiers')
             return
         end
-
         vim.b.runwithparameters = input
         vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)

@@ -1,1 +1,0 @@
-../color/rosepine.lua
