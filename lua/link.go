@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io/fs"
 	"log"
 	"os"
@@ -23,7 +22,6 @@ func main() {
 		info, _ := v.Info()
 		if info.Mode()&fs.ModeSymlink != 0 {
 			os.Remove(v.Name())
-			fmt.Println(v.Name())
 		}
 	}
 

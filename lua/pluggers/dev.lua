@@ -1,1 +1,1 @@
-extra/dev.lua
+./extra/dev.lua

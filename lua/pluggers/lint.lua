@@ -1,1 +1,1 @@
-main/lint.lua
+./main/lint.lua

@@ -1,1 +1,1 @@
-main/conform.lua
+./main/conform.lua

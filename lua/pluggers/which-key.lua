@@ -1,1 +1,1 @@
-extra/which-key.lua
+./extra/which-key.lua

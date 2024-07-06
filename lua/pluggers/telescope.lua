@@ -1,1 +1,1 @@
-main/telescope.lua
+./main/telescope.lua

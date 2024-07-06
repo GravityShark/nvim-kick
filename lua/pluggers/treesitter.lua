@@ -1,1 +1,1 @@
-main/treesitter.lua
+./main/treesitter.lua
