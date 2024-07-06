@@ -24,10 +24,10 @@
 - [ ] [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [ ] [Neogen](https://github.com/danymat/neogen) (kinda interesting)
 - [ ] [Neoconf](https://github.com/folke/neoconf.nvim)
-- [/] [Codeium](https://github.com/Exafunction/codeium.nvim)
+- [x] [Codeium](https://github.com/Exafunction/codeium.nvim)
   - I don't like to fuck around with AI
-- [/] [Trouble V3](https://github.com/folke/trouble.nvim)
-- [/] [Todo Comments](https://github.com/folke/todo-comments.nvim)
+- [x] [Trouble V3](https://github.com/folke/trouble.nvim)
+- [x] [Todo Comments](https://github.com/folke/todo-comments.nvim)
   > but basically anything from [lazyvim](https://www.lazyvim.org/plugins/) or [lunarvim](https://www.lunarvim.org/docs/configuration/plugins/example-configurations)
 
 #### mini.nvim
@@ -40,7 +40,6 @@
 - [ ] mini.hues
 - [ ] mini.jump2d -- adds labels, kinda like how qutebrowser does it
 - [ ] mini.move -- like that one ThePrimeagen keybinding with autoindenting selection
-- [ ] mini.sessions -- persistence.nvim
 - [ ] mini.splitjoin -- cool way of like splitting lines like
 
 ### TODO
@@ -69,13 +68,13 @@
 git clone https://github.com/GravityShark0/nvim-kick.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
-- on Windows
+- on Windows or i think it would work cause i havent tried
 
 ```bash
 git clone https://github.com/GravityShark0/nvim-kick.git %userprofile%\AppData\Local\nvim\
 ```
 
-then run nvim
+then run `nvim`
 
 #### uninstall
 
@@ -94,7 +93,3 @@ rd -r ~\AppData\Local\nvim-data
 ```
 
 - thanks [kickstart.nvim]
-
-```
-
-```
