@@ -19,5 +19,11 @@ return {
     --     cmd = 'VimBeGood',
     -- }, -- }}}
     -- require('dragmove'),
+    -- fucking 2048 {{{
+    {
+        'NStefan002/2048.nvim',
+        cmd = 'Play2048',
+        config = true,
+    }, -- }}}
 }
 -- vim:foldmethod=marker:
