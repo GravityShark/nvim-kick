@@ -28,9 +28,6 @@
 
 ## install
 > you might wanna do the uninstall instruction first so no conflicts arise
-
-- on Linux and Mac
-
 ```bash
 git clone https://github.com/GravityShark0/nvim-kick.git ~/.config/nvim
 # then run the relink command with your preferred plugins
@@ -38,16 +35,12 @@ cd ~/.config/nvim
 ./relink.out
 ```
 > then you go ahead change the lua/ensure.lua to set what kind of
-
 > lsp, treesitter, formatters, and linters you wanna have
 
 then run `nvim` or wheatever neovim client you use
 > like [neovide](https://neovide.dev/)
 
 ## uninstall
-
-- Linux / Macos (unix)
-
 ```bash
 # will completely remove anything in neovim
 rm -rf ~/.config/nvim
