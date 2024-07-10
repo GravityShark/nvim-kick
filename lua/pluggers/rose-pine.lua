@@ -1,1 +1,1 @@
-../colors/rose-pine.lua
+colors/rose-pine.lua

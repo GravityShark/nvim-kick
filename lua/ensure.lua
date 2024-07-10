@@ -24,7 +24,7 @@ M.treesitter = {
     'diff',
     'gitcommit',
 }
-M.mason = {
+M.mason = { -- :Mason
     'lua-language-server', -- Lua
     'stylua',
     'gopls', -- Go
@@ -45,7 +45,7 @@ M.mason = {
     'shfmt', -- Shell
     'json-lsp', -- JSON
 }
-M.lsp = { -- :h lspconfig-all
+M.lsp = { -- :help lspconfig-all
     lua_ls = {
         settings = {
             Lua = {

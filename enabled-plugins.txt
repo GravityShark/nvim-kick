@@ -1,6 +1,8 @@
-# Always use # infront to comment something
-../colors/rose-pine.lua
-# ../colors/transparent.lua
+# Go in the lua/pluggers and to any of the folders to add any of the plugins you want
+# then run `relink.out` or `go run relink.go`
+
+# colors/transparent.lua
+colors/rose-pine.lua
 main/conform.lua
 main/lint.lua
 main/lsp-cmp.lua

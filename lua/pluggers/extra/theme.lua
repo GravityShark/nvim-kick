@@ -3,7 +3,7 @@ return {
     -- mini.statusline Statusline {{{
     {
         'echasnovski/mini.statusline',
-        lazy = false,
+        event = 'VeryLazy',
         dependencies = {
             'echasnovski/mini.icons',
             opts = {},

@@ -16,7 +16,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	os.Chdir("./pluggers/")
+	os.Chdir("./lua/pluggers/")
 	defer file.Close()
 
 	files, err := os.ReadDir("./")

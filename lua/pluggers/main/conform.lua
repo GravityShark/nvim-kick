@@ -1,4 +1,4 @@
-return { -- conform.nvim Press <leader>o to format your current document
+return { -- conform.nvim Press <leader>o to format your current buffer
     'stevearc/conform.nvim',
     event = 'BufWritePre',
     cmd = { 'ConformInfo' },
