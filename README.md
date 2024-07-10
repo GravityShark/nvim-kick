@@ -26,7 +26,7 @@
 
 > kinda like a modern [evim](https://linux.die.net/man/1/evim)
 
-### install
+## install
 > you might wanna do the uninstall instruction first so no conflicts arise
 
 - on Linux and Mac
@@ -44,7 +44,7 @@ cd ~/.config/nvim
 then run `nvim` or wheatever neovim client you use
 > like [neovide](https://neovide.dev/)
 
-#### uninstall
+## uninstall
 
 - Linux / Macos (unix)
 
