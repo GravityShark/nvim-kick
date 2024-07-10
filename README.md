@@ -3,13 +3,15 @@
 > use neovim 0.10
 > cause fuck yeah only latest baby
 
-## my own neovim config from kickstart
+## my OLD neovim config from kickstart
 
 > its pratically done ngl
 > its ACTUALLY practically done now
 > its pratical and weird but its FAST BABY
 > I know using symlinks may be a weird way of adding and not adding plugins
 > but i promise its fire
+
+> I wanted to try harpoon again so im ditching this buffer way of navigating files and using persistence
 
 ### plugins to look into
 
