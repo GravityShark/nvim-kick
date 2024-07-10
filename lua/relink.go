@@ -1,5 +1,7 @@
 package main
 
+// Symlinks plugins in enabled-plugins.txt relative to the pluggers folders
+
 import (
 	"bufio"
 	"io/fs"
@@ -10,11 +12,11 @@ import (
 
 func main() {
 	file, err := os.Open("enabled-plugins.txt")
-
-	os.Chdir("./pluggers/")
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	os.Chdir("./pluggers/")
 	defer file.Close()
 
 	files, err := os.ReadDir("./")

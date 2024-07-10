@@ -1,4 +1,4 @@
-return {
+return { -- soho vibes
     'rose-pine/neovim',
     name = 'rose-pine',
     -- Recommended way of loading themes in lazy

@@ -3,6 +3,9 @@
 > use neovim 0.10
 > cause fuck yeah only latest baby
 
+## tf is this branch about
+> changing on how i interact with vim
+
 ## my own neovim config from kickstart
 
 > its pratically done ngl

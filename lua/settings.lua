@@ -3,22 +3,18 @@
 vim.opt.laststatus = 3
 
 -- Line numbers
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Undofile
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
--- For orgmode
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
-
 -- Disable that weird effect where it changes the color of your cursor
--- vim.opt.matchtime = 0
+vim.opt.matchtime = 0
 
--- Leaves 12 lines of extra space
-vim.opt.scrolloff = 12
+-- Leaves 8 lines of extra space
+vim.opt.scrolloff = 8
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -66,11 +62,6 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_browse_split = 0
 vim.g.netrw_hide = 1
 
--- Remove som errors with checkhealth
--- vim.g.loaded_perl_provider = 0
--- vim.g.loaded_node_provider = 0
--- vim.g.loaded_python3_provider = 0
--- vim.g.loaded_ruby_provider = 0
 -- mini.basics
 -- vim.opt.backup = false
 vim.opt.writebackup = false
@@ -82,6 +73,7 @@ vim.opt.wrap = false
 
 vim.opt.signcolumn = 'yes'
 vim.opt.fillchars = 'eob: '
+
 -- Editing
 -- vim.opt.incsearch = true -- already default
 vim.opt.infercase = true
@@ -89,10 +81,6 @@ vim.opt.virtualedit = 'block'
 vim.opt.formatoptions = 'qjl1'
 
 vim.opt.termguicolors = true
-
-vim.opt.pumheight = 15
-vim.opt.pumblend = 10
-
 -- }}}
 -- LSP Configs {{{
 for type, icon in pairs({
@@ -109,24 +97,4 @@ vim.diagnostic.config({
 })
 
 -- }}}
--- User commands {{{
-vim.api.nvim_create_user_command('Foldisolate', function()
-    vim.opt.foldlevel = 0
-    for i = 1, vim.o.foldnestmax, 1 do
-        local ok = pcall(vim.cmd, 'foldopen')
-        if ok == false then
-            return
-        end
-    end
-    vim.cmd('norm zz')
-end, {
-    desc = 'Isolate the folds to the current cursor',
-})
-
-vim.api.nvim_set_keymap(
-    'n',
-    'zI',
-    '<CMD>Foldisolate<CR>',
-    { desc = 'Isolate folding' }
-) -- }}}
 -- vim:foldmethod=marker:

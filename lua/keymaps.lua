@@ -3,29 +3,6 @@
 -- vim.api.nvim_set_keymap({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 -- Plugin remaps are located in the respective plugin definition under their init function
 
--- Add snippet keybindings {{{
-vim.keymap.set({ 'i' }, '<C-j>', function()
-    if vim.snippet.active({ direction = 1 }) then
-        vim.snippet.jump(1)
-    end
-end, { expr = true })
-
-vim.keymap.set({ 's' }, '<C-j>', function()
-    vim.snippet.jump(1)
-end, { expr = true })
-
-vim.keymap.set({ 'i', 's' }, '<C-k>', function()
-    vim.snippet.jump(-1)
-end, { expr = true })
-
--- }}}
--- Open terminal {{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>T',
-    '<CMD>split term://$SHELL<CR>',
-    { desc = '[T]erminal create' }
-) -- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
@@ -36,7 +13,7 @@ vim.keymap.set('n', '<leader>r', function()
         .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
-        vim.b.runwithparameters = vim.trim(lines[1])
+        vim.b.runwithparameters = vim.trim(lines)
     end
     vim.ui.input({
         prompt = 'Run: ',
@@ -51,166 +28,66 @@ vim.keymap.set('n', '<leader>r', function()
         vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)
     end)
-end, { desc = '[r]un and [r]emember an input' })
-
-vim.keymap.set(
-    'n',
-    '<leader>Rgc',
-    function()
-        local file = vim.api.nvim_buf_get_name(0)
-        local file_noext = file:match('^(.+)%.+')
-
-        vim.cmd.split(
-            'term://gcc '
-                .. file
-                .. ' --debug -o '
-                .. file_noext
-                .. '&& echo "Compiled to '
-                .. file
-                .. ' "'
-        )
-    end,
-    -- '<CMD>!gcc % --debug -o %<CR>',
-    { desc = 'GCC [c]ompile' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>RgC',
-    function()
-        local file = vim.api.nvim_buf_get_name(0)
-        local file_noext = file:match('^(.+)%.+')
-
-        vim.cmd.split(
-            'term://gcc ' .. file .. ' --debug -o ' .. file_noext .. '&& fish'
-        )
-        vim.api.nvim_chan_send(
-            vim.api.nvim_get_current_buf(),
-            file_noext .. ' '
-        )
-    end,
-    -- '<CMD>!gcc % --debug -o %<CR>',
-    { desc = 'GCC [C]ompile and run' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>Rgr',
-    '<CMD>split term://gcc % --debug -o /tmp/a.out && /tmp/a.out<CR>',
-    { desc = 'GCC [r]un' }
-)
+end, { desc = 'un command' })
 
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>RG',
-    '<CMD>split term://go run %<CR>',
-    { desc = '[G]o run' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>RgR',
-    function()
-        os.execute(
-            'gcc ' .. vim.api.nvim_buf_get_name(0) .. ' --debug -o /tmp/a.out'
-        )
-        vim.ui.input({ prompt = 'Prompt: ' }, function(input)
-            vim.cmd.split('term:///tmp/a.out ' .. input)
-        end)
-    end,
-    { desc = 'GCC [R]un with parameters' } -- runs in
-)
-
--- vim.api.nvim_set_keymap('n', '<leader>Rgd', '<CMD><CR>', { desc = '[d]ebug' })
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>Rx',
+    '<leader>R',
     '<CMD>silent !chmod +x %<CR>',
-    { desc = 'chmod +[x] %' }
-)
-
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>Rf',
-    '<CMD>split term://%<CR>',
-    { desc = 'Run [f]ile' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>RF',
-    '<CMD>split term://fish<CR>' .. vim.api.nvim_buf_get_name(0) .. ' ',
-    { desc = 'Run [F]ile with parameters' }
-)
--- }}}
--- Exit term mode{{{
-vim.api.nvim_set_keymap(
-    't',
-    '<C-space>',
-    '<C-\\><C-n><C-w>h',
-    { silent = true }
-) -- }}}
--- Remove highlighting with escape{{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<esc>',
-    ':noh<return><esc>',
-    { silent = true, noremap = true }
-) -- }}}
+    { desc = 'unnable file' }
+) --}}}
 -- Save and quit binings{{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
     '<CMD>w<CR>',
-    { silent = true, desc = '[w]rite current buffer' }
+    { silent = true, desc = 'rite current buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>W',
     '<CMD>wa<CR>',
-    { silent = true, desc = '[W]rite all buffers' }
+    { silent = true, desc = 'rite all buffers' }
 )
 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
     '<CMD>wqa<CR>',
-    { silent = true, desc = '[q]uit with saving' }
+    { silent = true, desc = 'uit with saving' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>Q',
     '<CMD>qa!<CR>',
-    { silent = true, desc = '[Q]uit forcefully' }
+    { silent = true, desc = 'uit forcefully' }
 ) -- }}}
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
--- vim.api.nvim_set_keymap('n', '<C-S-t>', '<CMD>silent !T<CR>', { silent = true })
 -- }}}
 -- Visual mode indents reenters visual mode {{{
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 -- g[y|d|p|P] uses to system clipboard{{{
-vim.keymap.set(
-    { 'n', 'v' },
-    'gy',
-    '"+y',
-    { desc = '[y]ank to system clipboard' }
-)
+vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'ank to system clipboard' })
 vim.keymap.set(
     { 'n', 'v' },
     'gd',
     '"+d',
-    { desc = '[d]elete to system clipboard' }
+    { desc = 'elete to system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-    { desc = '[p]aste System Clipboard' }
+    { desc = 'aste system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     'gP',
     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = 'reverse [P]aste System Clipboard' }
+    { desc = 'aste system clipboard' }
 ) -- }}}
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.api.nvim_set_keymap(
@@ -229,142 +106,27 @@ vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- }}}
 -- Netrw {{{
--- Open netrw on the right
-vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Lex<CR>', { desc = 'Lex?' })
+-- Open netrw on the left as nerdtree
+vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Lex<CR>', { desc = 'erdtree' })
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>e',
+    '<leader>.',
     '<CMD>Ex<CR>',
-    { desc = '[e]xplorer in current window' }
+    { desc = 'file explorer' }
 )
 -- }}}
--- Buffer {{{
--- Tabs to move around buffers
-vim.api.nvim_set_keymap('n', '<C-I>', '<Tab>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Tab>', '<CMD>bnext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', '<CMD>bprev<CR>', { noremap = true })
-
--- function BufRem(number)
---     local bufremove = require('mini.bufremove')
---     if not bufremove.delete(number, false) then
---         local choice = vim.fn.confirm(
---             'Save changes to ' .. vim.fn.expand('%:p'),
---             '&Yes\n&No\n&Cancel',
---             3
---         )
---
---         if choice == 1 then
---             vim.cmd('update')
---             bufremove.delete(number, false)
---         elseif choice == 2 then
---             bufremove.delete(number, true)
---         end
---     end
---     CheckTabline()
--- end
-
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>x',
-    '<CMD>close<CR>',
-    { desc = '[x]ross out window' }
-)
-
+-- Closing buffers {{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
-    -- '<CMD>lua BufRem(0)<CR>',
-    "<CMD>lua require('mini.bufremove').delete(); CheckTabline()<CR>",
-    { desc = '[c]lose current buffer' }
-)
-
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>C',
-    -- '<CMD>lua BufRem(0)<CR>',
-    "<CMD>lua require('mini.bufremove').delete(0, true); CheckTabline()<CR>",
-    { desc = '[C]lose forcefully current buffer' }
-)
-
-vim.api.nvim_set_keymap(
-    'n',
-    'gb',
-    '<CMD>lua ToggleBar()<CR>',
-    { desc = 'Toggle buffer [b]ar' }
-)
-
-for i = 0, 9 - 1 do
-    vim.api.nvim_set_keymap(
-        'n',
-        '<A-' .. i .. '>',
-        -- '<CMD>lua if MiniTabline ~= nil then MiniTabline.select, ('
-        --     .. i
-        --     .. ') end<CR>',
-        -- '<CMD>lua if MiniTabline ~= nil then pcall(MiniTabline.select, '
-        --     .. i
-        --     .. ') end<CR>',
-        '<CMD>lua pcall(MiniTabline.select, '
-            .. i
-            .. ')<CR>',
-        { silent = true }
-    )
-end
--- }}}
--- Windows {{{
--- https://github.com/echasnovski/mini.basics
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-Left>',
-    '"<Cmd>vertical resize -" . v:count1 . "<CR>"',
-    { expr = true, replace_keycodes = false, desc = 'Decrease window width' }
+    '<CMD>bdelete<CR>',
+    { desc = 'lose buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<C-Down>',
-    '"<Cmd>resize -"          . v:count1 . "<CR>"',
-    { expr = true, replace_keycodes = false, desc = 'Decrease window height' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-Up>',
-    '"<Cmd>resize +"          . v:count1 . "<CR>"',
-    { expr = true, replace_keycodes = false, desc = 'Increase window height' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-Right>',
-    '"<Cmd>vertical resize +" . v:count1 . "<CR>"',
-    { expr = true, replace_keycodes = false, desc = 'Increase window width' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-H>',
-    '<C-w>h',
-    { desc = 'Focus on left window' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-J>',
-    '<C-w>j',
-    { desc = 'Focus on below window' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-K>',
-    '<C-w>k',
-    { desc = 'Focus on above window' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<C-L>',
-    '<C-w>l',
-    { desc = 'Focus on right window' }
-)
--- }}}
--- Blazingly fast remaps {{{
--- vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv") vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
--- Unmoving cursor while doing J
--- vim.api.nvim_set_keymap('n', 'J', 'mzJ`z')
--- }}}
+    '<leader>c',
+    '<CMD>bdelete<CR>',
+    { desc = 'lose forcefully' }
+)-- }}}
 -- vim:foldmethod=marker:

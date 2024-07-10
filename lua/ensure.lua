@@ -19,8 +19,6 @@ M.treesitter = {
     'toml',
     'markdown', -- Markup
     'markdown_inline',
-    'org',
-    'typst',
     'vim', -- Other
     'vimdoc',
     'diff',
@@ -42,14 +40,12 @@ M.mason = {
     'quick-lint-js',
     'clangd', -- C
     'clang-format',
-    'typst-lsp', -- Typst
-    'ltex-ls', -- General Text
     'pyright', -- Python
     'ruff',
     'shfmt', -- Shell
     'json-lsp', -- JSON
 }
-M.lsp = { --:h lspconfig-all
+M.lsp = { -- :h lspconfig-all
     lua_ls = {
         settings = {
             Lua = {
@@ -73,32 +69,6 @@ M.lsp = { --:h lspconfig-all
     tsserver = {},
     clangd = {},
     pyright = {},
-    typst_lsp = {
-        settings = {
-            exportPdf = 'never', -- Choose onType, onSave or never.
-            -- serverPath = "" -- Normally, there is no need to uncomment it.
-        },
-    },
-    ltex = {
-        filetypes = {
-            'gitcommit',
-            'markdown',
-            'org',
-            'html',
-            'text',
-            'typst',
-        },
-        on_attach = function(client, bufnr) -- rest of your on_attach process.
-            require('ltex_extra').setup({ your_opts })
-        end,
-        settings = {
-            ltex = {
-                additionalRules = {
-                    languageModel = '~/Other/ngrams/',
-                },
-            },
-        },
-    },
     jsonls = {},
 }
 M.format = {

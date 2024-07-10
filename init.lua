@@ -3,7 +3,6 @@ vim.loader.enable()
 
 -- Sets the settings and autocmd before running lazy
 require('settings')
-require('autocmd')
 
 -- Setsup lazy.nvim {{{
 -- Initialize lazy.nvim {{{

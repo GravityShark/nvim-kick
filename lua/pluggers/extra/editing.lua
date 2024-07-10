@@ -1,6 +1,4 @@
--- As in mini improvements that I really like
--- Mainly from echasnovski/mini.nvim
-return {
+return { -- Plugins that make the neovim editing experience better
     { -- mini.surround Surround text with any character
         'echasnovski/mini.surround',
         keys = {
@@ -13,24 +11,16 @@ return {
             { 'sh', desc = 'Highlight surrounding' },
             { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
         },
-        config = true,
+        opts = {},
     },
     { -- mini.pairs Auto pairs ()[]{}
         'echasnovski/mini.pairs',
         event = 'InsertEnter',
-        config = true,
+        opts = {},
     },
-    { -- mini.jump Better f/F and t/T
-        'echasnovski/mini.jump',
-        keys = { 'f', 'F', 't', 'T', ';' },
-        opts = { highlight = 0 },
-    },
-    { -- sleuth.vim: Heuristically set buffer options
-        'tpope/vim-sleuth',
+    { -- guess-indent.nvim Automatically guess the indent level
+        'nmac427/guess-indent.nvim',
+        opts = {},
         event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     },
-    -- mini.ai Better (a)round and (i)nside commands
-    { 'echasnovski/mini.ai', event = 'VeryLazy', config = true },
-    -- mini.bufremove Kill buffers and preserve window layout
-    { 'echasnovski/mini.bufremove' },
 }

@@ -1,14 +1,13 @@
 return {
-    {
-        -- Highlight, edit, and navigate code
+    { -- nvim-treesitter Obligatory syntax highlighting
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
         dependencies = {
-            {
+            { -- nvim-treesitter-context Gives you a little context on what indent you are in
                 'nvim-treesitter/nvim-treesitter-context',
                 opts = {
-                    -- max_lines = 8,
+                    max_lines = 4,
                     multiline_threshold = 1,
                 },
             },
@@ -25,9 +24,9 @@ return {
             })
         end,
     },
-    { -- I should use emmet instead of this tbh but might aswell have it
-        'windwp/nvim-ts-autotag',
-        ft = { 'html', 'javascript', 'markdown' },
-        config = true,
+    { -- ts-comments Just better comments
+        'folke/ts-comments.nvim',
+        event = 'VeryLazy',
+        opts = {},
     },
 }

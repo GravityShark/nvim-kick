@@ -1,4 +1,4 @@
-return {
+return { -- telescope.nvim Fuzzy finding, but good
     'nvim-telescope/telescope.nvim',
     -- branch = '0.1.x',
     cmd = 'Telescope',
@@ -6,55 +6,55 @@ return {
         { -- Find for a file
             '<leader>ff',
             '<CMD>Telescope find_files<CR>',
-            desc = 'Find [f]iles',
+            desc = 'iles',
         },
         { -- Find for a file (with hidden files)
             '<leader>fa',
             '<CMD>Telescope find_files find_command=fd,--type=f,--color=never,--hidden,--no-ignore<CR>',
-            desc = 'Find [a]ll Files',
+            desc = 'll files',
         },
-        { -- Find for org filetype
-            '<leader>fo',
-            '<CMD>Telescope find_files find_command=fd,--type=f,--color=never,--extension=org,<CR>',
-            desc = 'Find [o]rg files',
-        },
-        { -- Find for a file in git project
+        { -- Find for a file in git repository
             '<leader>fg',
             '<CMD>Telescope git_files<CR>',
-            desc = 'Find [g]it Files',
+            desc = 'it files',
         },
         { -- Find text through azlive prompt
             '<leader>fl',
             '<CMD>Telescope live_grep<CR>',
-            desc = 'Find text using [l]ive grep',
+            desc = 'ive search',
         },
         { -- Show recent files
             '<leader>fr',
             '<CMD>Telescope oldfiles<CR>',
-            desc = 'Find [r]ecent',
+            desc = 'ecent',
         },
         { -- Show history (previous locations)
             '<leader>fh',
             '<CMD>Telescope jumplist<CR>',
-            desc = 'Find [h]istory of jumps',
+            desc = 'istory of jumps',
         },
         { -- Show git branches
             '<leader>fb',
+            '<CMD>Telescope buffers<CR>',
+            desc = 'uffers',
+        },
+        { -- Show git branches
+            '<leader>fc',
             '<CMD>Telescope git_branches<CR>',
-            desc = 'Find git [b]ranches',
+            desc = 'heckout git branches',
         },
         { -- Show all commands
             '<leader>f?',
             '<CMD>Telescope<CR>',
-            desc = 'Find ?',
+            desc = 'Anything',
         },
         { -- Show diagnostics
             '<leader>fd',
             '<CMD>Telescope diagnostics<CR>',
-            desc = 'Find [d]iagnostics',
+            desc = 'iagnostics',
         },
         { -- Fuzzy search in the buffer
-            '<leader>f/',
+            '<leader>ft',
             '<CMD>Telescope current_buffer_fuzzy_find<CR>',
             desc = '[/] Fuzzily search in current buffer',
         },
