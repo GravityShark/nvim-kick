@@ -1,17 +1,34 @@
-# Go in the lua/pluggers and to any of the folders to add any of the plugins you want
-# then run `relink.out` or `go run relink.go`
+# Used by relink.go to know what to set as enabled plugins
+# run `relink.out` or `go run relink.go`
+# the names are assumed to be relative to ./lua/pluggers/ from now own
+# read about the available plugins in their respective .org documentation
+# ex. lua/pluggers/main/main.org
+# plugins that are empahsised (surrounded with *) are recommended
 
-# colors/transparent.lua
 colors/rose-pine.lua
-main/conform.lua
-main/lint.lua
-main/lsp-cmp.lua
-main/telescope.lua
-main/treesitter.lua
-# extra/dev.lua
-extra/editing.lua
-extra/git.lua
+
+editor/guess-indent.lua
+editor/mini.pairs.lua
+editor/mini.surround.lua
+
+extra/gitsigns.lua
 extra/harpoon.lua
-extra/theme.lua
+extra/lazydev.lua
+extra/trouble.lua
 extra/undotree.lua
 extra/which-key.lua
+
+main/coq_nvim.lua
+main/conform.lua
+main/lint.lua
+main/lsp.lua
+main/telescope.lua
+main/treesitter.lua
+
+ui/colorizer.lua
+ui/fidget.lua
+ui/mini.indentscope.lua
+ui/mini.statusline.lua
+ui/todo-comments.lua
+ui/treesitter-context.lua
+ui/ts-comments.lua

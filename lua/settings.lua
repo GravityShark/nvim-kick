@@ -1,7 +1,6 @@
 -- Opts {{{
 -- Global statusline
 vim.opt.laststatus = 3
-
 -- Line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true

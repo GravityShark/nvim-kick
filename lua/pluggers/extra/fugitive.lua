@@ -1,19 +1,7 @@
-return { -- Git related stuff
-    { -- gitsigns.nvim git related signs to the gutter, as well as utilities for managing changes
-        'lewis6991/gitsigns.nvim',
-        event = 'VeryLazy',
-        opts = {
-            signs = {
-                add = { text = '▎' },
-                change = { text = '▎' },
-                delete = { text = '󰐊' },
-                topdelete = { text = '󰐊' },
-                changedelete = { text = '▎' },
-                untracked = { text = '┆' },
-            },
-        },
-    },
-    { -- vim-fugitive :Git for an integrated git experience with vim
+return { -- vim-rhubarb :Gbrowse for going to the git repository in a browser
+    'tpope/vim-rhubarb',
+    cmd = 'GBrowse',
+    dependencies = { -- vim-fugitive :Git for an integrated git experience with vim
         'tpope/vim-fugitive',
         keys = {
             {
@@ -57,20 +45,16 @@ return { -- Git related stuff
                 desc = 'ush',
             },
             {
-                'gl',
+                'gt',
                 '<CMD>diffget //2<CR>',
                 { desc = 'diffget //2', noremap = true },
             },
             {
-                'gh',
+                'gn',
                 '<CMD>diffget //3<CR>',
                 { desc = 'diffget //3', noremap = true },
             },
         },
         cmd = { 'Git' },
-    },
-    { -- vim-rhubarb :Gbrowse for going to the git repository in a browser
-        'tpope/vim-rhubarb',
-        cmd = 'GBrowse',
     },
 }

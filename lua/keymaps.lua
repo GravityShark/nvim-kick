@@ -63,7 +63,7 @@ vim.api.nvim_set_keymap(
     { silent = true, desc = 'uit forcefully' }
 ) -- }}}
 -- Allow for using t inside nvim {{{
-vim.api.nvim_set_keymap('n', '<C-t>', '<CMD>silent !t<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
 -- }}}
 -- Visual mode indents reenters visual mode {{{
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
@@ -107,7 +107,7 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- }}}
 -- Netrw {{{
 -- Open netrw on the left as nerdtree
-vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>Lex<CR>', { desc = 'erdtree' })
+vim.api.nvim_set_keymap('n', '<leader>>', '<CMD>Lex<CR>', { desc = 'nerdtree' })
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
@@ -128,5 +128,5 @@ vim.api.nvim_set_keymap(
     '<leader>c',
     '<CMD>bdelete<CR>',
     { desc = 'lose forcefully' }
-)-- }}}
+) -- }}}
 -- vim:foldmethod=marker:

@@ -1,0 +1,13 @@
+#+title: Editor
+
+* Editor Plugins
+Plugins here are about improving the editing experience of neovim
+** *mini.surround*
+Adds keybindings that allow you to surround any object with
+a character and more
+** *mini.pairs*
+Automatically adds and deletes pair couples when typing the
+opening couple () {} [] '' "" ``
+** *guess-indent.nvim*
+Automatically read the buffer and guesses the indent size
+the buffer uses and sets it

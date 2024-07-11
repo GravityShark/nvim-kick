@@ -1,0 +1,20 @@
+#+title: Extra
+
+* Extra Plugins
+These plugins add *extra* functionality that doesn't really
+fit the categories of UI improvements or Editing improvements
+** fugitive
+- adds :Git and :GBrowse
+** *gitsigns.nvim*
+shows the diff inside the gutter
+** lazydev.nvim
+Makes the lua language server better for configuring neovim
+** *harpoon.nvim*
+Allows you to tag (setup to use up to 4) files and easily
+jump to them and be local to each project
+** *trouble.nvim*
+Open a menu of all diagnostics in the workspace
+** *undotree*
+Open a menu of a tree of all undos
+** *which-key.nvim*
+Show list of possible key combinations when pressing keys

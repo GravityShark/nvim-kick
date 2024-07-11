@@ -31,6 +31,9 @@ func main() {
 	// optionally, resize scanner's capacity for lines over 64K, see next example
 	for scanner.Scan() {
 		plugin := scanner.Text()
+		if len(plugin) == 0 {
+			continue
+		}
 		if plugin[0] != '#' {
 			os.Symlink(plugin, filepath.Base(plugin))
 		}

@@ -126,7 +126,5 @@ return {
             palette = paletter,
             custom_hlgroups = custom_hlgroupers,
         })
-
-        require('color.transparent')
     end,
 }

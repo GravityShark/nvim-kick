@@ -57,7 +57,6 @@ M.lsp = { -- :help lspconfig-all
     gopls = {
         settings = {
             gopls = {
-                completeUnimported = true,
                 usePlaceholders = true,
                 analyses = { unusedparams = true },
             },
@@ -66,7 +65,13 @@ M.lsp = { -- :help lspconfig-all
     html = {}, -- Webdev
     emmet_language_server = {},
     tailwindcss = {},
-    tsserver = {},
+    tsserver = {
+        settings = {
+            implicitProjectConfiguration = {
+                checkJs = true,
+            },
+        },
+    },
     clangd = {},
     pyright = {},
     jsonls = {},
@@ -86,12 +91,12 @@ M.format = {
     sh = { 'shfmt' },
     bash = { 'shfmt' },
 }
-M.formatextra = {
+M.formatextra = { -- :help conform-options
     python = {
         prepend_args = { '--config', '~/.ruff.toml' },
     },
 }
-M.lint = {
+M.lint = { -- :help nvim-lint-available-linters
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },

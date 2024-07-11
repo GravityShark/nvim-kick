@@ -1,0 +1,23 @@
+#+title: Main
+
+* Main plugins
+Plugins that provide functionality that is bigger than
+** *conform.nvim*
+(automatic) formatting of code
+- remember to setup ensure.lua for your formatters
+** *nvim-lint*
+Automatic linting of code
+** *nvim-lspconfig*
+easier setup for stuff using language servers
+- remember to setup ensure.lua for your language servers
+** *nvim-cmp*
+  the i guess also good completion menu
+  - shouldn't be used with _coq_nvim_
+** coq_nvim
+  the fast as FUCK completion menu
+  - shouldn't be used with _cmp_
+the two are mutually exclusive
+** *telescope.nvim*
+a fuzzy finder written entirely in lua allowing you to find files and other stuff
+** *treesitter.lua*
+syntax highlighting mainly but also more
