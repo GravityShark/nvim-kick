@@ -9,6 +9,8 @@ fit the categories of UI improvements or Editing improvements
 shows the diff inside the gutter
 ** lazydev.nvim
 Makes the lua language server better for configuring neovim
+** neogen
+Easy annotation generation
 ** *harpoon.nvim*
 Allows you to tag (setup to use up to 4) files and easily
 jump to them and be local to each project
