@@ -10,15 +10,17 @@ colors/rose-pine.lua
 editor/guess-indent.lua
 editor/mini.pairs.lua
 editor/mini.surround.lua
+editor/purr.lua
 
 extra/gitsigns.lua
 extra/harpoon.lua
 extra/lazydev.lua
+extra/neogen.lua
 extra/trouble.lua
 extra/undotree.lua
 extra/which-key.lua
 
-main/coq_nvim.lua
+main/coq.lua
 main/conform.lua
 main/lint.lua
 main/lsp.lua

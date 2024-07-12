@@ -1,1 +1,0 @@
-main/coq_nvim.lua

@@ -3,7 +3,7 @@ return { -- lazydev.nvim Helps in neovim development
     ft = 'lua', -- only load on lua files
     config = function()
         local has_cmp = pcall(require, 'cmp')
-        local has_coq = pcall(require, 'coq')
+        local has_coq = pcall(require, 'coq_nvim')
         require('lazydev').setup({
             integrations = {
                 cmp = has_cmp,

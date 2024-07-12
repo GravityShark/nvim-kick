@@ -67,7 +67,7 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
         })
 
         local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-        local has_coq, coq = pcall(require, 'coq')
+        local has_coq, coq = pcall(require, 'coq_nvim')
         local capabilities = vim.tbl_deep_extend(
             'force',
             vim.lsp.protocol.make_client_capabilities(),
