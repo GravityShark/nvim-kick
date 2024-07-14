@@ -10,7 +10,5 @@ return { -- mini.surround Surround text with any character
         { 'sh', desc = 'Highlight surrounding' },
         { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
     },
-    opts = {
-        custom_surroundings = { {} },
-    },
+    opts = {},
 }

@@ -5,7 +5,7 @@ return { -- trouble.nvim Diagnostic Viewer
         {
             '<leader>t',
             '<CMD>Trouble diagnostics toggle<CR>',
-            desc = 'rouble diagnostcs',
+            desc = 'trouble diagnostcs',
         },
     },
     opts = {},

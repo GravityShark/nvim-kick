@@ -6,57 +6,52 @@ return { -- telescope.nvim Fuzzy finding, but good
         { -- Find for a file
             '<leader>ff',
             '<CMD>Telescope find_files<CR>',
-            desc = 'iles',
+            desc = 'files',
         },
         { -- Find for a file (with hidden files)
             '<leader>fa',
             '<CMD>Telescope find_files find_command=fd,--type=f,--color=never,--hidden,--no-ignore<CR>',
-            desc = 'll files',
+            desc = 'all files',
         },
         { -- Find for a file in git repository
             '<leader>fg',
             '<CMD>Telescope git_files<CR>',
-            desc = 'it files',
+            desc = 'git files',
         },
         { -- Find text through azlive prompt
             '<leader>fl',
             '<CMD>Telescope live_grep<CR>',
-            desc = 'ive search',
+            desc = 'live search',
         },
         { -- Show recent files
             '<leader>fr',
             '<CMD>Telescope oldfiles<CR>',
-            desc = 'ecent',
+            desc = 'recent',
         },
         { -- Show history (previous locations)
             '<leader>fh',
             '<CMD>Telescope jumplist<CR>',
-            desc = 'istory of jumps',
+            desc = 'history of jumps',
         },
         { -- Show git branches
             '<leader>fb',
             '<CMD>Telescope buffers<CR>',
-            desc = 'uffers',
+            desc = 'buffers',
         },
         { -- Show git branches
             '<leader>fc',
             '<CMD>Telescope git_branches<CR>',
-            desc = 'heckout git branches',
+            desc = 'checkout git branches',
         },
         { -- Show all commands
-            '<leader>f?',
+            '<leader>ft',
             '<CMD>Telescope<CR>',
-            desc = 'Anything',
+            desc = 'telescope',
         },
         { -- Show diagnostics
             '<leader>fd',
             '<CMD>Telescope diagnostics<CR>',
-            desc = 'iagnostics',
-        },
-        { -- Fuzzy search in the buffer
-            '<leader>ft',
-            '<CMD>Telescope current_buffer_fuzzy_find<CR>',
-            desc = '[/] Fuzzily search in current buffer',
+            desc = 'diagnostics',
         },
     },
     dependencies = {

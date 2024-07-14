@@ -5,7 +5,7 @@ return { -- colorizer.nvim Visualize color codes in code
         {
             '<leader>h',
             '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
-            desc = '[h]ighlight colors',
+            desc = 'highlight colors',
         },
     },
     opts = {

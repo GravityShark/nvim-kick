@@ -5,7 +5,7 @@ return { -- undotree Shows a tree, of your undos
         {
             '<leader>u',
             '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<CR>',
-            desc = 'ndotree Toggle',
+            desc = 'undotree',
         },
     },
 }

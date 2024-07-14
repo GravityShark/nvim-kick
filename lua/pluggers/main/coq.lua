@@ -5,16 +5,15 @@ return {
     build = ':COQdeps',
     dependencies = 'ms-jpq/coq.artifacts', -- Adds snippets,
     -- 'ms-jpq/coq.thirdparty', -- Thirdparty sources
-
     init = function()
         vim.g.coq_settings = {
             -- Silent startup
             auto_start = 'shut-up',
-            -- ['keymap.recommended'] = false,
-            ['keymap.pre_select'] = true,
+            keymap = {
+                manual_complete = '<c-n>',
+                pre_select = true,
+            },
             display = {
-                -- Disable shitty ghost text
-                ['ghost_text.enabled'] = false,
                 -- Make the preview actually diserable
                 ['preview.border'] = {
                     { '', 'NormalFloat' },

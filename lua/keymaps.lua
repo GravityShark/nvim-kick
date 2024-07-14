@@ -28,39 +28,33 @@ vim.keymap.set('n', '<leader>r', function()
         vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)
     end)
-end, { desc = 'un command' })
-
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>R',
-    '<CMD>silent !chmod +x %<CR>',
-    { desc = 'unnable file' }
-) --}}}
+end, { desc = 'run command' })
+--}}}
 -- Save and quit binings{{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
     '<CMD>w<CR>',
-    { silent = true, desc = 'rite current buffer' }
+    { silent = true, desc = 'write current buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>W',
     '<CMD>wa<CR>',
-    { silent = true, desc = 'rite all buffers' }
+    { silent = true, desc = 'Write all buffers' }
 )
 
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
     '<CMD>wqa<CR>',
-    { silent = true, desc = 'uit with saving' }
+    { silent = true, desc = 'quit with saving' }
 )
 vim.api.nvim_set_keymap(
     'n',
     '<leader>Q',
     '<CMD>qa!<CR>',
-    { silent = true, desc = 'uit forcefully' }
+    { silent = true, desc = 'Quit forcefully' }
 ) -- }}}
 -- Allow for using t inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
@@ -70,24 +64,24 @@ vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 -- g[y|d|p|P] uses to system clipboard{{{
-vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'ank to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set(
     { 'n', 'v' },
     'gd',
     '"+d',
-    { desc = 'elete to system clipboard' }
+    { desc = 'Delete to system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-    { desc = 'aste system clipboard' }
+    { desc = 'Paste system clipboard' }
 )
 vim.keymap.set(
     { 'n', 'v' },
     'gP',
     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = 'aste system clipboard' }
+    { desc = 'Paste system clipboard reversed' }
 ) -- }}}
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.api.nvim_set_keymap(
@@ -121,12 +115,12 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>c',
     '<CMD>bdelete<CR>',
-    { desc = 'lose buffer' }
+    { desc = 'close buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>c',
-    '<CMD>bdelete<CR>',
-    { desc = 'lose forcefully' }
+    '<leader>C',
+    '<CMD>bdelete!<CR>',
+    { desc = 'Close forcefully' }
 ) -- }}}
 -- vim:foldmethod=marker:

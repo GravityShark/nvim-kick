@@ -24,44 +24,44 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
                     'n',
                     '<leader>lD',
                     vim.lsp.buf.declaration,
-                    { buffer = ev.buf, desc = 'eclaration' }
+                    { buffer = ev.buf, desc = 'declaration' }
                 )
                 vim.keymap.set(
                     'n',
                     '<leader>ld',
                     vim.lsp.buf.definition,
-                    { buffer = ev.buf, desc = 'efinition' }
+                    { buffer = ev.buf, desc = 'definition' }
                 )
                 vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, {
                     buffer = ev.buf,
-                    desc = 'ype definition',
+                    desc = 'type definition',
                 })
                 vim.keymap.set(
                     'n',
                     '<leader>lc',
                     vim.lsp.buf.code_action,
-                    { buffer = ev.buf, desc = 'ode actions' }
+                    { buffer = ev.buf, desc = 'code actions' }
                 )
                 vim.keymap.set('n', '<leader>lm', vim.lsp.buf.references, {
                     buffer = ev.buf,
-                    desc = 'entioned',
+                    desc = 'mentions',
                 })
                 vim.keymap.set(
                     'n',
                     '<leader>lr',
                     vim.lsp.buf.rename,
-                    { buffer = ev.buf, desc = 'ename' }
+                    { buffer = ev.buf, desc = 'rename' }
                 )
                 vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, {
                     buffer = ev.buf,
-                    desc = 'mplementation',
+                    desc = 'implementation',
                 })
 
                 vim.keymap.set(
                     'n',
                     '<leader>le',
                     vim.diagnostic.open_float,
-                    { desc = 'rror popup' }
+                    { desc = 'error popup' }
                 )
             end,
         })

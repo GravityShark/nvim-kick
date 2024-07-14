@@ -8,7 +8,7 @@ return {
             function()
                 require('harpoon'):list():add()
             end,
-            desc = 'dd harpoon',
+            desc = 'add harpoon',
         },
         {
             '<leader>m',
@@ -16,7 +16,7 @@ return {
                 local harpoon = require('harpoon')
                 harpoon.ui:toggle_quick_menu(harpoon:list())
             end,
-            desc = 'enu harpoon',
+            desc = 'menu harpoon',
         },
         {
             '<C-s>',
