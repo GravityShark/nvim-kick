@@ -44,9 +44,14 @@ return { -- telescope.nvim Fuzzy finding, but good
             desc = 'checkout git branches',
         },
         { -- Show all commands
-            '<leader>ft',
+            '<leader>fp',
             '<CMD>Telescope<CR>',
-            desc = 'telescope',
+            desc = 'pickers',
+        },
+        { -- Show all commands
+            '<leader>ft',
+            '<CMD>TodoTelescope<CR>',
+            desc = 'todos',
         },
         { -- Show diagnostics
             '<leader>fd',

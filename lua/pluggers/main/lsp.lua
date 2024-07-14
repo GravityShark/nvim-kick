@@ -13,6 +13,11 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
             },
         },
         { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
+        {
+            'smjonas/inc-rename.nvim',
+            cmd = 'IncRename',
+            opts = {},
+        },
     },
     config = function()
         -- Keybindings to set when LSP has attached
@@ -46,12 +51,14 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
                     buffer = ev.buf,
                     desc = 'mentions',
                 })
-                vim.keymap.set(
-                    'n',
-                    '<leader>lr',
-                    vim.lsp.buf.rename,
-                    { buffer = ev.buf, desc = 'rename' }
-                )
+                vim.keymap.set('n', '<leader>lr', function()
+                    return ':IncRename ' .. vim.fn.expand('<cword>')
+                end, {
+                    expr = true,
+                    buffer = ev.buf,
+                    desc = 'rename',
+                })
+
                 vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, {
                     buffer = ev.buf,
                     desc = 'implementation',

@@ -123,4 +123,8 @@ vim.api.nvim_set_keymap(
     '<CMD>bdelete!<CR>',
     { desc = 'Close forcefully' }
 ) -- }}}
+-- cnext cprev {{{
+vim.api.nvim_set_keymap('n', 'cn', '<CMD>cnext<CR>', { desc = 'cnext' })
+vim.api.nvim_set_keymap('n', 'cp', '<CMD>cprev<CR>', { desc = 'cprev' })
+-- }}}
 -- vim:foldmethod=marker:

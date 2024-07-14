@@ -14,11 +14,11 @@ so i had to close neovim again and reopen it.
 sometimes i want to enable or disable a plugin.
 of course i can just use `enabled = false`, but lazy still needs
 to parse it which is slow in my eyes.
-so i just comment it in my big plugins.lua which is kinda hard 
+so i just comment it in my big plugins.lua which is kinda hard
 to navigate if you dont have folds, and even then its still
 chunky.
 
-i wanted to try what everyone else was doing so 
+i wanted to try what everyone else was doing so
 now its all fragmented into their own .lua file, so i can
 just put it in the folder (`lua/pluggers`) that lazy.nvim uses
 and it is enabled.
@@ -38,25 +38,38 @@ and much easier to write than in shell. probably the first time
 i ever used go as a sort of cli tool or script
 
 ### plugins i have to look into
+
 - [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [submode.nvim](https://github.com/pogyomo/submode.nvim) (very very interesting)
+- [octo.nvim](https://github.com/pwntester/octo.nvim) if i become successful one day
+  - [cmp-git](https://github.com/petertriho/cmp-git)
+- new neovim look
+  - [nvim-notify](https://github.com/rcarriga/nvim-notify)
+  - [dressing.nvim](https://github.com/stevearc/dressing.nvim) dresses
+  - [noice.nvim](https://github.com/folke/noice.nvim)
+- [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)
+- [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)
 - Colorscheming
   - [mini.base16](https://github.com/echasnovski/mini.base16) -- coolors
   - [mini.colors](https://github.com/echasnovski/mini.colors) or[lush](https://github.com/rktjmp/lush.nvim)
   - [mini.hues](https://github.com/echasnovski/mini.hues)
 
 ### plugins i looked into
+
 - [Neogen](https://github.com/danymat/neogen) (kinda interesting)
   - automatically puts an annotation which is very nice and works better than snippets can
 - Bufferline plugins (mini.tabline, bufferline.nvim, etc...)
-  - I've been thinking about how you should go about in a 
+
+  - I've been thinking about how you should go about in a
     project and I am currently trying to ditch bufferlines
     or buffer related workflow and try ThePrimeagen's Harpoon
     where he sets 4 main files that he constantly goes to and
     only goes to the other files via file picker or lsp get def.
   - My buffer workflow
+
     - It's basically just vim tabs but better
     - How
+
       - open a workspace with [persistence.nvim](https://github.com/folke/persistence.nvim)
       - persistence will open all the buffers you used before
       - go through the buffers one by one
@@ -67,12 +80,10 @@ i ever used go as a sort of cli tool or script
       -
 
     - Keybindings
-      - Tab, <S-Tab> = :bnext, :bprev 
+      - Tab, <S-Tab> = :bnext, :bprev
       - <A-[1-9]> = jump to bufferline index 1-9
       - <Leader>c = close buffer
     - Open
-
-    
 
 ### Shitty idea
 
