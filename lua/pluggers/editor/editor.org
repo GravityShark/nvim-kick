@@ -2,6 +2,8 @@
 
 * Editor Plugins
 Plugins here are about improving the editing experience of neovim
+** mini.ai
+Improves on the a/i text objects
 ** *mini.surround*
 Adds keybindings that allow you to surround any object with
 a character and more

@@ -66,10 +66,16 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
 
                 vim.keymap.set(
                     'n',
-                    '<leader>le',
+                    '<leader>lp',
                     vim.diagnostic.open_float,
-                    { desc = 'error popup' }
+                    { desc = 'popup diagnostic' }
                 )
+                vim.keymap.set('n', '<leader>lw', function()
+                    vim.lsp.buf.workspace_symbol()
+                end, {
+                    desc = 'workspace symbol',
+                    buffer = ev.buf,
+                })
             end,
         })
 

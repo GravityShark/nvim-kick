@@ -8,10 +8,10 @@
 colors/rose-pine.lua
 
 editor/guess-indent.lua
-editor/mini.pairs.lua
-editor/mini.surround.lua
-editor/purr.lua
+#editor/mini.pairs.lua
+#editor/mini.surround.lua
 
+extra/fugitive.lua
 extra/gitsigns.lua
 extra/harpoon.lua
 extra/lazydev.lua
@@ -32,5 +32,5 @@ ui/fidget.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
 ui/todo-comments.lua
-ui/treesitter-context.lua
 ui/ts-comments.lua
+# vim:commentstring=#%s:

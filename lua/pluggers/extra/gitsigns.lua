@@ -17,7 +17,7 @@ return { -- gitsigns.nvim git related signs to the gutter, as well as utilities 
                 vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
             end
 
-            require('which-key').add({ '<leader>g', group = 'git' })
+            require('which-key').add({ '<leader>g', group = 'git...' })
 
             -- stylua: ignore start
             map("n", "]h", function()

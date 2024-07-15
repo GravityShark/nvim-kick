@@ -44,17 +44,18 @@ return { -- vim-rhubarb :Gbrowse for going to the git repository in a browser
         --         '<CMD>Git push<CR>',
         --         desc = 'ush',
         --     },
-        --     {
-        --         'gt',
-        --         '<CMD>diffget //2<CR>',
-        --         { desc = 'diffget //2', noremap = true },
-        --     },
-        --     {
-        --         'gn',
-        --         '<CMD>diffget //3<CR>',
-        --         { desc = 'diffget //3', noremap = true },
-        --     },
-        -- },
+        keys = {
+            {
+                'gt',
+                '<CMD>diffget //2<CR>',
+                { desc = 'diffget //2', noremap = true },
+            },
+            {
+                'gn',
+                '<CMD>diffget //3<CR>',
+                { desc = 'diffget //3', noremap = true },
+            },
+        },
         cmd = { 'Git' },
     },
 }

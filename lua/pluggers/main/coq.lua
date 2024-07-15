@@ -7,15 +7,9 @@ return {
     -- 'ms-jpq/coq.thirdparty', -- Thirdparty sources
     init = function()
         vim.g.coq_settings = {
-            -- Silent startup
-            auto_start = 'shut-up',
-            keymap = {
-                manual_complete = '<c-n>',
-                pre_select = true,
-            },
+            auto_start = 'shut-up', -- Silent startup
             display = {
-                -- Make the preview actually diserable
-                ['preview.border'] = {
+                ['preview.border'] = { -- Make the preview actually diserable
                     { '', 'NormalFloat' },
                     { '', 'NormalFloat' },
                     { '', 'NormalFloat' },

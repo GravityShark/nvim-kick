@@ -18,6 +18,11 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>Telescope git_files<CR>',
             desc = 'git files',
         },
+        { -- Find for a file in git repository
+            '<C-f>',
+            '<CMD>Telescope git_files<CR>',
+            desc = 'git files',
+        },
         { -- Find text through azlive prompt
             '<leader>fl',
             '<CMD>Telescope live_grep<CR>',
@@ -30,8 +35,8 @@ return { -- telescope.nvim Fuzzy finding, but good
         },
         { -- Show history (previous locations)
             '<leader>fh',
-            '<CMD>Telescope jumplist<CR>',
-            desc = 'history of jumps',
+            '<CMD>Telescope help_tags<CR>',
+            desc = 'help tags',
         },
         { -- Show git branches
             '<leader>fb',
@@ -57,6 +62,22 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<leader>fd',
             '<CMD>Telescope diagnostics<CR>',
             desc = 'diagnostics',
+        },
+        { -- Pipe word into grep
+            '<leader>fw',
+            function()
+                local word = vim.fn.expand('<cword>')
+                require('telescope.builtin').grep_string({ search = word })
+            end,
+            desc = 'word',
+        },
+        { -- Pipe word into grep
+            '<leader>fW',
+            function()
+                local word = vim.fn.expand('<cWORD>')
+                require('telescope.builtin').grep_string({ search = word })
+            end,
+            desc = 'WORD',
         },
     },
     dependencies = {

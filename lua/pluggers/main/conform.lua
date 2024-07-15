@@ -11,7 +11,7 @@ return { -- conform.nvim A better formatting implementation
             function()
                 require('conform').format()
             end,
-            desc = 'rganize buffer',
+            desc = 'organize buffer',
         },
     },
     opts = {

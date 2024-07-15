@@ -1,6 +1,7 @@
 return { -- mini.ai spec by lazyvim
     'echasnovski/mini.ai',
     event = 'VeryLazy',
+    -- opts = {},
     opts = function()
         local ai = require('mini.ai')
         return {

@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
     '<CMD>w<CR>',
-    { silent = true, desc = 'write current buffer' }
+    { silent = true, desc = 'write buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -124,7 +124,19 @@ vim.api.nvim_set_keymap(
     { desc = 'Close forcefully' }
 ) -- }}}
 -- cnext cprev {{{
-vim.api.nvim_set_keymap('n', 'cn', '<CMD>cnext<CR>', { desc = 'cnext' })
-vim.api.nvim_set_keymap('n', 'cp', '<CMD>cprev<CR>', { desc = 'cprev' })
+vim.api.nvim_set_keymap('n', 'cn', '<CMD>cnext<CR>zz', { desc = 'cnext' })
+vim.api.nvim_set_keymap('n', 'cp', '<CMD>cprev<CR>zz', { desc = 'cprev' })
 -- }}}
+-- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
+-- greatest remap ever
+vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { desc = 'paste empty' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete empty' })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader><leader>',
+    '<CMD>so<CR>',
+    { desc = 'shout out' }
+)
+-- }}}
+-- refresh buffer
 -- vim:foldmethod=marker:

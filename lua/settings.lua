@@ -5,6 +5,8 @@ vim.opt.laststatus = 3
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.updatetime = 50
+
 -- Undofile
 vim.opt.undofile = true
 vim.opt.swapfile = false
