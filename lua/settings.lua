@@ -55,13 +55,13 @@ vim.g.undotree_WindowLayout = 3
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
-vim.g.netrw_fastbrowse = 0
-vim.g.netrw_keepdir = 0
+-- vim.g.netrw_fastbrowse = 0
+-- vim.g.netrw_keepdir = 0
 -- vim.g.netrw_liststyle = 3
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_winsize = 25
 vim.g.netrw_browse_split = 0
-vim.g.netrw_hide = 1
+-- vim.g.netrw_hide = 1
 
 -- mini.basics
 -- vim.opt.backup = false
