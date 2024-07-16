@@ -1,6 +1,13 @@
 -- Plugin remaps are located in the respective plugin definition
 -- under their keys map
 
+-- Exit term mode{{{
+vim.api.nvim_set_keymap(
+    't',
+    '<C-space>',
+    '<C-\\><C-n><C-w>h',
+    { silent = true }
+) -- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua

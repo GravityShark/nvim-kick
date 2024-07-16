@@ -2,3 +2,24 @@ snippet ifer
         if err != nil {
                 return err
         }
+
+
+snippet tp
+        package $1
+        t.Run("$1", func(t *testing.T) {
+                $2
+        })
+
+snippet trun
+        t.Run("$1", func(t *testing.T) {
+                $2
+        })
+
+snippet trunful
+        t.Run("$1", func(t *testing.T) {
+                got := $2
+                want := $3
+                if got != want {
+                        t.Errorf("got %d want %d", got, want)
+                }
+        })
