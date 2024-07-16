@@ -6,20 +6,26 @@ snippet ifer
 
 snippet tp
         package $1
-        t.Run("$1", func(t *testing.T) {
+
+        import "testing"
+
+        func Test$2(t *testing.T) {
+                $3
+        }
+
+snippet tfun
+        func Test$1(t *testing.T) {
                 $2
-        })
+        }
 
 snippet trun
         t.Run("$1", func(t *testing.T) {
                 $2
         })
 
-snippet trunful
-        t.Run("$1", func(t *testing.T) {
-                got := $2
-                want := $3
-                if got != want {
-                        t.Errorf("got %d want %d", got, want)
-                }
-        })
+snippet gottem
+        got := $2
+        want := $3
+        if got != want {
+                t.Errorf("got %$4 want %$4", got, want)
+        }
