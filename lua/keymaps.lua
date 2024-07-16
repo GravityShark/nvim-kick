@@ -65,6 +65,12 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set(
     { 'n', 'v' },
+    'gd',
+    '"+d',
+    { desc = 'Delete to system clipboard' }
+)
+vim.keymap.set(
+    { 'n', 'v' },
     'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
     { desc = 'Paste system clipboard' }

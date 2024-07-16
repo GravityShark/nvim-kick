@@ -76,9 +76,6 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     desc = 'workspace symbol',
                     buffer = ev.buf,
                 })
-                vim.keymap.set('n', 'gd', function()
-                    vim.lsp.buf.definition()
-                end, opts)
             end,
         })
 
