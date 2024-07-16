@@ -1,5 +1,5 @@
 -- I do not recommend to touch
-return { -- LSP Configuration (compatible with cmp and coq even neither!)
+return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
     'neovim/nvim-lspconfig',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     dependencies = {
@@ -76,6 +76,9 @@ return { -- LSP Configuration (compatible with cmp and coq even neither!)
                     desc = 'workspace symbol',
                     buffer = ev.buf,
                 })
+                vim.keymap.set('n', 'gd', function()
+                    vim.lsp.buf.definition()
+                end, opts)
             end,
         })
 

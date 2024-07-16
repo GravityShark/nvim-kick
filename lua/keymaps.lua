@@ -1,7 +1,5 @@
--- Keymaps for better default experience
--- See `:help vim.api.nvim_set_keymap()`
--- vim.api.nvim_set_keymap({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
--- Plugin remaps are located in the respective plugin definition under their init function
+-- Plugin remaps are located in the respective plugin definition
+-- under their keys map
 
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
@@ -35,7 +33,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
     '<CMD>w<CR>',
-    { silent = true, desc = 'write buffer' }
+    { silent = true, desc = 'write current buffer' }
 )
 vim.api.nvim_set_keymap(
     'n',
@@ -56,7 +54,7 @@ vim.api.nvim_set_keymap(
     '<CMD>qa!<CR>',
     { silent = true, desc = 'Quit forcefully' }
 ) -- }}}
--- Allow for using t inside nvim {{{
+-- Allow for using the script ~t~ inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
 -- }}}
 -- Visual mode indents reenters visual mode {{{
@@ -67,31 +65,19 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set(
     { 'n', 'v' },
-    'gd',
-    '"+d',
-    { desc = 'Delete to system clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
     'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
     { desc = 'Paste system clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
-    'gP',
-    '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = 'Paste system clipboard reversed' }
 ) -- }}}
 -- Middle positioned C+[D/U] and [n/N] {{{
-vim.api.nvim_set_keymap(
-    'n',
+vim.keymap.set(
+    { 'n', 'v' },
     '<C-d>',
     '<C-d>zz',
     { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
-    'n',
+vim.keymap.set(
+    { 'n', 'v' },
     '<C-u>',
     '<C-u>zz',
     { noremap = true, silent = true }
@@ -138,5 +124,4 @@ vim.api.nvim_set_keymap(
     { desc = 'shout out' }
 )
 -- }}}
--- refresh buffer
 -- vim:foldmethod=marker:

@@ -20,8 +20,8 @@ extra/trouble.lua
 extra/undotree.lua
 extra/which-key.lua
 
-main/coq.lua
 main/conform.lua
+main/coq.lua
 main/lint.lua
 main/lsp.lua
 main/telescope.lua
@@ -33,4 +33,5 @@ ui/mini.indentscope.lua
 ui/mini.statusline.lua
 ui/todo-comments.lua
 ui/ts-comments.lua
+
 # vim:commentstring=#%s:
