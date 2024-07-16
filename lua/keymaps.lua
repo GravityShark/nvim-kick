@@ -8,7 +8,7 @@
 vim.keymap.set('n', '<leader>r', function()
     local path = vim.fn.stdpath('data')
         .. '/compile/'
-        .. vim.fn.getcwd():gsub('/', '@')
+        .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
         vim.b.runwithparameters = lines[1]
@@ -33,7 +33,7 @@ end, { desc = 'run command' })
 vim.keymap.set('n', '<leader>R', function()
     local path = vim.fn.stdpath('data')
         .. '/compile/'
-        .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+        .. vim.fn.getcwd():gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
         vim.g.runwithparametersglobally = lines[1]
