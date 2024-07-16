@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>r', function()
         .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
-        vim.b.runwithparameters = vim.trim(lines)
+        vim.b.runwithparameters = lines[1]
     end
     vim.ui.input({
         prompt = 'Run: ',
@@ -25,6 +25,9 @@ vim.keymap.set('n', '<leader>r', function()
         vim.b.runwithparameters = input
         vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)
+        vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+        vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
 --}}}
