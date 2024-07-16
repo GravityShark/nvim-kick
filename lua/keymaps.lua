@@ -30,6 +30,31 @@ vim.keymap.set('n', '<leader>r', function()
         vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
+vim.keymap.set('n', '<leader>R', function()
+    local path = vim.fn.stdpath('data')
+        .. '/compile/'
+        .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+    local exists, lines = pcall(vim.fn.readfile, path)
+    if exists and #lines > 0 then
+        vim.g.runwithparameters = lines[1]
+    end
+    vim.ui.input({
+        prompt = 'Run Globally: ',
+        default = vim.g.runwithparameters,
+        completion = 'shellcmd',
+    }, function(input)
+        if input == nil or input == '' then
+            print('See :h cmdline-special and :h filename-modifiers')
+            return
+        end
+        vim.g.runwithparameters = input
+        vim.fn.writefile({ input }, path)
+        vim.cmd.split('term://' .. input)
+        vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+        vim.cmd.startinsert()
+    end)
+end, { desc = 'run command save globally' })
 --}}}
 -- Save and quit binings{{{
 vim.api.nvim_set_keymap(
