@@ -17,6 +17,12 @@ snippet tfun
         func Test$1(t *testing.T) {
                 $2
         }
+        
+snippet tbfun
+        func(t testing.TB) {
+                t.Helper()
+                $1
+        }
 
 snippet trun
         t.Run("$1", func(t *testing.T) {
