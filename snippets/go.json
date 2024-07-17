@@ -19,7 +19,7 @@
     "prefix": "tfun",
     "body": [
       "func Test$1(t *testing.T) {",
-      "\t$1",
+      "\t$2",
       "}",
       "$0"
     ]
