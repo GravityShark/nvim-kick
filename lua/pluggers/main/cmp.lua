@@ -10,6 +10,17 @@ return { -- nvim-cmp Better completion menu
         'hrsh7th/cmp-buffer',
         { -- Add Snippets as possible completion
             'garymjr/nvim-snippets',
+            init = function()
+                vim.api.nvim_create_user_command('SnippetsEdit', function()
+                    vim.cmd(
+                        'edit '
+                            .. vim.fn.stdpath('config')
+                            .. '/snippets/'
+                            .. vim.bo.filetype
+                            .. '.json'
+                    )
+                end, {})
+            end,
             keys = {
                 {
                     '<C-j>',

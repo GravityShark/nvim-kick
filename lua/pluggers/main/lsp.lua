@@ -2,6 +2,20 @@
 return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
     'neovim/nvim-lspconfig',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    init = function()
+        for type, icon in pairs({
+            Error = ' ',
+            Warn = ' ',
+            Hint = '󰌵 ',
+            Info = '󰋼 ',
+        }) do
+            local hl = 'DiagnosticSign' .. type
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        end
+        vim.diagnostic.config({
+            update_in_insert = true,
+        })
+    end,
     dependencies = {
         { -- mason-tool-installer.nvim Easy installation of LSPs
             'WhoIsSethDaniel/mason-tool-installer.nvim',

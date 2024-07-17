@@ -21,7 +21,7 @@ extra/undotree.lua
 extra/which-key.lua
 
 main/conform.lua
-main/coq.lua
+main/cmp.lua
 main/lint.lua
 main/lsp.lua
 main/telescope.lua
