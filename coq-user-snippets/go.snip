@@ -3,7 +3,6 @@ snippet ifer
                 return err
         }
 
-
 snippet tp
         package $1
 
@@ -18,6 +17,11 @@ snippet tfun
                 $2
         }
         
+snippet tifun
+        func(t *testing.T) {
+                $1
+        }
+        
 snippet tbfun
         func(t testing.TB) {
                 t.Helper()
@@ -30,8 +34,8 @@ snippet trun
         })
 
 snippet gottem
-        got := $2
-        want := $3
+        got := $1
+        want := $2
         if got != want {
-                t.Errorf("got %$4 want %$4", got, want)
+                t.Errorf("got %$3 want %$3", got, want)
         }

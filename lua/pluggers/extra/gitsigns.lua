@@ -20,22 +20,8 @@ return { -- gitsigns.nvim git related signs to the gutter, as well as utilities 
             require('which-key').add({ '<leader>g', group = 'git...' })
 
             -- stylua: ignore start
-            map("n", "]h", function()
-              if vim.wo.diff then
-                vim.cmd.normal({ "]c", bang = true })
-              else
-                gs.nav_hunk("next")
-              end
-            end, "Next Hunk")
-            map("n", "[h", function()
-              if vim.wo.diff then
-                vim.cmd.normal({ "[c", bang = true })
-              else
-                gs.nav_hunk("prev")
-              end
-            end, "Prev Hunk")
-            map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
-            map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+            map("n", "]g", gs.next_hunk, "Next Hunk")
+            map("n", "[g", gs.prev_hunk, "Prev Hunk")
             map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
             map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
             map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")

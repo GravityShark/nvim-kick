@@ -10,6 +10,7 @@ return {
             auto_start = 'shut-up', -- Silent startup
             ['keymap.pre_select'] = true,
             display = {
+                ['ghost_text.context'] = { '', '' },
                 ['preview.border'] = { -- Make the preview actually diserable
                     { '', 'NormalFloat' },
                     { '', 'NormalFloat' },

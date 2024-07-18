@@ -165,4 +165,14 @@ vim.api.nvim_set_keymap(
     { desc = 'shout out' }
 )
 -- }}}
+-- square bracket motions {{{
+vim.api.nvim_set_keymap(
+    'n',
+    '[b',
+    '<CMD>bprevious<CR>',
+    { desc = 'Next buffer' }
+)
+vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
+-- }}}
+
 -- vim:foldmethod=marker:
