@@ -2,12 +2,6 @@
 -- under their keys map
 
 -- Exit term mode{{{
-vim.api.nvim_set_keymap(
-    't',
-    '<C-space>',
-    '<C-\\><C-n><C-w>h',
-    { silent = true }
-) -- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
@@ -34,6 +28,14 @@ vim.keymap.set('n', '<leader>r', function()
         vim.cmd.split('term://' .. input)
         vim.opt_local.relativenumber = false
         vim.opt_local.number = false
+
+        vim.api.nvim_buf_set_keymap(
+            0,
+            't',
+            '<C-space>',
+            '<C-\\><C-n><C-w>h',
+            { silent = true }
+        ) -- }}}
         vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
