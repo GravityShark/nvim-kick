@@ -1,3 +1,4 @@
+-- vim.system({'./relink.out'}, {text = true, cwd = vim.fn.stdpath('config')}):wait()
 -- The experimental plugin loader
 vim.loader.enable()
 
@@ -66,7 +67,5 @@ require('lazy').setup({
 
 -- Keymaps only works after loading lazy
 require('keymaps')
-
-
 
 -- vim:foldmethod=marker:

@@ -16,23 +16,6 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
             update_in_insert = true,
         })
     end,
-    dependencies = {
-        { -- mason-tool-installer.nvim Easy installation of LSPs
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
-            event = 'VeryLazy',
-            cmd = { 'MasonToolsUpdate', 'MasonToolsInstall' },
-            opts = {
-                ensure_installed = require('ensure').mason,
-                auto_update = true,
-            },
-        },
-        { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
-        {
-            'smjonas/inc-rename.nvim',
-            cmd = 'IncRename',
-            opts = {},
-        },
-    },
     config = function()
         -- Keybindings to set when LSP has attached
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -93,6 +76,7 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
             end,
         })
 
+        pcall(require, 'mason')
         local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
         local has_coq, coq = pcall(require, 'coq_nvim')
         local capabilities = vim.tbl_deep_extend(

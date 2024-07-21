@@ -23,6 +23,7 @@ M.treesitter = {
     'vimdoc',
     'diff',
     'gitcommit',
+    'query',
 }
 M.mason = { -- :Mason
     'lua-language-server', -- Lua
@@ -76,7 +77,7 @@ M.lsp = { -- :help lspconfig-all
     pyright = {},
     jsonls = {},
 }
-M.format = {
+M.format = { -- :help conform-formatters
     lua = { 'stylua' },
     css = { 'prettierd' },
     html = { 'prettierd' },

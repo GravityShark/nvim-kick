@@ -1,1 +1,1 @@
-ui/ts-comments.lua
+extra/ts-comments.lua

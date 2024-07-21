@@ -1,10 +1,8 @@
-#+title: Colors
-
-* Color Plugins
+* Color plugins
 These plugins change and set the colorscheme
-** Catppuccin
+** catppuccin
 the nice pastel theme
-** monokai.nvim
+** monokai
 the notsonice bright theme
 ** sonokai
 the high contrast n vivid color based on monokai
