@@ -69,7 +69,6 @@ i ever used go as a sort of cli tool or script
 
     - It's basically just vim tabs but better
     - How
-
       - open a workspace with [persistence.nvim](https://github.com/folke/persistence.nvim)
       - persistence will open all the buffers you used before
       - go through the buffers one by one
@@ -77,13 +76,10 @@ i ever used go as a sort of cli tool or script
       - close a buffer if you no longer need it
       - use any file picker to open the file you want in a buffer
         - Telescope or netrw
-      -
-
     - Keybindings
       - Tab, <S-Tab> = :bnext, :bprev
       - <A-[1-9]> = jump to bufferline index 1-9
       - <Leader>c = close buffer
-    - Open
 
 ### Shitty idea
 
@@ -91,7 +87,7 @@ i ever used go as a sort of cli tool or script
 
 > sounds stupid but there is a lack of extremely lightweight (i. e. cli/tui) text editors out there that have good functionality
 
-> and its made for people who wont even learn vim motions but be able to use its amazing ecosystem - im gonna name it devil.nvim or like good.nvim - or like neo as in taking the vim out of neovim
+> and its made for people who wont even learn vim motions but be able to use its amazing ecosystem - im gonna name it devil.nvim (de-evil like evil mode in emacs) or like good.nvim (opposite of evil) - or like neo as in taking the vim out of neovim
 
 > kinda like a modern [evim](https://linux.die.net/man/1/evim)
 
