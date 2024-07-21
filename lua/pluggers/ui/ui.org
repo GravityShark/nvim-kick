@@ -1,5 +1,3 @@
-#+title: UI
-
 * UI Plugins
 Plugins that make the UI of neovim a little bit more bearable
 ** *colorizer.nvim*
@@ -7,16 +5,13 @@ Adds :ColorizerToggle which highlights texts like #FFFFFF
 and adds color to them, even Tailwind CSS colors
 ** *fidget.nvim*
 adds a little icon that gives information about your lsp starting
--- _lsp_ is recommended to be enabled
-** *mini.statusline*
-An opinionated statusline that is blazingly fast and stylish
+~lsp~ needs to be enabled.
 ** *mini.indentscope*
 Indent lines with animations
-** todo-comments.nvim
+** *mini.statusline*
+An opinionated statusline that is blazingly fast and stylish
+** *todo-comments.nvim*
 Highlights your TODO NOTE and other comments
 ** *treesitter-context*
 when inside an indent or function, it shows your current indent context when you go far down
-- needs _treesitter_ to be enabled
-** ts-comments.nvim
-better commentstrings
 - needs _treesitter_ to be enabled
