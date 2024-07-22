@@ -48,14 +48,12 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     buffer = ev.buf,
                     desc = 'mentions',
                 })
-                vim.keymap.set('n', '<leader>lr', function()
-                    return ':IncRename ' .. vim.fn.expand('<cword>')
-                end, {
-                    expr = true,
-                    buffer = ev.buf,
-                    desc = 'rename',
-                })
-
+                vim.keymap.set(
+                    'n',
+                    '<leader>lr',
+                    vim.lsp.buf.rename,
+                    { buffer = ev.buf, desc = 'rename' }
+                )
                 vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, {
                     buffer = ev.buf,
                     desc = 'implementation',

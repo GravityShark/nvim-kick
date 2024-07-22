@@ -14,17 +14,21 @@ main/lsp.lua
 main/mason.lua
 main/telescope.lua
 main/treesitter.lua
+main/chadtree.lua
 
 editor/guess-indent.lua
+editor/mini.ai.lua
 
 extra/fugitive.lua
 extra/gitsigns.lua
 extra/harpoon.lua
+extra/lazydev.lua
 extra/neogen.lua
 extra/trouble.lua
-extra/undotree.lua
 extra/ts-comments.lua
+extra/undotree.lua
 extra/which-key.lua
+extra/hardtime.lua
 
 ui/colorizer.lua
 ui/fidget.lua

@@ -136,7 +136,7 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- }}}
 -- Netrw {{{
 -- Open netrw on the left as nerdtree
-vim.api.nvim_set_keymap('n', '<leader>>', '<CMD>Lex<CR>', { desc = 'nerdtree' })
+-- vim.api.nvim_set_keymap('n', '<leader>>', '<CMD>Lex<CR>', { desc = 'nerdtree' })
 -- Open current window as netrw
 vim.api.nvim_set_keymap(
     'n',
