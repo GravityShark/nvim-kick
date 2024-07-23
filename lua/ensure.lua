@@ -89,7 +89,7 @@ M.format = { -- :help conform-formatters
     c = { 'clang-format' },
     cpp = { 'clang-format' },
     go = { 'gofumpt', 'golines', 'goimports-reviser' },
-    python = { 'ruff_format' },
+    python = { 'ruff format' },
     sh = { 'shfmt' },
     bash = { 'shfmt' },
 }
@@ -99,7 +99,7 @@ M.formatextra = { -- :help conform-options
     },
 }
 M.lint = { -- :help nvim-lint-available-linters
-    python = { 'ruff' },
+    python = { 'ruff check' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
 }

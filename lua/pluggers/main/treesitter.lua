@@ -37,6 +37,11 @@ return { -- nvim-treesitter Supercharge syntax editing
                             query_group = 'folds',
                             desc = 'Next fold',
                         },
+                        [']S'] = {
+                            query = '@scope',
+                            query_group = 'locals',
+                            desc = 'Select language scope',
+                        },
                     },
                     goto_next_end = {
                         [']F'] = '@function.outer',

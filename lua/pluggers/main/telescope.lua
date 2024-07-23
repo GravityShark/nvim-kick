@@ -69,7 +69,7 @@ return { -- telescope.nvim Fuzzy finding, but good
         },
         { -- Show undos
             '<leader>fu',
-            '><CMD>UndotreeShow<CR><CMD>Telescope undo<CR>',
+            '<CMD>Telescope undo<CR>',
             desc = 'undos',
         },
         { -- Pipe word into grep
