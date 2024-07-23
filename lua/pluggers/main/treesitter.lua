@@ -27,21 +27,6 @@ return { -- nvim-treesitter Supercharge syntax editing
                         [']f'] = '@function.outer',
                         [']c'] = '@class.outer',
                         [']a'] = '@parameter.inner',
-                        [']s'] = {
-                            query = '@scope',
-                            query_group = 'locals',
-                            desc = 'Next scope',
-                        },
-                        [']z'] = {
-                            query = '@fold',
-                            query_group = 'folds',
-                            desc = 'Next fold',
-                        },
-                        [']S'] = {
-                            query = '@scope',
-                            query_group = 'locals',
-                            desc = 'Select language scope',
-                        },
                     },
                     goto_next_end = {
                         [']F'] = '@function.outer',
@@ -52,16 +37,6 @@ return { -- nvim-treesitter Supercharge syntax editing
                         ['[f'] = '@function.outer',
                         ['[c'] = '@class.outer',
                         ['[a'] = '@parameter.inner',
-                        ['[s'] = {
-                            query = '@scope',
-                            query_group = 'locals',
-                            desc = 'Next scope',
-                        },
-                        ['[z'] = {
-                            query = '@fold',
-                            query_group = 'folds',
-                            desc = 'Next fold',
-                        },
                     },
                     goto_previous_end = {
                         ['[F'] = '@function.outer',
@@ -104,5 +79,31 @@ return { -- nvim-treesitter Supercharge syntax editing
             ts_repeat_move.builtin_T_expr,
             { expr = true }
         )
+        local ok, gs = pcall(require, 'gitsigns')
+        if ok then
+            local next_hunk, prev_hunk =
+                ts_repeat_move.make_repeatable_move_pair(
+                    gs.next_hunk,
+                    gs.prev_hunk
+                )
+            vim.keymap.set(
+                { 'n', 'x', 'o' },
+                ']h',
+                ts_repeat_move.builtin_T_expr,
+                { expr = true }
+            )
+            vim.keymap.set(
+                { 'n', 'x', 'o' },
+                ']g',
+                next_hunk,
+                { desc = 'Next hunk' }
+            )
+            vim.keymap.set(
+                { 'n', 'x', 'o' },
+                '[g',
+                prev_hunk,
+                { desc = 'Previous hunk' }
+            )
+        end
     end,
 }

@@ -33,7 +33,7 @@ vim.opt.rtp:prepend(lazypath) -- }}}
 -- Setup plugins {{{
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
-vim.api.nvim_set_keymap('n', '<leader>l', '<CMD>Lazy<CR>', { desc = 'Lazy' })
+vim.api.nvim_set_keymap('n', '<leader>L', '<CMD>Lazy<CR>', { desc = 'Lazy' })
 require('lazy').setup({
     spec = {
         { import = 'pluggers' },

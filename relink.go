@@ -1,6 +1,5 @@
-package main
-
 // Symlinks plugins in enabled-plugins.txt relative to the pluggers folders
+package main
 
 import (
 	"bufio"
