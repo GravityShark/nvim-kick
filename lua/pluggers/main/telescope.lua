@@ -63,6 +63,11 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>Telescope diagnostics<CR>',
             desc = 'diagnostics',
         },
+        { -- Show undos
+            '<leader>fu',
+            '><CMD>UndotreeShow<CR><CMD>Telescope undo<CR>',
+            desc = 'undos',
+        },
         { -- Pipe word into grep
             '<leader>fw',
             function()
@@ -131,6 +136,17 @@ return { -- telescope.nvim Fuzzy finding, but good
             pickers = {
                 find_files = {
                     run_command = { 'fd', '--type', 'f', '--color', 'never' },
+                },
+            },
+            extensions = {
+                undo = {
+                    mappings = {
+                        i = {
+                            ['<cr>'] = require('telescope-undo.actions').yank_additions,
+                            ['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+                            ['<CR>'] = require('telescope-undo.actions').restore,
+                        },
+                    },
                 },
             },
         })

@@ -1,6 +1,6 @@
 return { -- undotree Shows a tree, of your undos
     'mbbill/undotree',
-    cmd = { 'UndotreeToggle', 'UndotreeFocus' },
+    cmd = { 'UndotreeToggle', 'UndotreeFocus', 'UndotreeShow' },
     keys = {
         {
             '<leader>u',

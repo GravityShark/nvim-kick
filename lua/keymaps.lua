@@ -88,7 +88,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
-    '<CMD>wqa<CR>',
+    '<CMD>wq<CR>',
     { silent = true, desc = 'quit with saving' }
 )
 vim.api.nvim_set_keymap(
@@ -181,6 +181,6 @@ vim.api.nvim_set_keymap(
     { desc = 'Next buffer' }
 )
 vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
--- }}}
 
+-- }}}
 -- vim:foldmethod=marker:

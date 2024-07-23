@@ -9,6 +9,7 @@ return {
         vim.g.coq_settings = {
             auto_start = 'shut-up', -- Silent startup
             ['keymap.pre_select'] = true,
+            ['keymap.recommended'] = false,
             display = {
                 ['ghost_text.context'] = { '', '' },
                 ['preview.border'] = { -- Make the preview actually diserable

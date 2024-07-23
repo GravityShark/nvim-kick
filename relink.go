@@ -21,7 +21,6 @@ func main() {
 
 	deleteSymlinks()
 	scanner := bufio.NewScanner(file)
-	// optionally, resize scanner's capacity for lines over 64K, see next example
 	for scanner.Scan() {
 		plugin := scanner.Text()
 		if len(plugin) == 0 {
