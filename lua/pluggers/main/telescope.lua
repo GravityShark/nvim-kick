@@ -25,6 +25,7 @@ return { -- telescope.nvim Fuzzy finding, but good
         {
             '<C-f>',
             '<CMD>Telescope git_files<CR>',
+            noremap = false,
         },
         { -- Find text through azlive prompt
             '<leader>fl',

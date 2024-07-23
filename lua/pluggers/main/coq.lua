@@ -13,6 +13,7 @@ return {
             ['keymap.pre_select'] = true,
             ['keymap.recommended'] = false,
             display = {
+                ['pum.y_max_len'] = 6,
                 ['ghost_text.context'] = { '', '' },
                 ['preview.border'] = { -- Make the preview actually diserable
                     { '', 'NormalFloat' },
