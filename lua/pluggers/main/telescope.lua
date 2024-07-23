@@ -4,7 +4,7 @@ return { -- telescope.nvim Fuzzy finding, but good
     keys = {
         { -- Find for a file
             '<leader>f',
-            ' ',
+            '',
             desc = '+find',
         },
         { -- Find for a file

@@ -6,7 +6,7 @@ return { -- vim-rhubarb :Gbrowse for going to the git repository in a browser
     keys = {
         {
             '<leader>g',
-            ' ',
+            '',
             desc = '+git',
         },
         {
