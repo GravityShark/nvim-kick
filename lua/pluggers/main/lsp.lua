@@ -22,6 +22,7 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(ev)
                 -- Keybindings
+                vim.keymap.set('n', '<leader>l', ' ', { desc = '+lsp' })
                 vim.keymap.set(
                     'n',
                     '<leader>lD',

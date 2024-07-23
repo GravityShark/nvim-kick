@@ -5,6 +5,11 @@ return { -- vim-rhubarb :Gbrowse for going to the git repository in a browser
     'tpope/vim-fugitive',
     keys = {
         {
+            '<leader>g',
+            ' ',
+            desc = '+git',
+        },
+        {
             '<leader>gm',
             '<CMD>Git<CR>',
             desc = 'Menu',

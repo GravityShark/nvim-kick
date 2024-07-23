@@ -17,11 +17,6 @@ return { -- gitsigns.nvim git related signs to the gutter, as well as utilities 
                 vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
             end
 
-            local ok, wk = pcall(require, 'which-key')
-            if ok then
-                wk.add({ '<leader>g', group = 'git...' })
-            end
-
             -- stylua: ignore start
             map("n", "]g", gs.next_hunk, "Next Hunk")
             map("n", "[g", gs.prev_hunk, "Prev Hunk")

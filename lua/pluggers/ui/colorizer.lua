@@ -10,6 +10,7 @@ return { -- colorizer.nvim Visualize color codes in code
     },
     opts = {
         user_default_options = {
+            css = true,
             names = 'tailwind',
         },
     },

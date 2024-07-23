@@ -169,8 +169,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete empty' })
 vim.api.nvim_set_keymap(
     'n',
     '<leader><leader>',
-    '<CMD>so<CR>',
-    { desc = 'shout out' }
+    '<CMD>e<CR>',
+    { desc = 'refresh buffer' }
 )
 -- }}}
 -- square bracket motions {{{

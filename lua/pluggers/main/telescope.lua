@@ -1,8 +1,12 @@
 return { -- telescope.nvim Fuzzy finding, but good
     'nvim-telescope/telescope.nvim',
-    -- branch = '0.1.x',
     cmd = 'Telescope',
     keys = {
+        { -- Find for a file
+            '<leader>f',
+            ' ',
+            desc = '+find',
+        },
         { -- Find for a file
             '<leader>ff',
             '<CMD>Telescope find_files<CR>',
