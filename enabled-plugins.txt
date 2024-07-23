@@ -37,6 +37,7 @@ ui/mini.animate.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
 ui/noice.lua
+ui/notify.lua
 ui/todo-comments.lua
 
 # vim:commentstring=#%s:

@@ -36,6 +36,7 @@ func deleteSymlinks() {
 	files, err := os.ReadDir("./")
 	if err != nil {
 		log.Fatal(err)
+
 		return
 	}
 	for _, v := range files {

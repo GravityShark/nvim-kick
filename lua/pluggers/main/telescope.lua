@@ -22,10 +22,9 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>Telescope git_files<CR>',
             desc = 'git files',
         },
-        { -- Find for a file in git repository
+        {
             '<C-f>',
             '<CMD>Telescope git_files<CR>',
-            desc = 'git files',
         },
         { -- Find text through azlive prompt
             '<leader>fl',
@@ -146,8 +145,8 @@ return { -- telescope.nvim Fuzzy finding, but good
                 undo = {
                     mappings = {
                         i = {
-                            ['<cr>'] = require('telescope-undo.actions').yank_additions,
-                            ['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+                            ['<C-y>'] = require('telescope-undo.actions').yank_additions,
+                            ['<C-S-y>'] = require('telescope-undo.actions').yank_deletions,
                             ['<CR>'] = require('telescope-undo.actions').restore,
                         },
                     },

@@ -24,6 +24,7 @@ M.treesitter = {
     'diff',
     'gitcommit',
     'query',
+    'regex',
 }
 M.mason = { -- :Mason
     'lua-language-server', -- Lua
