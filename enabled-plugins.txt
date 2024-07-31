@@ -17,6 +17,7 @@ main/treesitter.lua
 
 editor/guess-indent.lua
 editor/mini.ai.lua
+editor/mini.jump.lua
 editor/mini.pairs.lua
 editor/mini.surround.lua
 
