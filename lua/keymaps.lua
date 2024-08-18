@@ -150,7 +150,7 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>.',
-    '<CMD>Ex<CR>',
+    '<CMD>edit .<CR>',
     { desc = 'file explorer' }
 )
 -- }}}

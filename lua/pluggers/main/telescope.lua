@@ -17,6 +17,11 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>Telescope find_files find_command=fd,--type=f,--color=never,--hidden,--no-ignore<CR>',
             desc = 'all files',
         },
+        { -- Find for a directory
+            '<leader>fd',
+            '<CMD>Telescope find_files find_command=fd,--type=d,--color=never,--hidden,--no-ignore<CR>',
+            desc = 'directories',
+        },
         { -- Find for a file in git repository
             '<leader>fg',
             '<CMD>Telescope git_files<CR>',
@@ -62,10 +67,10 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>TodoTelescope<CR>',
             desc = 'todos',
         },
-        { -- Show diagnostics
-            '<leader>fd',
+        { -- Show errors
+            '<leader>fe',
             '<CMD>Telescope diagnostics<CR>',
-            desc = 'diagnostics',
+            desc = 'errors',
         },
         { -- Show undos
             '<leader>fu',
