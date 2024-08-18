@@ -30,8 +30,6 @@ vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
--- Undotree Layout
-vim.g.undotree_DiffAutoOpen = false
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
@@ -49,6 +47,8 @@ vim.opt.signcolumn = 'yes'
 vim.opt.infercase = true
 vim.opt.virtualedit = 'block' -- Allows visual block to go anywhere
 vim.opt.formatoptions = 'qjl1'
+-- Undotree Layout
+vim.g.undotree_DiffAutoOpen = false
 -- }}}
 -- Highlight yank{{{
 vim.api.nvim_create_autocmd('TextYankPost', {

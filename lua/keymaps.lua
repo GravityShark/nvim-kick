@@ -1,9 +1,14 @@
 -- Plugin remaps are located in the respective plugin definition
 -- under their keys map
 
--- Terminal huelpers {{{
-vim.api.nvim_set_keymap('t', '<C-space>', "<C-\\><C-n>",{silent = true})
-vim.api.nvim_set_keymap('n', '<leader>s', "<CMD>split term://$SHELL<CR>",{desc = "shell"})
+-- Terminal helpers {{{
+vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { silent = true })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>s',
+    '<CMD>split term://$SHELL<CR>',
+    { desc = 'shell' }
+)
 -- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
@@ -75,7 +80,7 @@ vim.keymap.set('n', '<leader>R', function()
     end)
 end, { desc = 'run command save globally' })
 --}}}
--- Save and quit binings{{{
+-- Save and quit bindings {{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
@@ -154,7 +159,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>x',
     '<CMD>close<CR>',
-    { desc ='close window' }
+    { desc = 'close window' }
 )
 vim.api.nvim_set_keymap(
     'n',
