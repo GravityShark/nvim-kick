@@ -1,6 +1,10 @@
 -- Plugin remaps are located in the respective plugin definition
 -- under their keys map
 
+-- Terminal huelpers {{{
+vim.api.nvim_set_keymap('t', '<C-space>', "<C-\\><C-n>",{silent = true})
+vim.api.nvim_set_keymap('n', '<leader>s', "<CMD>split term://$SHELL<CR>",{desc = "shell"})
+-- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
@@ -145,18 +149,18 @@ vim.api.nvim_set_keymap(
     { desc = 'file explorer' }
 )
 -- }}}
--- Closing buffers {{{
+-- Closing window {{{
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>c',
-    '<CMD>bdelete<CR>',
-    { desc = 'close buffer' }
+    '<leader>x',
+    '<CMD>close<CR>',
+    { desc ='close window' }
 )
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>C',
-    '<CMD>bdelete!<CR>',
-    { desc = 'Close forcefully' }
+    '<leader>X',
+    '<CMD>close!<CR>',
+    { desc = 'Close window forcefully' }
 ) -- }}}
 -- cnext cprev {{{
 vim.api.nvim_set_keymap('n', 'cn', '<CMD>cnext<CR>zz', { desc = 'cnext' })

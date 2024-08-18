@@ -3,7 +3,7 @@ return {
     name = 'coq_nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     build = ':COQdeps',
-    dependencies = { -- 9000+ Snippets
+    dependencies = {
         { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
         { 'ms-jpq/coq.thirdparty', branch = '3p' },
     },

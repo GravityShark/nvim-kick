@@ -26,7 +26,7 @@ extra/gitsigns.lua
 extra/hardtime.lua
 extra/harpoon.lua
 extra/inc-rename.lua
-extra/lazydev.lua
+#extra/lazydev.lua
 extra/neogen.lua
 extra/trouble.lua
 extra/ts-comments.lua
@@ -34,11 +34,8 @@ extra/undotree.lua
 extra/which-key.lua
 
 ui/colorizer.lua
-ui/mini.animate.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
-ui/noice.lua
-ui/notify.lua
 ui/todo-comments.lua
 
 # vim:commentstring=#%s:

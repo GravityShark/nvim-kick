@@ -31,11 +31,7 @@ vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 -- Undotree Layout
--- vim.g.undotree_WindowLayout = 1
--- vim.g.undotree_ShortIndicators = true
 vim.g.undotree_DiffAutoOpen = false
--- vim.g.undotree_SplitWidth = 30
-
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0

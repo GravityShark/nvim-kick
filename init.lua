@@ -2,7 +2,7 @@
 -- The experimental plugin loader
 vim.loader.enable()
 
--- Sets the settings and autocmd before running lazy
+-- Sets the settings before running lazy
 require('settings')
 
 -- Setsup lazy.nvim {{{
