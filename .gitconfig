@@ -1,3 +1,2 @@
-[remote "origin"]
-	pushurl = git@github.com:GravityShark0/nvim-kick.git
-	pushurl = gravity@clr:Git/nvim.git
+git remote set-url --add --push origin git@github.com:GravityShark0/nvim-kick.git
+git remote set-url --add --push origin gravity@clr:Git/nvim.git
