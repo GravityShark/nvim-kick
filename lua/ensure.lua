@@ -89,17 +89,17 @@ M.format = { -- :help conform-formatters
     c = { 'clang-format' },
     cpp = { 'clang-format' },
     go = { 'gofumpt', 'golines', 'goimports-reviser' },
-    python = { 'ruff format' },
+    python = { 'ruff_format' },
     sh = { 'shfmt' },
     bash = { 'shfmt' },
 }
 M.formatextra = { -- :help conform-options
-    python = {
+    ruff = {
         prepend_args = { '--config', '~/.ruff.toml' },
     },
 }
 M.lint = { -- :help nvim-lint-available-linters
-    python = { 'ruff check' },
+    python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
 }
