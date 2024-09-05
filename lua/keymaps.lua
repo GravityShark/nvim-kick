@@ -126,6 +126,12 @@ vim.keymap.set(
     'gp',
     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
     { desc = 'Paste system clipboard' }
+)
+vim.keymap.set(
+    { 'n', 'v' },
+    'gP',
+    '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
+    { desc = 'Paste system clipboard' }
 ) -- }}}
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.keymap.set(
