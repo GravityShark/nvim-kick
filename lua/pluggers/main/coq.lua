@@ -10,8 +10,11 @@ return {
     init = function()
         vim.g.coq_settings = {
             auto_start = 'shut-up', -- Silent startup
-            ['keymap.pre_select'] = true,
-            ['keymap.recommended'] = false,
+            keymap = {
+                recommended = false,
+                pre_select = true,
+                manual_complete_insertion_only = true,
+            },
             display = {
                 ['pum.y_max_len'] = 6,
                 ['ghost_text.context'] = { '', '' },

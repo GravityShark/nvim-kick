@@ -108,6 +108,7 @@ vim.api.nvim_set_keymap(
 ) -- }}}
 -- Allow for using the script ~t~ inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<A-g>', '<CMD>silent !T<CR>', { silent = true })
 -- }}}
 -- Visual mode indents reenters visual mode {{{
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
@@ -115,12 +116,6 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 -- g[y|d|p|P] uses to system clipboard{{{
 vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set(
-    { 'n', 'v' },
-    'gd',
-    '"+d',
-    { desc = 'Delete to system clipboard' }
-)
 vim.keymap.set(
     { 'n', 'v' },
     'gp',
