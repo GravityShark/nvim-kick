@@ -169,8 +169,18 @@ vim.api.nvim_set_keymap(
     { desc = 'Close window forcefully' }
 ) -- }}}
 -- cnext cprev {{{
-vim.api.nvim_set_keymap('n', 'cn', '<CMD>cnext<CR>zz', { desc = 'cnext' })
-vim.api.nvim_set_keymap('n', 'cp', '<CMD>cprev<CR>zz', { desc = 'cprev' })
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     ']q',
+--     '<CMD>cnext<CR>zz',
+--     { desc = 'Next quickfix' }
+-- )
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '[q',
+--     '<CMD>cprev<CR>zz',
+--     { desc = 'Prev quickfix' }
+-- )
 -- }}}
 -- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
 -- greatest remap ever
@@ -184,13 +194,13 @@ vim.api.nvim_set_keymap(
 )
 -- }}}
 -- square bracket motions {{{
-vim.api.nvim_set_keymap(
-    'n',
-    '[b',
-    '<CMD>bprevious<CR>',
-    { desc = 'Next buffer' }
-)
-vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '[b',
+--     '<CMD>bprevious<CR>',
+--     { desc = 'Next buffer' }
+-- )
+-- vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
 
 -- }}}
 -- vim:foldmethod=marker:

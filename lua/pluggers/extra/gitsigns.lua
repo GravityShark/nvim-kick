@@ -17,9 +17,12 @@ return { -- gitsigns.nvim git related signs to the gutter, as well as utilities 
                 vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
             end
 
+            local next_hunk_repeat, prev_hunk_repeat = require(
+                'nvim-treesitter.textobjects.repeatable_move'
+            ).make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
             -- stylua: ignore start
-            map("n", "]g", gs.next_hunk, "Next Hunk")
-            map("n", "[g", gs.prev_hunk, "Prev Hunk")
+            map("n", "]g", next_hunk_repeat, "Next Git Hunk")
+            map("n", "[g", prev_hunk_repeat, "Previous Git Hunk")
             map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
             map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
             map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
