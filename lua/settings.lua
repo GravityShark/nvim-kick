@@ -47,8 +47,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.infercase = true
 vim.opt.virtualedit = 'block' -- Allows visual block to go anywhere
 vim.opt.formatoptions = 'qjl1'
--- Undotree Layout
-vim.g.undotree_DiffAutoOpen = false
 -- }}}
 -- Highlight yank{{{
 vim.api.nvim_create_autocmd('TextYankPost', {

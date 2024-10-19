@@ -3,7 +3,7 @@ return { -- colorizer.nvim Visualize color codes in code
     cmd = { 'ColorizerToggle' },
     keys = {
         {
-            '<leader>h',
+            '<leader>ch',
             '<CMD>ColorizerToggle<CR><CMD>ColorizerReloadAllBuffers<CR>',
             desc = 'highlight colors',
         },

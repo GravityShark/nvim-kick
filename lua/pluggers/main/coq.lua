@@ -11,7 +11,7 @@ return {
         vim.g.coq_settings = {
             auto_start = 'shut-up', -- Silent startup
             keymap = {
-                recommended = false,
+                -- recommended = false,
                 pre_select = true,
                 manual_complete_insertion_only = true,
             },

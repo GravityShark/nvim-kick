@@ -7,6 +7,7 @@ return { -- which-key.nvim Keymap hints for the slow
             delay = 0,
             win = { no_overlap = false },
             icons = { separator = '', group = '', rules = false },
+            sort = { 'alphanum ' },
         })
         wk.add({
             { '[a', desc = 'Previous argument' },

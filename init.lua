@@ -35,9 +35,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.api.nvim_set_keymap('n', '<leader>L', '<CMD>Lazy<CR>', { desc = 'Lazy' })
 require('lazy').setup({
-    spec = {
-        { import = 'pluggers' },
-    },
+    spec = { { import = 'pluggers' } },
     defaults = { lazy = true, version = false },
     change_detection = { notify = false },
     rocks = { enabled = false },

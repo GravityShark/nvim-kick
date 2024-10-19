@@ -3,9 +3,9 @@ return { -- trouble.nvim Diagnostic Viewer
     cmd = 'Trouble',
     keys = {
         {
-            '<leader>t',
+            '<leader>cx',
             '<CMD>Trouble diagnostics toggle<CR>',
-            desc = 'trouble diagnostics',
+            desc = 'errors',
         },
     },
     opts = {},

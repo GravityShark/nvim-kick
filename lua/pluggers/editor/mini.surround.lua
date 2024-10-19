@@ -1,7 +1,7 @@
 return { -- mini.surround Surround text with any character
     'echasnovski/mini.surround',
     keys = {
-        { 'S', mode = 'v', desc = 'Add surrounding' },
+        { 'S', mode = { 'n', 'v' }, desc = 'Add surrounding' },
         { 'ys', desc = 'Add surrounding' },
         { 'ds', desc = 'surrounding' },
         { 'cs', desc = 'surrounding' },
@@ -10,5 +10,11 @@ return { -- mini.surround Surround text with any character
         -- { 'sh', desc = 'Highlight surrounding' },
         -- { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
     },
-    opts = {},
+    opts = {
+        mappings = {
+            add = 'S', -- Add surrounding in Normal and Visual modes
+            delete = 'ds', -- Delete surrounding
+            replace = 'cs', -- Replace surrounding
+        },
+    },
 }

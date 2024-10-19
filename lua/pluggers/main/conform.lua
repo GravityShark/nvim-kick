@@ -7,11 +7,11 @@ return { -- conform.nvim A better formatting implementation
     end,
     keys = {
         {
-            '<leader>o',
+            '<leader>cf',
             function()
                 require('conform').format()
             end,
-            desc = 'organize buffer',
+            desc = 'format',
         },
     },
     opts = {

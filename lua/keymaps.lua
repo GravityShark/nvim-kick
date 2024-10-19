@@ -1,12 +1,20 @@
 -- Plugin remaps are located in the respective plugin definition
 -- under their keys map
 
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>l',
+    '<CMD>e #<1<CR>',
+    { desc = 'last file' }
+)
+vim.api.nvim_set_keymap('n', '<leader>c', '', { desc = '+code' })
+
 -- Terminal helpers {{{
 vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { silent = true })
 vim.api.nvim_set_keymap(
     'n',
     '<leader>s',
-    '<CMD>split term://$SHELL<CR>',
+    '<CMD>split term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
     { desc = 'shell' }
 )
 -- }}}
