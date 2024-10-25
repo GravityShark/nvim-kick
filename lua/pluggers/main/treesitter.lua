@@ -1,6 +1,6 @@
 return { -- nvim-treesitter Supercharge syntax editing
     'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
+    -- build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
     dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
