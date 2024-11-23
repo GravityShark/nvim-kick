@@ -2,7 +2,7 @@ return { -- mini.surround Surround text with any character
     'echasnovski/mini.surround',
     keys = {
         { 'S', mode = { 'n', 'v' }, desc = 'Add surrounding' },
-        { 'ys', desc = 'Add surrounding' },
+        -- { 'ys', desc = 'Add surrounding' },
         { 'ds', desc = 'Delete surrounding' },
         { 'cs', desc = 'Change surrounding' },
         -- { 'sf', desc = 'Find right surrounding' },
@@ -12,7 +12,7 @@ return { -- mini.surround Surround text with any character
     },
     opts = {
         mappings = {
-            add = {'S', 'ys'}, -- Add surrounding in Normal and Visual modes
+            add = 'S', -- Add surrounding in Normal and Visual modes
             delete = 'ds', -- Delete surrounding
             replace = 'cs', -- Replace surrounding
         },
