@@ -3,8 +3,8 @@ return { -- mini.surround Surround text with any character
     keys = {
         { 'S', mode = { 'n', 'v' }, desc = 'Add surrounding' },
         { 'ys', desc = 'Add surrounding' },
-        { 'ds', desc = 'surrounding' },
-        { 'cs', desc = 'surrounding' },
+        { 'ds', desc = 'Delete surrounding' },
+        { 'cs', desc = 'Change surrounding' },
         -- { 'sf', desc = 'Find right surrounding' },
         -- { 'sF', desc = 'Find left surrounding' },
         -- { 'sh', desc = 'Highlight surrounding' },
@@ -12,7 +12,7 @@ return { -- mini.surround Surround text with any character
     },
     opts = {
         mappings = {
-            add = 'S', -- Add surrounding in Normal and Visual modes
+            add = {'S', 'ys'}, -- Add surrounding in Normal and Visual modes
             delete = 'ds', -- Delete surrounding
             replace = 'cs', -- Replace surrounding
         },

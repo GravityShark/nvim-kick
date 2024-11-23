@@ -26,6 +26,7 @@ M.treesitter = {
     'query',
     'regex',
     'org',
+    'nix',
 }
 M.mason = { -- :Mason
     'lua-language-server', -- Lua
