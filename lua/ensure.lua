@@ -94,6 +94,7 @@ M.format = { -- :help conform-formatters
     python = { 'ruff_format' },
     sh = { 'shfmt' },
     bash = { 'shfmt' },
+    nix = {'nixfmt'},
 }
 M.formatextra = { -- :help conform-options
     ruff = {
