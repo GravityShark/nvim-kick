@@ -19,7 +19,7 @@ return { -- telescope.nvim Fuzzy finding, but good
         },
         { -- Find for a directory
             '<leader>fd',
-            '<CMD>Telescope find_files find_command=fd,--type=d,--color=never,--hidden,--no-ignore<CR>cd',
+            '<CMD>Telescope find_files find_command=fd,--type=d,--color=never,--hidden,--no-ignore<CR>cd %',
             desc = 'directories',
         },
         { -- Find for a file in git repository
@@ -93,11 +93,11 @@ return { -- telescope.nvim Fuzzy finding, but good
             end,
             desc = 'WORD',
         },
-        { -- Find for a directory
-            '<leader>fn',
-            '<CMD>cd ~/.config/nvim<CR><CMD>Telescope git_files<CR>',
-            desc = 'neovim config',
-        },
+        -- { -- Find for a directory
+        --     '<leader>fn',
+        --     '<CMD>cd ~/.config/nvim<CR><CMD>Telescope git_files<CR>',
+        --     desc = 'neovim config',
+        -- },
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
