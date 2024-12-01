@@ -4,7 +4,7 @@
 vim.api.nvim_set_keymap(
     'n',
     '<leader>l',
-    '<CMD>e #<1<CR>',
+    '<CMD>e #<CR>',
     { desc = 'last file' }
 )
 vim.api.nvim_set_keymap('n', '<leader>c', '', { desc = '+code' })
