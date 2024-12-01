@@ -11,7 +11,7 @@ main/conform.lua
 main/cmp.lua
 main/lint.lua
 main/lsp.lua
-main/mason.lua
+#main/mason.lua
 main/telescope.lua
 main/treesitter.lua
 
