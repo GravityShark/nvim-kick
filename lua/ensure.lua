@@ -79,6 +79,7 @@ M.lsp = { -- :help lspconfig-all
     clangd = {},
     pyright = {},
     jsonls = {},
+    csharp_ls = {},
 }
 M.format = { -- :help conform-formatters
     lua = { 'stylua' },
@@ -94,7 +95,7 @@ M.format = { -- :help conform-formatters
     python = { 'ruff_format' },
     sh = { 'shfmt' },
     bash = { 'shfmt' },
-    nix = {'nixfmt'},
+    nix = { 'nixfmt' },
 }
 M.formatextra = { -- :help conform-options
     ruff = {
