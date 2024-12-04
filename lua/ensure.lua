@@ -79,7 +79,9 @@ M.lsp = { -- :help lspconfig-all
     clangd = {},
     pyright = {},
     jsonls = {},
+    -- 25 different language AOC challenge
     csharp_ls = {},
+    r_language_server = {},
 }
 M.format = { -- :help conform-formatters
     lua = { 'stylua' },

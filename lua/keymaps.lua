@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader>r', function()
     vim.ui.input({
         prompt = 'Run: ',
         default = vim.b.runwithparameters,
-        completion = 'shellcmd',
+        completion = 'file',
     }, function(input)
         if input == nil or input == '' then
             print('See :h cmdline-special and :h filename-modifiers')
