@@ -79,6 +79,7 @@ M.lsp = { -- :help lspconfig-all
     clangd = {},
     pyright = {},
     jsonls = {},
+    nil_ls = {},
     -- 25 different language AOC challenge
     csharp_ls = {},
     r_language_server = {},
