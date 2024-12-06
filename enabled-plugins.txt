@@ -8,7 +8,7 @@
 colors/rose-pine.lua
 
 main/conform.lua
-main/cmp.lua
+#main/cmp.lua
 main/lint.lua
 main/lsp.lua
 #main/mason.lua
