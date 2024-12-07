@@ -66,7 +66,7 @@ end
 local function new_plugin(_, _)
     return [[
 return {
-  |cursor|
+    |cursor|
 }]]
 end
 
