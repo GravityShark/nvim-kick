@@ -5,7 +5,7 @@ return { -- nvim-cmp Better completion menu
         -- Paths to sources
         'https://codeberg.org/FelipeLema/cmp-async-path',
         -- LSP completion capabilities
-        'hrsh7th/cmp-nvim-lsp',
+        -- 'hrsh7th/cmp-nvim-lsp',
         -- Built-in vim auto-complete
         'hrsh7th/cmp-buffer',
         { -- Add Snippets as possible completion
