@@ -15,6 +15,7 @@ return {
                 pre_select = true,
                 manual_complete_insertion_only = true,
             },
+            ['clients.snipppets.user_path'] = '$NVIM_HOME/coq-user-snippets/',
             display = {
                 ['pum.y_max_len'] = 6,
                 ['ghost_text.context'] = { '', '' },

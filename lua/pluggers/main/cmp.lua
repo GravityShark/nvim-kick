@@ -8,7 +8,7 @@ return { -- nvim-cmp Better completion menu
         'hrsh7th/cmp-nvim-lsp',
         -- Built-in vim auto-complete
         'hrsh7th/cmp-buffer',
-        { -- Add Snippets as possible completion
+        { -- Native neovim snippets
             'garymjr/nvim-snippets',
             init = function()
                 vim.api.nvim_create_user_command('SnippetsEdit', function()
@@ -45,6 +45,7 @@ return { -- nvim-cmp Better completion menu
             },
             opts = {
                 friendly_snippets = true,
+                search_paths = { vim.fn.stdpath('config') .. './lua/snippets/' },
             },
             dependencies = { 'rafamadriz/friendly-snippets' },
         },
