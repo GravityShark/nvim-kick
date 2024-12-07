@@ -1,1 +1,1 @@
-return { 'prichrd/netrw.nvim', ft = { 'netrw' }, opts = {} }
+return { 'prichrd/netrw.nvim', ft = 'netrw', opts = {} }
