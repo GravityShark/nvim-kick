@@ -14,54 +14,34 @@
       "$0"
     ]
   },
-    
+
   "test function": {
     "prefix": "tfun",
-    "body": [
-      "func Test$1(t *testing.T) {",
-      "\t$2",
-      "}",
-      "$0"
-    ]
+    "body": ["func Test$1(t *testing.T) {", "\t$2", "}", "$0"]
   },
 
   "test inline function": {
     "prefix": "tifun",
-    "body": [
-      "func(t *testing.T) {",
-      "\t$1",
-      "}",
-      "$0"
-    ]
+    "body": ["func(t *testing.T) {", "\t$1", "}", "$0"]
   },
 
   "tuberculosis function": {
     "prefix": "tbfun",
-    "body": [
-      "func(t testing.TB) {",
-      "t.Helper()",
-      "\t$1",
-      "}",
-      "$0"
-    ]
-  },
-  
-  "test run" : {
-    "prefix": "trun",
-    "body": [
-      "t.Run(\"$1\", func(t *testing.T) {",
-      "\t$2",
-      "})"
-    ]
+    "body": ["func(t testing.TB) {", "t.Helper()", "\t$1", "}", "$0"]
   },
 
-  "gottem" : {
+  "test run": {
+    "prefix": "trun",
+    "body": ["t.Run(\"$1\", func(t *testing.T) {", "\t$2", "})"]
+  },
+
+  "gottem": {
     "prefix": "got",
     "body": [
       "got := $1",
       "want := $2",
       "if got != want {",
-        "\tt.Errorf(\"got %$3 want %$3\", got, want)",
+      "\tt.Errorf(\"got %$3 want %$3\", got, want)",
       "}"
     ]
   }
