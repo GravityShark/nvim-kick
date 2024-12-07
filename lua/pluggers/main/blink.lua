@@ -21,7 +21,7 @@ return {
         -- your own keymap.
         keymap = {
             preset = 'default',
-            ['<C-n>'] = { 'show' },
+            ['<C-n>'] = { 'show', 'select_next', 'fallback' },
             ['<C-j>'] = { 'snippet_forward', 'fallback' },
             ['<C-k>'] = { 'snippet_backward', 'fallback' },
         },
