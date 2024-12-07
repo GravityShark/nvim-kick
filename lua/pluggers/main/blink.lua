@@ -1,7 +1,7 @@
 return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
-    -- optional: provides snippets for the snippet source
+   -- optional: provides snippets for the snippet source
     dependencies = 'rafamadriz/friendly-snippets',
 
     -- use a release tag to download pre-built binaries
@@ -19,7 +19,11 @@ return {
         -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
         -- see the "default configuration" section below for full documentation on how to define
         -- your own keymap.
-        keymap = { preset = 'default' },
+        keymap = {
+            preset = 'default',
+            snippet_forward = "<C-j>",
+            snippet_backward = "<C-h>",
+        },
 
         appearance = {
             -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -42,8 +46,8 @@ return {
         -- experimental auto-brackets support
         -- completion = { accept = { auto_brackets = { enabled = true } } }
 
-        -- experimental signature help support
-        -- signature = { enabled = true }
+        experimental signature help support
+        signature = { enabled = true }
     },
     -- allows extending the enabled_providers array elsewhere in your config
     -- without having to redefine it
