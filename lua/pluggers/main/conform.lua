@@ -11,6 +11,7 @@ return { -- conform.nvim A better formatting implementation
             function()
                 require('conform').format()
             end,
+            mode = { 'n', 'v' },
             desc = 'format',
         },
     },
