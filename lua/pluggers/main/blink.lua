@@ -1,7 +1,7 @@
 return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
-   -- optional: provides snippets for the snippet source
+    -- optional: provides snippets for the snippet source
     dependencies = 'rafamadriz/friendly-snippets',
 
     -- use a release tag to download pre-built binaries
@@ -21,8 +21,8 @@ return {
         -- your own keymap.
         keymap = {
             preset = 'default',
-            snippet_forward = "<C-j>",
-            snippet_backward = "<C-h>",
+            ['<C-j>'] = { 'snippet_forward', 'fallback' },
+            ['<C-k>'] = { 'snippet_backward', 'fallback' },
         },
 
         appearance = {
@@ -44,10 +44,20 @@ return {
         },
 
         -- experimental auto-brackets support
-        -- completion = { accept = { auto_brackets = { enabled = true } } }
+        completion = {
+            trigger = {
+                show_in_snippet = false,
+                show_on_keyword = false,
+                show_on_trigger_character = false,
+            },
+            accept = { auto_brackets = { enabled = true } },
+            -- ghost_text = {
+            --     enabled = false,
+            -- },
+        },
 
-        experimental signature help support
-        signature = { enabled = true }
+        -- experimental signature help support
+        signature = { enabled = true },
     },
     -- allows extending the enabled_providers array elsewhere in your config
     -- without having to redefine it

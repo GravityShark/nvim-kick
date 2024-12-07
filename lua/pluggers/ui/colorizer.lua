@@ -1,5 +1,5 @@
 return { -- colorizer.nvim Visualize color codes in code
-    'catgoose/colorizer.nvim',
+    'catgoose/nvim-colorizer.lua ',
     cmd = { 'ColorizerToggle' },
     keys = {
         {
