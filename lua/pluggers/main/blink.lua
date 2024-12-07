@@ -21,6 +21,7 @@ return {
         -- your own keymap.
         keymap = {
             preset = 'default',
+            ['<C-n>'] = { 'show' },
             ['<C-j>'] = { 'snippet_forward', 'fallback' },
             ['<C-k>'] = { 'snippet_backward', 'fallback' },
         },
@@ -41,15 +42,24 @@ return {
             completion = {
                 enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
             },
+            providers = {
+                snippets = {
+                    opts = {
+                        search_paths = {
+                            vim.fn.stdpath('config') .. './lua/snippets/',
+                        },
+                    },
+                },
+            },
         },
 
         -- experimental auto-brackets support
         completion = {
-            trigger = {
-                show_in_snippet = false,
-                show_on_keyword = false,
-                show_on_trigger_character = false,
-            },
+            -- trigger = {
+            --     show_in_snippet = true,
+            --     show_on_keyword = false,
+            --     show_on_trigger_character = false,
+            -- },
             accept = { auto_brackets = { enabled = true } },
             -- ghost_text = {
             --     enabled = false,
