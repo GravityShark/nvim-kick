@@ -86,6 +86,7 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
         pcall(require, 'mason')
         local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
         local has_coq, coq = pcall(require, 'coq_nvim')
+        local has_blink, blink = pcall(require, 'blink.cmp')
         local capabilities = vim.tbl_deep_extend(
             'force',
             vim.lsp.protocol.make_client_capabilities(),
@@ -103,6 +104,9 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
 
             if has_coq then
                 server = coq.lsp_ensure_capabilities(server)
+            elseif has_blink then
+                server.capabilities =
+                    blink.get_lsp_capabilities(server.capabilities)
             end
             require('lspconfig')[server_name].setup(server)
         end

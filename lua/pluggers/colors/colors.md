@@ -1,16 +1,36 @@
-* Color plugins
+# Color plugins
+
 These plugins change and set the colorscheme
-** catppuccin
+
+## catppuccin
+
 the nice pastel theme
-** monokai
+
+## monokai
+
 the notsonice bright theme
-** sonokai
+
+## sonokai
+
 the high contrast n vivid color based on monokai
-** *rose-pine*
+
+## _rose-pine_
+
 the soho vibes for your editor
-** tokyonight
+
+## tokyonight
+
 the nice dark theme but no so nice light theme
-** transparent.lua
+
+## transparent.lua
+
 this is actually a just a lua script that you require
 to active transparency on any theme
-*dont apply it to the enabled-plugins.txt*
+_dont apply it to the enabled-plugins.txt_
+
+### installation
+
+go to your selected theme
+and find the `vim.cmd.colorscheme('...') ` line and add
+
+- [ ] `require 'lua/pluggers/colors/transparent'`
