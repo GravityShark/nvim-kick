@@ -8,10 +8,8 @@
 colors/rose-pine.lua
 
 main/conform.lua
-main/cmp.lua
 main/lint.lua
 main/lsp.lua
-#main/mason.lua
 main/telescope.lua
 main/treesitter.lua
 
@@ -23,11 +21,12 @@ editor/mini.surround.lua
 
 extra/fugitive.lua
 extra/gitsigns.lua
-extra/hardtime.lua
+#extra/hardtime.lua
 extra/harpoon.lua
 extra/inc-rename.lua
-extra/lazydev.lua
+#extra/lazydev.lua
 extra/neogen.lua
+extra/new-file-template.lua
 extra/trouble.lua
 extra/ts-comments.lua
 extra/undotree.lua
@@ -36,6 +35,7 @@ extra/which-key.lua
 ui/colorizer.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
+ui/netrw.lua
 ui/todo-comments.lua
 
 # vim:commentstring=#%s:

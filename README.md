@@ -4,6 +4,8 @@
 
 > cause fuck yeah only latest baby
 
+> also this assumes you install all of your dependencies using nix lol, so no Mason for you
+
 ## whats different about this one
 
 i used to have one big plugins.lua with all my plugins.
@@ -24,21 +26,26 @@ just put it in the folder (`lua/pluggers`) that lazy.nvim uses
 and it is enabled.
 
 then i got a problem to solve. theres too much friction moving
-plugins using mv ?.lua disabled/?.lua when i wanted to disable
+plugins using `mv PLUGIN.lua disabled/PLUGIN.lua` when i wanted to disable
 one. and i wanted to categorize them so its easy which plugin
 i wanna change or add to.
 
-i first tried using a POSIX shell and it was horrible.
+i first tried using shell scriptinng and it was horrible.
 probably because im bad at making scripts but i more blamed it
 on shell being a shitty language to write in
 
-so i created `relink.go` which basically automates symlinking
-by the `enabled-plugins.txt` file and it works wonderfully tbh.
+so i created [relink.go] which basically automates symlinking
+by the [enabled-plugins.txt] file and it works wonderfully tbh.
 and much easier to write than in shell. probably the first time
-i ever used go as a sort of cli tool or script
+i ever used go as a sort of cli tool or script or even just making my own
+cli for a specific purpose
 
 ### plugins i have to look into
 
+- [literally](https://github.com/dinhhuy258/sfm.nvim) [any](https://github.com/nvim-tree/nvim-tree.lua) [tree](https://github.com/ms-jpq/chadtree) [plugin](https://github.com/nvim-neo-tree/neo-tree.nvim) or [file](https://github.com/SidOfc/carbon.nvim) [explorer](https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#file-explorer)
+- since i use netrw, why not
+  - [oil.nvim](https://github.com/stevearc/oil.nvim)
+  - [netrw.nvim](https://github.com/prichrd/netrw.nvim)
 - [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [submode.nvim](https://github.com/pogyomo/submode.nvim) (very very interesting)
 - [octo.nvim](https://github.com/pwntester/octo.nvim) if i become successful one day
@@ -117,6 +124,6 @@ rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
-```
 
 - thanks [kickstart.nvim]
+```

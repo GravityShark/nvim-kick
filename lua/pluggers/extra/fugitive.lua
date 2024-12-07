@@ -12,7 +12,7 @@ return { -- vise for going to the git repository in a browser
             {
                 '<leader>gm',
                 '<CMD>Git<CR>',
-                desc = 'MEnu',
+                desc = 'menu',
             },
             {
                 '<leader>gc',
