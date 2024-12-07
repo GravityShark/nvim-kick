@@ -42,9 +42,9 @@ cli for a specific purpose
 
 ### plugins i have to look into
 
+- [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion) database completion from within neovim
 - [distant.nvim](https://github.com/chipsenkbeil/distant.nvim) remote work on neovim!!
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) i can NOt make this shit work for some reason
-- [blink.cmp](https://github.com/saghen/blink.cmp) new fast asf completion menu
 - [literally](https://github.com/dinhhuy258/sfm.nvim) [any](https://github.com/nvim-tree/nvim-tree.lua) [tree](https://github.com/ms-jpq/chadtree) [plugin](https://github.com/nvim-neo-tree/neo-tree.nvim) or [file](https://github.com/SidOfc/carbon.nvim) [explorer](https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#file-explorer)
 - since i use netrw, why not
   - [oil.nvim](https://github.com/stevearc/oil.nvim)

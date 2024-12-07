@@ -55,11 +55,11 @@ return {
 
         -- experimental auto-brackets support
         completion = {
-            -- trigger = {
-            --     show_in_snippet = true,
-            --     show_on_keyword = false,
-            --     show_on_trigger_character = false,
-            -- },
+            trigger = {
+                show_in_snippet = true,
+                show_on_keyword = false,
+                show_on_trigger_character = false,
+            },
             accept = { auto_brackets = { enabled = true } },
             -- ghost_text = {
             --     enabled = false,
