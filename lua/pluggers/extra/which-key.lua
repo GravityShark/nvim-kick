@@ -4,7 +4,7 @@ return { -- which-key.nvim Keymap hints for the slow
     config = function()
         local wk = require('which-key')
         wk.setup({
-            delay = 0,
+            -- delay = 0,
             win = { no_overlap = false },
             icons = { separator = '', group = '', rules = false },
             sort = { 'alphanum ' },
