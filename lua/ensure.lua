@@ -82,6 +82,7 @@ M.lsp = { -- :help lspconfig-all
     nil_ls = {},
     -- 25 different language AOC challenge
     csharp_ls = {},
+    ols = {},
 }
 M.format = { -- :help conform-formatters
     lua = { 'stylua' },
