@@ -71,5 +71,5 @@ return {
     },
     -- allows extending the enabled_providers array elsewhere in your config
     -- without having to redefine it
-    opts_extend = { 'sources.completion.enabled_providers' },
+    -- opts_extend = { 'sources.completion.enabled_providers' },
 } -- TODO: add blink.cmp https://github.com/saghen/blink.cmp
