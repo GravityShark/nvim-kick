@@ -28,6 +28,7 @@ M.treesitter = {
     'org',
     'nix',
 }
+
 M.mason = { -- :Mason
     'lua-language-server', -- Lua
     'stylua',
@@ -49,6 +50,7 @@ M.mason = { -- :Mason
     'shfmt', -- Shell
     'json-lsp', -- JSON
 }
+
 M.lsp = { -- :help lspconfig-all
     lua_ls = {
         settings = {
@@ -81,9 +83,11 @@ M.lsp = { -- :help lspconfig-all
     jsonls = {},
     nil_ls = {},
     -- 25 different language AOC challenge
-    csharp_ls = {},
-    ols = {},
+    -- csharp_ls = {},
+    -- ols = {},
+    zls = {},
 }
+
 M.format = { -- :help conform-formatters
     lua = { 'stylua' },
     css = { 'prettierd' },
@@ -100,11 +104,13 @@ M.format = { -- :help conform-formatters
     bash = { 'shfmt' },
     nix = { 'nixfmt' },
 }
+
 M.formatextra = { -- :help conform-options
     ruff = {
         prepend_args = { '--config', '~/.ruff.toml' },
     },
 }
+
 M.lint = { -- :help nvim-lint-available-linters
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
