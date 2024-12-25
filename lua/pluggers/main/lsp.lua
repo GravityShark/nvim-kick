@@ -53,10 +53,11 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     '<leader>cI',
                     vim.lsp.inlay_hint.enable(
                         not vim.lsp.inlay_hint.is_enabled()
-                    )({
+                    ),
+                    {
                         buffer = ev.buf,
                         desc = 'inlay hints',
-                    })
+                    }
                 )
                 vim.keymap.set('n', '<leader>cm', vim.lsp.buf.references, {
                     buffer = ev.buf,
