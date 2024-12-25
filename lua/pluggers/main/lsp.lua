@@ -38,6 +38,13 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     buffer = ev.buf,
                     desc = 'lens',
                 })
+                vim.keymap.set('n', '<leader>cI', function()
+                    vim.lsp.inlay_hint.enable(
+                        not vim.lsp.inlay_hint.is_enabled()
+                    )
+                end, {
+                    desc = 'inlay hints',
+                })
                 vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, {
                     buffer = ev.buf,
                     desc = 'type definition',
@@ -47,17 +54,6 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     '<leader>cc',
                     vim.lsp.buf.code_action,
                     { buffer = ev.buf, desc = 'code actions' }
-                )
-                vim.keymap.set(
-                    'n',
-                    '<leader>cI',
-                    vim.lsp.inlay_hint.enable(
-                        not vim.lsp.inlay_hint.is_enabled()
-                    ),
-                    {
-                        buffer = ev.buf,
-                        desc = 'inlay hints',
-                    }
                 )
                 vim.keymap.set('n', '<leader>cm', vim.lsp.buf.references, {
                     buffer = ev.buf,
