@@ -34,14 +34,10 @@ return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
                     vim.lsp.buf.definition,
                     { buffer = ev.buf, desc = 'definition' }
                 )
-                vim.keymap.set(
-                    'n',
-                    '<leader>cl',
-                    vim.lsp.codelens.run()({
-                        buffer = ev.buf,
-                        desc = 'lens',
-                    })
-                )
+                vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, {
+                    buffer = ev.buf,
+                    desc = 'lens',
+                })
                 vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, {
                     buffer = ev.buf,
                     desc = 'type definition',
