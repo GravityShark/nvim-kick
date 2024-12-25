@@ -104,6 +104,7 @@ M.format = { -- :help conform-formatters
     sh = { 'shfmt' },
     bash = { 'shfmt' },
     nix = { 'nixfmt' },
+    ocaml = { 'ocamlformat' },
 }
 
 M.formatextra = { -- :help conform-options
