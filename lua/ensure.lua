@@ -85,7 +85,8 @@ M.lsp = { -- :help lspconfig-all
     -- 25 different language AOC challenge
     -- csharp_ls = {},
     -- ols = {},
-    zls = {},
+    -- zls = {},
+    ocamllsp = {},
 }
 
 M.format = { -- :help conform-formatters
