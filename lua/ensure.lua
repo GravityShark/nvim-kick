@@ -60,33 +60,34 @@ M.lsp = { -- :help lspconfig-all
             },
         },
     },
-    gopls = {
-        settings = {
-            gopls = {
-                usePlaceholders = true,
-                analyses = { unusedparams = true },
-            },
-        },
-    },
-    html = {}, -- Webdev
-    emmet_language_server = {},
-    tailwindcss = {},
-    ts_ls = {
-        settings = {
-            implicitProjectConfiguration = {
-                checkJs = true,
-            },
-        },
-    },
-    clangd = {},
-    pyright = {},
-    jsonls = {},
+    -- gopls = {
+    --     settings = {
+    --         gopls = {
+    --             usePlaceholders = true,
+    --             analyses = { unusedparams = true },
+    --         },
+    --     },
+    -- },
+    -- html = {}, -- Webdev
+    -- emmet_language_server = {},
+    -- tailwindcss = {},
+    -- ts_ls = {
+    --     settings = {
+    --         implicitProjectConfiguration = {
+    --             checkJs = true,
+    --         },
+    --     },
+    -- },
+    -- clangd = {},
+    -- pyright = {},
+    -- jsonls = {},
     nil_ls = {},
     -- 25 different language AOC challenge
     -- csharp_ls = {},
     -- ols = {},
     -- zls = {},
-    ocamllsp = {},
+    -- ocamllsp = {},
+    --
 }
 
 M.format = { -- :help conform-formatters
