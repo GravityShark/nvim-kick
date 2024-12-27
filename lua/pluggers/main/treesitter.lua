@@ -41,6 +41,10 @@ return { -- nvim-treesitter Supercharge syntax editing
             require('nvim-treesitter.textobjects.repeatable_move')
         vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move)
 
+        local ft_to_parser =
+            require('nvim-treesitter.parsers').filetype_to_parsername
+        ft_to_parser.crystal = 'ruby' -- the someft filetype will use the python parser and queries.
+
         -- make sure forward function comes first
         local next_buf_repeat, prev_buf_repeat =
             ts_repeat_move.make_repeatable_move_pair(
