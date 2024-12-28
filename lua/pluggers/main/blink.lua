@@ -24,7 +24,6 @@ return {
             ['<C-n>'] = { 'show', 'select_next', 'fallback' },
             ['<C-j>'] = { 'snippet_forward', 'fallback' },
             ['<C-k>'] = { 'snippet_backward', 'fallback' },
-            -- ['<CR>'] = { 'accept' },
         },
 
         appearance = {
