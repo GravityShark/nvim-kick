@@ -218,18 +218,6 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
 vim.api.nvim_set_keymap(
     'n',
-    '<158>',
-    '<CMD>bprev<CR>',
-    { desc = 'Previous buffer' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<159>',
-    '<CMD>bnext<CR>',
-    { desc = 'Next buffer' }
-)
-vim.api.nvim_set_keymap(
-    'n',
     '[q',
     '<CMD>cprev<CR>',
     { desc = 'Previous quickfix' }
