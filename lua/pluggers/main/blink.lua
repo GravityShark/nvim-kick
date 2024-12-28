@@ -50,6 +50,7 @@ return {
                     },
                 },
             },
+            cmdline = {},
         },
 
         -- experimental auto-brackets support
