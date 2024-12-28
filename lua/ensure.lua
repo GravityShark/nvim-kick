@@ -87,7 +87,7 @@ M.lsp = { -- :help lspconfig-all
     -- ols = {},
     -- zls = {},
     -- ocamllsp = {},
-    --
+    crystalline = {},
 }
 
 M.format = { -- :help conform-formatters
