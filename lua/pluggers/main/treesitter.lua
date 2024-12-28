@@ -37,30 +37,7 @@ return { -- nvim-treesitter Supercharge syntax editing
             },
         })
 
-        local ts_repeat_move =
-            require('nvim-treesitter.textobjects.repeatable_move')
-        vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move)
-
-        -- local ft_to_parser =
-        --     require('nvim-treesitter.parsers').filetype_to_parsername
-        -- ft_to_parser.crystal = 'ruby' -- the someft filetype will use the python parser and queries.
-        vim.treesitter.language.register('ruby', 'crystal') -- the someft filetype will use the python parser and queries.
-
-        -- make sure forward function comes first
-        local next_buf_repeat, prev_buf_repeat =
-            ts_repeat_move.make_repeatable_move_pair(
-                vim.cmd.bnext,
-                vim.cmd.bprevious
-            )
-        local next_c_repeat, prev_c_repeat =
-            ts_repeat_move.make_repeatable_move_pair(
-                vim.cmd.cnext,
-                vim.cmd.cprev
-            )
-
-        vim.keymap.set('n', '[b', prev_buf_repeat, { desc = 'Previous buffer' })
-        vim.keymap.set('n', ']b', next_buf_repeat, { desc = 'Next buffer' })
-        vim.keymap.set('n', '[q', prev_c_repeat, { desc = 'Previous quickfix' })
-        vim.keymap.set('n', ']q', next_c_repeat, { desc = 'Next quickfix' })
+        -- crystal doesnt have a ts parser lol
+        vim.treesitter.language.register('ruby', 'crystal')
     end,
 }

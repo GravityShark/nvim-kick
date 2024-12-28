@@ -209,13 +209,32 @@ vim.api.nvim_set_keymap(
 )
 -- }}}
 -- square bracket motions {{{
--- vim.api.nvim_set_keymap(
---     'n',
---     '[b',
---     '<CMD>bprevious<CR>',
---     { desc = 'Next buffer' }
--- )
--- vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
+vim.api.nvim_set_keymap(
+    'n',
+    '[b',
+    '<CMD>bprev<CR>',
+    { desc = 'Previous buffer' }
+)
+vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
+vim.api.nvim_set_keymap(
+    'n',
+    '<158>',
+    '<CMD>bprev<CR>',
+    { desc = 'Previous buffer' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<159>',
+    '<CMD>bnext<CR>',
+    { desc = 'Next buffer' }
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '[q',
+    '<CMD>cprev<CR>',
+    { desc = 'Previous quickfix' }
+)
+vim.api.nvim_set_keymap('n', ']q', '<CMD>cnext<CR>', { desc = 'Next quickfix' })
 
 -- }}}
 -- vim:foldmethod=marker:

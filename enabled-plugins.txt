@@ -4,12 +4,12 @@
 # read about the available plugins in their respective .org documentation
 # plugins that are emphasized (surrounded with *) are recommended
 # use `gf` to view the docs
-# lua/pluggers/main/main.org
-# lua/pluggers/colors/colors.org
-# lua/pluggers/editor/editor.org
-# lua/pluggers/extra/extra.org
-# lua/pluggers/fun/fun.org
-# lua/pluggers/ui/ui.org
+# lua/pluggers/main/main.md
+# lua/pluggers/colors/colors.md
+# lua/pluggers/editor/editor.md
+# lua/pluggers/extra/extra.md
+# lua/pluggers/fun/fun.md
+# lua/pluggers/ui/ui.md
 
 colors/rose-pine.lua
 
@@ -38,6 +38,8 @@ extra/trouble.lua
 extra/ts-comments.lua
 extra/undotree.lua
 extra/which-key.lua
+
+fun/vim-apm.lua
 
 ui/colorizer.lua
 ui/mini.indentscope.lua

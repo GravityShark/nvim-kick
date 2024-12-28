@@ -1,9 +1,11 @@
 return {
-    "ThePrimeagen/vim-apm",
-    event = "VeryLazy",
-    config = function() {
-        local apm = require("vim-apm")
+    'ThePrimeagen/vim-apm',
+    event = 'VeryLazy',
+    config = function()
+        local apm = require('vim-apm')
         apm:setup({})
-        vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
-    },
+        vim.keymap.set('n', '<leader>apm', function()
+            apm:toggle_monitor()
+        end)
+    end,
 }

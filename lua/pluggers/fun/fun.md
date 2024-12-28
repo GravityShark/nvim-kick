@@ -5,4 +5,4 @@ Plugins that their only purpose is for fun
 Invoking :StartupTime benchmarks the startuptime of your ocnfig
 
 ## vim-apm
-Vim Actions per Minute
+does what you think it does
