@@ -1,33 +1,33 @@
 -- A single file listing Treesitter, LSP, Mason, Formatting and Linting specs.
 M = {}
 
-M.treesitter = {
-    'go', -- Go
-    'gomod',
-    'gosum',
-    'templ',
-    'html', -- Webdev
-    'css',
-    'javascript',
-    'python', -- Other Languages
-    'bash',
-    'sql',
-    'lua',
-    'c',
-    'json', -- Data/Config Formats
-    'yaml',
-    'toml',
-    'markdown', -- Markup
-    'markdown_inline',
-    'vim', -- Other
-    'vimdoc',
-    'diff',
-    'gitcommit',
-    'query',
-    'regex',
-    'org',
-    'nix',
-}
+-- M.treesitter = {
+--     'go', -- Go
+--     'gomod',
+--     'gosum',
+--     'templ',
+--     'html', -- Webdev
+--     'css',
+--     'javascript',
+--     'python', -- Other Languages
+--     'bash',
+--     'sql',
+--     'lua',
+--     'c',
+--     'json', -- Data/Config Formats
+--     'yaml',
+--     'toml',
+--     'markdown', -- Markup
+--     'markdown_inline',
+--     'vim', -- Other
+--     'vimdoc',
+--     'diff',
+--     'gitcommit',
+--     'query',
+--     'regex',
+--     'org',
+--     'nix',
+-- }
 
 M.mason = { -- :Mason
     'lua-language-server', -- Lua
