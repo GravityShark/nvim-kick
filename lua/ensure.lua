@@ -57,7 +57,7 @@ M.lsp = { -- :help lspconfig-all
             Lua = {
                 completion = { autoRequire = true, callSnippet = 'Replace' },
                 workspace = { checkThirdParty = false },
-                hints = { enable = true },
+                hint = { enable = true },
             },
         },
     },
