@@ -57,6 +57,7 @@ M.lsp = { -- :help lspconfig-all
             Lua = {
                 completion = { autoRequire = true, callSnippet = 'Replace' },
                 workspace = { checkThirdParty = false },
+                hints = { enable = true },
             },
         },
     },
@@ -87,7 +88,8 @@ M.lsp = { -- :help lspconfig-all
     -- ols = {},
     -- zls = {},
     -- ocamllsp = {},
-    perlpls = {},
+    -- perlpls = {},
+    gleam = {},
 }
 
 M.format = { -- :help conform-formatters
