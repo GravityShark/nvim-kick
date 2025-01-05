@@ -123,7 +123,6 @@ M.lint = {
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
-    swift = { 'swiftlint' },
 }
 
 return M
