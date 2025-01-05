@@ -88,7 +88,8 @@ M.lsp = { -- :help lspconfig-all
     -- zls = {},
     -- ocamllsp = {},
     -- perlpls = {},
-    gleam = {},
+    -- gleam = {},
+    sourcekit = {},
 }
 
 M.format = { -- :help conform-formatters
@@ -107,6 +108,7 @@ M.format = { -- :help conform-formatters
     bash = { 'shfmt' },
     nix = { 'nixfmt' },
     ocaml = { 'ocamlformat' },
+    swift = { 'swift-format' },
 }
 
 M.formatextra = { -- :help conform-options
@@ -115,10 +117,13 @@ M.formatextra = { -- :help conform-options
     },
 }
 
-M.lint = { -- :help nvim-lint-available-linters
+-- :e ~/ -- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters.local/share/nvim/lazy/nvim-lint/README.md
+-- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
+M.lint = {
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
+    swift = { 'swiftlint' },
 }
 
 return M
