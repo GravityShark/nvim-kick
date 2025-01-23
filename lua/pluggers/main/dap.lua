@@ -35,7 +35,7 @@ return {
         local dap = require('dap')
         dap.adapters.lldb = {
             type = 'executable',
-            command = '/run/current-system/sw/bin/lldb-dap',
+            command = vim.fn.expand('/home/gravity/.nix-profile/bin/lldb-dap'),
             name = 'lldb',
         }
         dap.configurations.c = {
