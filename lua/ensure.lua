@@ -78,7 +78,7 @@ M.lsp = { -- :help lspconfig-all
     --         },
     --     },
     -- },
-    -- clangd = {},
+    clangd = {},
     -- pyright = {},
     -- jsonls = {},
     nil_ls = {},
