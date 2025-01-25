@@ -89,7 +89,8 @@ M.lsp = { -- :help lspconfig-all
     -- ocamllsp = {},
     -- perlpls = {},
     -- gleam = {},
-    sourcekit = {},
+    -- sourcekit = {},
+    ruby_lsp = {},
 }
 
 M.format = { -- :help conform-formatters
@@ -109,6 +110,7 @@ M.format = { -- :help conform-formatters
     nix = { 'nixfmt' },
     ocaml = { 'ocamlformat' },
     swift = { 'swift-format' },
+    ruby = { 'rubyfmt' },
 }
 
 M.formatextra = { -- :help conform-options
