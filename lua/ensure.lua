@@ -90,7 +90,7 @@ M.lsp = { -- :help lspconfig-all
     -- perlpls = {},
     -- gleam = {},
     -- sourcekit = {},
-    ruby_lsp = {},
+    -- ruby_lsp = {},
 }
 
 M.format = { -- :help conform-formatters
