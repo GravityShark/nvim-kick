@@ -41,7 +41,7 @@ M.mason = { -- :Mason
     'emmet-language-server',
     'tailwindcss-language-server', -- CSS
     'typescript-language-server', -- Javascript
-    'quick-lint-js',
+    -- 'quick-lint-js',
     'clangd', -- C
     'clang-format',
     'pyright', -- Python
@@ -60,27 +60,27 @@ M.lsp = { -- :help lspconfig-all
             },
         },
     },
-    -- gopls = {
-    --     settings = {
-    --         gopls = {
-    --             usePlaceholders = true,
-    --             analyses = { unusedparams = true },
-    --         },
-    --     },
-    -- },
-    -- html = {}, -- Webdev
-    -- emmet_language_server = {},
-    -- tailwindcss = {},
-    -- ts_ls = {
-    --     settings = {
-    --         implicitProjectConfiguration = {
-    --             checkJs = true,
-    --         },
-    --     },
-    -- },
+    gopls = {
+        settings = {
+            gopls = {
+                usePlaceholders = true,
+                analyses = { unusedparams = true },
+            },
+        },
+    },
+    html = {}, -- Webdev
+    emmet_language_server = {},
+    tailwindcss = {},
+    ts_ls = {
+        settings = {
+            implicitProjectConfiguration = {
+                checkJs = true,
+            },
+        },
+    },
     clangd = {},
-    -- pyright = {},
-    -- jsonls = {},
+    pyright = {},
+    jsonls = {},
     nil_ls = {},
     -- 25 different language AOC challenge
     -- csharp_ls = {},
