@@ -1,20 +1,20 @@
 return {
-  "echasnovski/mini.operators",
-  event = "VeryLazy",
-  opts = {
-    -- Evaluate text and replace with output
-    evaluate = { prefix = 'g='},
+    'echasnovski/mini.operators',
+    event = 'VeryLazy',
+    opts = {
+        -- Evaluate text and replace with output
+        evaluate = { prefix = 'g=' },
 
-    -- Exchange text regions
-    exchange = { prefix = 'gx'},
+        -- Exchange text regions
+        exchange = { prefix = 'gx' },
 
-    -- Multiply (duplicate) text
-    multiply = { prefix = 'gm'},
+        -- Multiply (duplicate) text
+        multiply = { prefix = 'gm' },
 
-    -- Replace text with register
-    replace = { prefix = 'gr'},
+        -- Replace text with register
+        replace = { prefix = 'gr' },
 
-    -- Sort text
-    sort = { prefix = 'gs'}
-  }
+        -- Sort text
+        sort = { prefix = 'gs' },
+    },
 }
