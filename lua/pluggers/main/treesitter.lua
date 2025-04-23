@@ -36,8 +36,5 @@ return { -- nvim-treesitter Supercharge syntax editing
                 },
             },
         })
-
-        -- crystal doesnt have a ts parser lol
-        vim.treesitter.language.register('ruby', 'crystal')
     end,
 }
