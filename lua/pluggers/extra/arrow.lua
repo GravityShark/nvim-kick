@@ -19,10 +19,10 @@ return {
             toggle = ' ', -- used as save if separate_save_and_remove is true
             open_vertical = 'v',
             open_horizontal = '-',
-            quit = nil,
+            quit = '',
             -- remove = 'x', -- only used if separate_save_and_remove is true
-            next_item = nil,
-            prev_item = 'b',
+            next_item = '',
+            prev_item = '',
         },
     },
 }
