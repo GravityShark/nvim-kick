@@ -1,20 +1,24 @@
 -- I do not recommend to touch
-return { -- LSP Configuration (compatible with cmp, coq, and even neither!)
+return { -- LSP Configuration (compatible with cmp, coq, blink, and even neither!)
     'neovim/nvim-lspconfig',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     init = function()
-        for type, icon in pairs({
-            Error = ' ',
-            Warn = ' ',
-            Hint = '󰌵 ',
-            Info = '󰋼 ',
-        }) do
-            local hl = 'DiagnosticSign' .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-        -- vim.diagnostic.config({
-        --     update_in_insert = true,
-        -- })
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = ' ',
+                    [vim.diagnostic.severity.WARN] = ' ',
+                    [vim.diagnostic.severity.HINT] = '󰌵 ',
+                    [vim.diagnostic.severity.INFO] = '󰋼 ',
+                },
+                linehl = {
+                    [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+                },
+                numhl = {
+                    [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                },
+            },
+        })
     end,
     config = function()
         -- Keybindings to set when LSP has attached
