@@ -13,11 +13,10 @@
 
 colors/rose-pine.lua
 
+main/blink.lua
 main/conform.lua
-# main/dap.lua
 main/lint.lua
 main/lsp.lua
-main/blink.lua
 main/telescope.lua
 main/treesitter.lua
 
@@ -30,6 +29,7 @@ editor/mini.surround.lua
 extra/arrow.lua
 extra/fugitive.lua
 extra/gitsigns.lua
+extra/hardtime.lua
 extra/inc-rename.lua
 extra/lazydev.lua
 extra/neogen.lua
