@@ -31,7 +31,7 @@ extra/fugitive.lua
 extra/gitsigns.lua
 extra/hardtime.lua
 extra/inc-rename.lua
-extra/lazydev.lua
+# extra/lazydev.lua
 extra/neogen.lua
 extra/new-file-template.lua
 extra/trouble.lua
