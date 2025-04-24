@@ -14,7 +14,7 @@
 colors/rose-pine.lua
 
 main/conform.lua
-main/dap.lua
+# main/dap.lua
 main/lint.lua
 main/lsp.lua
 main/blink.lua
@@ -27,10 +27,9 @@ editor/mini.jump.lua
 editor/mini.pairs.lua
 editor/mini.surround.lua
 
+extra/arrow.lua
 extra/fugitive.lua
 extra/gitsigns.lua
-extra/hardtime.lua
-extra/harpoon.lua
 extra/inc-rename.lua
 extra/lazydev.lua
 extra/neogen.lua
@@ -47,4 +46,4 @@ ui/netrw.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
 
-# vim:commentstring=#%s:
+# vim:commentstring=#\ %s:
