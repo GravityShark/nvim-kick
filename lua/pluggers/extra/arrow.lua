@@ -10,19 +10,11 @@ return {
         -- index_keys = '123456789zxcbnmZXVBNM,afghjklAFGHJKLwrtyuiopWRTYUIOP', -- keys mapped to bookmark index, i.e. 1st bookmark will be accessible by 1, and 12th - by c
         -- index_keys = 'tnseriaoplfuwydhvmck',
         -- index_keys = 'tsradfweiouy',
-        index_keys = 'tsradbpfwzeiouy,./',
+        index_keys = 'tsradcxzbpfw',
         save_key = 'git_root',
         mappings = {
-            edit = 'c',
-            delete_mode = 'x',
-            clear_all_items = 'C',
             toggle = ' ', -- used as save if separate_save_and_remove is true
-            open_vertical = 'v',
-            open_horizontal = '-',
-            quit = '',
-            -- remove = 'x', -- only used if separate_save_and_remove is true
-            next_item = '',
-            prev_item = '',
+            delete_mode = 'k',
         },
     },
 }
