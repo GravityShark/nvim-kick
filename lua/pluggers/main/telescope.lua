@@ -101,8 +101,19 @@ return { -- telescope.nvim Fuzzy finding, but good
     },
     dependencies = {
         'nvim-lua/plenary.nvim',
-        'debugloop/telescope-undo.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {
+            'debugloop/telescope-undo.nvim',
+            config = function()
+                require('telescope').load_extension('undo')
+            end,
+        },
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make',
+            config = function()
+                require('telescope').load_extension('fzf')
+            end,
+        },
     },
     config = function()
         local telescope = require('telescope')
@@ -179,7 +190,5 @@ return { -- telescope.nvim Fuzzy finding, but good
                 },
             },
         })
-        telescope.load_extension('fzf')
-        telescope.load_extension('undo')
     end,
 }
