@@ -1,16 +1,13 @@
 -- Plugin remaps are located in the respective plugin definition
 -- under their keys map
 
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>l',
-    '<CMD>e #<CR>',
-    { desc = 'last file' }
-)
+-- Groups
 vim.api.nvim_set_keymap('n', '<leader>c', '', { desc = '+code' })
 
 -- Terminal helpers {{{
+-- To escape terminal mode
 vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { silent = true })
+-- Enter terminal
 vim.api.nvim_set_keymap(
     'n',
     '<leader>s',
@@ -21,14 +18,16 @@ vim.api.nvim_set_keymap(
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
--- Just precreate the directory ~/.local/share/nvim/compile/
 vim.keymap.set('n', '<leader>r', function()
-    local path = vim.fn.stdpath('data')
-        .. '/compile/'
-        .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
-    local exists, lines = pcall(vim.fn.readfile, path)
-    if exists and #lines > 0 then
-        vim.b.runwithparameters = lines[1]
+    local dir = vim.fn.stdpath('data') .. '/compile/'
+    if vim.fn.isdirectory(dir) == 0 then
+        vim.fn.mkdir(dir, 'p')
+    else
+        local path = dir .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+        local exists, lines = pcall(vim.fn.readfile, path)
+        if exists and #lines > 0 then
+            vim.b.runwithparameters = lines[1]
+        end
     end
     vim.ui.input({
         prompt = 'Run: ',
@@ -39,6 +38,7 @@ vim.keymap.set('n', '<leader>r', function()
             print('See :h cmdline-special and :h filename-modifiers')
             return
         end
+
         vim.b.runwithparameters = input
         vim.fn.writefile({ input }, path)
         vim.cmd.split('term://' .. input)
@@ -88,20 +88,20 @@ vim.keymap.set('n', '<leader>R', function()
     end)
 end, { desc = 'run command save globally' })
 --}}}
--- Save and quit bindings {{{
+-- Save, close and quit bindings {{{
 vim.api.nvim_set_keymap(
     'n',
     '<leader>w',
     '<CMD>w<CR>',
     { silent = true, desc = 'write current buffer' }
 )
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>W',
-    '<CMD>wa<CR>',
-    { silent = true, desc = 'Write all buffers' }
-)
-
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>W',
+--     '<CMD>wa<CR>',
+--     { silent = true, desc = 'Write all buffers' }
+-- )
+-- Use ZZ instead
 vim.api.nvim_set_keymap(
     'n',
     '<leader>q',
@@ -113,7 +113,15 @@ vim.api.nvim_set_keymap(
     '<leader>Q',
     '<CMD>qa!<CR>',
     { silent = true, desc = 'Quit forcefully' }
-) -- }}}
+)
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>x',
+    '<CMD>close<CR>',
+    { desc = 'close window' }
+)
+-- }}}
 -- Allow for using the script ~t~ inside nvim {{{
 vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<A-g>', '<CMD>silent !T<CR>', { silent = true })
@@ -122,7 +130,8 @@ vim.api.nvim_set_keymap('n', '<A-g>', '<CMD>silent !T<CR>', { silent = true })
 vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
--- g[y|d|p|P] uses to system clipboard{{{
+-- g[y|d|p|P] uses to system clipboard, and also gd to delete without copying{{{
+vim.keymap.set({ 'n', 'v' }, 'gd', '"_d', { desc = 'delete empty' })
 vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set(
     { 'n', 'v' },
@@ -170,19 +179,6 @@ vim.api.nvim_set_keymap(
     { desc = 'file explorer' }
 )
 -- }}}
--- Closing window {{{
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>x',
-    '<CMD>close<CR>',
-    { desc = 'close window' }
-)
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>X',
-    '<CMD>close!<CR>',
-    { desc = 'Close window forcefully' }
-) -- }}}
 -- cnext cprev {{{
 -- vim.api.nvim_set_keymap(
 --     'n',
@@ -200,13 +196,12 @@ vim.api.nvim_set_keymap(
 -- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
 -- greatest remap ever
 -- vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { desc = 'paste empty' })
-vim.keymap.set({ 'n', 'v' }, 'gd', '"_d', { desc = 'delete empty' })
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader><leader>',
-    '<CMD>e<CR>',
-    { desc = 'refresh buffer' }
-)
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader><leader>',
+--     '<CMD>e<CR>',
+--     { desc = 'refresh buffer' }
+-- )
 -- }}}
 -- square bracket motions {{{
 vim.api.nvim_set_keymap(
