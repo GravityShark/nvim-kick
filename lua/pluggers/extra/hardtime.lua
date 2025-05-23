@@ -22,24 +22,6 @@ return {
             ['gk'] = { 'n', 'x' },
             ['gj'] = { 'n', 'x' },
         },
-        -- hints = {
-        --     ['[><][%^_]'] = {
-        --         message = function(key)
-        --             return 'Use "v then ><" instead of spamming '
-        --                 .. key
-        --                 .. ' like a loser'
-        --         end,
-        --         length = 2,
-        --     },
-        --     ['[web][%^_]'] = {
-        --         message = function(key)
-        --             return 'Use "f" instead of spamming '
-        --                 .. key
-        --                 .. ' like a loser'
-        --         end,
-        --         length = 2,
-        --     },
-        -- },
         disabled_keys = {
             ['<C-w>c'] = { 'n' },
         },
