@@ -2,9 +2,7 @@ return { -- vise for going to the git repository in a browser
     'tpope/vim-rhubarb',
     cmd = 'GBrowse',
     dependencies = { -- vim-fugitive :Git for an integrated git experience with vim
-        -- 'tpope/vim-fugitive',
-        'dinhhuy258/git.nvim',
-        opts = {},
+        'tpope/vim-fugitive',
         keys = {
             {
                 '<leader>g',
