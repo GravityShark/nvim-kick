@@ -8,33 +8,38 @@ return {
         timeout = false,
         -- allow_different_key = false,
         restricted_keys = {
-            ['x'] = { 'n' },
-            ['d'] = { 'n' },
-            ['w'] = { 'n' },
-            ['e'] = { 'n' },
-            ['b'] = { 'n' },
-            ['J'] = { 'n' },
-            ['>'] = { 'n' },
-            ['<'] = { 'n' },
+            ['x'] = { 'n', 'x' },
+            ['d'] = { 'n', 'x' },
+            ['w'] = { 'n', 'x' },
+            ['W'] = { 'n', 'x' },
+            ['e'] = { 'n', 'x' },
+            ['E'] = { 'n', 'x' },
+            ['b'] = { 'n', 'x' },
+            ['B'] = { 'n', 'x' },
+            ['J'] = { 'n', 'x' },
+            ['>'] = { 'n', 'x' },
+            ['<'] = { 'n', 'x' },
+            ['gk'] = { 'n', 'x' },
+            ['gj'] = { 'n', 'x' },
         },
-        hints = {
-            ['[><][%^_]'] = {
-                message = function(key)
-                    return 'Use "v then ><" instead of spamming '
-                        .. key
-                        .. ' like a loser'
-                end,
-                length = 2,
-            },
-            ['[web][%^_]'] = {
-                message = function(key)
-                    return 'Use "f" instead of spamming '
-                        .. key
-                        .. ' like a loser'
-                end,
-                length = 2,
-            },
-        },
+        -- hints = {
+        --     ['[><][%^_]'] = {
+        --         message = function(key)
+        --             return 'Use "v then ><" instead of spamming '
+        --                 .. key
+        --                 .. ' like a loser'
+        --         end,
+        --         length = 2,
+        --     },
+        --     ['[web][%^_]'] = {
+        --         message = function(key)
+        --             return 'Use "f" instead of spamming '
+        --                 .. key
+        --                 .. ' like a loser'
+        --         end,
+        --         length = 2,
+        --     },
+        -- },
         disabled_keys = {
             ['<C-w>c'] = { 'n' },
         },
