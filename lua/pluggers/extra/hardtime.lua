@@ -7,7 +7,7 @@ return {
         max_count = 2,
         timeout = false,
         -- allow_different_key = false,
-        resetting_keys = {
+        restricted_keys = {
             ['x'] = { 'n' },
             ['d'] = { 'n' },
             ['w'] = { 'n' },
