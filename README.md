@@ -42,6 +42,8 @@ cli for a specific purpose
 
 ### plugins i have to look into
 
+- [treewalker.nvim](https://github.com/aaronik/treewalker.nvim) for somereason this plugin only existed now?
+- [flash.nvim](https://github.com/folke/flash.nvim) i have not used flash (or any similar) before and im hesitant to change to one
 - [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion) database completion from within neovim
 - [distant.nvim](https://github.com/chipsenkbeil/distant.nvim) remote work on neovim!!
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) i can NOt make this shit work for some reason
@@ -51,6 +53,7 @@ cli for a specific purpose
   - [netrw.nvim](https://github.com/prichrd/netrw.nvim)
 - [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [submode.nvim](https://github.com/pogyomo/submode.nvim) (very very interesting)
+  - iirc which-key.nvim also now has hydra stuff
 - Git plugins, only for when Im gonna be managing alot of gits in the future, but right now i do a little hack ;)
   - [octo.nvim](https://github.com/pwntester/octo.nvim) if i become successful one day
     - [cmp-git](https://github.com/petertriho/cmp-git)
