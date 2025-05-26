@@ -42,6 +42,11 @@ cli for a specific purpose
 
 ### plugins i have to look into
 
+- this guy's config https://www.youtube.com/watch?v=NkQnPuidxWY
+
+  1. sessions
+  2. tree like thing (i use netrw because yeah)
+
 - [treewalker.nvim](https://github.com/aaronik/treewalker.nvim) for somereason this plugin only existed now?
 - [flash.nvim](https://github.com/folke/flash.nvim) i have not used flash (or any similar) before and im hesitant to change to one
 - [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion) database completion from within neovim

@@ -77,6 +77,11 @@ return { -- telescope.nvim Fuzzy finding, but good
             '<CMD>Telescope undo<CR>',
             desc = 'undos',
         },
+        { -- Show symbols
+            '<leader>fs',
+            '<CMD>Telescope lsp_document_symbols<CR>',
+            desc = 'symbols',
+        },
         { -- Pipe word into grep
             '<leader>fw',
             function()

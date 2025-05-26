@@ -175,8 +175,9 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>.',
     -- '<CMD>edit .<CR>',
-    '<CMD>Explore<CR>',
-    { desc = 'file explorer' }
+    -- '<CMD>Explore<CR>',
+    require('floating_netrw').toggle(),
+    { desc = 'file explorer', noremap = true, silent = true }
 )
 -- }}}
 -- cnext cprev {{{

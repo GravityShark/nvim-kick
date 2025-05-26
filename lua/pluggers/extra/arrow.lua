@@ -15,5 +15,8 @@ return {
             toggle = ' ', -- <- this is a space btw
             delete_mode = 'k',
         },
+        per_buffer_config = {
+            lines = 1,
+        },
     },
 }
