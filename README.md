@@ -42,6 +42,9 @@ cli for a specific purpose
 
 ### plugins i have to look into
 
+- make dap work well
+- or just make testing just a lil easier
+
 - this guy's config https://www.youtube.com/watch?v=NkQnPuidxWY
 
   1. sessions (persistence)

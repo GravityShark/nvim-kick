@@ -25,7 +25,6 @@ editor/mini.ai.lua
 editor/mini.jump.lua
 editor/mini.pairs.lua
 editor/mini.surround.lua
-editor/treewalker.lua
 
 extra/arrow.lua
 extra/fugitive.lua
