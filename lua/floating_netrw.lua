@@ -11,6 +11,18 @@ local function get_git_root()
     end
 end
 
+local function close_win()
+    if state.win then
+        -- Schedule the close so no conflicts happen
+        vim.schedule(function()
+            if vim.api.nvim_win_is_valid(state.win) then
+                vim.api.nvim_win_hide(state.win)
+                state.win = nil -- clear it since it's closed now
+            end
+        end)
+    end
+end
+
 function M.toggle()
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
@@ -46,16 +58,8 @@ function M.toggle()
         buffer = state.buf,
         once = true,
         callback = function()
-            vim.api.nvim_create_autocmd('BufLeave', {
-                once = true,
-                callback = function()
-                    -- Close the floating window
-                    if state.win and vim.api.nvim_win_is_valid(state.win) then
-                        vim.api.nvim_win_hide(state.win)
-                    end
-                    state.buf = nil
-                    state.win = nil
-                end,
+            vim.api.nvim_create_autocmd('WinLeave', {
+                callback = close_win,
             })
         end,
     })
