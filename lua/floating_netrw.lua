@@ -10,15 +10,17 @@ function M.toggle()
     end
 
     local ui = vim.api.nvim_list_uis()[1]
-    local width = ui.width
+    local width = math.floor(ui.width * 0.8)
     local height = math.floor(ui.height * 0.8)
+    local col = math.floor((ui.width - width) / 2)
+    local row = math.floor((ui.height - height) / 2)
 
     local opts = {
         relative = 'editor',
         width = width,
         height = height,
-        row = math.floor((ui.height - height) / 2),
-        col = 0,
+        row = row,
+        col = col,
         style = 'minimal',
         border = 'rounded',
     }
@@ -30,7 +32,6 @@ function M.toggle()
 
     vim.cmd('lcd ' .. vim.fn.getcwd())
     vim.cmd('edit .')
-    vim.cmd('redraw!')
 end
 
 return M
