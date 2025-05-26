@@ -3,34 +3,54 @@ return {
     cmd = 'Treewalker',
     keys = {
         {
-            { 'n', 'v' },
+            mode = { 'n', 'v' },
             '<C-k>',
             '<cmd>Treewalker Up<cr>',
             { silent = true },
         },
         {
-            { 'n', 'v' },
+            mode = { 'n', 'v' },
             '<C-j>',
             '<cmd>Treewalker Down<cr>',
             { silent = true },
         },
         {
-            { 'n', 'v' },
+            mode = { 'n', 'v' },
             '<C-h>',
             '<cmd>Treewalker Left<cr>',
             { silent = true },
         },
         {
-            { 'n', 'v' },
+            mode = { 'n', 'v' },
             '<C-l>',
             '<cmd>Treewalker Right<cr>',
             { silent = true },
         },
         -- Swapping
-        { 'n', '<C-S-k>', '<cmd>Treewalker SwapUp<cr>', { silent = true } },
-        { 'n', '<C-S-j>', '<cmd>Treewalker SwapDown<cr>', { silent = true } },
-        { 'n', '<C-S-h>', '<cmd>Treewalker SwapLeft<cr>', { silent = true } },
-        { 'n', '<C-S-l>', '<cmd>Treewalker SwapRight<cr>', { silent = true } },
+        {
+            mode = 'n',
+            '<C-S-k>',
+            '<cmd>Treewalker SwapUp<cr>',
+            { silent = true },
+        },
+        {
+            mode = 'n',
+            '<C-S-j>',
+            '<cmd>Treewalker SwapDown<cr>',
+            { silent = true },
+        },
+        {
+            mode = 'n',
+            '<C-S-h>',
+            '<cmd>Treewalker SwapLeft<cr>',
+            { silent = true },
+        },
+        {
+            mode = 'n',
+            '<C-S-l>',
+            '<cmd>Treewalker SwapRight<cr>',
+            { silent = true },
+        },
     },
 
     -- The following options are the defaults.
