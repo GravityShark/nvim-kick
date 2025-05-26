@@ -13,8 +13,8 @@ end
 
 local function netrw_select()
     if vim.bo.filetype == 'netrw' then
-        vim.api.nvim_create_autocmd({ 'BufNew', 'BufReadPre' }, {
-            -- vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
+        print('balls')
+        vim.api.nvim_create_autocmd('BufEnter', {
             once = true,
             callback = netrw_select,
         })
@@ -63,8 +63,7 @@ function M.toggle()
         buffer = state.buf,
         once = true,
         callback = function()
-            vim.api.nvim_create_autocmd({ 'BufNew', 'BufReadPre' }, {
-                -- vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
+            vim.api.nvim_create_autocmd('BufEnter', {
                 once = true,
                 callback = netrw_select,
             })
