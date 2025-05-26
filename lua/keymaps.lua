@@ -171,16 +171,12 @@ vim.api.nvim_set_keymap(
 )
 
 -- Open current window as netrw
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>.',
-    -- '<CMD>edit .<CR>',
-    -- '<CMD>Explore<CR>',
-    function()
-        require('floating_netrw').toggle()
-    end,
-    { desc = 'file explorer', noremap = true, silent = true }
-)
+
+-- '<CMD>edit .<CR>',
+-- '<CMD>Explore<CR>',
+vim.api.nvim_set_keymap('n', '<leader>.', function()
+    require('floating_netrw').toggle()
+end, { desc = 'file explorer', noremap = true, silent = true })
 -- }}}
 -- cnext cprev {{{
 -- vim.api.nvim_set_keymap(
