@@ -48,7 +48,7 @@ function M.toggle()
 
     if not state.buf or not vim.api.nvim_buf_is_valid(state.buf) then
         state.buf = vim.api.nvim_create_buf(false, true)
-        vim.api.nvim_buf_set_option(state.buf, 'bufhidden', 'wipe')
+        vim.api.nvim_set_option_value('bufhidden', 'wipe', { buf = state.buf })
     end
 
     state.win = vim.api.nvim_open_win(state.buf, true, opts)
@@ -59,6 +59,7 @@ function M.toggle()
         once = true,
         callback = function()
             vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
+                once = true,
                 callback = close_win,
             })
         end,
