@@ -9,13 +9,13 @@ return { -- which-key.nvim Keymap hints for the slow
             icons = { separator = '', group = '', rules = false },
             sort = { 'alphanum ' },
         })
-        wk.add({
-            { '[a', desc = 'Previous argument' },
-            { ']a', desc = 'Next argument' },
-            { '[c', desc = 'Previous class' },
-            { ']c', desc = 'Next class' },
-            { '[f', desc = 'Previous function' },
-            { ']f', desc = 'Next function' },
-        })
+        -- wk.add({
+        --     { '[a', desc = 'Previous argument' },
+        --     { ']a', desc = 'Next argument' },
+        --     { '[c', desc = 'Previous class' },
+        --     { ']c', desc = 'Next class' },
+        --     { '[f', desc = 'Previous function' },
+        --     { ']f', desc = 'Next function' },
+        -- })
     end,
 }
