@@ -31,7 +31,7 @@ function M.toggle()
 
     state.win = vim.api.nvim_open_win(state.buf, true, opts)
 
-    vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
+    vim.api.nvim_buf_set_option(state.buf, 'bufhidden', 'wipe')
 
     vim.cmd('lcd ' .. vim.fn.getcwd())
     vim.cmd('edit .')
