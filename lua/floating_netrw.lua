@@ -1,17 +1,17 @@
 local M = {}
 
-local netrw_float_win = nil
+local state = { buf = nil, win = nil }
 
 function M.toggle()
-    if netrw_float_win and vim.api.nvim_win_is_valid(netrw_float_win) then
-        vim.api.nvim_win_close(netrw_float_win, true)
-        netrw_float_win = nil
+    if state.win and vim.api.nvim_win_is_valid(state.win) then
+        vim.api.nvim_win_close(state.win, true)
+        state.win = nil
         return
     end
 
     local ui = vim.api.nvim_list_uis()[1]
     local width = math.floor(ui.width * 0.8)
-    local height = math.floor(ui.height * 0.8)
+    local height = math.floor(ui.height * 0.8) - 2
     local col = math.floor((ui.width - width) / 2)
     local row = math.floor((ui.height - height) / 2)
 
@@ -25,8 +25,11 @@ function M.toggle()
         border = 'rounded',
     }
 
-    local buf = vim.api.nvim_create_buf(false, true)
-    netrw_float_win = vim.api.nvim_open_win(buf, true, opts)
+    if not state.buf then
+        state.buf = vim.api.nvim_create_buf(false, true)
+    end
+
+    state.win = vim.api.nvim_open_win(state.buf, true, opts)
 
     vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
 

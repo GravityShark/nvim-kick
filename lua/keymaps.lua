@@ -180,7 +180,7 @@ vim.api.nvim_set_keymap(
 --     '<CMD>Explore<CR>',
 --     { desc = 'file explorer' }
 -- )
-vim.keymap.set('n', '<leader>e', function()
+vim.keymap.set('n', '<leader>.', function()
     require('floating_netrw').toggle()
 end, { desc = 'file explorer', noremap = true, silent = true })
 
