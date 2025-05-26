@@ -11,7 +11,17 @@ local function get_git_root()
     end
 end
 
-local function close_win()
+local function netrw_select()
+    if vim.bo.filetype == 'netrw' then
+        vim.api.nvim_create_autocmd({ 'BufNew', 'BufReadPre' }, {
+            -- vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
+            once = true,
+            callback = netrw_select,
+        })
+        state.buf = vim.api.nvim_get_current_buf()
+        return
+    end
+
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
         state.win = nil -- clear it since it's closed now
@@ -53,10 +63,10 @@ function M.toggle()
         buffer = state.buf,
         once = true,
         callback = function()
-            vim.api.nvim_create_autocmd({ 'BufNew' }, {
+            vim.api.nvim_create_autocmd({ 'BufNew', 'BufReadPre' }, {
                 -- vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
                 once = true,
-                callback = close_win,
+                callback = netrw_select,
             })
         end,
     })
