@@ -171,7 +171,6 @@ vim.api.nvim_set_keymap(
 )
 
 -- Open current window as netrw
-
 -- '<CMD>edit .<CR>',
 -- '<CMD>Explore<CR>',
 -- vim.api.nvim_set_keymap(
@@ -180,24 +179,12 @@ vim.api.nvim_set_keymap(
 --     '<CMD>Explore<CR>',
 --     { desc = 'file explorer' }
 -- )
+
+-- Open a floating window with netrw
 vim.keymap.set('n', '<leader>.', function()
     require('floating_netrw').toggle()
 end, { desc = 'file explorer', noremap = true, silent = true })
 
--- }}}
--- cnext cprev {{{
--- vim.api.nvim_set_keymap(
---     'n',
---     ']q',
---     '<CMD>cnext<CR>zz',
---     { desc = 'Next quickfix' }
--- )
--- vim.api.nvim_set_keymap(
---     'n',
---     '[q',
---     '<CMD>cprev<CR>zz',
---     { desc = 'Prev quickfix' }
--- )
 -- }}}
 -- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
 -- greatest remap ever
