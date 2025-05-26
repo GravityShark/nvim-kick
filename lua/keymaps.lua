@@ -174,9 +174,16 @@ vim.api.nvim_set_keymap(
 
 -- '<CMD>edit .<CR>',
 -- '<CMD>Explore<CR>',
-vim.api.nvim_set_keymap('n', '<leader>.', function()
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>.',
+--     '<CMD>Explore<CR>',
+--     { desc = 'file explorer' }
+-- )
+vim.keymap.set('n', '<leader>e', function()
     require('floating_netrw').toggle()
 end, { desc = 'file explorer', noremap = true, silent = true })
+
 -- }}}
 -- cnext cprev {{{
 -- vim.api.nvim_set_keymap(
