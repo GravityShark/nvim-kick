@@ -29,7 +29,7 @@ editor/mini.surround.lua
 extra/arrow.lua
 extra/fugitive.lua
 extra/gitsigns.lua
-# extra/hardtime.lua
+extra/hardtime.lua
 extra/inc-rename.lua
 # extra/lazydev.lua
 extra/neogen.lua
