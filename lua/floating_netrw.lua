@@ -1,6 +1,7 @@
 local M = {}
 
 local state = { buf = nil, win = nil }
+local autocmd = 'BufEnter'
 
 local function get_git_root()
     local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
@@ -12,16 +13,16 @@ local function get_git_root()
 end
 
 local function netrw_select()
-    if vim.bo.filetype == 'netrw' then
-        print('balls')
-        vim.api.nvim_create_autocmd('BufEnter', {
-            once = true,
-            callback = netrw_select,
-        })
-        state.buf = vim.api.nvim_get_current_buf()
-        return
-    end
-
+    -- if vim.bo.filetype == 'netrw' then
+    --     print('balls')
+    --     vim.api.nvim_create_autocmd(autocmd, {
+    --         once = true,
+    --         callback = netrw_select,
+    --     })
+    --     state.buf = vim.api.nvim_get_current_buf()
+    --     return
+    -- end
+    --
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
         state.win = nil -- clear it since it's closed now
@@ -54,24 +55,24 @@ function M.toggle()
     if not state.buf or not vim.api.nvim_buf_is_valid(state.buf) then
         state.buf = vim.api.nvim_create_buf(false, true)
         vim.api.nvim_set_option_value('bufhidden', 'wipe', { buf = state.buf })
+        state.win = vim.api.nvim_open_win(state.buf, true, opts)
+        vim.cmd('silent lcd ' .. get_git_root())
+        vim.cmd('edit .')
+    else
+        state.win = vim.api.nvim_open_win(state.buf, true, opts)
     end
-
-    state.win = vim.api.nvim_open_win(state.buf, true, opts)
 
     -- Set up autocmd to close window after file selection
     vim.api.nvim_create_autocmd('BufEnter', {
         buffer = state.buf,
         once = true,
         callback = function()
-            vim.api.nvim_create_autocmd('BufEnter', {
+            vim.api.nvim_create_autocmd(autocmd, {
                 once = true,
                 callback = netrw_select,
             })
         end,
     })
-
-    vim.cmd('silent lcd ' .. get_git_root())
-    vim.cmd('edit .')
 end
 
 return M
