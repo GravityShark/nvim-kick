@@ -6,7 +6,6 @@ return {
             mode = { 'n', 'v' },
             '<C-k>',
             '<cmd>Treewalker Up<cr>',
-            { silent = true },
         },
         {
             mode = { 'n', 'v' },
