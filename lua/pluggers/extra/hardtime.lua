@@ -23,26 +23,26 @@ return {
             ['u'] = { 'n', 'x' },
         },
         hints = {
-            ['[webWEB]'] = {
+            ['%D1[webWEB]'] = {
                 message = function()
                     return 'Use f or t instead of spamming vro 💔'
                 end,
                 length = 2,
             },
 
-            ['[<>]'] = {
+            ['%D1[<>]'] = {
                 message = function()
                     return 'Enter visual mode and spam it easier lol'
                 end,
                 length = 2,
             },
-            ['[xXd]'] = {
+            ['%D1[xXd]'] = {
                 message = function()
                     return 'Use literally any deletion motion instead of spamming ts 🥀'
                 end,
                 length = 2,
             },
-            ['u'] = {
+            ['%D1u'] = {
                 message = function()
                     return 'Use <leader>u instead of spamming u like a loser'
                 end,
