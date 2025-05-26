@@ -2,6 +2,15 @@ local M = {}
 
 local state = { buf = nil, win = nil }
 
+local function get_git_root()
+    local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+    if vim.v.shell_error == 0 and git_root and #git_root > 0 then
+        return git_root
+    else
+        return vim.fn.expand('%:p:h') -- fallback: current file's directory
+    end
+end
+
 function M.toggle()
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
@@ -41,10 +50,8 @@ function M.toggle()
                 once = true,
                 callback = function()
                     -- Close the floating window
-                    if
-                        netrw_winid and vim.api.nvim_win_is_valid(netrw_winid)
-                    then
-                        vim.api.nvim_win_close(netrw_winid, true)
+                    if state.win and vim.api.nvim_win_is_valid(state.win) then
+                        vim.api.nvim_win_hide(state.win)
                     end
                     state.buf = nil
                     state.win = nil
@@ -53,11 +60,8 @@ function M.toggle()
         end,
     })
 
-    vim.cmd('lcd ' .. vim.fn.getcwd())
+    vim.cmd('silent lcd ' .. get_git_root())
     vim.cmd('edit .')
-
-    vim.g_local.netrw_liststyle = 3
-    vim.g_local.netrw_browse_split = 4
 end
 
 return M
