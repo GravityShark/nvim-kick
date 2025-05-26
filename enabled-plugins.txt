@@ -31,9 +31,10 @@ extra/fugitive.lua
 extra/gitsigns.lua
 extra/hardtime.lua
 extra/inc-rename.lua
-extra/lazydev.lua
+# extra/lazydev.lua
 extra/neogen.lua
 extra/new-file-template.lua
+extra/oil.lua
 extra/trouble.lua
 extra/ts-comments.lua
 extra/undotree.lua
@@ -42,7 +43,7 @@ extra/which-key.lua
 ui/colorizer.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
-ui/netrw.lua
+# ui/netrw.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
 

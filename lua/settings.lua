@@ -35,9 +35,7 @@ vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_winsize = 25
--- vim.g.netrw_browse_split = 0
-vim.g.netrw_browse_split = 4
-vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
 -- mini.basics
 vim.opt.splitbelow = true -- when the splits are good
 vim.opt.splitright = true

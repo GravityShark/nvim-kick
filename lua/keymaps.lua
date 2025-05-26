@@ -181,9 +181,9 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- )
 
 -- Open a floating window with netrw
-vim.keymap.set('n', '<leader>.', function()
-    require('floating_netrw').toggle()
-end, { desc = 'file explorer', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>.', function()
+--     require('floating_netrw').toggle()
+-- end, { desc = 'file explorer', noremap = true, silent = true })
 
 -- }}}
 -- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
