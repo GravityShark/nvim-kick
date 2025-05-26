@@ -53,7 +53,7 @@ function M.toggle()
         buffer = state.buf,
         once = true,
         callback = function()
-            vim.api.nvim_create_autocmd({ 'BufLeave' }, {
+            vim.api.nvim_create_autocmd({ 'BufNew' }, {
                 -- vim.api.nvim_create_autocmd({ 'WinLeave', 'BufWinEnter' }, {
                 once = true,
                 callback = close_win,
