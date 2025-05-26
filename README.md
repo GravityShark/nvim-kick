@@ -46,8 +46,10 @@ cli for a specific purpose
 
   1. sessions (persistence)
      - actually dont like this
+     - im gonna use arrow.nvim instead
   2. tree like thing (i use netrw because yeah)
      - i like the float, might never use, im gonna get like oil.nvim instead though
+     - i installed oil and its good
   3. breadcrumbs.nvim / nvim-navic
      - idk maybe
   4. automatic test opening stuff
