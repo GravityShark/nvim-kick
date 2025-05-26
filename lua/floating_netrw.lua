@@ -4,7 +4,7 @@ local state = { buf = nil, win = nil }
 
 function M.toggle()
     if state.win and vim.api.nvim_win_is_valid(state.win) then
-        vim.api.nvim_win_hide(state.win, true)
+        vim.api.nvim_win_hide(state.win)
         state.win = nil
         return
     end
@@ -25,7 +25,7 @@ function M.toggle()
         border = 'rounded',
     }
 
-    if not state.buf then
+    if not state.buf or not vim.api.nvim_buf_is_valid(state.buf) then
         state.buf = vim.api.nvim_create_buf(false, true)
     end
 
