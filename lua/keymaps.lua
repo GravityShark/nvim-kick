@@ -51,7 +51,6 @@ vim.keymap.set('n', '<leader>r', function()
         -- Write the new saved parameters to the cache
         vim.fn.writefile({ input }, path)
 
-        -- vim.cmd.split('term://' .. input)
         -- Run the command
         vim.cmd(
             'split | lcd '
@@ -59,10 +58,7 @@ vim.keymap.set('n', '<leader>r', function()
                 .. ' | terminal '
                 .. input
         )
-
-        print('balls')
-        -- vim.opt_local.relativenumber = false
-        -- vim.opt_local.number = false
+        -- print('balls')
         -- vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
