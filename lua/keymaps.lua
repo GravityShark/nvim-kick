@@ -37,7 +37,7 @@ vim.keymap.set('n', '<leader>r', function()
     vim.ui.input({
         prompt = 'Run: ',
         default = vim.b.runwithparameters,
-        completion = 'file',
+        completion = 'shellcmdline',
     }, function(input)
         if input == nil or input == '' then
             print(
@@ -50,7 +50,6 @@ vim.keymap.set('n', '<leader>r', function()
         vim.b.runwithparameters = input
         -- Write the new saved parameters to the cache
         vim.fn.writefile({ input }, path)
-
         -- Run the command
         vim.cmd(
             'split | lcd '
@@ -58,8 +57,7 @@ vim.keymap.set('n', '<leader>r', function()
                 .. ' | terminal '
                 .. input
         )
-        -- print('balls')
-        -- vim.cmd.startinsert()
+        vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
 
@@ -88,9 +86,9 @@ vim.keymap.set('n', '<leader>R', function()
 
     -- Prompt
     vim.ui.input({
-        prompt = 'Run Globally: ',
+        prompt = 'Run (Project): ',
         default = vim.g.runwithparametersglobally,
-        completion = 'file',
+        completion = 'shellcmdline',
     }, function(input)
         if input == nil or input == '' then
             print(
@@ -98,20 +96,13 @@ vim.keymap.set('n', '<leader>R', function()
             )
             return
         end
+        -- Set the saved parameters as input
         vim.g.runwithparametersglobally = input
+        -- Write the new saved parameters to the cache
         vim.fn.writefile({ input }, path)
-        vim.cmd.split('term://' .. input)
-        vim.cmd.split('term://' .. input)
-        vim.opt_local.relativenumber = false
-        vim.opt_local.number = false
+        -- Run the command
+        vim.cmd('split | lcd ' .. path .. ' | terminal ' .. input)
         vim.cmd.startinsert()
-        vim.api.nvim_buf_set_keymap(
-            0,
-            't',
-            '<C-space>',
-            '<C-\\><C-n><C-w>h',
-            { silent = true }
-        )
     end)
 end, { desc = 'run command per project' })
 --}}}
