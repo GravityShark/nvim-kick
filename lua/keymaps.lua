@@ -101,7 +101,7 @@ vim.keymap.set('n', '<leader>R', function()
         -- Write the new saved parameters to the cache
         vim.fn.writefile({ input }, path)
         -- Run the command
-        vim.cmd('split | lcd ' .. path .. ' | terminal ' .. input)
+        vim.cmd('split | lcd ' .. cwd .. ' | terminal ' .. input)
         vim.cmd.startinsert()
     end)
 end, { desc = 'run command per project' })
