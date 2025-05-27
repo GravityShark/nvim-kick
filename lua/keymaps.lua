@@ -19,23 +19,29 @@ vim.api.nvim_set_keymap(
 -- Saved compile arguments are stolen from here
 -- https://github.com/xiyaowong/transparent.nvim/blob/b075d5bb07fa1615b09585e1a2f7d2418c251562/lua/transparent/cache.lua
 vim.keymap.set('n', '<leader>r', function()
-    local dir = vim.fn.stdpath('data') .. '/compile/'
-    if vim.fn.isdirectory(dir) == 0 then
-        vim.fn.mkdir(dir, 'p')
-    else
-        local path = dir .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
-        local exists, lines = pcall(vim.fn.readfile, path)
-        if exists and #lines > 0 then
-            vim.b.runwithparameters = lines[1]
-        end
+    -- Check if cache folder exists, if it doesn't create it
+    local cache_dir = vim.fn.stdpath('data') .. '/compile/'
+    if vim.fn.isdirectory(cache_dir) == 0 then
+        vim.fn.mkdir(cache_dir, 'p')
     end
+
+    -- Try to read the saved command for the file, ignores if doesn't exist
+    local path = cache_dir .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+    local exists, lines = pcall(vim.fn.readfile, path)
+    if exists and #lines > 0 then
+        vim.b.runwithparameters = lines[1]
+    end
+
+    -- Prompt
     vim.ui.input({
         prompt = 'Run: ',
         default = vim.b.runwithparameters,
         completion = 'file',
     }, function(input)
         if input == nil or input == '' then
-            print('See :h cmdline-special and :h filename-modifiers')
+            print(
+                'See :h cmdline-special, :h filename-modifiers, and <C-f> to edit the prompt like a buffer'
+            )
             return
         end
 
@@ -55,21 +61,40 @@ vim.keymap.set('n', '<leader>r', function()
         vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
+
 vim.keymap.set('n', '<leader>R', function()
-    local path = vim.fn.stdpath('data')
-        .. '/compile/'
-        .. vim.fn.getcwd():gsub('/', '@')
+    -- Check if cache folder exists, if it doesn't create it
+    local cache_dir = vim.fn.stdpath('data') .. '/compile/'
+    if vim.fn.isdirectory(cache_dir) == 0 then
+        vim.fn.mkdir(cache_dir, 'p')
+    end
+
+    -- Either cwd or git root
+    local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+    local cwd
+    if vim.v.shell_error ~= 0 or git_root == nil or git_root == '' then
+        cwd = vim.fn.getcwd()
+    else
+        cwd = git_root
+    end
+
+    -- Try to read the saved command for the project directory, ignores if doesn't exist
+    local path = cache_dir .. cwd:gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
         vim.g.runwithparametersglobally = lines[1]
     end
+
+    -- Prompt
     vim.ui.input({
         prompt = 'Run Globally: ',
         default = vim.g.runwithparametersglobally,
-        completion = 'shellcmd',
+        completion = 'file',
     }, function(input)
         if input == nil or input == '' then
-            print('See :h cmdline-special and :h filename-modifiers')
+            print(
+                'See :h cmdline-special, :h filename-modifiers, and <C-f> to edit the prompt like a buffer'
+            )
             return
         end
         vim.g.runwithparametersglobally = input
@@ -86,7 +111,7 @@ vim.keymap.set('n', '<leader>R', function()
             { silent = true }
         )
     end)
-end, { desc = 'run command save globally' })
+end, { desc = 'run command per project' })
 --}}}
 -- Save, close and quit bindings {{{
 vim.api.nvim_set_keymap(
