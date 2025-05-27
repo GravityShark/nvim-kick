@@ -26,7 +26,8 @@ vim.keymap.set('n', '<leader>r', function()
     end
 
     -- Try to read the saved command for the file, ignores if doesn't exist
-    local path = cache_dir .. vim.api.nvim_buf_get_name(0):gsub('/', '@')
+    local file = vim.api.nvim_buf_get_name(0)
+    local path = cache_dir .. file:gsub('/', '@')
     local exists, lines = pcall(vim.fn.readfile, path)
     if exists and #lines > 0 then
         vim.b.runwithparameters = lines[1]
@@ -40,25 +41,28 @@ vim.keymap.set('n', '<leader>r', function()
     }, function(input)
         if input == nil or input == '' then
             print(
-                'See :h cmdline-special, :h filename-modifiers, and <C-f> to edit the prompt like a buffer'
+                'See :h cmdline-special, :h filename-modifiers, and :h c_CTRL-F'
             )
             return
         end
 
+        -- Set the saved parameters as input
         vim.b.runwithparameters = input
+        -- Write the new saved parameters to the cache
         vim.fn.writefile({ input }, path)
-        vim.cmd.split('term://' .. input)
-        vim.opt_local.relativenumber = false
-        vim.opt_local.number = false
 
-        vim.api.nvim_buf_set_keymap(
-            0,
-            't',
-            '<C-space>',
-            '<C-\\><C-n><C-w>h',
-            { silent = true }
+        -- vim.cmd.split('term://' .. input)
+        -- Run the command
+        vim.cmd(
+            'split | lcd '
+                .. vim.fn.fnamemodify(file, ':p:h')
+                .. ' | terminal '
+                .. input
         )
-        vim.cmd.startinsert()
+
+        -- vim.opt_local.relativenumber = false
+        -- vim.opt_local.number = false
+        -- vim.cmd.startinsert()
     end)
 end, { desc = 'run command' })
 
@@ -93,12 +97,13 @@ vim.keymap.set('n', '<leader>R', function()
     }, function(input)
         if input == nil or input == '' then
             print(
-                'See :h cmdline-special, :h filename-modifiers, and <C-f> to edit the prompt like a buffer'
+                'See :h cmdline-special, :h filename-modifiers, and :h c_CTRL-F'
             )
             return
         end
         vim.g.runwithparametersglobally = input
         vim.fn.writefile({ input }, path)
+        vim.cmd.split('term://' .. input)
         vim.cmd.split('term://' .. input)
         vim.opt_local.relativenumber = false
         vim.opt_local.number = false
