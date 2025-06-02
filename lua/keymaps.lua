@@ -232,7 +232,7 @@ vim.api.nvim_set_keymap('n', ']q', '<CMD>cnext<CR>', { desc = 'Next quickfix' })
 
 -- }}}
 -- plus and minus for decrement and increment {{{
-vim.api.nvim_set_keymap('n', '+', '<C-a>', { desc = 'Increment' })
-vim.api.nvim_set_keymap('n', '-', '<C-x>', { desc = 'Decrement' })
+-- vim.api.nvim_set_keymap('n', '+', '<C-a>', { desc = 'Increment' })
+-- vim.api.nvim_set_keymap('n', '-', '<C-x>', { desc = 'Decrement' })
 -- }}}
 -- vim:foldmethod=marker:
