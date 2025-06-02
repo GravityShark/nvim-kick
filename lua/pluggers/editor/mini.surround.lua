@@ -1,8 +1,8 @@
 return { -- mini.surround Surround text with any character
     'echasnovski/mini.surround',
     keys = {
-        { 'S', mode = { 'n', 'v' }, desc = 'Add surrounding' },
-        -- { 'ys', desc = 'Add surrounding' },
+        { 'S', mode = 'v' },
+        { 'ys', desc = 'Add surrounding' },
         { 'ds', desc = 'Delete surrounding' },
         { 'cs', desc = 'Change surrounding' },
         -- { 'sf', desc = 'Find right surrounding' },
@@ -10,11 +10,34 @@ return { -- mini.surround Surround text with any character
         -- { 'sh', desc = 'Highlight surrounding' },
         -- { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
     },
-    opts = {
-        mappings = {
-            add = 'S', -- Add surrounding in Normal and Visual modes
-            delete = 'ds', -- Delete surrounding
-            replace = 'cs', -- Replace surrounding
-        },
-    },
+    config = function()
+        require('mini.surround').setup({
+            mappings = {
+                add = 'ys',
+                delete = 'ds',
+                find = '',
+                find_left = '',
+                highlight = '',
+                replace = 'cs',
+                update_n_lines = '',
+
+                -- Add this only if you don't want to use extended mappings
+                suffix_last = '',
+                suffix_next = '',
+            },
+            search_method = 'cover_or_next',
+        })
+
+        -- Remap adding surrounding to Visual mode selection
+        vim.keymap.del('x', 'ys')
+        vim.keymap.set(
+            'x',
+            'S',
+            [[:<C-u>lua MiniSurround.add('visual')<CR>]],
+            { silent = true }
+        )
+
+        -- Make special mapping for "add surrounding for line"
+        vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+    end,
 }
