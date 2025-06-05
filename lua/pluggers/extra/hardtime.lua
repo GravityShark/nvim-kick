@@ -7,6 +7,7 @@ return {
         max_count = 2,
         timeout = 10000,
         resetting_keys = {},
+        restriction_mode = 'block',
         restricted_keys = {
             ['w'] = { 'n', 'x' },
             ['W'] = { 'n', 'x' },
