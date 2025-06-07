@@ -72,18 +72,14 @@ M.lsp = { -- :help lspconfig-all
     emmet_language_server = {},
     tailwindcss = {},
     ts_ls = {
-        settings = {
-            implicitProjectConfiguration = {
-                checkJs = true,
-            },
-        },
+        settings = { implicitProjectConfiguration = { checkJs = true } },
     },
     clangd = {},
     pyright = {},
     jsonls = {},
-    nil_ls = {},
+    nil_ls = { settings = { ['nix.flake.autoArchive'] = true } },
     -- 25 different language AOC challenge
-    -- csharp_ls = {},
+    -- csharp_ls =  }{},
     -- ols = {},
     -- zls = {},
     -- ocamllsp = {},
