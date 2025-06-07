@@ -77,7 +77,7 @@ M.lsp = { -- :help lspconfig-all
     clangd = {},
     pyright = {},
     jsonls = {},
-    nil_ls = { settings = { ['nix.flake.autoArchive'] = true } },
+    nil_ls = { settings = { nix = { flake = { autoArchive = true } } } },
     -- 25 different language AOC challenge
     -- csharp_ls =  }{},
     -- ols = {},
