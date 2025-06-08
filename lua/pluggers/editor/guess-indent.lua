@@ -1,7 +1,7 @@
 return { -- guess-indent.nvim Automatically guess the indent level
     'nmac427/guess-indent.nvim',
-    keys = { '<Leader>cg', '<CMD>GuessIndent<CR>', desc = 'Guess Indent' },
     cmd = 'GuessIndent',
+    keys = { { '<Leader>cg', '<CMD>GuessIndent<CR>', desc = 'Guess Indent' } },
     opts = {},
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
 }
