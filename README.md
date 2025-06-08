@@ -128,8 +128,9 @@ cli for a specific purpose
 
 ```bash
 git clone https://github.com/GravityShark/nvim-kick.git ~/.config/nvim
-# then run the relink command with your preferred plugins
 cd ~/.config/nvim
+git config --local include.path ../.gitconfig
+# then run the relink command with your preferred plugins
 ./relink.out
 ```
 
