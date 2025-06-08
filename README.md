@@ -127,7 +127,7 @@ cli for a specific purpose
 > you might wanna do the uninstall instruction first so no conflicts arise
 
 ```bash
-git clone https://github.com/GravityShark0/nvim-kick.git ~/.config/nvim
+git clone https://github.com/GravityShark/nvim-kick.git ~/.config/nvim
 # then run the relink command with your preferred plugins
 cd ~/.config/nvim
 ./relink.out
