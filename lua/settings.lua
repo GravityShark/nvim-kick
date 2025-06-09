@@ -25,38 +25,12 @@ vim.opt.showmode = false -- Disable showing current mode in cmdline
 vim.g.have_nerd_font = true -- Enable nerd fonts
 vim.opt.termguicolors = true -- The colors become good
 -- Folding
--- vim.opt.foldtext = ''
-vim.opt.foldtext = 'v:lua.fold_with_ellipsis()'
-function _G.fold_with_ellipsis()
-    local line = vim.fn.getline(vim.v.foldstart)
-    local n_lines = vim.v.foldend - vim.v.foldstart + 1
-
-    -- Trim trailing whitespace
-    line = line:gsub('%s+$', '')
-
-    -- Add an ellipsis (you could also append ' [' .. n_lines .. ' lines]' if desired)
-    return line .. '...'
-end
 vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.get_fold_expr()'
-
-function _G.get_fold_expr()
-    local bufnr = vim.api.nvim_get_current_buf()
-
-    -- Try LSP
-    local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
-    for _, client in ipairs(clients) do
-        if client.server_capabilities.foldingRangeProvider then
-            return 'v:lua.vim.lsp.foldexpr()'
-        end
-    end
-
-    -- Fallback to Treesitter
-    return 'v:lua.vim.treesitter.foldexpr()'
-end
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = require('foldtext')
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0

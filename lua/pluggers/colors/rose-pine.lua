@@ -8,7 +8,7 @@ return { -- soho vibes
     end,
     opts = {
         highlight_groups = {
-            Folded = { fg = 'muted' },
+            Folded = { bg = 'base' },
             MiniJump = { fg = 'subtle', undercurl = false, underline = true },
         },
     },
