@@ -31,7 +31,7 @@ vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
 -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
-vim.opt.foldtext = 'v:lua.vim.lsp.foldtext()'
+-- vim.opt.foldtext = 'v:lua.vim.lsp.foldtext()'
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
