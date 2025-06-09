@@ -25,29 +25,13 @@ vim.opt.showmode = false -- Disable showing current mode in cmdline
 vim.g.have_nerd_font = true -- Enable nerd fonts
 vim.opt.termguicolors = true -- The colors become good
 -- Folding
--- vim.opt.foldtext = ''
-vim.opt.foldtext = 'v:lua.custom_fold_text()'
-
-function _G.custom_fold_text()
-    local line = vim.fn.getline(vim.v.foldstart)
-    local suffix = vim.fn.getline(vim.v.foldend):match('%s*%)%s*$') or '…)'
-
-    local count = vim.v.foldend - vim.v.foldstart + 1
-    return line:gsub('%s*$', '')
-        .. ' […] '
-        .. suffix
-        .. '  ['
-        .. count
-        .. ' lines]'
-end
-
--- Optional styling
--- vim.cmd([[highlight Folded guibg=NONE guifg=#5f87af]])
 vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldmethod = 'expr'
+-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.opt.foldtext = 'v:lua.vim.lsp.foldtext()'
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
