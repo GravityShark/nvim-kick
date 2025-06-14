@@ -16,7 +16,7 @@ colors/rose-pine.lua
 main/blink.lua
 main/conform.lua
 main/lint.lua
-main/lsp.lua
+main/lspconfig.lua
 main/telescope.lua
 main/treesitter.lua
 

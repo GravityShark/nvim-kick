@@ -1,4 +1,4 @@
--- A single file listing Treesitter, LSP, Mason, Formatting and Linting specs.
+-- A single file listing Treesitter, LSP, Formatting and Linting specs.
 M = {}
 
 M.treesitter = {
@@ -23,31 +23,9 @@ M.treesitter = {
     -- 'org',
     -- 'vimdoc',
     -- 'diff', -- Other
-    'gitcommit',
+    -- 'gitcommit',
     -- 'query',
     -- 'regex',
-}
-
-M.mason = { -- :Mason
-    'lua-language-server', -- Lua
-    'stylua',
-    'gopls', -- Go
-    'golangci-lint',
-    'gofumpt',
-    'golines',
-    'goimports-reviser',
-    'html-lsp', -- HTML
-    'prettierd',
-    'emmet-language-server',
-    'tailwindcss-language-server', -- CSS
-    'typescript-language-server', -- Javascript
-    -- 'quick-lint-js',
-    'clangd', -- C
-    'clang-format',
-    'pyright', -- Python
-    'ruff',
-    'shfmt', -- Shell
-    'json-lsp', -- JSON
 }
 
 M.lsp = { -- :help lspconfig-all
@@ -115,7 +93,6 @@ M.formatextra = { -- :help conform-options
     },
 }
 
--- :e ~/ -- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters.local/share/nvim/lazy/nvim-lint/README.md
 -- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
 M.lint = {
     python = { 'ruff' },
