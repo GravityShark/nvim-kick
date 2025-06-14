@@ -102,8 +102,8 @@ return { -- Default LSP Configurations
     config = function()
         for key, val in pairs(require('ensure').lsp) do
             if type(val) == 'table' then
-                vim.lsp.enable(name)
-                vim.lsp.config(name, val)
+                vim.lsp.enable(key)
+                vim.lsp.config(key, val)
             else
                 vim.lsp.enable(val)
             end
