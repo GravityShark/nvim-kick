@@ -3,11 +3,12 @@ M = {}
 
 -- Mostly want to install parsers that don't automatically install by filename
 M.treesitter = {
-    -- 'diff',
+    'diff',
     'gitcommit',
-    -- 'markdown_inline',
-    -- 'regex',
-    -- 'sql',
+    'markdown_inline',
+    'printf',
+    'query',
+    'regex',
 }
 
 M.lsp = { -- :help lspconfig-all
@@ -42,23 +43,24 @@ M.lsp = { -- :help lspconfig-all
 }
 
 M.format = { -- :help conform-formatters
-    lua = { 'stylua' },
-    css = { 'prettierd' },
-    html = { 'prettierd' },
-    json = { 'prettierd' },
-    javascript = { 'prettierd' },
-    markdown = { 'prettierd' },
-    yaml = { 'prettierd' },
+    bash = { 'shfmt' },
     c = { 'clang-format' },
     cpp = { 'clang-format' },
     go = { 'gofumpt', 'golines', 'goimports-reviser' },
-    python = { 'ruff_format' },
-    sh = { 'shfmt' },
-    bash = { 'shfmt' },
+    lua = { 'stylua' },
+    markdown = { 'prettierd' },
     nix = { 'nixfmt' },
     ocaml = { 'ocamlformat' },
-    swift = { 'swift-format' },
+    python = { 'ruff_format' },
     ruby = { 'rubyfmt' },
+    sh = { 'shfmt' },
+    swift = { 'swift-format' },
+    yaml = { 'prettierd' },
+    -- Web dev
+    html = { 'prettierd' },
+    css = { 'prettierd' },
+    javascript = { 'prettierd' },
+    json = { 'prettierd' },
 }
 
 M.formatextra = { -- :help conform-options
