@@ -11,6 +11,16 @@ M.treesitter = {
 }
 
 M.lsp = { -- :help lspconfig-all
+    'clangd',
+    'pyright',
+    gopls = {
+        settings = {
+            gopls = {
+                usePlaceholders = true,
+                analyses = { unusedparams = true },
+            },
+        },
+    },
     lua_ls = {
         settings = {
             Lua = {
@@ -20,33 +30,15 @@ M.lsp = { -- :help lspconfig-all
             },
         },
     },
-    gopls = {
-        settings = {
-            gopls = {
-                usePlaceholders = true,
-                analyses = { unusedparams = true },
-            },
-        },
-    },
-    'html', -- Webdev
-    emmet_language_server = {},
-    tailwindcss = {},
+    nil_ls = { settings = { nix = { flake = { autoArchive = true } } } },
+    -- Webdev
+    'emmet_language_server',
+    'html',
+    'jsonls',
+    'tailwindcss',
     ts_ls = {
         settings = { implicitProjectConfiguration = { checkJs = true } },
     },
-    clangd = {},
-    pyright = {},
-    jsonls = {},
-    nil_ls = { settings = { nix = { flake = { autoArchive = true } } } },
-    -- 25 different language AOC challenge
-    -- csharp_ls =  }{},
-    -- ols = {},
-    -- zls = {},
-    -- ocamllsp = {},
-    -- perlpls = {},
-    -- gleam = {},
-    -- sourcekit = {},
-    -- ruby_lsp = {},
 }
 
 M.format = { -- :help conform-formatters

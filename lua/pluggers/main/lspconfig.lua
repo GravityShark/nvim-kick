@@ -103,7 +103,7 @@ return { -- Default LSP Configurations
         for key, val in pairs(servers) do
             if type(val) == 'table' then
                 vim.lsp.enable(name)
-                vim.lsp.config(name, opts)
+                vim.lsp.config(name, val)
             else
                 vim.lsp.enable(val)
             end
