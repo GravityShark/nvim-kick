@@ -66,4 +66,9 @@ require('lazy').setup({
 
 -- Keymaps only works after loading lazy
 require('keymaps')
+
+for name, opts in pairs(require('ensure').lsp) do
+    vim.lsp.enable(name)
+    vim.lsp.config(name, opts)
+end
 -- vim:foldmethod=marker:

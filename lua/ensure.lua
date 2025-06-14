@@ -1,31 +1,12 @@
 -- A single file listing Treesitter, LSP, Formatting and Linting specs.
 M = {}
 
-M.treesitter = {
-    -- 'go', -- Go
-    -- 'gomod',
-    -- 'gosum',
-    -- 'templ',
-    -- 'html', -- Webdev
-    -- 'css',
-    -- 'javascript',
-    -- 'python', -- Other Languages
-    -- 'sql',
-    -- 'bash',
-    -- 'c',
-    -- 'lua',
-    -- 'nix',
-    -- 'json', -- Data/Config Formats
-    -- 'yaml',
-    -- 'toml',
-    -- 'markdown', -- Markup
+M.treesitter = { -- Mostly want to install parsers that don't automatically install by filename
+    -- 'diff',
+    'gitcommit',
     -- 'markdown_inline',
-    -- 'org',
-    -- 'vimdoc',
-    -- 'diff', -- Other
-    -- 'gitcommit',
-    -- 'query',
     -- 'regex',
+    -- 'sql',
 }
 
 M.lsp = { -- :help lspconfig-all
