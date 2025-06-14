@@ -1,6 +1,6 @@
 # nvim-kick
 
-> use neovim 0.10
+> use the latest and greatest neovim (0.11 rn)
 
 > cause fuck yeah only latest baby
 

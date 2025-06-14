@@ -17,7 +17,6 @@ func main() {
 
 	os.Chdir("./lua/pluggers/")
 	defer file.Close()
-	file.Close()
 
 	deleteSymlinks()
 	scanner := bufio.NewScanner(file)
