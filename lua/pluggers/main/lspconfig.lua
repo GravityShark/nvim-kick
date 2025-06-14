@@ -100,9 +100,13 @@ return { -- Default LSP Configurations
     end,
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
     config = function()
-        for name, opts in pairs(require('ensure').lsp) do
-            vim.lsp.enable(name)
-            vim.lsp.config(name, opts)
+        for key, val in pairs(servers) do
+            if type(val) == 'table' then
+                vim.lsp.enable(name)
+                vim.lsp.config(name, opts)
+            else
+                vim.lsp.enable(val)
+            end
         end
     end,
 }
