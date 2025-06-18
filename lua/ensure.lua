@@ -69,8 +69,8 @@ M.formatextra = { -- :help conform-options
     },
 }
 
--- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
-M.lint = {
+-- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters or
+M.lint = { -- :e ~/.local/share/nvim/lazy/nvim-lint/lua/lint/linters
     python = { 'ruff' },
     javascript = { 'quick-lint-js' },
     go = { 'golangcilint' },
