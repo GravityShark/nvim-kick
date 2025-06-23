@@ -176,6 +176,19 @@ vim.keymap.set(
     '<C-u>zz',
     { noremap = true, silent = true }
 )
+
+vim.keymap.set(
+    { 'n', 'v' },
+    '<PageDown>',
+    '<C-d>zz',
+    { noremap = true, silent = true }
+)
+vim.keymap.set(
+    { 'n', 'v' },
+    '<PageUp>',
+    '<C-u>zz',
+    { noremap = true, silent = true }
+)
 vim.api.nvim_set_keymap('n', 'n', 'nzzzv', { silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- }}}

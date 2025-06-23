@@ -54,6 +54,10 @@ return {
         disabled_keys = {
             ['<C-w>c'] = { 'n' },
             ['<ESC>'] = { 'n' },
+            ['<Left>'] = false,
+            ['<Down>'] = false,
+            ['<Up>'] = false,
+            ['<Right>'] = false,
         },
     },
 }
