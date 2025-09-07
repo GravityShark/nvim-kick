@@ -9,6 +9,10 @@ return {
         resetting_keys = {},
         restriction_mode = 'block',
         restricted_keys = {
+            ['<Left>'] = { 'n', 'i' },
+            ['<Down>'] = { 'n', 'i' },
+            ['<Up>'] = { 'n', 'i' },
+            ['<Right>'] = { 'n', 'i' },
             ['w'] = { 'n', 'x' },
             ['W'] = { 'n', 'x' },
             ['e'] = { 'n', 'x' },
