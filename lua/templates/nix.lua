@@ -36,7 +36,7 @@ end
 ---   - `filename` (string): The filename of the new file, e.g., "init.lua".
 return function(opts)
     local template = {
-        { pattern = '.*shell', content = shell_template },
+        { pattern = 'shell', content = shell_template },
         { pattern = '.*', content = base_template },
     }
 
