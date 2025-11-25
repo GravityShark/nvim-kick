@@ -46,7 +46,6 @@ cli for a specific purpose
 - or just make testing just a lil easier
 
 - this guy's config https://www.youtube.com/watch?v=NkQnPuidxWY
-
   1. sessions (persistence)
      - actually dont like this
      - im gonna use arrow.nvim instead
@@ -81,23 +80,21 @@ cli for a specific purpose
 - [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)
 - [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)
 - Colorscheming
-  - [mini.base16](https://github.com/echasnovski/mini.base16) -- coolors
-  - [mini.colors](https://github.com/echasnovski/mini.colors) or[lush](https://github.com/rktjmp/lush.nvim)
-  - [mini.hues](https://github.com/echasnovski/mini.hues)
+  - [mini.base16](https://github.com/nvim-mini/mini.base16) -- coolors
+  - [mini.colors](https://github.com/nvim-mini/mini.colors) or[lush](https://github.com/rktjmp/lush.nvim)
+  - [mini.hues](https://github.com/nvim-mini/mini.hues)
 
 ### plugins i looked into
 
 - [Neogen](https://github.com/danymat/neogen) (kinda interesting)
   - automatically puts an annotation which is very nice and works better than snippets can
 - Bufferline plugins (mini.tabline, bufferline.nvim, etc...)
-
   - I've been thinking about how you should go about in a
     project and I am currently trying to ditch bufferlines
     or buffer related workflow and try ThePrimeagen's Harpoon
     where he sets 4 main files that he constantly goes to and
     only goes to the other files via file picker or lsp get def.
   - My buffer workflow
-
     - It's basically just vim tabs but better
     - How
       - open a workspace with [persistence.nvim](https://github.com/folke/persistence.nvim)

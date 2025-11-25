@@ -1,9 +1,9 @@
 return {
-    'echasnovski/mini.statusline',
+    'nvim-mini/mini.statusline',
     event = 'VeryLazy',
     priority = 1000,
     dependencies = {
-        'echasnovski/mini.icons',
+        'nvim-mini/mini.icons',
         opts = {},
         init = function()
             package.preload['nvim-web-devicons'] = function()

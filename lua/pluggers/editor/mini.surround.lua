@@ -1,5 +1,5 @@
 return { -- mini.surround Surround text with any character
-    'echasnovski/mini.surround',
+    'nvim-mini/mini.surround',
     keys = {
         { 'S', mode = 'v' },
         { 'ys', desc = 'Add surrounding' },

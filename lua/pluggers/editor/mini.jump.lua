@@ -1,5 +1,5 @@
 return {
-    'echasnovski/mini.jump',
+    'nvim-mini/mini.jump',
     event = 'VeryLazy',
     opts = {
         delay = {

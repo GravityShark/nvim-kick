@@ -1,5 +1,5 @@
 return { -- mini.indentscope Indent indicators
-    'echasnovski/mini.indentscope',
+    'nvim-mini/mini.indentscope',
     event = 'VeryLazy',
     opts = {
         -- symbol = '▎',
