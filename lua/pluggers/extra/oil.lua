@@ -4,7 +4,20 @@ return {
     keys = {
         { '<leader>.', '<CMD>Oil --float<CR>', desc = 'file manager' },
     },
-    lazy = false,
+    init = function()
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'OilEnter',
+            callback = vim.schedule_wrap(function(args)
+                local oil = require('oil')
+                if
+                    vim.api.nvim_get_current_buf() == args.data.buf
+                    and oil.get_cursor_entry()
+                then
+                    oil.open_preview()
+                end
+            end),
+        })
+    end,
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
         { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
@@ -15,20 +28,6 @@ return {
             opts = {
                 processor = 'magick_cli',
             },
-        },
-    },
-    event = {
-        {
-            { 'OilEnter' },
-            callback = vim.schedule_wrap(function(args)
-                local oil = require('oil')
-                if
-                    vim.api.nvim_get_current_buf() == args.data.buf
-                    and oil.get_cursor_entry()
-                then
-                    oil.open_preview()
-                end
-            end),
         },
     },
     opts = {
