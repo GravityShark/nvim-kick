@@ -7,17 +7,20 @@ return {
         { '<leader>-', '<CMD>Oil<CR>', desc = 'file manager' },
     },
     init = function()
+        local augroup =
+            vim.api.nvim_create_augroup('OilOpenPreview', { clear = true })
+        local is_previewing = false
+        -- Autocommand for trigering preview when entering neovim with `nvim .`
         vim.api.nvim_create_autocmd('User', {
             pattern = 'OilEnter',
-            callback = vim.schedule_wrap(function(args)
-                local oil = require('oil')
-                if
-                    vim.api.nvim_get_current_buf() == args.data.buf
-                    and oil.get_cursor_entry()
-                then
-                    require('oil.actions').preview.callback()
+            group = augroup,
+            callback = function()
+                if is_previewing then
+                    return
                 end
-            end),
+                is_previewing = true
+                require('oil').open_preview()
+            end,
         })
     end,
     dependencies = {
@@ -32,6 +35,7 @@ return {
             },
         },
     },
+
     opts = {
         default_file_explorer = true,
         delete_to_trash = true,
