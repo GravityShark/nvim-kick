@@ -3,7 +3,8 @@ return {
     cmd = 'Oil',
     lazy = false,
     keys = {
-        { '<leader>.', '<CMD>Oil --float<CR>', desc = 'file manager' },
+        { '<leader>.', '<CMD>Oil --float<CR>', desc = 'float file manager' },
+        { '<leader>.', '<CMD>Oil', desc = 'file manager' },
     },
     init = function()
         vim.api.nvim_create_autocmd('User', {
@@ -14,7 +15,7 @@ return {
                     vim.api.nvim_get_current_buf() == args.data.buf
                     and oil.get_cursor_entry()
                 then
-                    oil.open_preview()
+                    oil.select({ preview = true })
                 end
             end),
         })
@@ -22,7 +23,7 @@ return {
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
         { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
-        { 'refractalize/oil-git-status.nvim', config = true },
+        { 'benomahony/oil-git.nvim', config = true },
         {
             '3rd/image.nvim',
             build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
@@ -36,9 +37,7 @@ return {
         delete_to_trash = true,
         lsp_file_methods = { autosave_changes = true },
         watch_for_changes = true,
-        win_options = {
-            signcolumn = 'yes:2',
-        },
+        sort = { { 'mtime', 'desc' } },
         keymaps = {
             ['<leader>.'] = { 'actions.close', mode = 'n' },
             ['gd'] = {
