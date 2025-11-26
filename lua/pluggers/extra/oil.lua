@@ -6,23 +6,6 @@ return {
         { '<leader>.', '<CMD>Oil --float<CR>', desc = 'float file manager' },
         { '<leader>-', '<CMD>Oil<CR>', desc = 'file manager' },
     },
-    init = function()
-        local augroup =
-            vim.api.nvim_create_augroup('OilOpenPreview', { clear = true })
-        local is_previewing = false
-        -- Autocommand for trigering preview when entering neovim with `nvim .`
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'OilEnter',
-            group = augroup,
-            callback = function()
-                if is_previewing then
-                    return
-                end
-                is_previewing = true
-                require('oil').open_preview()
-            end,
-        })
-    end,
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
         { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
