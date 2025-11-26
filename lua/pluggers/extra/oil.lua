@@ -4,7 +4,7 @@ return {
     lazy = false,
     keys = {
         { '<leader>.', '<CMD>Oil --float<CR>', desc = 'float file manager' },
-        { '<leader>.', '<CMD>Oil', desc = 'file manager' },
+        { '<leader>-', '<CMD>Oil<CR>', desc = 'file manager' },
     },
     init = function()
         vim.api.nvim_create_autocmd('User', {
@@ -15,7 +15,7 @@ return {
                     vim.api.nvim_get_current_buf() == args.data.buf
                     and oil.get_cursor_entry()
                 then
-                    oil.select({ preview = true })
+                    oil.actions.preview()
                 end
             end),
         })
