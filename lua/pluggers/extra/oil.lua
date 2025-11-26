@@ -1,6 +1,7 @@
 return {
     'stevearc/oil.nvim',
     cmd = 'Oil',
+    lazy = false,
     keys = {
         { '<leader>.', '<CMD>Oil --float<CR>', desc = 'file manager' },
     },
@@ -33,9 +34,11 @@ return {
     opts = {
         default_file_explorer = true,
         delete_to_trash = true,
-        skip_confirm_for_simple_edits = false,
         lsp_file_methods = { autosave_changes = true },
         watch_for_changes = true,
+        win_options = {
+            signcolumn = 'yes:2',
+        },
         keymaps = {
             ['<leader>.'] = { 'actions.close', mode = 'n' },
             ['gd'] = {
