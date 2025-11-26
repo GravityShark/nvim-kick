@@ -15,7 +15,7 @@ return {
                     vim.api.nvim_get_current_buf() == args.data.buf
                     and oil.get_cursor_entry()
                 then
-                    oil.actions.preview()
+                    require('oil.actions').preview()
                 end
             end),
         })
