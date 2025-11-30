@@ -25,7 +25,7 @@ vim.opt.showmode = false -- Disable showing current mode in cmdline
 vim.g.have_nerd_font = true -- Enable nerd fonts
 vim.opt.termguicolors = true -- The colors become good
 -- Folding
-vim.opt.fillchars = { fold = ' ' }
+vim.opt.fillchars = { fold = ' ', eob = ' ' }
 vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
