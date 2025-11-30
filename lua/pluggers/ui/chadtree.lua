@@ -10,4 +10,7 @@ return {
             desc = 'CHADtree',
         },
     },
+    init = function()
+        vim.g.chadtree_settings = { ['view.width'] = 30 }
+    end,
 }

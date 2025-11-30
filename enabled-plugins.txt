@@ -47,6 +47,5 @@ ui/mini.statusline.lua
 ui/neominimap.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
-ui/yazmp.lua
 
 # vim:commentstring=#\ %s:

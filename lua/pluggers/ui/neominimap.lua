@@ -33,6 +33,11 @@ return {
 
         -- Window-Specific Minimap Controls
         {
+            '<leader>mw',
+            '',
+            desc = '+window',
+        },
+        {
             '<leader>mwt',
             '<cmd>Neominimap WinToggle<cr>',
             desc = 'Toggle minimap for current window',
@@ -55,6 +60,11 @@ return {
 
         -- Tab-Specific Minimap Controls
         {
+            '<leader>mt',
+            '',
+            desc = '+tab',
+        },
+        {
             '<leader>mtt',
             '<cmd>Neominimap TabToggle<cr>',
             desc = 'Toggle minimap for current tab',
@@ -76,6 +86,11 @@ return {
         },
 
         -- Buffer-Specific Minimap Controls
+        {
+            '<leader>mb',
+            '',
+            desc = '+buffer',
+        },
         {
             '<leader>mbt',
             '<cmd>Neominimap BufToggle<cr>',
