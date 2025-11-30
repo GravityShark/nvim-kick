@@ -5,12 +5,12 @@ return {
     cmd = 'CHADopen',
     keys = {
         {
-            '<leader>>',
+            '<leader>,',
             '<CMD>CHADopen<CR>',
             desc = 'CHADtree',
         },
     },
     init = function()
-        vim.g.chadtree_settings = { ['view.width'] = 30 }
+        vim.g.chadtree_settings = { ['view.width'] = 25 }
     end,
 }

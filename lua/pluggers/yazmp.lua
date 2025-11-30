@@ -1,1 +1,0 @@
-ui/yazmp.lua
