@@ -1,4 +1,8 @@
 return {
     'Snikimonkd/yazmp',
-    cmd = '<CMD>Zenmode<CR>',
+    cmd = 'Zenmode',
+    opts = function()
+        require('yazmp').zenmode()
+        return {}
+    end,
 }

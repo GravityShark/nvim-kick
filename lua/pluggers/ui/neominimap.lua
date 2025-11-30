@@ -7,7 +7,8 @@ return {
         -- Global Minimap Controls
         {
             '<leader>m',
-            desc = 'map',
+            '',
+            desc = '+map',
         },
         {
             '<leader>mm',
