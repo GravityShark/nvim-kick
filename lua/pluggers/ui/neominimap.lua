@@ -130,11 +130,12 @@ return {
     },
     init = function()
         -- The following options are recommended when layout == "float"
-        vim.opt.wrap = false
-        -- vim.opt.sidescrolloff = 36 -- Set a large value
+        -- vim.opt.wrap = false
+        vim.opt.sidescrolloff = 15 -- Set a large value
 
         --- Put your configuration here
         ---@type Neominimap.UserConfig
-        vim.g.neominimap = { auto_enable = true }
+        vim.g.neominimap =
+            { auto_enable = true, float = { minimap_width = 12 } }
     end,
 }

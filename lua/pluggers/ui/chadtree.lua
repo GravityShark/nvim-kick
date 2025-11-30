@@ -6,11 +6,12 @@ return {
     keys = {
         {
             '<leader>,',
-            '<CMD>CHADopen<CR>',
+            '<CMD>CHADopen --nofocus.CR>',
             desc = 'CHADtree',
         },
     },
     init = function()
-        vim.g.chadtree_settings = { ['view.width'] = 25 }
+        vim.g.chadtree_settings =
+            { ['view.width'] = 35, ['options.close_on_open'] = true }
     end,
 }
