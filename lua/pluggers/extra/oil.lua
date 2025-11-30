@@ -43,8 +43,7 @@ return {
         },
         keymaps = {
             ['<leader>.'] = { 'actions.close', mode = 'n' },
-
-            ['<S.CR>'] = { 'actions.close', mode = 'n' },
+            ['<S-CR>'] = { 'actions.open_external', mode = 'n' },
             ['gd'] = {
                 desc = 'Toggle file detail view',
                 callback = function()
@@ -61,11 +60,18 @@ return {
                     end
                 end,
             },
-            [':'] = {
+            ["'"] = {
                 'actions.open_cmdline',
                 opts = {
                     shorten_path = true,
                     -- modify = ':h',
+                },
+            },
+            ['"'] = {
+                'actions.open_cmdline',
+                opts = {
+                    shorten_path = true,
+                    modify = ':h',
                 },
             },
         },
