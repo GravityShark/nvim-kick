@@ -35,9 +35,16 @@ return {
         delete_to_trash = true,
         lsp_file_methods = { autosave_changes = true },
         watch_for_changes = true,
-        sort = { { 'mtime', 'desc' } },
+        view_options = {
+            sort = {
+                { 'type', 'desc' },
+                { 'mtime', 'desc' },
+            },
+        },
         keymaps = {
             ['<leader>.'] = { 'actions.close', mode = 'n' },
+
+            ['<S.CR>'] = { 'actions.close', mode = 'n' },
             ['gd'] = {
                 desc = 'Toggle file detail view',
                 callback = function()
@@ -58,7 +65,7 @@ return {
                 'actions.open_cmdline',
                 opts = {
                     shorten_path = true,
-                    modify = ':h',
+                    -- modify = ':h',
                 },
             },
         },
