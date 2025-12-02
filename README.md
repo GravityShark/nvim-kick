@@ -57,15 +57,22 @@ cli for a specific purpose
   4. automatic test opening stuff
      - cool
 
+- [literally](https://github.com/dinhhuy258/sfm.nvim) [any](https://github.com/nvim-tree/nvim-tree.lua) [tree](https://github.com/ms-jpq/chadtree) [plugin](https://github.com/nvim-neo-tree/neo-tree.nvim) or [file](https://github.com/SidOfc/carbon.nvim) [explorer](https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#file-explorer)
+  - [oil.nvim](https://github.com/stevearc/oil.nvim)
+    - oil is really cool, but there is another
+  - [fyler.nvim](https://github.com/A7Lavinraj/fyler.nvim)
+    - one thing i kinda want to have is
+
+- [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) so that i dont use
+  this, i should really setup a keybind/or atleast a note on how to do good
+  native search and replace
+  1. populate the arglist using telescope `<Leader>fl` or `Telescope live_grep`
+  2. `:cdo %s/{old}/{new}/g`
 - [treewalker.nvim](https://github.com/aaronik/treewalker.nvim) for somereason this plugin only existed now?
 - [flash.nvim](https://github.com/folke/flash.nvim) i have not used flash (or any similar) before and im hesitant to change to one
 - [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion) database completion from within neovim
 - [distant.nvim](https://github.com/chipsenkbeil/distant.nvim) remote work on neovim!!
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) i can NOt make this shit work for some reason
-- [literally](https://github.com/dinhhuy258/sfm.nvim) [any](https://github.com/nvim-tree/nvim-tree.lua) [tree](https://github.com/ms-jpq/chadtree) [plugin](https://github.com/nvim-neo-tree/neo-tree.nvim) or [file](https://github.com/SidOfc/carbon.nvim) [explorer](https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#file-explorer)
-- since i use netrw, why not
-  - [oil.nvim](https://github.com/stevearc/oil.nvim)
-  - [netrw.nvim](https://github.com/prichrd/netrw.nvim)
 - [Neotest](https://github.com/nvim-neotest/neotest) (very interesting)
 - [submode.nvim](https://github.com/pogyomo/submode.nvim) (very very interesting)
   - iirc which-key.nvim also now has hydra stuff
@@ -108,6 +115,9 @@ cli for a specific purpose
       - Tab, <S-Tab> = :bnext, :bprev
       - <A-[1-9]> = jump to bufferline index 1-9
       - <Leader>c = close buffer
+- [netrw.nvim](https://github.com/prichrd/netrw.nvim)
+  - netrw is mid i just realized, never having ts ever again :pray:
+  - oil.nvim or fyler.nvim is fetter
 
 ### Shitty idea
 
