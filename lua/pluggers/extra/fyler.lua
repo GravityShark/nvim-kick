@@ -16,24 +16,14 @@ return {
     branch = 'stable',
     lazy = false, -- Necessary for `default_explorer` to work properly
     opts = {
-        integrations = {
-            icon = 'none',
-        },
+        -- integrations = {
+        --     icon = 'none',
+        -- },
         views = {
             finder = {
-                close_on_select = false,
+                close_on_select = true,
                 default_explorer = true,
                 delete_to_trash = true,
-                git_status = {
-                    symbols = {
-                        Added = '▎',
-                        Modified = '▎',
-                        Deleted = '󰐊',
-                        topdelete = '󰐊',
-                        Renamed = '▎',
-                        Untracked = '┆',
-                    },
-                },
             },
             mappings = {
                 ['q'] = 'CloseView',

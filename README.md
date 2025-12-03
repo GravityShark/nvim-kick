@@ -62,6 +62,7 @@ cli for a specific purpose
     - oil is really cool, but there is another
   - [fyler.nvim](https://github.com/A7Lavinraj/fyler.nvim)
     - one thing i kinda want to have is
+    - currently really buggy and is missing some features i still have to add
 
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) so that i dont use
   this, i should really setup a keybind/or atleast a note on how to do good
