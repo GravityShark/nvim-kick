@@ -35,7 +35,6 @@ extra/inc-rename.lua
 # extra/lazydev.lua
 extra/neogen.lua
 extra/new-file-template.lua
-extra/oil.lua
 extra/trouble.lua
 extra/ts-comments.lua
 extra/undotree.lua

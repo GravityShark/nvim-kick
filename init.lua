@@ -57,7 +57,7 @@ require('lazy').setup({
                 -- 'man',
                 -- "matchit",
                 -- "matchparen",
-                -- 'netrwPlugin',
+                'netrwPlugin',
                 -- "shada",
             },
         },

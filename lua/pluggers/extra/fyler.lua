@@ -3,29 +3,34 @@ return {
     dependencies = { 'nvim-mini/mini.icons' },
     keys = {
         {
+            '<leader>.',
+            '<CMD>Fyler kind=float<CR>',
+            desc = 'file manager',
+        },
+        {
             '<leader>,',
-            '<CMD>Fyler<CR>',
-            desc = 'tree',
+            '<CMD>Fyler kind=split_left_most<CR>',
+            desc = 'left tree',
         },
     },
     branch = 'stable',
-    -- lazy = false, -- Necessary for `default_explorer` to work properly
+    lazy = false, -- Necessary for `default_explorer` to work properly
     opts = {
         views = {
             finder = {
                 close_on_select = false,
-                -- default_explorer = true,
+                default_explorer = true,
                 delete_to_trash = true,
-                git_status = {
-                    symbols = {
-                        Added = '▎',
-                        Modified = '▎',
-                        Deleted = '󰐊',
-                        topdelete = '󰐊',
-                        Renamed = '▎',
-                        Untracked = '┆',
-                    },
-                },
+                -- git_status = {
+                --     symbols = {
+                --         Added = '▎',
+                --         Modified = '▎',
+                --         Deleted = '󰐊',
+                --         topdelete = '󰐊',
+                --         Renamed = '▎',
+                --         Untracked = '┆',
+                --     },
+                -- },
             },
             mappings = {
                 ['q'] = 'CloseView',
