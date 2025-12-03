@@ -3,8 +3,7 @@ return {
     cmd = 'Oil',
     lazy = false,
     keys = {
-        { '<leader>.', '<CMD>Oil --float<CR>', desc = 'float file manager' },
-        { '<leader>-', '<CMD>Oil<CR>', desc = 'file manager' },
+        { '<leader>,', '<CMD>Oil --float<CR>', desc = 'float file manager' },
     },
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
@@ -42,7 +41,7 @@ return {
             },
         },
         keymaps = {
-            ['<leader>.'] = { 'actions.close', mode = 'n' },
+            ['<ESC>'] = { 'actions.close', mode = 'n' },
             ['<S-CR>'] = { 'actions.open_external', mode = 'n' },
             ['gd'] = {
                 desc = 'Toggle file detail view',

@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	deleteSymlinks()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		plugin := scanner.Text()
+		plugin := strings.TrimSpace(scanner.Text())
 		if len(plugin) == 0 {
 			continue
 		}
