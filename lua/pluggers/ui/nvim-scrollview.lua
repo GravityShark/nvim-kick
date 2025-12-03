@@ -1,5 +1,5 @@
 return {
-    'dstein64 / nvim-scrollview',
+    'dstein64/nvim-scrollview',
     event = 'VeryLazy',
     opts = function()
         require('scrollview.contrib.gitsigns').setup({})
