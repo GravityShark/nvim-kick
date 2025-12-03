@@ -44,7 +44,6 @@ extra/which-key.lua
 ui/colorizer.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
-ui/nvim-scrollbar.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
 ui/zen-mode.lua

@@ -95,6 +95,18 @@ return { -- Default LSP Configurations
                     desc = 'workspace symbol',
                     buffer = ev.buf,
                 })
+                vim.keymap.set(
+                    'n',
+                    '[e',
+                    vim.diagnostic.goto_prev,
+                    { desc = 'error' }
+                )
+                vim.keymap.set(
+                    'n',
+                    ']e',
+                    vim.diagnostic.goto_next,
+                    { desc = 'error' }
+                )
             end,
         })
     end,

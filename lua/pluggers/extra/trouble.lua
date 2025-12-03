@@ -3,7 +3,7 @@ return { -- trouble.nvim Diagnostic Viewer
     cmd = 'Trouble',
     keys = {
         {
-            '<leader>cx',
+            '<leader>ce',
             '<CMD>Trouble diagnostics toggle<CR>',
             desc = 'errors',
         },
