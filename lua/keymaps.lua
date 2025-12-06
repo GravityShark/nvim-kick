@@ -139,6 +139,13 @@ vim.api.nvim_set_keymap(
     '<CMD>close<CR>',
     { desc = 'close window' }
 )
+
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>X',
+    '<CMD>bdelete!<CR>',
+    { desc = 'close buffer forcefully' }
+)
 -- }}}
 -- Allow for using the script ~t~ inside nvim {{{
 -- vim.api.nvim_set_keymap('n', '<C-g>', '<CMD>silent !t<CR>', { silent = true })
