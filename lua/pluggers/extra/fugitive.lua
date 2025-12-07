@@ -1,40 +1,43 @@
 return { -- vise for going to the git repository in a browser
-    'tpope/vim-rhubarb',
-    cmd = 'GBrowse',
-    dependencies = { -- vim-fugitive :Git for an integrated git experience with vim
-        'tpope/vim-fugitive',
-        keys = {
-            {
-                '<leader>g',
-                '',
-                desc = '+git',
-            },
-            {
-                '<leader>gm',
-                '<CMD>Git<CR>',
-                desc = 'menu',
-            },
-            {
-                '<leader>gc',
-                '<CMD>Git show<CR>',
-                desc = 'changes',
-            },
-            {
-                '<leader>gp',
-                '<CMD>Git push<CR>',
-                desc = 'push',
-            },
-            {
-                'gh',
-                '<CMD>diffget //2<CR>',
-                { desc = 'diffget //2', noremap = true },
-            },
-            {
-                'ga',
-                '<CMD>diffget //3<CR>',
-                { desc = 'diffget //3', noremap = true },
-            },
+    'tpope/vim-fugitive',
+    event = 'VeryLazy',
+    keys = {
+        {
+            '<leader>g',
+            '',
+            desc = '+git',
         },
-        cmd = { 'Git' },
+        {
+            '<leader>gm',
+            '<CMD>Git<CR>',
+            desc = 'menu',
+        },
+        {
+            '<leader>gc',
+            '<CMD>Git show<CR>',
+            desc = 'changes',
+        },
+        {
+            '<leader>gp',
+            '<CMD>Git push<CR>',
+            desc = 'push',
+        },
+        {
+            'gh',
+            '<CMD>diffget //2<CR>',
+            { desc = 'diffget //2', noremap = true },
+        },
+        {
+            'ga',
+            '<CMD>diffget //3<CR>',
+            { desc = 'diffget //3', noremap = true },
+        },
+    },
+    cmd = { 'Git' },
+    dependencies = {
+        { -- vim-fugitive :Git for an integrated git experience with vim
+            'tpope/vim-rhubarb',
+            cmd = 'GBrowse',
+        },
     },
 }
