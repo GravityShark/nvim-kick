@@ -25,12 +25,12 @@ return { -- vise for going to the git repository in a browser
                 desc = 'push',
             },
             {
-                'gt',
+                'gh',
                 '<CMD>diffget //2<CR>',
                 { desc = 'diffget //2', noremap = true },
             },
             {
-                'gn',
+                'ga',
                 '<CMD>diffget //3<CR>',
                 { desc = 'diffget //3', noremap = true },
             },
