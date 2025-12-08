@@ -30,7 +30,7 @@ extra/arrow.lua
 extra/fugitive.lua
 # extra/fyler.lua
 extra/gitsigns.lua
-extra/hardtime.lua
+# extra/hardtime.lua
 extra/inc-rename.lua
 # extra/lazydev.lua
 extra/neogen.lua

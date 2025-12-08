@@ -29,8 +29,13 @@ return { -- vise for going to the git repository in a browser
         },
         {
             '<leader>gv',
-            '<CMD>Gvdiffsplit<CR>',
-            { desc = 'diff split' },
+            '<CMD>Gvdiffsplit!<CR>',
+            { desc = 'vertical diff split' },
+        },
+        {
+            '<leader>gh',
+            '<CMD>Ghdiffsplit!<CR>',
+            { desc = 'horizontal diff split' },
         },
         {
             'gh',
@@ -43,7 +48,7 @@ return { -- vise for going to the git repository in a browser
             { desc = 'diffget //3', noremap = true },
         },
     },
-    cmd = { 'Git' },
+    cmd = { 'Git', 'Gvdiffsplit', 'Ghdiffsplit' },
     dependencies = {
         { -- vim-fugitive :Git for an integrated git experience with vim
             'tpope/vim-rhubarb',
