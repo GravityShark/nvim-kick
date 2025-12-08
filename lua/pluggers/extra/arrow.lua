@@ -9,7 +9,7 @@ return {
         -- hide_buffer_handbook = true,
         leader_key = 'm',
         buffer_leader_key = ',',
-        index_keys = 'tsradcxzbpfw',
+        index_keys = 'caiew.,qgou',
         save_key = 'git_root',
         mappings = {
             toggle = ' ', -- <- this is a space btw

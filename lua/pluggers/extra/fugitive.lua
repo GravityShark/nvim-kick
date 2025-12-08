@@ -23,6 +23,16 @@ return { -- vise for going to the git repository in a browser
             desc = 'push',
         },
         {
+            '<leader>gM',
+            '<CMD>Git mergetool<CR>',
+            { desc = 'mergetool' },
+        },
+        {
+            '<leader>gv',
+            '<CMD>Gvdiffsplit<CR>',
+            { desc = 'diff split' },
+        },
+        {
             'gh',
             '<CMD>diffget //2<CR>',
             { desc = 'diffget //2', noremap = true },

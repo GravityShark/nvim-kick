@@ -1,10 +1,10 @@
 return {
     'saghen/blink.cmp',
-    lazy = false,
+    events = 'VeryLazy',
     dependencies = 'rafamadriz/friendly-snippets',
 
     -- use a release tag to download pre-built binaries
-    version = 'v1.*',
+    version = '1.*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -39,6 +39,13 @@ return {
         -- Experimental signature help support
         -- (the thing that appears if you're inside a function argument)
         signature = { enabled = true, window = { border = 'single' } },
+
+        -- See the fuzzy documentation for more information
+        fuzzy = { implementation = 'prefer_rust_with_warning' },
+
+        cmdline = {
+            enabled = false,
+        },
     },
 
     opts_extend = { 'sources.default' },
