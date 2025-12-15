@@ -59,7 +59,7 @@ return {
                     end
                 end,
             },
-            ["'"] = {
+            [';'] = {
                 'actions.open_cmdline',
                 opts = {
                     shorten_path = true,
