@@ -43,6 +43,7 @@ extra/undotree.lua
 extra/which-key.lua
 
 ui/colorizer.lua
+ui/image.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
 ui/smear-cursor.lua
