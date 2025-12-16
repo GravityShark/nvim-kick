@@ -10,15 +10,14 @@ return {
         { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
         {
             'benomahony/oil-git.nvim',
-            opts = {
-                highlights = {
-                    OilGitAdded = { fg = 'GreenSign' }, -- green
-                    OilGitModified = { fg = 'BlueSign' }, -- yellow
-                    OilGitRenamed = { fg = 'PurpleSign' }, -- purple
-                    OilGitUntracked = { fg = 'GreenSign' }, -- blue
-                    OilGitIgnored = { fg = 'Grey' }, -- gray
-                },
-            },
+            init = function()
+                vim.cmd('hi link OilGitAdded GreenSign')
+                vim.cmd('hi link OilGitModified BlueSign')
+                vim.cmd('hi link OilGitRenamed PurpleSign')
+                vim.cmd('hi link OilGitUntracked GreenSign')
+                vim.cmd('hi link OilGitIgnored Grey')
+            end,
+            config = true,
         },
     },
 
