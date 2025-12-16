@@ -36,6 +36,7 @@ return {
         keymaps = {
             ['<ESC>'] = { 'actions.close', mode = 'n' },
             ['<S-CR>'] = { 'actions.open_external', mode = 'n' },
+            ['gp'] = 'actions.preview',
             ['gd'] = {
                 desc = 'Toggle file detail view',
                 callback = function()
