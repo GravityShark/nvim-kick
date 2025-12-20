@@ -1,5 +1,5 @@
 {
-  "snippets" : {
+  "snippets": {
     "prefix": "snip",
     "body": [
       "\"$1\" : {",

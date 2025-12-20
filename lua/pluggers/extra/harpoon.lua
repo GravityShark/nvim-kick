@@ -1,7 +1,15 @@
 return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
-    opts = { settings = { save_on_toggle = true } },
+    opts = {
+        settings = { save_on_toggle = true },
+        get_root_dir = function()
+            local git_root = vim.fn.system('git rev-parse --show-toplevel 2>&1')
+            if vim.v.shell_error == 0 then
+                return git_root:gsub('\n$', '')
+            end
+        end,
+    },
     keys = function()
         local keys = {
             { '<leader>h', '', desc = '+harpoon' },

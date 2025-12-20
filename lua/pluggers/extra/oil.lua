@@ -1,9 +1,10 @@
 return {
     'stevearc/oil.nvim',
     cmd = 'Oil',
-    event = { 'VeryLazy', 'BufNewFile' },
+    lazy = false,
+    -- event = { 'VeryLazy', 'BufNewFile' },
     keys = {
-        { '<leader>.', '<CMD>Oilfloat<CR>', desc = 'file explorer' },
+        { '<leader>.', '<CMD>Oil<CR>', desc = 'file explorer' },
         { '<leader>,', '<CMD>Oil --float<CR>', desc = 'float file manager' },
     },
     dependencies = {
