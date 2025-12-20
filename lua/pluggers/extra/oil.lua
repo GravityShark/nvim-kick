@@ -3,6 +3,7 @@ return {
     cmd = 'Oil',
     event = { 'VeryLazy', 'BufNewFile' },
     keys = {
+        { '<leader>.', '<CMD>Oilfloat<CR>', desc = 'file explorer' },
         { '<leader>,', '<CMD>Oil --float<CR>', desc = 'float file manager' },
     },
     dependencies = {
