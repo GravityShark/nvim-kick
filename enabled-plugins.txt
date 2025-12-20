@@ -20,6 +20,7 @@ main/lint.lua
 main/lsp.lua
 main/telescope.lua
 main/treesitter.lua
+main/snacks.lua
 
 editor/guess-indent.lua
 editor/mini.ai.lua
@@ -29,11 +30,8 @@ editor/mini.surround.lua
 
 extra/arrow.lua
 extra/fugitive.lua
-# extra/fyler.lua
 extra/gitsigns.lua
-# extra/hardtime.lua
 extra/inc-rename.lua
-# extra/lazydev.lua
 extra/neogen.lua
 extra/new-file-template.lua
 extra/oil.lua
@@ -43,11 +41,9 @@ extra/undotree.lua
 extra/which-key.lua
 
 ui/colorizer.lua
-ui/image.lua
 ui/mini.indentscope.lua
 ui/mini.statusline.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
-ui/zen-mode.lua
 
 # vim:commentstring=#\ %s:

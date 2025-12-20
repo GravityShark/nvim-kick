@@ -31,6 +31,17 @@ vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldtext = require('foldtext')
+-- Restore folds
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+    pattern = { '*.*' },
+    desc = 'save view (folds), when closing file',
+    command = 'mkview',
+})
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+    pattern = { '*.*' },
+    desc = 'load view (folds), when opening file',
+    command = 'silent! loadview',
+})
 -- Netrw
 vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 vim.g.netrw_banner = 0
