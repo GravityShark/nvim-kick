@@ -13,7 +13,7 @@
 
 # colors/gruvbox.lua
 # colors/gruvbox-material.lua
-# colors/nvim-base16.lua
+colors/nvim-base16.lua
 # colors/rose-pine.lua
 # colors/themify.lua
 
