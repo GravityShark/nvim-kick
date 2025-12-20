@@ -11,6 +11,7 @@ return {
         image = { enabled = true },
         quickfile = { enabled = true },
         rename = { enabled = true },
+        words = { enabled = true },
     },
     keys = {
         {

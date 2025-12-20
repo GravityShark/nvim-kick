@@ -12,7 +12,7 @@
 # lua/pluggers/ui/ui.md
 
 # colors/rose-pine.lua
-colors/gruvbox-material.lua
+# colors/gruvbox-material.lua
 
 main/blink.lua
 main/conform.lua
@@ -28,9 +28,9 @@ editor/mini.jump.lua
 editor/mini.pairs.lua
 editor/mini.surround.lua
 
-extra/arrow.lua
 extra/fugitive.lua
 extra/gitsigns.lua
+extra/harpoon.lua
 extra/inc-rename.lua
 extra/neogen.lua
 extra/new-file-template.lua
