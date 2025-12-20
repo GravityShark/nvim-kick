@@ -11,8 +11,9 @@
 # lua/pluggers/fun/fun.md
 # lua/pluggers/ui/ui.md
 
-colors/rose-pine.lua
+colors/gruvbox.lua
 # colors/gruvbox-material.lua
+# colors/rose-pine.lua
 # colors/themify.lua
 
 main/blink.lua
