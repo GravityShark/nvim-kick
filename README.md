@@ -47,7 +47,6 @@ cli for a specific purpose
 - [overseer.nvim](https://github.com/stevearc/overseer.nvim) job and task management, like github actions or bulids
 - [mini.snippets](https://github.com/nvim-mini/mini.snippets) custom snippets that are easy to write like coq
   - https://cmp.saghen.dev/configuration/snippets.html#mini-snippets
-- [gh.nvim](https://github.com/ldelossa/gh.nvim) github integration that is more than just rhubar
 
 - make dap work well
 - or just make testing just a lil easier
@@ -86,7 +85,8 @@ cli for a specific purpose
   - iirc which-key.nvim also now has hydra stuff
 - Git plugins, only for when Im gonna be managing alot of gits in the future, but right now i do a little hack ;)
   - [octo.nvim](https://github.com/pwntester/octo.nvim) if i become successful one day
-    - [cmp-git](https://github.com/petertriho/cmp-git)
+    - [gh.nvim](https://github.com/ldelossa/gh.nvim) github integration that is more than just rhubar
+      - [cmp-git](https://github.com/petertriho/cmp-git)
   - [neogit](https://github.com/NeogitOrg/neogit) or even just [magit](https://magit.vc/) on emacs, or just [lazygit](https://github.com/jesseduffield/lazygit)
 - new neovim look
   - [nvim-notify](https://github.com/rcarriga/nvim-notify)

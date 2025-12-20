@@ -1,7 +1,7 @@
 return {
     'stevearc/oil.nvim',
     cmd = 'Oil',
-    lazy = false,
+    event = { 'VeryLazy', 'BufNewFile' },
     keys = {
         { '<leader>,', '<CMD>Oil --float<CR>', desc = 'float file manager' },
     },
