@@ -18,7 +18,7 @@ return {
             function()
                 require('snacks').bufdelete.delete()
             end,
-            desc = 'zen mode',
+            desc = 'buffer delete',
         },
     },
     init = function()
