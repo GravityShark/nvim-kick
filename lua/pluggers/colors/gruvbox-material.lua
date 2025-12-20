@@ -5,6 +5,5 @@ return { -- gruvvin
     config = function()
         vim.g.gruvbox_material_enable_italic = true
         vim.cmd.colorscheme('gruvbox-material')
-        vim.opt.background = 'light'
     end,
 }
