@@ -8,6 +8,7 @@ return {
             if vim.v.shell_error == 0 then
                 return git_root:gsub('\n$', '')
             end
+            return vim.loop.cwd()
         end,
     },
     keys = function()
