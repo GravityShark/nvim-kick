@@ -1,4 +1,4 @@
-return { -- soho vibes
+return { -- gruvvin
     'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
