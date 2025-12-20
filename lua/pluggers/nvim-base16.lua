@@ -1,1 +1,0 @@
-colors/nvim-base16.lua
