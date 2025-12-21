@@ -1,6 +1,5 @@
 return { -- vise for going to the git repository in a browser
     'tpope/vim-fugitive',
-    event = 'VeryLazy',
     keys = {
         {
             '<leader>g',

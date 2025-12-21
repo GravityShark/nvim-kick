@@ -34,8 +34,8 @@ editor/mini.surround.lua
 
 extra/fugitive.lua
 extra/gitsigns.lua
-extra/harpoon.lua
 extra/inc-rename.lua
+extra/mini.visits.lua
 extra/neogen.lua
 extra/new-file-template.lua
 extra/oil.lua

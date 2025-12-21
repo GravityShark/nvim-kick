@@ -1,13 +1,16 @@
 return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
         settings = { save_on_toggle = true },
         get_root_dir = function()
             local git_root = vim.fn.system('git rev-parse --show-toplevel 2>&1')
+
             if vim.v.shell_error == 0 then
                 return git_root:gsub('\n$', '')
             end
+
             return vim.loop.cwd()
         end,
     },
@@ -30,9 +33,11 @@ return {
                 desc = 'menu',
             },
         }
+
         for i = 1, 9 do
             table.insert(keys, {
-                '<C-' .. i .. '>',
+                -- '<C-' .. i .. '>',
+                '<leader>' .. i,
                 function()
                     require('harpoon'):list():select(i)
                 end,
