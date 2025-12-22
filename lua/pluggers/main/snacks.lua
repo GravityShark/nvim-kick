@@ -84,7 +84,7 @@ return {
         {
             '<leader>sd',
             function()
-                Snacks.picker.explorer({
+                Snacks.picker.files({
                     args = { '-td' },
                     -- follow = false,
                     -- hidden = false,
@@ -93,6 +93,20 @@ return {
                 })
             end,
             desc = 'directories',
+        },
+        {
+            '<leader>sd',
+            function()
+                Snacks.picker.files({
+                    args = { '-td' },
+                    layout = {
+                        win = 'input',
+                        border = false,
+                        title = false,
+                    },
+                })
+            end,
+            desc = 'side bar tree view',
         },
         {
             '<leader>sf',
