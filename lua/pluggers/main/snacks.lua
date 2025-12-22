@@ -21,13 +21,13 @@ return {
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true },
+        picker = { enabled = true, matcher = { frecency = true } },
         quickfile = { enabled = true },
-        styles = {
-            input = {
-                row = nil,
-            },
-        },
+        -- styles = {
+        --     input = {
+        --         row = nil,
+        --     },
+        -- },
         rename = { enabled = true },
         statuscolumn = {
             enabled = true,
@@ -84,7 +84,13 @@ return {
         {
             '<leader>sd',
             function()
-                Snacks.picker.files({ cmd = 'fd -td' })
+                Snacks.picker.explorer({
+                    args = { '-td' },
+                    -- follow = false,
+                    -- hidden = false,
+                    -- ignored = false,
+                    -- format = 'file',
+                })
             end,
             desc = 'directories',
         },
