@@ -29,6 +29,7 @@ return {
         { "<leader>na", function() require("noice").cmd("all") end, desc = "noice all" },
         { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "dismiss all" },
         { "<leader>ne", function() require("noice").cmd("error") end, desc = "noice all" },
+        { '<leader>np', function() Snacks.picker.notifications() end, desc = 'picker' },
         -- { "<leader>nt", function() require("noice").cmd("pick") end, desc = "noice picker (telescope/FzfLua)" },
         -- { "<C-f>", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, silent = true, expr = true, noremap = true, desc = "Scroll Forward", mode = {"i", "n", "s"}},
         -- { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},

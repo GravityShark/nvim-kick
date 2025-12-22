@@ -6,14 +6,14 @@ return {
         return {
             n_lines = 500,
             custom_textobjects = {
-                -- o = ai.gen_spec.treesitter({ -- code block
-                --     a = { '@block.outer', '@conditional.outer', '@loop.outer' },
-                --     i = { '@block.inner', '@conditional.inner', '@loop.inner' },
-                -- }),
+                o = ai.gen_spec.treesitter({ -- code block
+                    a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+                    i = { '@block.inner', '@conditional.inner', '@loop.inner' },
+                }),
                 f = ai.gen_spec.treesitter({
                     a = '@function.outer',
                     i = '@function.inner',
-                }), -- function
+                }), -- function definition
                 c = ai.gen_spec.treesitter({
                     a = '@class.outer',
                     i = '@class.inner',
@@ -33,7 +33,11 @@ return {
                     '^().*()$',
                 },
                 u = ai.gen_spec.function_call(), -- u for "Usage"
-                U = ai.gen_spec.function_call({ name_pattern = '[%w_]' }), -- without dot in function name
+                -- function print(x)
+                -- 'ciu' print(|)
+                -- 'cau' |
+                U = ai.gen_spec.function_call({ name_pattern = '[%w_]' }),
+                -- without dot in function name
             },
         }
     end,

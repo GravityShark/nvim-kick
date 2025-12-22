@@ -16,16 +16,12 @@ return {
         })
     end,
     opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
         picker = { enabled = true },
-        profiler = { enabled = true },
         quickfile = { enabled = true },
         rename = { enabled = true },
         statuscolumn = {
@@ -36,6 +32,10 @@ return {
         },
 
         -- words = { enabled = true }, -- it pisses all over my screen
+        -- might try out debug
+        -- gh, git, gitbrowse, lazygit
+        -- layout
+        -- notifier,notify (like nvim-notify)
     },
     keys = {
         {
@@ -68,27 +68,6 @@ return {
             end,
             desc = 'find text',
         },
-        {
-            '<leader>,',
-            function()
-                Snacks.picker.buffers()
-            end,
-            desc = 'buffers',
-        },
-        {
-            '<leader>:',
-            function()
-                Snacks.picker.command_history()
-            end,
-            desc = 'command history',
-        },
-        {
-            '<leader>n',
-            function()
-                Snacks.picker.notifications()
-            end,
-            desc = 'notification history',
-        },
         -- find
         {
             '<leader>sb',
@@ -97,13 +76,6 @@ return {
             end,
             desc = 'buffers',
         },
-        -- {
-        --     '<leader>fc',
-        --     function()
-        --         Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
-        --     end,
-        --     desc = 'find Config File',
-        -- },
         {
             '<leader>sf',
             function()
