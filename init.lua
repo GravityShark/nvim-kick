@@ -40,7 +40,6 @@ require('lazy').setup({
     defaults = { lazy = true, version = false },
     change_detection = { notify = false },
     rocks = { enabled = false },
-
     performance = {
         rtp = {
             disabled_plugins = {

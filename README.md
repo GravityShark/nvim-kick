@@ -168,4 +168,8 @@ rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
 
 - thanks [kickstart.nvim]
+
+## note
+nvim servers exist, might use it to create cool shit like cool tranitions with mini.color a
+
 ```

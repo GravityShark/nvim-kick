@@ -23,6 +23,11 @@ return {
         input = { enabled = true },
         picker = { enabled = true },
         quickfile = { enabled = true },
+        styles = {
+            input = {
+                row = -1,
+            },
+        },
         rename = { enabled = true },
         statuscolumn = {
             enabled = true,
