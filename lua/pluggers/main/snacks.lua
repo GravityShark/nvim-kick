@@ -95,7 +95,7 @@ return {
             desc = 'directories',
         },
         {
-            '<leader>sd',
+            '<leader>>',
             function()
                 Snacks.picker.files({
                     args = { '-td' },
