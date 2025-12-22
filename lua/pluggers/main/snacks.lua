@@ -91,14 +91,7 @@ return {
                     -- hidden = false,
                     -- ignored = false,
                     format = 'text',
-                    layout = {
-                        layout = {
-                            {
-                                box = 'vertical',
-                                { win = 'input', title = 'Directories' },
-                            },
-                        },
-                    },
+                    title = 'Directories',
                 })
             end,
             desc = 'directories',
@@ -109,7 +102,7 @@ return {
                 Snacks.picker.explorer({
                     args = { '-td' },
                     layout = {
-                        auto_hide = 'input',
+                        auto_hide = { 'input' },
                     },
                 })
             end,
