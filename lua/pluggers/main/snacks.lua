@@ -25,7 +25,7 @@ return {
         quickfile = { enabled = true },
         styles = {
             input = {
-                row = -1,
+                row = nil,
             },
         },
         rename = { enabled = true },
