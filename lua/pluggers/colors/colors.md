@@ -1,10 +1,14 @@
-# Color plugins
+# colors.md
 
 These plugins change and set the colorscheme
 
 ## catppuccin
 
 the nice pastel theme
+
+## gruvbox-material
+
+- a real theme for real men
 
 ## monokai
 

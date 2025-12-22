@@ -1,8 +1,9 @@
 # Used by relink.go to know what to set as enabled plugins
 # run `relink.out` or `go run relink.go`
 # the names are assumed to be relative to ./lua/pluggers/ from now own
-# read about the available plugins in their respective .org documentation
-# plugins that are emphasized (surrounded with *) are recommended
+# read about the available plugins in their respective .md documentation
+# plugins that are emphasized (surrounded with __) are recommended
+
 # use `gf` to view the docs
 # lua/pluggers/main/main.md
 # lua/pluggers/colors/colors.md
@@ -11,6 +12,7 @@
 # lua/pluggers/fun/fun.md
 # lua/pluggers/ui/ui.md
 
+# colors
 # colors/gruvbox.lua
 # colors/gruvbox-material.lua
 # colors/nvim-base16.lua
@@ -22,9 +24,8 @@ main/blink.lua
 main/conform.lua
 main/lint.lua
 main/lsp.lua
-main/telescope.lua
-main/treesitter.lua
 main/snacks.lua
+main/treesitter.lua
 
 editor/guess-indent.lua
 editor/mini.ai.lua

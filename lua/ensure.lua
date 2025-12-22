@@ -76,4 +76,7 @@ M.lint = { -- :e ~/.local/share/nvim/lazy/nvim-lint/lua/lint/linters
     go = { 'golangcilint' },
 }
 
+-- If you use mason like a fat lol cow then use this and enable mason
+-- M.mason = { }
+
 return M

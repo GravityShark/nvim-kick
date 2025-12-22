@@ -6,6 +6,8 @@
 
 > also this assumes you install all of your dependencies using nix lol, so no Mason for you
 
+> i mean mason is kinda still available as a plugin so you can still use it and just put your mason stuff in ensure.lua then the M.mason
+
 ## whats different about this one
 
 i used to have one big plugins.lua with all my plugins.

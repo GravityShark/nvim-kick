@@ -8,12 +8,12 @@ vim.api.nvim_set_keymap('n', '<leader>c', '', { desc = '+code' })
 -- To escape terminal mode
 vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { silent = true })
 -- Enter terminal
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>s',
-    '<CMD>split term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
-    { desc = 'shell' }
-)
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>s',
+--     '<CMD>split term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
+--     { desc = 'shell' }
+-- )
 -- }}}
 -- Run/Compile code inside {{{
 -- Saved compile arguments are stolen from here
