@@ -105,12 +105,12 @@ function HighlightedFoldtext()
     end
 
     local folded = {
-        { ' ', 'FoldedIcon' },
+        -- { ' ', 'FoldedIcon' },
         {
             '[+' .. vim.v.foldend - vim.v.foldstart - 1 .. '...]',
             'FoldedText',
         },
-        { ' ', 'FoldedIcon' },
+        -- { ' ', 'FoldedIcon' },
     }
 
     for _, item in ipairs(folded) do
