@@ -29,12 +29,12 @@ return {
         --     },
         -- },
         rename = { enabled = true },
-        statuscolumn = {
-            enabled = true,
-            folds = {
-                git_hl = true,
-            },
-        },
+        -- statuscolumn = {
+        --     enabled = true,
+        --     folds = {
+        --         git_hl = true,
+        --     },
+        -- },
 
         -- words = { enabled = true }, -- it pisses all over my screen
         -- might try out debug
@@ -49,6 +49,27 @@ return {
                 require('snacks').bufdelete.delete()
             end,
             desc = 'buffer delete',
+        },
+        -- Tree View
+        {
+            '<leader><',
+            function()
+                Snacks.picker.explorer({
+                    args = { '-td' },
+                    layout = { auto_hide = { 'input' } },
+                })
+            end,
+            desc = 'left file tree',
+        },
+        {
+            '<leader>>',
+            function()
+                Snacks.picker.explorer({
+                    args = { '-td' },
+                    layout = { auto_hide = { 'input' }, position = 'right' },
+                })
+            end,
+            desc = 'right file tree',
         },
         -- Top Pickers & Explorer
         {
@@ -90,23 +111,11 @@ return {
                     -- follow = false,
                     -- hidden = false,
                     -- ignored = false,
-                    format = 'text',
+                    -- format = 'text',
                     title = 'Directories',
                 })
             end,
             desc = 'directories',
-        },
-        {
-            '<leader>>',
-            function()
-                Snacks.picker.explorer({
-                    args = { '-td' },
-                    layout = {
-                        auto_hide = { 'input' },
-                    },
-                })
-            end,
-            desc = 'side bar tree view',
         },
         {
             '<leader>sf',

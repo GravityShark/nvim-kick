@@ -4,7 +4,7 @@ return {
     lazy = false,
     -- event = { 'VeryLazy', 'BufNewFile' },
     keys = {
-        { '<leader>,', '<CMD>Oil --float<CR>', desc = 'float file manager' },
+        { '<leader>,', '<CMD>Oil --float<CR>', desc = 'floating file manager' },
     },
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
