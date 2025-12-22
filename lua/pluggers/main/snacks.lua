@@ -56,7 +56,15 @@ return {
                     multi = { 'buffers', 'recent', 'git_files' },
                 })
             end,
-            desc = 'smart find files',
+            desc = 'find files',
+        },
+
+        {
+            '<leader>F',
+            function()
+                Snacks.picker.git_grep()
+            end,
+            desc = 'Find text',
         },
         {
             '<leader>,',
@@ -331,7 +339,7 @@ return {
             desc = 'Keymaps',
         },
         {
-            '<leader>sl',
+            '<leader>sL',
             function()
                 Snacks.picker.loclist()
             end,
