@@ -64,7 +64,7 @@ return {
         {
             '<leader>F',
             function()
-                Snacks.picker.grep({ finder = 'rg' })
+                Snacks.picker.grep()
             end,
             desc = 'find text',
         },

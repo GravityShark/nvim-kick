@@ -4,5 +4,5 @@ return {
     'nvim-mini/mini.colors',
     lazy = false,
     priority = 999,
-    config = {},
+    opts = {},
 }
