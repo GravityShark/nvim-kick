@@ -85,11 +85,12 @@ return {
             '<leader>sd',
             function()
                 Snacks.picker.files({
+                    cmd = 'fd',
                     args = { '-td' },
                     -- follow = false,
                     -- hidden = false,
                     -- ignored = false,
-                    -- format = 'file',
+                    format = 'text',
                 })
             end,
             desc = 'directories',
@@ -97,7 +98,7 @@ return {
         {
             '<leader>>',
             function()
-                Snacks.picker.files({
+                Snacks.picker.explorer({
                     args = { '-td' },
                     layout = {
                         win = 'input',
