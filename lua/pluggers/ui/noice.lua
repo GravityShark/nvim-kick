@@ -1,6 +1,7 @@
 return {
     'folke/noice.nvim',
     event = 'VeryLazy',
+    dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
         lsp = {
             hover = {
@@ -22,12 +23,13 @@ return {
   -- stylua: ignore
     keys = {
         { "<leader>n", "", desc = "+noice"},
-        { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-        { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-        { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
-        { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
-        { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-        { "<leader>nt", function() require("noice").cmd("pick") end, desc = "Noice Picker (Telescope/FzfLua)" },
+        -- { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+        { "<leader>nl", function() require("noice").cmd("last") end, desc = "noice last message" },
+        { "<leader>nh", function() require("noice").cmd("history") end, desc = "noice history" },
+        { "<leader>na", function() require("noice").cmd("all") end, desc = "noice all" },
+        { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "dismiss all" },
+        { "<leader>ne", function() require("noice").cmd("error") end, desc = "noice all" },
+        -- { "<leader>nt", function() require("noice").cmd("pick") end, desc = "noice picker (telescope/FzfLua)" },
         -- { "<C-f>", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, silent = true, expr = true, noremap = true, desc = "Scroll Forward", mode = {"i", "n", "s"}},
         -- { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
     },

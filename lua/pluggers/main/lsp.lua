@@ -26,18 +26,6 @@ return { -- Default LSP Configurations
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(ev)
                 -- Keybindings
-                vim.keymap.set(
-                    'n',
-                    '<leader>cD',
-                    vim.lsp.buf.declaration,
-                    { buffer = ev.buf, desc = 'declaration' }
-                )
-                vim.keymap.set(
-                    'n',
-                    '<leader>cd',
-                    vim.lsp.buf.definition,
-                    { buffer = ev.buf, desc = 'definition' }
-                )
                 vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, {
                     buffer = ev.buf,
                     desc = 'lens',
@@ -49,39 +37,13 @@ return { -- Default LSP Configurations
                 end, {
                     desc = 'inlay hints',
                 })
-                vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, {
-                    buffer = ev.buf,
-                    desc = 'type definition',
-                })
+
                 vim.keymap.set(
                     'n',
                     '<leader>cc',
                     vim.lsp.buf.code_action,
                     { buffer = ev.buf, desc = 'code actions' }
                 )
-                vim.keymap.set('n', '<leader>cm', vim.lsp.buf.references, {
-                    buffer = ev.buf,
-                    desc = 'mentions',
-                })
-
-                local ok = pcall(require, 'inc_rename')
-                if ok then
-                    vim.keymap.set('n', '<leader>cr', function()
-                        return ':IncRename ' .. vim.fn.expand('<cword>')
-                    end, { expr = true, desc = 'rename' })
-                else
-                    vim.keymap.set(
-                        'n',
-                        '<leader>cr',
-                        vim.lsp.buf.rename,
-                        { buffer = ev.buf, desc = 'rename' }
-                    )
-                end
-
-                vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, {
-                    buffer = ev.buf,
-                    desc = 'implementation',
-                })
 
                 vim.keymap.set(
                     'n',
@@ -107,6 +69,103 @@ return { -- Default LSP Configurations
                     vim.diagnostic.goto_next,
                     { desc = 'error' }
                 )
+
+                -- Plugins
+                local ok = pcall(require, 'inc_rename')
+                if ok then
+                    vim.keymap.set('n', '<leader>cr', function()
+                        return ':IncRename ' .. vim.fn.expand('<cword>')
+                    end, { expr = true, desc = 'rename' })
+                else
+                    vim.keymap.set(
+                        'n',
+                        '<leader>cr',
+                        vim.lsp.buf.rename,
+                        { buffer = ev.buf, desc = 'rename' }
+                    )
+                end
+
+                local Snacks = pcall(require, 'snacks')
+                -- {
+                --     'gai',
+                --     function()
+                --         Snacks.picker.lsp_incoming_calls()
+                --     end,
+                --     desc = 'C[a]lls Incoming',
+                -- },
+                -- {
+                --     'gao',
+                --     function()
+                --         Snacks.picker.lsp_outgoing_calls()
+                --     end,
+                --     desc = 'C[a]lls Outgoing',
+                -- },
+                if Snacks then
+                    vim.keymap.set('n', 'gd', function()
+                        Snacks.picker.lsp_definitions()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to definition',
+                    })
+                    vim.keymap.set('n', 'gD', function()
+                        Snacks.picker.lsp_declarations()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to declaration',
+                    })
+
+                    vim.keymap.set('n', 'gr', function()
+                        Snacks.picker.lsp_references()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to references',
+                    })
+                    vim.keymap.set('n', 'gI', function()
+                        Snacks.picker.lsp_implementations()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to implementation',
+                    })
+                    vim.keymap.set('n', 'gy', function()
+                        Snacks.picker.lsp_type_definitions()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to t[y]pe definition',
+                    })
+                    vim.keymap.set('n', 'gy', function()
+                        Snacks.picker.lsp_type_definitions()
+                    end, {
+                        buffer = ev.buf,
+                        desc = 'go to t[y]pe definition',
+                    })
+                else
+                    vim.keymap.set(
+                        'n',
+                        'gd',
+                        vim.lsp.buf.definition,
+                        { buffer = ev.buf, desc = 'go to definition' }
+                    )
+                    vim.keymap.set(
+                        'n',
+                        'gD',
+                        vim.lsp.buf.declaration,
+                        { buffer = ev.buf, desc = 'go to declaration' }
+                    )
+                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, {
+                        buffer = ev.buf,
+                        desc = 'go to references',
+                    })
+                    vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, {
+                        buffer = ev.buf,
+                        desc = 'go to implementation',
+                    })
+
+                    vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, {
+                        buffer = ev.buf,
+                        desc = 'go to t[y]pe definition',
+                    })
+                end
+                -- LSP
             end,
         })
     end,
