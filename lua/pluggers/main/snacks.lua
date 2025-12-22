@@ -92,7 +92,12 @@ return {
                     -- ignored = false,
                     format = 'text',
                     layout = {
-                        layout = { { win = 'input', title = 'Firectories' } },
+                        layout = {
+                            {
+                                box = 'vertical',
+                                { win = 'input', title = 'Directories' },
+                            },
+                        },
                     },
                 })
             end,
@@ -105,13 +110,6 @@ return {
                     args = { '-td' },
                     layout = {
                         auto_hide = 'input',
-                        layout = {
-                            {
-                                win = 'input',
-                                border = false,
-                                title = false,
-                            },
-                        },
                     },
                 })
             end,
