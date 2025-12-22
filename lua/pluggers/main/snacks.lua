@@ -91,6 +91,7 @@ return {
                     -- hidden = false,
                     -- ignored = false,
                     format = 'text',
+                    layout = { { win = 'input', title = 'Firectories' } },
                 })
             end,
             desc = 'directories',
@@ -101,9 +102,11 @@ return {
                 Snacks.picker.explorer({
                     args = { '-td' },
                     layout = {
-                        win = 'input',
-                        border = false,
-                        title = false,
+                        {
+                            win = 'input',
+                            border = false,
+                            title = false,
+                        },
                     },
                 })
             end,
