@@ -27,6 +27,8 @@ vim.opt.termguicolors = true -- The colors become good
 -- Folding
 vim.opt.fillchars = { fold = ' ', eob = ' ' }
 vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.nofoldenable = true
 vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
