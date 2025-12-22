@@ -85,7 +85,7 @@ return { -- Default LSP Configurations
                     )
                 end
 
-                local Snacks = pcall(require, 'snacks')
+                local snacks = pcall(require, 'snacks')
                 -- {
                 --     'gai',
                 --     function()
@@ -100,7 +100,7 @@ return { -- Default LSP Configurations
                 --     end,
                 --     desc = 'C[a]lls Outgoing',
                 -- },
-                if Snacks then
+                if snacks then
                     vim.keymap.set('n', 'gd', function()
                         Snacks.picker.lsp_definitions()
                     end, {

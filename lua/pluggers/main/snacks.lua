@@ -21,10 +21,11 @@ return {
         -- refer to the configuration section below
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
-        indent = { enabled = true },
-        input = { enabled = true }, -- testing it out2
-        picker = { enabled = true }, -- testing it out3
         image = { enabled = true },
+        indent = { enabled = true },
+        input = { enabled = true },
+        picker = { enabled = true },
+        profiler = { enabled = true },
         quickfile = { enabled = true },
         rename = { enabled = true },
         statuscolumn = {
@@ -32,8 +33,9 @@ return {
             folds = {
                 git_hl = true,
             },
-        }, -- testing it out4
-        -- words = { enabled = true },
+        },
+
+        -- words = { enabled = true }, -- it pisses all over my screen
     },
     keys = {
         {
