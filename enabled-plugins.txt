@@ -31,7 +31,6 @@ editor/mini.surround.lua
 extra/fugitive.lua
 extra/gitsigns.lua
 extra/inc-rename.lua
-# extra/mini.visits.lua
 extra/neogen.lua
 extra/new-file-template.lua
 extra/oil.lua
@@ -41,8 +40,8 @@ extra/undotree.lua
 extra/which-key.lua
 
 ui/colorizer.lua
-ui/mini.indentscope.lua
 ui/mini.statusline.lua
+ui/noice.lua
 ui/smear-cursor.lua
 ui/todo-comments.lua
 

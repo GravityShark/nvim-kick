@@ -21,14 +21,19 @@ return {
         -- refer to the configuration section below
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
-        indent = { enabled = true }, -- testing it out
+        indent = { enabled = true },
         input = { enabled = true }, -- testing it out2
         picker = { enabled = true }, -- testing it out3
         image = { enabled = true },
         quickfile = { enabled = true },
         rename = { enabled = true },
-        -- statuscolumn = { enabled = true }, -- testing it out4
-        words = { enabled = true },
+        statuscolumn = {
+            enabled = true,
+            folds = {
+                git_hl = true,
+            },
+        }, -- testing it out4
+        -- words = { enabled = true },
     },
     keys = {
         {
@@ -40,89 +45,89 @@ return {
         },
         -- Top Pickers & Explorer
         {
-            '<leader><space>',
+            '<leader>s',
+            '',
+            desc = '+search',
+        },
+        {
+            '<leader>f',
             function()
-                Snacks.picker.smart()
+                Snacks.picker.smart({
+                    multi = { 'buffers', 'recent', 'git_files' },
+                })
             end,
-            desc = 'Smart Find Files',
+            desc = 'smart find files',
         },
         {
             '<leader>,',
             function()
                 Snacks.picker.buffers()
             end,
-            desc = 'Buffers',
-        },
-        {
-            '<leader>/',
-            function()
-                Snacks.picker.grep()
-            end,
-            desc = 'Grep',
+            desc = 'buffers',
         },
         {
             '<leader>:',
             function()
                 Snacks.picker.command_history()
             end,
-            desc = 'Command History',
+            desc = 'command History',
         },
         {
             '<leader>n',
             function()
                 Snacks.picker.notifications()
             end,
-            desc = 'Notification History',
+            desc = 'notification History',
         },
         {
             '<leader>e',
             function()
                 Snacks.explorer()
             end,
-            desc = 'File Explorer',
+            desc = 'file Explorer',
         },
         -- find
         {
-            '<leader>fb',
+            '<leader>sb',
             function()
                 Snacks.picker.buffers()
             end,
-            desc = 'Buffers',
+            desc = 'buffers',
         },
+        -- {
+        --     '<leader>fc',
+        --     function()
+        --         Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+        --     end,
+        --     desc = 'find Config File',
+        -- },
         {
-            '<leader>fc',
-            function()
-                Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
-            end,
-            desc = 'Find Config File',
-        },
-        {
-            '<leader>ff',
+            '<leader>sf',
             function()
                 Snacks.picker.files()
             end,
-            desc = 'Find Files',
+            desc = 'find Files',
         },
         {
-            '<leader>fg',
+            '<leader>sg',
             function()
                 Snacks.picker.git_files()
             end,
-            desc = 'Find Git Files',
+            desc = 'find Git Files',
         },
+        -- {
+        --     '<leader>fp',
+        --     function()
+        --         Snacks.picker.projects()
+        --     end,
+        --     desc = 'projects',
+        -- },
         {
-            '<leader>fp',
-            function()
-                Snacks.picker.projects()
-            end,
-            desc = 'Projects',
-        },
-        {
-            '<leader>fr',
+            '<leader>sr',
             function()
                 Snacks.picker.recent()
             end,
-            desc = 'Recent',
+            desc = 'recent',
         },
         -- git
         {
@@ -130,49 +135,49 @@ return {
             function()
                 Snacks.picker.git_branches()
             end,
-            desc = 'Git Branches',
+            desc = 'git Branches',
         },
         {
             '<leader>gl',
             function()
                 Snacks.picker.git_log()
             end,
-            desc = 'Git Log',
+            desc = 'git Log',
         },
         {
             '<leader>gL',
             function()
                 Snacks.picker.git_log_line()
             end,
-            desc = 'Git Log Line',
+            desc = 'git Log Line',
         },
         {
             '<leader>gs',
             function()
                 Snacks.picker.git_status()
             end,
-            desc = 'Git Status',
+            desc = 'git Status',
         },
         {
             '<leader>gS',
             function()
                 Snacks.picker.git_stash()
             end,
-            desc = 'Git Stash',
+            desc = 'git Stash',
         },
         {
             '<leader>gd',
             function()
                 Snacks.picker.git_diff()
             end,
-            desc = 'Git Diff (Hunks)',
+            desc = 'git Diff (Hunks)',
         },
         {
             '<leader>gf',
             function()
                 Snacks.picker.git_log_file()
             end,
-            desc = 'Git Log File',
+            desc = 'git Log File',
         },
         -- gh
         {
@@ -180,50 +185,50 @@ return {
             function()
                 Snacks.picker.gh_issue()
             end,
-            desc = 'GitHub Issues (open)',
+            desc = 'gitHub Issues (open)',
         },
         {
             '<leader>gI',
             function()
                 Snacks.picker.gh_issue({ state = 'all' })
             end,
-            desc = 'GitHub Issues (all)',
+            desc = 'gitHub Issues (all)',
         },
         {
             '<leader>gp',
             function()
                 Snacks.picker.gh_pr()
             end,
-            desc = 'GitHub Pull Requests (open)',
+            desc = 'gitHub Pull Requests (open)',
         },
         {
             '<leader>gP',
             function()
                 Snacks.picker.gh_pr({ state = 'all' })
             end,
-            desc = 'GitHub Pull Requests (all)',
+            desc = 'gitHub Pull Requests (all)',
         },
-        -- Grep
-        {
-            '<leader>sb',
-            function()
-                Snacks.picker.lines()
-            end,
-            desc = 'Buffer Lines',
-        },
+        -- rep
         {
             '<leader>sB',
             function()
-                Snacks.picker.grep_buffers()
+                Snacks.picker.lines()
             end,
-            desc = 'Grep Open Buffers',
+            desc = 'buffer Lines',
         },
+        -- {
+        --     '<leader>sB',
+        --     function()
+        --         Snacks.picker.grep_buffers()
+        --     end,
+        --     desc = 'grep Open Buffers',
+        -- },
         {
-            '<leader>sg',
+            '<leader>sl',
             function()
                 Snacks.picker.grep()
             end,
-            desc = 'Grep',
+            desc = 'live grep',
         },
         {
             '<leader>sw',

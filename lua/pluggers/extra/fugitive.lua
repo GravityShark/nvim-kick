@@ -24,27 +24,27 @@ return { -- vise for going to the git repository in a browser
         {
             '<leader>gM',
             '<CMD>Git mergetool<CR>',
-            { desc = 'mergetool' },
+            desc = 'mergetool',
         },
         {
             '<leader>gv',
             '<CMD>Gvdiffsplit!<CR>',
-            { desc = 'vertical diff split' },
+            desc = 'vertical diff split',
         },
         {
             '<leader>gh',
             '<CMD>Ghdiffsplit!<CR>',
-            { desc = 'horizontal diff split' },
+            desc = 'horizontal diff split',
         },
         {
             'gh',
             '<CMD>diffget //2<CR>',
-            { desc = 'diffget //2', noremap = true },
+            { desc = 'left diffget', noremap = true },
         },
         {
-            'ga',
+            'gl',
             '<CMD>diffget //3<CR>',
-            { desc = 'diffget //3', noremap = true },
+            { desc = 'right diffget', noremap = true },
         },
     },
     cmd = { 'Git', 'Gvdiffsplit', 'Ghdiffsplit' },
