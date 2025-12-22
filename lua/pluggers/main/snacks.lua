@@ -21,7 +21,7 @@ return {
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true, matcher = { frecency = true } },
+        picker = { enabled = true },
         quickfile = { enabled = true },
         -- styles = {
         --     input = {
@@ -29,12 +29,12 @@ return {
         --     },
         -- },
         rename = { enabled = true },
-        -- statuscolumn = {
-        --     enabled = true,
-        --     folds = {
-        --         git_hl = true,
-        --     },
-        -- },
+        statuscolumn = {
+            enabled = true,
+            folds = {
+                git_hl = true,
+            },
+        },
 
         -- words = { enabled = true }, -- it pisses all over my screen
         -- might try out debug
@@ -55,8 +55,7 @@ return {
             '<leader><',
             function()
                 Snacks.picker.explorer({
-                    args = { '-td' },
-                    layout = { auto_hide = { 'input' } },
+                    layout = { auto_hide = { 'input' }, preset = 'left' },
                 })
             end,
             desc = 'left file tree',
@@ -65,8 +64,7 @@ return {
             '<leader>>',
             function()
                 Snacks.picker.explorer({
-                    args = { '-td' },
-                    layout = { auto_hide = { 'input' }, position = 'right' },
+                    layout = { auto_hide = { 'input' }, preset = 'right' },
                 })
             end,
             desc = 'right file tree',
@@ -81,7 +79,7 @@ return {
             '<leader>f',
             function()
                 Snacks.picker.smart({
-                    multi = { 'buffers', 'recent', 'git_files' },
+                    multi = { 'buffers', 'git_files', 'recent' },
                 })
             end,
             desc = 'find files',
