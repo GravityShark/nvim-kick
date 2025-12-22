@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("enabled-plugins.txt")
+	file, err := os.Open("./enabled-plugins.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

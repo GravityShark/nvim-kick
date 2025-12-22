@@ -2,7 +2,7 @@ return { -- nvim-treesitter Supercharge syntax editing
     'nvim-treesitter/nvim-treesitter',
     -- build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
-    dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
+    -- dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
         require('nvim-treesitter.install').prefer_git = true
         ---@diagnostic disable-next-line: missing-fields
@@ -15,8 +15,8 @@ return { -- nvim-treesitter Supercharge syntax editing
                 enable = true,
                 keymaps = {
                     init_selection = '<enter>',
-                    node_incremental = '<enter>',
-                    scope_incremental = false,
+                    node_incremental = false,
+                    scope_incremental = '<enter>',
                     node_decremental = '<bs>',
                 },
             },

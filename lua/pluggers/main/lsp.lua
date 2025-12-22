@@ -102,38 +102,38 @@ return { -- Default LSP Configurations
                 -- },
                 if snacks then
                     vim.keymap.set('n', 'gd', function()
-                        Snacks.picker.lsp_definitions()
+                        require('snacks').picker.lsp_definitions()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to definition',
                     })
                     vim.keymap.set('n', 'gD', function()
-                        Snacks.picker.lsp_declarations()
+                        require('snacks').picker.lsp_declarations()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to declaration',
                     })
 
                     vim.keymap.set('n', 'gr', function()
-                        Snacks.picker.lsp_references()
+                        require('snacks').picker.lsp_references()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to references',
                     })
                     vim.keymap.set('n', 'gI', function()
-                        Snacks.picker.lsp_implementations()
+                        require('snacks').picker.lsp_implementations()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to implementation',
                     })
                     vim.keymap.set('n', 'gy', function()
-                        Snacks.picker.lsp_type_definitions()
+                        require('snacks').picker.lsp_type_definitions()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to t[y]pe definition',
                     })
                     vim.keymap.set('n', 'gy', function()
-                        Snacks.picker.lsp_type_definitions()
+                        require('snacks').picker.lsp_type_definitions()
                     end, {
                         buffer = ev.buf,
                         desc = 'go to t[y]pe definition',

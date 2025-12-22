@@ -13,7 +13,7 @@
 # lua/pluggers/ui/ui.md
 
 # colors
-colors/mini.colors.lua
+# colors/mini.colors.lua
 
 main/blink.lua
 main/conform.lua

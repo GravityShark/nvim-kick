@@ -104,7 +104,7 @@ vim.keymap.set('n', '<leader>R', function()
         vim.cmd('split | lcd ' .. cwd .. ' | terminal ' .. input)
         vim.cmd.startinsert()
     end)
-end, { desc = 'run command per project' })
+end, { desc = 'Run command per project' })
 --}}}
 -- Save, close and quit bindings {{{
 vim.api.nvim_set_keymap(

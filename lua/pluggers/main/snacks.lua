@@ -64,7 +64,7 @@ return {
         {
             '<leader>F',
             function()
-                Snacks.picker.grep()
+                Snacks.picker.grep({ cmd = 'rg' })
             end,
             desc = 'find text',
         },
@@ -77,18 +77,25 @@ return {
             desc = 'buffers',
         },
         {
+            '<leader>sd',
+            function()
+                Snacks.picker.files({ cmd = 'fd -td' })
+            end,
+            desc = 'directories',
+        },
+        {
             '<leader>sf',
             function()
                 Snacks.picker.files()
             end,
-            desc = 'find files',
+            desc = 'files',
         },
         {
             '<leader>sg',
             function()
                 Snacks.picker.git_files()
             end,
-            desc = 'find Git Files',
+            desc = 'git files',
         },
         -- {
         --     '<leader>fp',
@@ -238,19 +245,26 @@ return {
             end,
             desc = 'command history',
         },
+        -- {
+        --     '<leader>sC',
+        --     function()
+        --         Snacks.picker.colorschemes()
+        --     end,
+        --     desc = 'Colorschemes',
+        -- },
+        -- {
+        --     '<leader>sC',
+        --     function()
+        --         Snacks.picker.commands()
+        --     end,
+        --     desc = 'commands',
+        -- },
         {
-            '<leader>sC',
-            function()
-                Snacks.picker.commands()
-            end,
-            desc = 'commands',
-        },
-        {
-            '<leader>sd',
+            '<leader>se',
             function()
                 Snacks.picker.diagnostics()
             end,
-            desc = 'diagnostics',
+            desc = 'errors',
         },
         {
             '<leader>sD',
@@ -342,13 +356,6 @@ return {
                 Snacks.picker.undo()
             end,
             desc = 'undo history',
-        },
-        {
-            '<leader>uC',
-            function()
-                Snacks.picker.colorschemes()
-            end,
-            desc = 'Colorschemes',
         },
         {
             '<leader>ss',
