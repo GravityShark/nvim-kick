@@ -2,6 +2,19 @@ return {
     'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
+    init = function()
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'OilActionsPost',
+            callback = function(event)
+                if event.data.actions[1].type == 'move' then
+                    Snacks.rename.on_rename_file(
+                        event.data.actions[1].src_url,
+                        event.data.actions[1].dest_url
+                    )
+                end
+            end,
+        })
+    end,
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings
@@ -14,7 +27,7 @@ return {
         image = { enabled = true },
         quickfile = { enabled = true },
         rename = { enabled = true },
-        statuscolumn = { enabled = true }, -- testing it out4
+        -- statuscolumn = { enabled = true }, -- testing it out4
         words = { enabled = true },
     },
     keys = {
@@ -434,17 +447,4 @@ return {
             desc = 'LSP Workspace Symbols',
         },
     },
-    init = function()
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'OilActionsPost',
-            callback = function(event)
-                if event.data.actions[1].type == 'move' then
-                    Snacks.rename.on_rename_file(
-                        event.data.actions[1].src_url,
-                        event.data.actions[1].dest_url
-                    )
-                end
-            end,
-        })
-    end,
 }
