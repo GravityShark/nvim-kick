@@ -1,6 +1,6 @@
 return { -- conform.nvim A better formatting implementation
     'stevearc/conform.nvim',
-    event = 'BufWritePre',
+    event = { 'VeryLazy', 'BufWritePre' },
     cmd = { 'ConformInfo' },
     init = function()
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
