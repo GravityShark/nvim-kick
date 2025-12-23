@@ -3,7 +3,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-        palette = require('base16.lua'),
+        palette = require('base16'),
         use_cterm = true,
         plugins = { default = false },
     },
