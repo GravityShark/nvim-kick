@@ -31,7 +31,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 4
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext = require('foldtext')
+vim.opt.foldtext = require('other.foldtext')
 -- Restore folds
 vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
     pattern = { '*.*' },
