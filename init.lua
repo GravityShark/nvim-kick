@@ -42,6 +42,7 @@ require('lazy').setup({
     rocks = { enabled = false },
     performance = {
         rtp = {
+            paths = { vim.fn.stdpath('config') .. '/custom' },
             disabled_plugins = {
                 'editorconfig',
                 'gzip',
