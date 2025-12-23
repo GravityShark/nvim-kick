@@ -35,6 +35,8 @@ vim.opt.rtp:prepend(lazypath) -- }}}
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.api.nvim_set_keymap('n', '<leader>L', '<CMD>Lazy<CR>', { desc = 'Lazy' })
+
+local custom = vim.fn.stdpath('config') .. '/custom'
 require('lazy').setup({
     spec = { { import = 'pluggers' } },
     defaults = { lazy = true, version = false },
@@ -42,7 +44,7 @@ require('lazy').setup({
     rocks = { enabled = false },
     performance = {
         rtp = {
-            paths = { vim.fn.stdpath('config') .. '/custom' },
+            paths = { custom },
             disabled_plugins = {
                 'editorconfig',
                 'gzip',
