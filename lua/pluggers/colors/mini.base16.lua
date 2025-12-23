@@ -2,9 +2,7 @@ return {
     'nvim-mini/mini.base16',
     lazy = false,
     priority = 1000,
-    opts = {
-        palette = require('base16'),
-        use_cterm = true,
-        plugins = { default = false },
-    },
+    init = function()
+        vim.cmd.colorscheme('base16')
+    end,
 }
