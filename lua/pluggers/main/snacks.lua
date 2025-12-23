@@ -21,7 +21,25 @@ return {
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true, matcher = { frecency = true } },
+        picker = {
+            enabled = true,
+            matcher = { frecency = true },
+            win = {
+                input = {
+                    keys = {
+                        ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+                        ['<PageUp>'] = {
+                            'list_scroll_up',
+                            mode = { 'i', 'n' },
+                        },
+                        ['<PageDown>'] = {
+                            'list_scroll_down',
+                            mode = { 'i', 'n' },
+                        },
+                    },
+                },
+            },
+        },
         quickfile = { enabled = true },
         -- styles = {
         --     input = {
@@ -113,12 +131,6 @@ return {
             '<leader>sd',
             function()
                 Snacks.picker.files({
-                    cmd = 'fd',
-                    args = { '-td' },
-                    -- follow = false,
-                    -- hidden = false,
-                    -- ignored = false,
-                    -- format = 'text',
                     title = 'Directories',
                     transform = function(item)
                         local stat = vim.loop.fs_stat(item.file)
