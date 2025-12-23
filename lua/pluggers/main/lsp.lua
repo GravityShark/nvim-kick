@@ -171,7 +171,7 @@ return { -- Default LSP Configurations
     end,
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
     config = function()
-        for key, val in pairs(require('ensure').lsp) do
+        for key, val in pairs(require('other.ensure').lsp) do
             if type(val) == 'table' then
                 vim.lsp.enable(key)
                 vim.lsp.config(key, val)

@@ -3,7 +3,7 @@
 vim.loader.enable()
 
 -- Sets the settings before running lazy
-require('settings')
+require('other.settings')
 
 -- Setsup lazy.nvim {{{
 -- Initialize lazy.nvim {{{
@@ -64,5 +64,5 @@ require('lazy').setup({
 }) -- }}}
 
 -- Keymaps only works after loading lazy
-require('keymaps')
+require('other.keymaps')
 -- vim:foldmethod=marker:

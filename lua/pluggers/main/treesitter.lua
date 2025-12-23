@@ -7,7 +7,7 @@ return { -- nvim-treesitter Supercharge syntax editing
         require('nvim-treesitter.install').prefer_git = true
         ---@diagnostic disable-next-line: missing-fields
         require('nvim-treesitter.configs').setup({
-            ensure_installed = require('ensure').treesitter,
+            ensure_installed = require('other.ensure').treesitter,
             auto_install = true,
             highlight = { enable = true },
             indent = { enable = true },
