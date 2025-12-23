@@ -21,7 +21,7 @@ return {
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true },
+        picker = { enabled = true, matcher = { frecency = true } },
         quickfile = { enabled = true },
         -- styles = {
         --     input = {
@@ -55,7 +55,8 @@ return {
             '<leader><',
             function()
                 Snacks.picker.explorer({
-                    layout = { auto_hide = { 'input' }, preset = 'left' },
+                    args = { '-td' },
+                    layout = { auto_hide = { 'input' } },
                 })
             end,
             desc = 'left file tree',
@@ -64,7 +65,8 @@ return {
             '<leader>>',
             function()
                 Snacks.picker.explorer({
-                    layout = { auto_hide = { 'input' }, preset = 'right' },
+                    args = { '-td' },
+                    layout = { auto_hide = { 'input' }, position = 'right' },
                 })
             end,
             desc = 'right file tree',
@@ -79,8 +81,15 @@ return {
             '<leader>f',
             function()
                 Snacks.picker.smart({
-                    multi = { 'buffers', 'git_files', 'recent' },
+                    multi = { 'buffers', 'git_files', 'files' },
                 })
+                -- local git_root =
+                --     vim.fn.system(' git rev-parse --is-inside-work-tree')
+                -- if vim.v.shell_error == 0 then
+                --     Snacks.picker.git_files({matcher = {cwd_bonus = true}})
+                -- else
+                --     Snacks.picker.files({matcher = {cwd_bonus = true}})
+                -- end
             end,
             desc = 'find files',
         },
@@ -111,6 +120,10 @@ return {
                     -- ignored = false,
                     -- format = 'text',
                     title = 'Directories',
+                    transform = function(item)
+                        local stat = vim.loop.fs_stat(item.file)
+                        return stat and stat.type == 'directory' or false
+                    end,
                 })
             end,
             desc = 'directories',
