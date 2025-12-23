@@ -14,6 +14,7 @@
 
 # colors
 # colors/mini.colors.lua
+colors/mini.base16.lua
 
 main/blink.lua
 main/conform.lua
