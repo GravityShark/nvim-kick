@@ -4,7 +4,7 @@ return { -- soho vibes
     lazy = false,
     priority = 1000,
     init = function()
-        vim.cmd('colorscheme rose-pine')
+        vim.cmd('colorscheme rose-pine-main')
         -- vim.cmd('colorscheme rose-pine-dawn')
     end,
     opts = {
