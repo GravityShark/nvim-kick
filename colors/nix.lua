@@ -31,10 +31,11 @@ base16.setup({
         ['folke/todo-comments.nvim'] = true,
         ['folke/trouble.nvim'] = true,
         ['folke/which-key.nvim'] = true,
-        -- ['lewis6991/gitsigns.nvim'] = true,
+        ['lewis6991/gitsigns.nvim'] = true,
     },
 })
 
+-- use :Inspect to check
 local overrides = {
     SignColumn = { bg = 'NONE', ctermbg = 'NONE' },
     LineNr = { bg = 'NONE', ctermbg = 'NONE' },
@@ -42,6 +43,7 @@ local overrides = {
     LineNrBelow = { bg = 'NONE', ctermbg = 'NONE' },
     SnacksIndent = { fg = palette.base01 },
     Folded = { bg = palette.base00 },
+    SpecialChar = { link = 'Special' },
     -- MiniJump = {
     --     fg = palette.base02,
     --     ctermfg = cterm.base02,
