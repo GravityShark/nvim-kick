@@ -12,6 +12,7 @@ return { -- Default LSP Configurations
                 -- prefix = "icons",
             },
             severity_sort = true,
+            underline = true,
             signs = {
                 text = {
                     [vim.diagnostic.severity.ERROR] = ' ',

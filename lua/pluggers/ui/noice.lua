@@ -1,6 +1,6 @@
 return {
     'folke/noice.nvim',
-    event = { 'BufEnter', 'VeryLazy' },
+    event = 'VeryLazy',
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
         lsp = {

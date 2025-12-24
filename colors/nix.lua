@@ -20,11 +20,9 @@ local palette = {
     base0F = '@base0F@',
 }
 
-local cterm = base16.rgb_palette_to_cterm_palette(palette)
-
 base16.setup({
     palette = palette,
-    use_cterm = cterm,
+    use_cterm = false,
     plugins = {
         default = false,
         ['nvim-mini/mini.nvim'] = true,
@@ -38,29 +36,22 @@ base16.setup({
 })
 
 local overrides = {
-    SignColumn = { bg = 'none', ctermbg = 'none' },
-    LineNr = { bg = 'none', ctermbg = 'none' },
-    LineNrAbove = { bg = 'none', ctermbg = 'none' },
-    LineNrBelow = { bg = 'none', ctermbg = 'none' },
-    SnacksIndent = { fg = palette.base01, ctermfg = cterm.base01 },
+    SignColumn = { bg = 'NONE', ctermbg = 'NONE' },
+    LineNr = { bg = 'NONE', ctermbg = 'NONE' },
+    LineNrAbove = { bg = 'NONE', ctermbg = 'NONE' },
+    LineNrBelow = { bg = 'NONE', ctermbg = 'NONE' },
+    SnacksIndent = { fg = palette.base01 },
     Folded = { bg = palette.base00 },
     -- MiniJump = {
-    --     fg = palette.base01,
-    --     ctermfg = cterm.base01,
+    --     fg = palette.base02,
+    --     ctermfg = cterm.base02,
     --     undercurl = false,
+    --     underline = true,
     -- },
-    MiniJump = {
-        fg = palette.base01,
-        ctermfg = cterm.base01,
-        undercurl = false,
-        underline = true,
-    },
-    DiagnosticUnderlineOk = { undercurl = true },
-    DiagnosticUnderlineHint = { undercurl = true },
-    DiagnosticUnderlineInfo = { undercurl = true },
-    DiagnosticUnderlineWarn = { undercurl = true },
-    DiagnosticUnderlineError = { undercurl = true },
 }
+
+-- local appends = {}
+--
 
 for hl, atr in pairs(overrides) do
     vim.api.nvim_set_hl(0, hl, atr)
