@@ -1,6 +1,6 @@
 # Used by relink.go to know what to set as enabled plugins
-# run `relink.out` or `go run relink.go`
-# the names are assumed to be relative to ./lua/pluggers/ from now own
+# run `relink.go` to relink (`go run relink.go`)
+# the names are assumed to be from ./lua/pluggers/ in the format {category}/{plug}
 # read about the available plugins in their respective .md documentation
 # plugins that are emphasized (surrounded with __) are recommended
 
@@ -13,37 +13,36 @@
 # lua/pluggers/ui/ui.md
 
 # colors
-# colors/mini.colors.lua
-colors/mini.base16.lua
+colors/mini.base16
 
-main/blink.lua
-main/conform.lua
-main/lint.lua
-main/lsp.lua
-main/snacks.lua
-main/treesitter.lua
+main/blink
+main/conform
+main/lint
+main/lsp
+main/snacks
+main/treesitter
 
-editor/guess-indent.lua
-editor/mini.ai.lua
-editor/mini.jump.lua
-editor/mini.pairs.lua
-editor/mini.surround.lua
+editor/guess-indent
+editor/mini.ai
+editor/mini.jump
+editor/mini.pairs
+editor/mini.surround
 
-extra/fugitive.lua
-extra/gitsigns.lua
-extra/inc-rename.lua
-extra/neogen.lua
-extra/new-file-template.lua
-extra/oil.lua
-extra/trouble.lua
-extra/ts-comments.lua
-extra/undotree.lua
-extra/which-key.lua
+extra/fugitive
+extra/gitsigns
+extra/inc-rename
+extra/neogen
+extra/new-file-template
+extra/oil
+extra/trouble
+extra/ts-comments
+extra/undotree
+extra/which-key
 
-ui/colorizer.lua
-ui/mini.statusline.lua
-ui/noice.lua
-ui/smear-cursor.lua
-ui/todo-comments.lua
+ui/colorizer
+ui/mini.statusline
+ui/noice
+ui/smear-cursor
+ui/todo-comments
 
 # vim:commentstring=#\ %s:

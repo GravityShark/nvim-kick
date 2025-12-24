@@ -30,8 +30,8 @@ return { -- conform.nvim A better formatting implementation
             quiet = false,
             lsp_format = 'fallback',
         },
-        formatters_by_ft = require('other.ensure').format,
-        formatters = require('other.ensure').formatextra,
+        formatters_by_ft = require('config.ensure').format,
+        formatters = require('config.ensure').formatextra,
         format_on_save = function(bufnr)
             -- Disable with a global or buffer-local variable
             if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

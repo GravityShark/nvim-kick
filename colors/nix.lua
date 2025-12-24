@@ -20,6 +20,17 @@ local palette = {
     base0F = '@base0F@',
 }
 
+if palette.base00 == '@base0' .. '0@' then
+    vim.api.nvim_echo({
+        {
+            'This colorscheme is meant to be dynamically changed by some external program (mainly nix) replace @base0N@ with a proper color\n',
+            'ErrorMsg',
+        },
+        { 'Press any key to exit', 'MoreMsg' },
+    }, true, {})
+    return {}
+end
+
 base16.setup({
     palette = palette,
     use_cterm = false,

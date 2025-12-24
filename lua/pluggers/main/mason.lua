@@ -13,7 +13,7 @@ return { -- mason-tool-installer.nvim Easy installation of LSPs
     event = 'VeryLazy',
     cmd = { 'MasonToolsUpdate', 'MasonToolsInstall' },
     opts = {
-        ensure_installed = require('other.ensure').mason,
+        ensure_installed = require('config.ensure').mason,
         auto_update = true,
     },
 }

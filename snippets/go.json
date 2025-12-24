@@ -1,7 +1,11 @@
 {
   "if err != nil": {
     "prefix": "ien",
-    "body": "if err != nil\n\treturn err\nfi$0"
+    "body": "if err != nil {\n\t$1 err\n}$0"
+  },
+  "if err != nil then log": {
+    "prefix": "ienl",
+    "body": "if err != nil {\n\tlog.Fatal(err)\n}$0"
   },
   "test package": {
     "prefix": "tp",

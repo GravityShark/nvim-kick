@@ -1,0 +1,1 @@
+../pluggers/editor/mini.ai.lua

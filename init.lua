@@ -3,11 +3,10 @@
 vim.loader.enable()
 
 -- Sets the settings before running lazy
-require('other.settings')
+require('config.options')
 
 -- Setsup lazy.nvim {{{
--- Initialize lazy.nvim {{{
--- Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -30,13 +29,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     end
 end
 vim.opt.rtp:prepend(lazypath) -- }}}
+
 -- Setup plugins {{{
---
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.api.nvim_set_keymap('n', '<leader>L', '<CMD>Lazy<CR>', { desc = 'Lazy' })
 require('lazy').setup({
-    spec = { { import = 'pluggers' } },
+    spec = { { import = 'enabled' } },
     defaults = { lazy = true, version = false },
     change_detection = { notify = false },
     rocks = { enabled = false },
@@ -44,25 +43,28 @@ require('lazy').setup({
         rtp = {
             disabled_plugins = {
                 'editorconfig',
-                'gzip',
-                'rplugin',
                 'fzf',
+                'gzip',
+                -- 'man',
+                -- "matchit",
+                -- "matchparen",
+                'netrwPlugin',
+                'osc52',
+                'rplugin',
+                -- "shada",
                 'spellfile',
                 'tarPlugin',
                 'tohtml',
                 'tutor',
                 'zipPlugin',
-                'osc52',
-                -- 'man',
-                -- "matchit",
-                -- "matchparen",
-                'netrwPlugin',
-                -- "shada",
             },
         },
     }, -- }}}
 }) -- }}}
 
 -- Keymaps only works after loading lazy
-require('other.keymaps')
+require('config.autocmds')
+require('config.foldtext')
+require('config.keymaps')
+-- require('config.transparent')
 -- vim:foldmethod=marker:

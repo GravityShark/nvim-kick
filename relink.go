@@ -16,23 +16,31 @@ func main() {
 		log.Fatal(err)
 	}
 
-	os.Chdir("./lua/pluggers/")
+	err = os.Chdir("./lua")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	defer file.Close()
 
 	deleteSymlinks()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		plugin := strings.TrimSpace(scanner.Text())
-		if len(plugin) == 0 {
-			continue
-		}
-		if plugin[0] != '#' {
-			os.Symlink(plugin, filepath.Base(plugin))
+
+		if len(plugin) != 0 && plugin[0] != '#' {
+			plugger := "../pluggers/" + plugin + ".lua"
+			enabled := "enabled/" + filepath.Base(plugin) + ".lua"
+			err = os.Symlink(plugger, enabled)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 }
 
 func deleteSymlinks() {
+	os.Chdir("./enabled")
 	files, err := os.ReadDir("./")
 	if err != nil {
 		log.Fatal(err)
@@ -41,7 +49,11 @@ func deleteSymlinks() {
 	for _, v := range files {
 		info, _ := v.Info()
 		if info.Mode()&fs.ModeSymlink != 0 {
-			os.Remove(v.Name())
+			err = os.Remove(v.Name())
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
+	os.Chdir("../")
 }

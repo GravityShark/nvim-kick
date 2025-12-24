@@ -1,1 +1,0 @@
-extra/new-file-template.lua
