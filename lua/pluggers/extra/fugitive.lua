@@ -8,7 +8,7 @@ return { -- vise for going to the git repository in a browser
         },
         {
             '<leader>gm',
-            '<CMD>Git<CR>',
+            '<CMD>Git<CR><C-w>L',
             desc = 'menu',
         },
         {

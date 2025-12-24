@@ -3,22 +3,53 @@ return {
     event = 'VeryLazy',
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
-        lsp = {
-            hover = {
-                enabled = false,
-            },
-            signature = {
-                enabled = false,
+        cmdline = {
+            format = {
+                conceal = false,
             },
         },
-        popupmenu = {
-            enabled = false,
+        lsp = {
+            override = {
+                ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+                ['vim.lsp.util.stylize_markdown'] = true,
+                ['cmp.entry.get_documentation'] = true,
+            },
+        },
+        routes = {
+            {
+                filter = {
+                    event = 'msg_show',
+                    any = {
+                        { find = '%d+L, %d+B' },
+                        { find = '; after #%d+' },
+                        { find = '; before #%d+' },
+                    },
+                },
+                view = 'mini',
+            },
         },
         presets = {
             bottom_search = true,
+            command_palette = true,
+            long_message_to_split = true,
             inc_rename = true,
-            lsp_doc_border = true,
         },
+        -- lsp = {
+        --     hover = {
+        --         enabled = false,
+        --     },
+        --     signature = {
+        --         enabled = false,
+        --     },
+        -- },
+        -- popupmenu = {
+        --     enabled = false,
+        -- },
+        -- presets = {
+        --     bottom_search = true,
+        --     inc_rename = true,
+        --     lsp_doc_border = true,
+        -- },
     },
   -- stylua: ignore
     keys = {

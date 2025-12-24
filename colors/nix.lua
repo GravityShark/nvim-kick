@@ -31,7 +31,7 @@ base16.setup({
         ['folke/todo-comments.nvim'] = true,
         ['folke/trouble.nvim'] = true,
         ['folke/which-key.nvim'] = true,
-        ['lewis6991/gitsigns.nvim'] = true,
+        -- ['lewis6991/gitsigns.nvim'] = true,
     },
 })
 

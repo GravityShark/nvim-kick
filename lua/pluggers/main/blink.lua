@@ -30,8 +30,10 @@ return {
         completion = {
             trigger = {
                 show_in_snippet = true,
-                show_on_keyword = false,
-                show_on_trigger_character = false,
+                -- show_on_keyword = true,
+                -- show_on_trigger_character = true,
+                -- show_on_keyword = false,
+                -- show_on_trigger_character = false,
             },
             documentation = { window = { border = 'single' } },
         },
@@ -44,7 +46,7 @@ return {
         fuzzy = { implementation = 'prefer_rust_with_warning' },
 
         cmdline = {
-            enabled = false,
+            enabled = true,
         },
     },
 
