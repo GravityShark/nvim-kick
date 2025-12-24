@@ -127,7 +127,6 @@ return {
             function()
                 Snacks.picker.files({
                     title = 'Directories',
-                    -- cmd = 'fd',
                     args = { '-td' },
                     transform = function(item)
                         local stat = vim.loop.fs_stat(item.file)

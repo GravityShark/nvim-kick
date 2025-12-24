@@ -1,4 +1,4 @@
-// Symlinks plugins in enabled-plugins.txt relative to the pluggers folders
+// Symlinks plugins described in enabled-plugins.txt from lua/pluggers to lua/enabled
 package main
 
 import (
@@ -24,7 +24,7 @@ func main() {
 	_, err = os.Stat("./enabled/")
 	if err != nil || os.IsNotExist(err) {
 		// return true, nil
-		os.Mkdir("./enabled/", 0755)
+		os.Mkdir("./enabled/", 0o755)
 	}
 	defer file.Close()
 

@@ -6,6 +6,10 @@ return {
         cmdline = {
             format = {
                 conceal = false,
+                filter = { conceal = false },
+                lua = { conceal = false },
+                help = { conceal = false },
+                input = { conceal = false },
             },
         },
         lsp = {

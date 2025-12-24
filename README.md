@@ -10,6 +10,8 @@
 
 ## whats different about this one
 
+> tl;dr read ./enabled-plugins.txt
+
 i used to have one big plugins.lua with all my plugins.
 this was a bit of a hassle because whenever i update it,
 lazy will fail to load the other plugins (including the theme),
@@ -42,7 +44,7 @@ and much easier to write than in shell. probably the first time
 i ever used go as a sort of cli tool or script or even just making my own
 cli for a specific purpose
 
-### plugins i have to look into
+## plugins i have to look into
 
 - [mini.move](https://github.com/nvim-mini/mini.move) adds the primeagen mapping to move a selaction up and down
 - [outline.nvim](https://github.com/hedyhli/outline.nvim) a sort of table of contents for your code
@@ -93,6 +95,7 @@ cli for a specific purpose
 - new neovim look
   - [nvim-notify](https://github.com/rcarriga/nvim-notify)
   - [dressing.nvim](https://github.com/stevearc/dressing.nvim) dresses
+    - i already use this now using snacks.nvi/ui
   - [noice.nvim](https://github.com/folke/noice.nvim)
 - [kulala.nvim](https://github.com/mistweaverco/kulala.nvim) - its like an HTTP testing server
 - [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)
@@ -101,10 +104,11 @@ cli for a specific purpose
   - [mini.colors](https://github.com/nvim-mini/mini.colors) or[lush](https://github.com/rktjmp/lush.nvim)
   - [mini.hues](https://github.com/nvim-mini/mini.hues)
 
-### plugins i looked into
+## plugins i looked into
 
 - [Neogen](https://github.com/danymat/neogen) (kinda interesting)
   - automatically puts an annotation which is very nice and works better than snippets can
+  - mainly for like lua it does well
 - Bufferline plugins (mini.tabline, bufferline.nvim, etc...)
   - I've been thinking about how you should go about in a
     project and I am currently trying to ditch bufferlines
@@ -129,7 +133,7 @@ cli for a specific purpose
   - netrw is mid i just realized, never having ts ever again :pray:
   - oil.nvim or fyler.nvim is fetter
 
-### Shitty idea
+## Shitty idea
 
 > what if i make a neovim distro purely made to be mouse and input mode only
 
