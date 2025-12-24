@@ -32,8 +32,8 @@ return {
                 show_in_snippet = true,
                 -- show_on_keyword = true,
                 -- show_on_trigger_character = true,
-                -- show_on_keyword = false,
-                -- show_on_trigger_character = false,
+                show_on_keyword = false,
+                show_on_trigger_character = false,
             },
             documentation = { window = { border = 'single' } },
         },
@@ -47,6 +47,10 @@ return {
 
         cmdline = {
             enabled = true,
+            keymap = {
+                ['<Down>'] = { 'select_next', 'fallback' },
+                ['<Up>'] = { 'select_prev', 'fallback' },
+            },
         },
     },
 

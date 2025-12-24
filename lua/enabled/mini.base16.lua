@@ -1,1 +1,0 @@
-../pluggers/colors/mini.base16.lua
