@@ -32,7 +32,6 @@ func main() {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		plugin := strings.TrimSpace(scanner.Text())
-
 		if len(plugin) != 0 && plugin[0] != '#' {
 			plugger := "../pluggers/" + plugin + ".lua"
 			enabled := "enabled/" + filepath.Base(plugin) + ".lua"
