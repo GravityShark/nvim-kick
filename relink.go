@@ -21,6 +21,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	_, err = os.Stat("./enabled/")
+	if err != nil || os.IsNotExist(err) {
+		// return true, nil
+		os.Mkdir("./enabled/", 0755)
+	}
 	defer file.Close()
 
 	deleteSymlinks()
