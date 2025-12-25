@@ -25,8 +25,8 @@ return { -- gruvvin
     lazy = false,
     priority = 1000,
     config = function()
-        --[[vim.g.gruvbox_material_enable_italic = '1'
-        -- vim.g.gruvbox_material_better_performance = '1'
+        vim.g.gruvbox_material_enable_italic = true
+        vim.g.gruvbox_material_better_performance = true
         vim.api.nvim_create_autocmd('ColorScheme', {
             group = vim.api.nvim_create_augroup(
                 'custom_highlights_gruvboxmaterial',
@@ -44,7 +44,7 @@ return { -- gruvvin
 
                 set_hl('Search', palette.grey2, palette.bg0)
             end,
-        })]]
+        })
         vim.cmd.colorscheme('gruvbox-material')
     end,
 }

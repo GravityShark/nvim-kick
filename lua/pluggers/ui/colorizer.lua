@@ -1,6 +1,7 @@
 return { -- colorizer.nvim Visualize color codes in code
     'catgoose/nvim-colorizer.lua',
     cmd = { 'ColorizerToggle' },
+    event = 'VeryLazy',
     keys = {
         {
             '<leader>ch',
@@ -9,11 +10,12 @@ return { -- colorizer.nvim Visualize color codes in code
         },
     },
     opts = {
+        lazy_load = true,
         user_default_options = {
             css = true,
             tailwind = true,
             mode = 'virtualtext',
-            virtualtext_inline = 'before',
+            virtualtext = '󱓻',
         },
     },
 }
