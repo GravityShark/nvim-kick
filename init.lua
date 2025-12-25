@@ -1,7 +1,3 @@
--- vim.system({'./relink.out'}, {text = true, cwd = vim.fn.stdpath('config')}):wait()
--- The experimental plugin loader
-vim.loader.enable()
-
 -- Sets the settings before running lazy
 require('config.options')
 
