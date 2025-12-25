@@ -1,6 +1,15 @@
 return { -- mini.surround Surround text with any character
     'nvim-mini/mini.surround',
-    keys = { { 's', '', mode = { 'n', 'v' }, desc = '+surround' } },
+    keys = {
+        { mode = { 'n', 'v' }, 's', '', desc = '+surround' },
+        { 'sa', desc = 'Add surrounding' },
+        { 'sd', desc = 'Delete surrounding' },
+        { 'sc', desc = 'Change surrounding' },
+        { 'sf', desc = 'Find right surrounding' },
+        { 'sF', desc = 'Find left surrounding' },
+        { 'sh', desc = 'Highlight surrounding' },
+        { 'sn', desc = 'Update `MiniSurround.config.n_lines`' },
+    },
     opts = { mappings = { replace = 'sc' } },
 }
 --[[
