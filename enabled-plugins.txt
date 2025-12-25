@@ -25,9 +25,9 @@ main/treesitter
 editor/guess-indent
 editor/mini.ai
 editor/mini.jump
+editor/mini.move
 editor/mini.pairs
 editor/mini.surround
-editor/multicursors # remove when we finally get multicursors in nvim 0.12
 
 extra/fugitive
 extra/gitsigns
