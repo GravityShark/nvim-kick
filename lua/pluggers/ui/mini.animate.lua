@@ -5,5 +5,10 @@ return {
         scroll = {
             enable = false,
         },
+        cursor = {
+            timing = function(_, n)
+                return 250 * (1 - (1 - n) * (1 - n))
+            end,
+        },
     },
 }
