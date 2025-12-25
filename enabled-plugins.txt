@@ -41,10 +41,9 @@ extra/undotree
 extra/which-key
 
 ui/colorizer
-ui/mini.animate
 ui/mini.statusline
 ui/noice
-ui/smear-cursor # doesn't work with noice.nvim
+ui/smear-cursor
 ui/todo-comments
 
 # vim:commentstring=#\ %s:
