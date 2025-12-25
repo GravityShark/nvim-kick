@@ -1,24 +1,24 @@
 return {
     'nvim-mini/mini.move',
     keys = {
-        '<M-left>',
-        '<M-right>',
-        '<M-down>',
-        '<M-up>',
+        '<S-left>',
+        '<S-right>',
+        '<S-down>',
+        '<S-up>',
     },
     opts = {
         mappings = {
             -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-            left = '<M-left>',
-            right = '<M-right>',
-            down = '<M-down>',
-            up = '<M-up>',
+            left = '<S-left>',
+            right = '<S-right>',
+            down = '<S-down>',
+            up = '<S-up>',
 
             -- Move current line in Normal mode
-            line_left = '<M-left>',
-            line_right = '<M-right>',
-            line_down = '<M-down>',
-            line_up = '<M-up>',
+            line_left = '<S-left>',
+            line_right = '<S-right>',
+            line_down = '<S-down>',
+            line_up = '<S-up>',
         },
     },
 }
