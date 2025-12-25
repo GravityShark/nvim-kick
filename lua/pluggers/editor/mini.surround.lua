@@ -1,5 +1,6 @@
 return { -- mini.surround Surround text with any character
     'nvim-mini/mini.surround',
+    keys = { { 's', '', mode = { 'n', 'v' }, desc = '+surround' } },
     opts = { mappings = { replace = 'sc' } },
 }
 --[[
