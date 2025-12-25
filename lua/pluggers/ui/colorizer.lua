@@ -12,6 +12,7 @@ return { -- colorizer.nvim Visualize color codes in code
     opts = {
         lazy_load = true,
         user_default_options = {
+            names = false,
             css = true,
             tailwind = true,
             mode = 'virtualtext',

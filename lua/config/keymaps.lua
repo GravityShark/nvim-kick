@@ -160,21 +160,11 @@ vim.api.nvim_set_keymap('v', '>', '> gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 
--- g[y|d|p|P] uses to system clipboard, and also gd to delete without copying{{{
--- vim.keymap.set({ 'n', 'v' }, 'gd', '"_d', { desc = 'delete empty' })
--- vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
--- vim.keymap.set(
---     { 'n', 'v' },
---     'gp',
---     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
---     { desc = 'Paste system clipboard' }
--- )
--- vim.keymap.set(
---     { 'n', 'v' },
---     'gP',
---     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
---     { desc = 'Paste system clipboard' }
--- ) -- }}}
+-- <leader>[y|p|P] uses to system clipboard, and <leader>d to delete without copying{{{
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete void' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'yank clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p"', { desc = 'paste clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { desc = 'Paste clipboard' }) -- }}}
 
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.keymap.set(
@@ -232,13 +222,6 @@ vim.api.nvim_set_keymap(
 
 -- blazingly fast https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua {{{
 -- greatest remap ever
--- vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { desc = 'paste empty' })
--- vim.api.nvim_set_keymap(
---     'n',
---     '<leader><leader>',
---     '<CMD>e<CR>',
---     { desc = 'refresh buffer' }
--- )
 -- }}}
 
 -- square bracket motions {{{
@@ -252,10 +235,15 @@ vim.api.nvim_set_keymap('n', ']b', '<CMD>bnext<CR>', { desc = 'Next buffer' })
 vim.api.nvim_set_keymap(
     'n',
     '[q',
-    '<CMD>cprev<CR>',
+    '<CMD>cprev<CR>zz',
     { desc = 'Previous quickfix' }
 )
-vim.api.nvim_set_keymap('n', ']q', '<CMD>cnext<CR>', { desc = 'Next quickfix' })
+vim.api.nvim_set_keymap(
+    'n',
+    ']q',
+    '<CMD>cnext<CR>zz',
+    { desc = 'Next quickfix' }
+)
 
 -- }}}
 
