@@ -9,8 +9,9 @@ return {
                 enable = false,
             },
             cursor = {
-                timing = animate.gen_timing.exponential({
-                    duration = 150,
+                timing = animate.gen_timing.quadratic({
+                    easing = 'out',
+                    duration = 250,
                     unit = 'total',
                 }),
             },

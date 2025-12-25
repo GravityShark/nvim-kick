@@ -1,5 +1,35 @@
 return { -- mini.surround Surround text with any character
     'nvim-mini/mini.surround',
+    opts = { mappings = { replace = 'sc' } },
+}
+--[[
+sa + motion + output id
+sd + output id
+sc + input id + output id
+sf + input id
+sh + input id
+sn/l + input id
+
+output ids
+
+example
+
+f -> yo
+= yo(example)
+
+t -> yo
+= <yo>example</yo>
+
+defined symbols
+({[<>]})
+
+vim defaults,
+p meaning parentheses
+q meaning quotes, can be all ` ' " "'`
+b meaning brackets, can mean multiple different types of brackets
+--]]
+
+--[[
     keys = {
         { 'S', mode = 'v' },
         { 'ys', desc = 'Add surrounding' },
@@ -19,7 +49,7 @@ return { -- mini.surround Surround text with any character
                 find_left = '',
                 highlight = '',
                 replace = 'cs',
-                update_n_lines = '',
+                '({[update_n_lines]}) '= '',
 
                 -- Add this only if you don't want to use extended mappings
                 suffix_last = '',
@@ -33,11 +63,11 @@ return { -- mini.surround Surround text with any character
         vim.keymap.set(
             'x',
             'S',
-            [[:<C-u>lua MiniSurround.add('visual')<CR>]],
-            { silent = true }
-        )
+            -- [[:<C-u>lua MiniSurround.add('visual')<CR>,
+            -- { silent = true }
+        -- )
 
         -- Make special mapping for "add surrounding for line"
-        vim.keymap.set('n', 'yss', 'ys_', { remap = true })
-    end,
-}
+    --     vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+    -- end,
+    -- ]]

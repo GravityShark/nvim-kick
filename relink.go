@@ -43,8 +43,16 @@ func main() {
 	deleteSymlinks()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		plugin := strings.TrimSpace(scanner.Text())
-		if len(plugin) != 0 && plugin[0] != '#' {
+		plugin := scanner.Text()
+		for i, v := range plugin {
+			if v == '#' {
+				plugin = plugin[:i]
+				break
+			}
+		}
+		plugin = strings.TrimSpace(plugin)
+
+		if len(plugin) != 0 {
 			plugger := "../pluggers/" + plugin + ".lua"
 			enabled := "enabled/" + filepath.Base(plugin) + ".lua"
 			err = os.Symlink(plugger, enabled)
