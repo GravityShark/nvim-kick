@@ -252,7 +252,7 @@ return {
             function()
                 Snacks.picker.lines()
             end,
-            desc = 'buffer lines',
+            desc = 'Buffer lines',
         },
         -- {
         --     '<leader>sB',
@@ -324,7 +324,7 @@ return {
             function()
                 Snacks.picker.diagnostics_buffer()
             end,
-            desc = 'buffer diagnostics',
+            desc = 'Diagnostics (buffer)',
         },
         {
             '<leader>sh',
@@ -415,14 +415,31 @@ return {
             function()
                 Snacks.picker.lsp_symbols()
             end,
-            desc = 'LSP Symbols',
+            desc = 'symbols LSP',
         },
         {
             '<leader>sS',
             function()
                 Snacks.picker.lsp_workspace_symbols()
             end,
-            desc = 'LSP Workspace Symbols',
+            desc = 'symbols workspace LSP',
+        },
+
+        {
+            '<leader>st',
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            desc = 'todo',
+        },
+        {
+            '<leader>sT',
+            function()
+                Snacks.picker.todo_comments({
+                    keywords = { 'TODO', 'FIX', 'FIXME' },
+                })
+            end,
+            desc = 'todo/fix/fixme',
         },
     },
 }

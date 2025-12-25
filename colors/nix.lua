@@ -1,6 +1,5 @@
 -- mustache template that my stylix config for nix uses
 
-local base16 = require('mini.base16')
 local palette = {
     base00 = '@base00@',
     base01 = '@base01@',
@@ -32,7 +31,7 @@ if palette.base00 == '@base0' .. '0@' then
     return {}
 end
 
-base16.setup({
+require('mini.base16').setup({
     palette = palette,
     use_cterm = false,
     plugins = {

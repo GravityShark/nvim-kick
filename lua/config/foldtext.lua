@@ -129,6 +129,7 @@ function HighlightedFoldtext()
 end
 
 local function set_fold_hl()
+    vim.api.nvim_set_hl(0, 'Folded', { bg = 'NONE' })
     local nf = vim.api.nvim_get_hl(0, { name = 'PmenuKindSel', link = false })
     vim.api.nvim_set_hl(0, 'FoldedIcon', { fg = nf.bg })
     vim.api.nvim_set_hl(

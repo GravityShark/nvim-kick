@@ -12,6 +12,8 @@ return { -- colorizer.nvim Visualize color codes in code
         user_default_options = {
             css = true,
             tailwind = true,
+            mode = 'virtualtext',
+            virtualtext_inline = 'before',
         },
     },
 }

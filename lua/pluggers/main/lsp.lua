@@ -31,7 +31,7 @@ return { -- Default LSP Configurations
                     buffer = ev.buf,
                     desc = 'lens',
                 })
-                vim.keymap.set('n', '<leader>cI', function()
+                vim.keymap.set('n', '<leader>ci', function()
                     vim.lsp.inlay_hint.enable(
                         not vim.lsp.inlay_hint.is_enabled()
                     )

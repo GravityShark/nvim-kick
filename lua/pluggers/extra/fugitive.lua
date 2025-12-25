@@ -39,12 +39,14 @@ return { -- vise for going to the git repository in a browser
         {
             'gh',
             '<CMD>diffget //2<CR>',
-            { desc = 'left diffget', noremap = true },
+            desc = 'get diff left',
+            noremap = true,
         },
         {
             'gl',
             '<CMD>diffget //3<CR>',
-            { desc = 'right diffget', noremap = true },
+            desc = 'get diff right',
+            noremap = true,
         },
     },
     cmd = { 'Git', 'Gvdiffsplit', 'Ghdiffsplit' },

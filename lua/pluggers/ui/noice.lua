@@ -5,11 +5,19 @@ return {
     opts = {
         cmdline = {
             format = {
-                conceal = false,
+                -- to prevent smear-cursor.nvim from fucking up
                 filter = { conceal = false },
                 lua = { conceal = false },
                 help = { conceal = false },
                 input = { conceal = false },
+                cmdline = { conceal = false },
+            },
+        },
+        inc_rename = {
+            cmdline = {
+                format = {
+                    IncRename = { conceal = false },
+                },
             },
         },
         lsp = {
