@@ -3,6 +3,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io/fs"
 	"log"
 	"os"
@@ -11,6 +12,17 @@ import (
 )
 
 func main() {
+	argsWithoutProg := os.Args[1:]
+	if len(argsWithoutProg) > 1 {
+		fmt.Printf("Usage: relink.go [directory]\n")
+		os.Exit(1)
+	} else if len(argsWithoutProg) == 1 {
+		err := os.Chdir(argsWithoutProg[0])
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	file, err := os.Open("./enabled-plugins.txt")
 	if err != nil {
 		log.Fatal(err)
