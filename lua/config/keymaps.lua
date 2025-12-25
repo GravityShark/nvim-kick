@@ -174,7 +174,7 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 --     'gP',
 --     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
 --     { desc = 'Paste system clipboard' }
-) -- }}}
+-- ) -- }}}
 
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.keymap.set(
