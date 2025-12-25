@@ -161,19 +161,19 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 
 -- g[y|d|p|P] uses to system clipboard, and also gd to delete without copying{{{
-vim.keymap.set({ 'n', 'v' }, 'gd', '"_d', { desc = 'delete empty' })
-vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set(
-    { 'n', 'v' },
-    'gp',
-    '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
-    { desc = 'Paste system clipboard' }
-)
-vim.keymap.set(
-    { 'n', 'v' },
-    'gP',
-    '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
-    { desc = 'Paste system clipboard' }
+-- vim.keymap.set({ 'n', 'v' }, 'gd', '"_d', { desc = 'delete empty' })
+-- vim.keymap.set({ 'n', 'v' }, 'gy', '"+y', { desc = 'Yank to system clipboard' })
+-- vim.keymap.set(
+--     { 'n', 'v' },
+--     'gp',
+--     '<CMD> set paste<CR>"+p<CMD>set paste!<CR>',
+--     { desc = 'Paste system clipboard' }
+-- )
+-- vim.keymap.set(
+--     { 'n', 'v' },
+--     'gP',
+--     '<CMD> set paste<CR>"+P<CMD>set paste!<CR>',
+--     { desc = 'Paste system clipboard' }
 ) -- }}}
 
 -- Middle positioned C+[D/U] and [n/N] {{{
