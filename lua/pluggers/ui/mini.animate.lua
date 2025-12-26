@@ -9,10 +9,10 @@ return {
                 enable = false,
             },
             cursor = {
-                timing = animate.gen_timing.quartic({
+                timing = animate.gen_timing.exponential({
                     easing = 'out',
-                    duration = 50,
-                    step = 'total',
+                    duration = 150,
+                    unit = 'total',
                 }),
             },
         })
