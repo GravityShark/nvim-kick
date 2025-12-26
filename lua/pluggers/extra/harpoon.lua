@@ -3,16 +3,29 @@ return {
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
-        settings = { save_on_toggle = true },
-        get_root_dir = function()
-            local git_root = vim.fn.system('git rev-parse --show-toplevel 2>&1')
+        settings = {
+            save_on_toggle = true,
+            key = function()
+                local git_root =
+                    vim.fn.system('git rev-parse --show-toplevel 2>&1')
 
-            if vim.v.shell_error == 0 then
-                return git_root:gsub('\n$', '')
-            end
+                if vim.v.shell_error == 0 then
+                    return git_root:gsub('\n$', '')
+                end
 
-            return vim.loop.cwd()
-        end,
+                return vim.loop.cwd()
+            end,
+            get_root_dir = function()
+                local git_root =
+                    vim.fn.system('git rev-parse --show-toplevel 2>&1')
+
+                if vim.v.shell_error == 0 then
+                    return git_root:gsub('\n$', '')
+                end
+
+                return vim.loop.cwd()
+            end,
+        },
     },
     keys = function()
         local keys = {
