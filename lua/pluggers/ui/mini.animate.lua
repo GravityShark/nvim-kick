@@ -9,7 +9,7 @@ return {
                 enable = false,
             },
             cursor = {
-                timing = animate.gen_timing.exponential({
+                timing = animate.gen_timing.quartic({
                     easing = 'out',
                     duration = 50,
                     step = 'total',
