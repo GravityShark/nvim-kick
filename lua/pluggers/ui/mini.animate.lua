@@ -11,7 +11,7 @@ return {
             cursor = {
                 timing = animate.gen_timing.exponential({
                     easing = 'out',
-                    duration = 250,
+                    duration = 50,
                     step = 'total',
                 }),
             },
