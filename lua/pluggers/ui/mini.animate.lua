@@ -12,7 +12,7 @@ return {
                 timing = animate.gen_timing.exponential({
                     easing = 'out',
                     duration = 250,
-                    -- step = 'total',
+                    step = 'total',
                 }),
             },
         })
