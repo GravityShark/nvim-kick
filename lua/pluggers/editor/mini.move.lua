@@ -1,5 +1,6 @@
 return {
     'nvim-mini/mini.move',
+    event = 'VeryLazy',
     keys = {
         '<C-Left>',
         '<C-Right>',
