@@ -1,5 +1,6 @@
 return {
-    'folke/snacks.nvim',
+    'afawe3331/snacks.nvim', -- temporarily use his fork to fix images
+    -- 'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
     init = function()
