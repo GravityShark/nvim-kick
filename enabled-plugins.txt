@@ -35,6 +35,7 @@ extra/harpoon
 extra/inc-rename
 extra/neogen
 extra/new-file-template
+extra/pathfinder
 extra/oil
 extra/trouble
 extra/ts-comments

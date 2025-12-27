@@ -32,10 +32,11 @@ return {
                 { 'mtime', 'desc' },
             },
         },
+        preview_win = { preview_method = 'scratch' },
         keymaps = {
             ['<ESC>'] = { 'actions.close', mode = 'n' },
             ['<S-CR>'] = { 'actions.open_external', mode = 'n' },
-            ['gp'] = 'actions.preview',
+            ['gp'] = { 'actions.preview', mode = 'n' },
             ['gd'] = {
                 desc = 'Toggle file detail view',
                 callback = function()

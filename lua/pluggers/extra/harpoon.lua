@@ -7,10 +7,14 @@ return {
             save_on_toggle = true,
             key = function()
                 local git_root =
-                    vim.fn.system('git rev-parse --show-toplevel 2>&1')
+                    vim.fn.systemlist('git rev-parse --show-toplevel')[1]
 
-                if vim.v.shell_error == 0 then
-                    return git_root:gsub('\n$', '')
+                if
+                    vim.v.shell_error == 0
+                    or git_root == nil
+                    or git_root == ''
+                then
+                    return git_root
                 end
 
                 return vim.loop.cwd()
