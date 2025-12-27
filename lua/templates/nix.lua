@@ -1,5 +1,25 @@
 local utils = require('new-file-template.utils')
 
+local function config_template(_, filename)
+    local name = vim.split(filename, '%.')[1]
+    return [[
+{
+  config,
+  lib,
+  ...
+}:
+
+{
+  options = {
+    service.]] .. name .. [[.enable = lib.mkEnableOption "enables ]] .. name .. [[";
+  };
+  config = lib.mkIf config.service.]] .. name .. [[.enable {
+    |cursor|
+  };
+}
+  ]]
+end
+
 local function base_template(relative_path, filename)
     return [[
 {...}:
@@ -38,6 +58,8 @@ return function(opts)
     local template = {
         { pattern = 'shell', content = shell_template },
         { pattern = '.*', content = base_template },
+        { pattern = 'nixos/.*', content = config_template },
+        { pattern = 'home/.*', content = base_template },
     }
 
     return utils.find_entry(template, opts)
