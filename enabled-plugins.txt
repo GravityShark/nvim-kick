@@ -31,12 +31,12 @@ editor/mini.surround
 
 extra/fugitive
 extra/gitsigns
-extra/harpoon
 extra/inc-rename
+extra/minipoon
 extra/neogen
 extra/new-file-template
-extra/pathfinder
 extra/oil
+extra/pathfinder
 extra/trouble
 extra/ts-comments
 extra/undotree
