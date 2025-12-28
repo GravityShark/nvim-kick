@@ -1,6 +1,7 @@
-tags
-test.sh
+lazy-lock.json
+lua/enabled/*
 .luarc.json
 nvim
-lazy-lock.json
 relink
+tags
+test.sh
