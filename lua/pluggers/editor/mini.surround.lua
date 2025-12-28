@@ -1,7 +1,8 @@
 return { -- mini.surround Surround text with any character
     'nvim-mini/mini.surround',
     keys = {
-        { mode = { 'n', 'v' }, 's', '', desc = '+surround' },
+        -- { mode = { 'n', 'v' }, 's', '', desc = '+surround' },
+        { 's', '', desc = '+surround' },
         { 'sa', desc = 'Add surrounding' },
         { 'sd', desc = 'Delete surrounding' },
         { 'sc', desc = 'Change surrounding' },
