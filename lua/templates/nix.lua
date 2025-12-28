@@ -13,7 +13,7 @@ local function config_template(relative_path, filename)
 
 {
   options = {
-    ] .. preceeding .. '.' .. name .. [[.enable = lib.mkEnableOption "enables ]] .. name .. [[";
+    ]] .. preceeding .. '.' .. name .. [[.enable = lib.mkEnableOption "enables ]] .. name .. [[";
   };
   config = lib.mkIf config.]] .. preceeding .. '.' .. name .. [[.enable {
     |cursor|
