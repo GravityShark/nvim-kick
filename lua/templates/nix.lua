@@ -58,7 +58,7 @@ return function(opts)
     local template = {
         { pattern = 'shell', content = shell_template },
         { pattern = 'nixos/.*', content = config_template },
-        { pattern = 'home/.*', content = base_template },
+        { pattern = 'home/.*', content = config_template },
         { pattern = '.*', content = base_template },
     }
 
