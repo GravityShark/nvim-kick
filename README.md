@@ -8,6 +8,8 @@
 
 > i mean mason is kinda still available as a plugin so you can still use it and just put your mason stuff in ensure.lua then the M.mason
 
+> im lowky kinda waiting for multicursor support
+
 ## whats different about this one
 
 > tl;dr read ./enabled-plugins.txt
