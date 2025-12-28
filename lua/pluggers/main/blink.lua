@@ -11,7 +11,11 @@ return {
     opts = {
         keymap = {
             preset = 'default',
-            ['<C-n>'] = { 'show', 'select_next', 'fallback' },
+            ['<C-n>'] = {
+                'show_and_insert_or_accept_single',
+                'select_next',
+                'fallback',
+            },
             ['<C-j>'] = { 'snippet_forward', 'fallback' },
             ['<C-k>'] = { 'snippet_backward', 'fallback' },
         },
