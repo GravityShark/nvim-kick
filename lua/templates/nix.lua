@@ -57,9 +57,9 @@ end
 return function(opts)
     local template = {
         { pattern = 'shell', content = shell_template },
-        { pattern = '.*', content = base_template },
         { pattern = 'nixos/.*', content = config_template },
         { pattern = 'home/.*', content = base_template },
+        { pattern = '.*', content = base_template },
     }
 
     return utils.find_entry(template, opts)
