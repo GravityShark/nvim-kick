@@ -2,7 +2,7 @@ local utils = require('new-file-template.utils')
 
 local function config_template(relative_path, filename)
     local relative_path_list = vim.split(relative_path, '%/')
-    local preceeding = relative_path_list[#relative_path_list - 1]
+    local preceeding = relative_path_list[#relative_path_list]
     local name = vim.split(filename, '%.')[1]
     return [[
 {
@@ -13,9 +13,9 @@ local function config_template(relative_path, filename)
 
 {
   options = {
-    service.]] .. preceeding .. '.' .. name .. [[.enable = lib.mkEnableOption "enables ]] .. name .. [[";
+    ] .. preceeding .. '.' .. name .. [[.enable = lib.mkEnableOption "enables ]] .. name .. [[";
   };
-  config = lib.mkIf config.service.]] .. preceeding .. '.' .. name .. [[.enable {
+  config = lib.mkIf config.]] .. preceeding .. '.' .. name .. [[.enable {
     |cursor|
   };
 }
