@@ -94,6 +94,8 @@ cli for a specific purpose
     - [gh.nvim](https://github.com/ldelossa/gh.nvim) github integration that is more than just rhubar
       - [cmp-git](https://github.com/petertriho/cmp-git)
   - [neogit](https://github.com/NeogitOrg/neogit) or even just [magit](https://magit.vc/) on emacs, or just [lazygit](https://github.com/jesseduffield/lazygit)
+  - other git shit like fzf git or anything
+  - like i kinda want to see all previous commits
 - new neovim look
   - [nvim-notify](https://github.com/rcarriga/nvim-notify)
   - [dressing.nvim](https://github.com/stevearc/dressing.nvim) dresses
