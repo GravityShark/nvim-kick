@@ -36,8 +36,16 @@ return {
                 show_in_snippet = true,
                 -- show_on_keyword = true,
                 -- show_on_trigger_character = true,
-                show_on_keyword = false,
-                show_on_trigger_character = false,
+                show_on_backspace = false,
+                show_on_backspace_in_keyword = false,
+                -- show_on_keyword = false,
+                -- show_on_trigger_character = false,
+                show_on_keyword = function()
+                    return vim.tbl_contains({ 'markdown' }, vim.bo.filetype)
+                end,
+                show_on_trigger_character = function()
+                    return vim.tbl_contains({ 'markdown' }, vim.bo.filetype)
+                end,
             },
             documentation = { window = { border = 'single' } },
         },
