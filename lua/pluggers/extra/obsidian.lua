@@ -17,13 +17,14 @@ return {
         daily_notes = { folder = '/0-inbox' },
         new_notes_location = '/0-inbox',
         note_id_func = function(id)
-            return id:gsub(' ', '_')
+            return id
         end,
         templates = { folder = '/templates' },
         workspaces = {
             {
                 name = 'Notes',
                 path = '~/Notes',
+                new_notes_location = '/0-inbox',
             },
         },
     },
