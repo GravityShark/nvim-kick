@@ -34,18 +34,13 @@ return {
         completion = {
             trigger = {
                 show_in_snippet = true,
-                -- show_on_keyword = true,
-                -- show_on_trigger_character = true,
-                show_on_backspace = false,
-                show_on_backspace_in_keyword = false,
                 -- show_on_keyword = false,
                 -- show_on_trigger_character = false,
-                show_on_keyword = function()
-                    return vim.tbl_contains({ 'markdown' }, vim.bo.filetype)
-                end,
-                show_on_trigger_character = function()
-                    return vim.tbl_contains({ 'markdown' }, vim.bo.filetype)
-                end,
+                show_on_backspace = true,
+                show_on_backspace_in_keyword = true,
+                show_on_keyword = true,
+                show_on_trigger_character = true,
+                show_on_accept_on_trigger_character = true,
             },
             documentation = { window = { border = 'single' } },
         },
