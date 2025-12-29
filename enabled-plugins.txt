@@ -35,6 +35,7 @@ extra/inc-rename
 extra/minipoon
 extra/neogen
 extra/new-file-template
+extra/obsidian
 extra/oil
 extra/trouble
 extra/ts-comments
