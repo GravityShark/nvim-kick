@@ -116,7 +116,7 @@ function HighlightedFoldtext()
         table.insert(result, item)
     end
 
-    if vim.b[nvim_get_current_buf()].disable_foldend then
+    if vim.bo.filetype == 'markdown' then
         return result
     end
 
