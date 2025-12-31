@@ -116,6 +116,10 @@ function HighlightedFoldtext()
         table.insert(result, item)
     end
 
+    if vim.b[nvim_get_current_buf()].disable_foldend then
+        return result
+    end
+
     local result2 = parse_line(vim.v.foldend)
     if result2 and #result2 > 0 then
         local first = result2[1]
