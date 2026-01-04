@@ -36,6 +36,7 @@ vim.keymap.set('n', '<leader>r', function()
     end
 
     -- Prompt
+    --https://github.com/neovim/neovim/issues/32987 for someereason this doesn't work
     vim.ui.input({
         prompt = 'Run: ',
         default = vim.b.runwithparameters,
