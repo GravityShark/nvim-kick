@@ -2,6 +2,8 @@ return {
     'obsidian-nvim/obsidian.nvim',
     ft = 'markdown',
     keys = {
+        -- https://github.com/obsidian-nvim/obsidian.nvim?tab=readme-ov-file#commands
+        -- other commands
         {
             '<leader>o',
             '',
@@ -28,7 +30,7 @@ return {
             desc = 'find notes',
         },
         {
-            '<leader>of',
+            '<leader>oF',
             '<CMD>Obsidian search<CR>',
             desc = 'Find text',
         },
@@ -57,7 +59,7 @@ return {
         notes_subdir = '/0-inbox',
         new_notes_location = 'notes_subdir',
         note_id_func = function(id)
-            return id and id or ''
+            return id
         end,
         templates = { folder = '/templates' },
         workspaces = {
