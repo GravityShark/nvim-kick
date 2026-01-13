@@ -12,8 +12,7 @@
 # lua/pluggers/fun/fun.md
 # lua/pluggers/ui/ui.md
 
-# colors
-# colors/mini.base16
+# no colors are enabled by default btw
 
 main/blink
 main/conform
