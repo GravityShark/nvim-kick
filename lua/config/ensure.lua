@@ -31,7 +31,11 @@ M.lsp = { -- :help lspconfig-all
             },
         },
     },
-    nil_ls = { settings = { nix = { flake = { autoArchive = true } } } },
+    nil_ls = {
+        settings = {
+            nix = { flake = { autoArchive = true, autoEvalInputs = true } },
+        },
+    },
     -- Webdev
     'emmet_language_server',
     'html',
