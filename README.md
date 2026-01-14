@@ -48,8 +48,9 @@ cli for a specific purpose
 
 ## plugins i have to look into
 
+- [bullets.vim](https://github.com/bullets-vim/bullets.vim) i need to fix to config of this
 - [mini.move](https://github.com/nvim-mini/mini.move) adds the primeagen mapping to move a selaction up and down
-- bollocks
+- [outline.nvim](https://github.com/hedyhli/outline.nvim) a sort of table of contents for your code
 - [overseer.nvim](https://github.com/stevearc/overseer.nvim) job and task management, like github actions or bulids
 - [mini.snippets](https://github.com/nvim-mini/mini.snippets) custom snippets that are easy to write like coq
   - https://cmp.saghen.dev/configuration/snippets.html#mini-snippets

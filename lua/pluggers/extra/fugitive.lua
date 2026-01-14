@@ -37,19 +37,13 @@ return { -- vise for going to the git repository in a browser
             desc = 'horizontal diff split',
         },
         {
-            'gh',
+            '<leader>gl',
             '<CMD>diffget //2<CR>',
             desc = 'get diff left',
             noremap = true,
         },
         {
-            'gH',
-            '<CMD>diffget<CR>',
-            desc = 'get diff old',
-            noremap = true,
-        },
-        {
-            'gl',
+            '<leader>gr',
             '<CMD>diffget //3<CR>',
             desc = 'get diff right',
             noremap = true,
