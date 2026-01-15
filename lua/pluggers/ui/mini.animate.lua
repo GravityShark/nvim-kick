@@ -8,7 +8,16 @@ return {
             scroll = {
                 enable = false,
             },
+
             cursor = {
+                timing = animate.gen_timing.exponential({
+                    easing = 'out',
+                    duration = 250,
+                    unit = 'total',
+                }),
+            },
+
+            resize = {
                 timing = animate.gen_timing.exponential({
                     easing = 'out',
                     duration = 250,
