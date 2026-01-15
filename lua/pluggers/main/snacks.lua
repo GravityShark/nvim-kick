@@ -129,7 +129,13 @@ return {
             function()
                 Snacks.picker.files({
                     title = 'Directories',
+                    format = 'file',
                     args = { '-td' },
+                    win = {
+                        preview = {
+                            minimal = true,
+                        },
+                    },
                     transform = function(item)
                         local stat = vim.loop.fs_stat(item.file)
                         return stat and stat.type == 'directory' or false
@@ -446,7 +452,7 @@ return {
         -- Zoxide
         -- https://github.com/folke/snacks.nvim/discussions/617
         {
-            '<leader>fz',
+            '<leader>sz',
             function()
                 Snacks.picker.zoxide({
                     finder = 'files_zoxide',
