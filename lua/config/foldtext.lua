@@ -116,10 +116,6 @@ function HighlightedFoldtext()
         table.insert(result, item)
     end
 
-    if vim.bo.filetype == 'markdown' then
-        return result
-    end
-
     local result2 = parse_line(vim.v.foldend)
     if result2 and #result2 > 0 then
         local first = result2[1]
@@ -149,4 +145,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     callback = set_fold_hl,
 })
 
-vim.opt.foldtext = 'luaeval("HighlightedFoldtext")()'
+-- if vim.bo.filetype == 'markdown' then
+--     return result
+-- else
+--     vim.opt.foldtext = 'luaeval("HighlightedFoldtext")()'
+-- end
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

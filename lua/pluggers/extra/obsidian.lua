@@ -54,16 +54,17 @@ return {
         -- https://github.com/Myzel394/easytables.nvim
     },
     opts = {
+        attachments = { folder = '/assets/attachments' },
         daily_notes = { folder = '/0-inbox' },
         legacy_commands = false, -- this will be removed in the next major release
-        notes_subdir = '/0-inbox',
         new_notes_location = 'notes_subdir',
         note_id_func = function(id)
             return id
         end,
-        attachments = { folder = '/assets/attachments' },
         templates = { folder = '/assets/templates' },
+        ui = { enable = false },
         workspaces = {
+            notes_subdir = '/0-inbox',
             {
                 name = 'Notes',
                 path = '~/Notes',
