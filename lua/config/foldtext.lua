@@ -145,10 +145,14 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     callback = set_fold_hl,
 })
 
--- if vim.bo.filetype == 'markdown' then
---     return result
--- else
---     vim.opt.foldtext = 'luaeval("HighlightedFoldtext")()'
--- end
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = 'luaeval("HighlightedFoldtext")()'
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('markdown.fold', {}),
+    pattern = 'markdown',
+    callback = function()
+        -- sets local folding options for markdown
+        vim.opt_local.foldmethod = 'expr'
+        vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    end,
+})
