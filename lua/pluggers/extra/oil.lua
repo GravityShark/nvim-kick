@@ -81,7 +81,7 @@ return {
                 rm = '<Del><Del><Del><Del><Del>'
             end
             local escaped = vim.api.nvim_replace_termcodes(
-                ':! ' .. args .. '<Home>' .. rm .. '<Right>',
+                ':!' .. args .. '<Home>' .. rm .. '<Right>',
                 true,
                 false,
                 true
@@ -133,11 +133,12 @@ return {
                     desc = 'Open selected item on cmdline',
                     mode = 'v',
                 },
-                ['gx'] = {
-                    open_file_with_path,
-                    desc = 'Open selected item on external program',
-                    mode = 'v',
-                },
+                ['gx'] = 'actions.open_external',
+                -- ['gx'] = {
+                --     open_file_with_path,
+                --     desc = 'Open selected item on external program',
+                --     mode = 'v',
+                -- },
                 ['g1'] = {
                     'actions.open_cmdline',
                     opts = {
