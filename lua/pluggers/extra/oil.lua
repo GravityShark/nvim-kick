@@ -24,32 +24,34 @@ return {
     config = function()
         local oil = require('oil')
         local visualler = function(impl)
-            -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
-            -- Open cmdline with visually selected entries as argument
-            -- : <file1> <file2> <file..>
-            local mode = string.lower(vim.api.nvim_get_mode().mode)
-            local bufnr = vim.api.nvim_get_current_buf()
-            local name
-            local cwd = oil.get_current_dir()
-            local items = {}
+            return function()
+                -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
+                -- Open cmdline with visually selected entries as argument
+                -- : <file1> <file2> <file..>
+                local mode = string.lower(vim.api.nvim_get_mode().mode)
+                local bufnr = vim.api.nvim_get_current_buf()
+                local name
+                local cwd = oil.get_current_dir()
+                local items = {}
 
-            if mode == 'n' then
-                local lnum = vim.fn.getpos('.')[2]
-                name = oil.get_entry_on_line(bufnr, lnum).name
-                table.insert(items, cwd .. name)
-            elseif mode == 'v' then
-                local start = vim.fn.getpos('v')
-                local end_ = vim.fn.getpos('.')
-                local lnum0 = start[2]
-                local lnum1 = end_[2]
-                print(lnum0, lnum1)
-                for lnum = lnum0, lnum1 do
-                    _ = oil.get_entry_on_line(bufnr, lnum)
+                if mode == 'n' then
+                    local lnum = vim.fn.getpos('.')[2]
                     name = oil.get_entry_on_line(bufnr, lnum).name
                     table.insert(items, cwd .. name)
+                elseif mode == 'v' then
+                    local start = vim.fn.getpos('v')
+                    local end_ = vim.fn.getpos('.')
+                    local lnum0 = start[2]
+                    local lnum1 = end_[2]
+                    print(lnum0, lnum1)
+                    for lnum = lnum0, lnum1 do
+                        _ = oil.get_entry_on_line(bufnr, lnum)
+                        name = oil.get_entry_on_line(bufnr, lnum).name
+                        table.insert(items, cwd .. name)
+                    end
                 end
+                impl(items, mode)
             end
-            impl(items, mode)
         end
 
         local function open_cmdline_with_path(paths, m)
