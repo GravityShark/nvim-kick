@@ -61,7 +61,8 @@ return {
         note_id_func = function(id)
             return id
         end,
-        templates = { folder = '/templates' },
+        attachments = { folder = '/assets/attachments' },
+        templates = { folder = '/assets/templates' },
         workspaces = {
             {
                 name = 'Notes',
