@@ -253,4 +253,5 @@ vim.api.nvim_set_keymap(
 -- vim.api.nvim_set_keymap('n', '+', '<C-a>', { desc = 'Increment' })
 -- vim.api.nvim_set_keymap('n', '-', '<C-x>', { desc = 'Decrement' })
 -- }}}
+
 -- vim:foldmethod=marker:
