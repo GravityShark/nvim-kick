@@ -35,6 +35,7 @@ editor/mini.surround
 extra/fugitive
 extra/gitsigns
 extra/inc-rename
+extra/live-preview
 extra/minipoon
 extra/neogen
 extra/new-file-template
@@ -49,6 +50,7 @@ ui/colorizer
 ui/mini.animate
 ui/mini.statusline
 ui/noice
+ui/render-markdown
 ui/todo-comments
 
 # vim:commentstring=#\ %s:

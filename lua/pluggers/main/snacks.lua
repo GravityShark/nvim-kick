@@ -20,7 +20,15 @@ return {
     opts = {
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
-        image = { enabled = true },
+        image = {
+            enabled = true,
+            resolve = function(path, src)
+                local ok, api = pcall(require, 'obsidian.api')
+                if ok and api.path_is_note(path) then
+                    return api.resolve_attachment_path(src)
+                end
+            end,
+        },
         indent = { enabled = true },
         input = { enabled = true },
         picker = {
@@ -313,13 +321,13 @@ return {
         --     end,
         --     desc = 'Colorschemes',
         -- },
-        -- {
-        --     '<leader>sC',
-        --     function()
-        --         Snacks.picker.commands()
-        --     end,
-        --     desc = 'commands',
-        -- },
+        {
+            '<leader>sC',
+            function()
+                Snacks.picker.commands()
+            end,
+            desc = 'commands',
+        },
         {
             '<leader>se',
             function()
@@ -449,11 +457,21 @@ return {
             end,
             desc = 'todo/fix/fixme',
         },
-        -- Zoxide
         {
+            -- Zoxide
+            -- https://github.com/folke/snacks.nvim/discussions/617
             '<leader>sz',
             function()
-                Snacks.picker.zoxide()
+                Snacks.picker.zoxide({
+                    finder = 'files_zoxide',
+                    format = 'file',
+                    confirm = function(picker, item)
+                        picker:close()
+                        vim.api.nvim_command('edit ' .. item.text)
+                        local dir = item.file
+                        vim.fn.chdir(dir)
+                    end,
+                })
             end,
             desc = 'zoxide',
         },
