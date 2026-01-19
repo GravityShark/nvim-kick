@@ -10,14 +10,14 @@ return {
         { 'nvim-mini/mini.icons', opts = {} },
         { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
         {
-            'benomahony/oil-git.nvim',
-            init = function()
-                vim.cmd('hi! link OilGitAdded GreenSign')
-                vim.cmd('hi! link OilGitModified BlueSign')
-                vim.cmd('hi! link OilGitRenamed PurpleSign')
-                vim.cmd('hi! link OilGitUntracked GreenSign')
-                vim.cmd('hi! link OilGitIgnored Grey')
-            end,
+            'malewicz1337/oil-git.nvim',
+            -- init = function()
+            --     vim.cmd('hi! link OilGitAdded GreenSign')
+            --     vim.cmd('hi! link OilGitModified BlueSign')
+            --     vim.cmd('hi! link OilGitRenamed PurpleSign')
+            --     vim.cmd('hi! link OilGitUntracked GreenSign')
+            --     vim.cmd('hi! link OilGitIgnored Grey')
+            -- end,
         },
     },
 
