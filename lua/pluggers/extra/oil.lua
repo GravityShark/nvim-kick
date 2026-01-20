@@ -72,7 +72,7 @@ return {
             local m = vim.api.nvim_get_mode().mode
             local mode = vim.api.nvim_get_mode().mode
             if not (mode == 'v' or mode == 'V') then
-                require('oil.actions').open.callback()
+                require('oil.actions').open_cmdline.callback()
                 return
             end
 
