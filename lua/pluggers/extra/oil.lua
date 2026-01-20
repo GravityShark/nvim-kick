@@ -139,11 +139,11 @@ return {
                     mode = 'v',
                 },
                 ['gx'] = 'actions.open_external',
-                -- ['gx'] = {
-                --     open_file_with_path,
-                --     desc = 'Open selected item on external program',
-                --     mode = 'v',
-                -- },
+                ['gx'] = {
+                    open_file_with_path,
+                    desc = 'Open selected item on external program',
+                    mode = 'v',
+                },
                 ['g1'] = {
                     'actions.open_cmdline',
                     opts = {
