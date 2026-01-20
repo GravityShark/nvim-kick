@@ -27,6 +27,10 @@ return {
             -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
             -- https://github.com/stevearc/conform.nvim/blob/62d5accad8b29d6ba9b58d3dff90c43a55621c60/lua/conform/init.lua#L324-L353
             local mode = vim.api.nvim_get_mode().mode
+            if mode ~= 'v' or mode ~= 'V' then
+                return { oil.get_cursor_entry() }
+            end
+
             local bufnr = vim.api.nvim_get_current_buf()
             local start = vim.fn.getpos('v')
             local end_ = vim.fn.getpos('.')
@@ -128,21 +132,12 @@ return {
                     end,
                 },
                 ['g!'] = {
-                    'actions.open_cmdline',
-                    opts = { shorten_path = true },
-                    desc = 'Open the command line with the current directory as argument',
-                    mode = 'n',
-                },
-                ['g!'] = {
                     open_cmdline_with_path,
                     desc = 'Open selected item on cmdline',
-                    mode = 'v',
                 },
-                ['gx'] = { 'actions.open_external', mode = 'n' },
                 ['gx'] = {
                     open_file_with_path,
                     desc = 'Open selected item on external program',
-                    mode = 'v',
                 },
                 ['g1'] = {
                     'actions.open_cmdline',
