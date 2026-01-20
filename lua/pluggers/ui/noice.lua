@@ -1,5 +1,7 @@
 return {
-    'folke/noice.nvim',
+    -- 'folke/noice.nvim',
+    'dpetka/noice.nvim',
+    branch = 'fix/msg_show.shell_out',
     event = 'VeryLazy',
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
