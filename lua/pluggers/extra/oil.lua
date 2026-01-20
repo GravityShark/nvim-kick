@@ -27,10 +27,6 @@ return {
             -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
             -- https://github.com/stevearc/conform.nvim/blob/62d5accad8b29d6ba9b58d3dff90c43a55621c60/lua/conform/init.lua#L324-L353
             local mode = vim.api.nvim_get_mode().mode
-            if mode ~= 'v' or mode ~= 'V' then
-                return { oil.get_cursor_entry().name }
-            end
-
             local bufnr = vim.api.nvim_get_current_buf()
             local start = vim.fn.getpos('v')
             local end_ = vim.fn.getpos('.')
@@ -74,6 +70,12 @@ return {
 
         local function open_cmdline_with_path()
             local m = vim.api.nvim_get_mode().mode
+            local mode = vim.api.nvim_get_mode().mode
+            if not (mode == 'v' or mode == 'V') then
+                require('oil.actions').open_cmdline_with_path()
+                return
+            end
+
             local paths = get_oil_selection()
             local fs = require('oil.fs')
 
@@ -94,7 +96,13 @@ return {
             vim.api.nvim_feedkeys(escaped, m, true)
         end
 
-        local function open_file_with_path()
+        local function open_external()
+            local mode = vim.api.nvim_get_mode().mode
+            if not (mode == 'v' or mode == 'V') then
+                require('oil.actions').open_external()
+                return
+            end
+
             for _, path in ipairs(get_oil_selection()) do
                 vim.ui.open(path)
             end
@@ -136,8 +144,24 @@ return {
                     desc = 'Open selected item on cmdline',
                 },
                 ['gx'] = {
-                    open_file_with_path,
+                    open_external,
                     desc = 'Open selected item on external program',
+                },
+                ['gs'] = {
+                    'actions.open_terminal',
+                    desc = 'Open selected item on external program',
+                    -- function()
+                    --     vim.cmd('vsplit')
+                    --     -- Set cwd ONLY for this window
+                    --     vim.cmd(
+                    --         'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
+                    --     )
+                    --     -- Open terminal using inherited cwd
+                    --     vim.cmd('terminal $SHELL')
+                    --     vim.local_opt.nu = false
+                    --     vim.local_opt.rnu = false
+                    --     vim.cmd('startinsert')
+                    -- end,
                 },
                 ['g1'] = {
                     'actions.open_cmdline',
