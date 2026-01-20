@@ -69,32 +69,17 @@ return {
         end
 
         local function open_cmdline_with_path()
-            local mode = vim.api.nvim_get_mode().mode
-            -- if not (mode == 'v' or mode == 'V') then -- NOTE: fucking hell man
-            --     require('oil.actions').open_cmdline.callback()
-            --     return
-            -- end
-            -- local paths = get_oil_selection()
-            --
-
             local rm = ''
-            local paths
-            if mode == 'v' or mode == 'V' then
-                rm = '<Del><Del><Del><Del><Del>'
-                paths = get_oil_selection()
-            else
-                -- local lnum = vim.api.nvim_win_get_cursor(0)[1]
-                -- local lnum = vim.fn.getpos('.')[2]
-                -- paths = { oil.get_entry_on_line(0, lnum).name }
-                paths = { oil.get_cursor_entry().name }
-            end
-
-            local fs = require('oil.fs')
-
+            local mode = vim.api.nvim_get_mode().mode
             local args = ''
-            for _, path in ipairs(paths) do
-                args = args .. ' ' .. fs.shorten_path(path)
-                -- args = args .. ' ' .. path
+            if mode == 'v' or mode == 'V' then
+                local fs = require('oil.fs')
+                rm = '<Del><Del><Del><Del><Del>'
+                for _, path in ipairs(get_oil_selection()) do
+                    args = args .. ' ' .. fs.shorten_path(path)
+                end
+            else
+                args = ' ' .. oil.get_cursor_entry().name
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
