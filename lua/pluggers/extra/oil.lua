@@ -28,7 +28,7 @@ return {
             -- https://github.com/stevearc/conform.nvim/blob/62d5accad8b29d6ba9b58d3dff90c43a55621c60/lua/conform/init.lua#L324-L353
             local mode = vim.api.nvim_get_mode().mode
             if mode ~= 'v' or mode ~= 'V' then
-                return { oil.get_cursor_entry() }
+                return { oil.get_cursor_entry().name }
             end
 
             local bufnr = vim.api.nvim_get_current_buf()
