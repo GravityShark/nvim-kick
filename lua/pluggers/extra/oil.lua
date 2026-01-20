@@ -84,15 +84,17 @@ return {
                 paths = get_oil_selection()
             else
                 -- local lnum = vim.api.nvim_win_get_cursor(0)[1]
-                local lnum = vim.fn.getpos('.')[2]
-                paths = { oil.get_entry_on_line(0, lnum).name }
+                -- local lnum = vim.fn.getpos('.')[2]
+                -- paths = { oil.get_entry_on_line(0, lnum).name }
+                paths = { oil.get_cursor_entry().name }
             end
 
             local fs = require('oil.fs')
 
             local args = ''
             for _, path in ipairs(paths) do
-                args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
+                -- args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
+                args = args .. ' ' .. path
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
