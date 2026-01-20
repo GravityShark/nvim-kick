@@ -41,4 +41,5 @@ end
 
 vim.b.frontmatter_end = frontmatter_end
 vim.opt_local.foldexpr = 'v:lua.markdown_foldexpr()'
-vim.opt_local.foldtext = 'v:lua.vim.treesitter.foldtext()'
+-- vim.opt_local.foldtext = 'v:lua.vim.treesitter.foldtext()'
+vim.opt_local.foldtext = 'foldtext()'
