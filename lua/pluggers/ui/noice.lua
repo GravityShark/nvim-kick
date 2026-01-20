@@ -29,7 +29,7 @@ return {
         },
         routes = {
             {
-                view = 'cmdline',
+                view = 'cmdline_popup',
                 filter = {
                     event = 'msg_show',
                     kind = {
