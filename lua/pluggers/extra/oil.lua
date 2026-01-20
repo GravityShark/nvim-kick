@@ -70,6 +70,13 @@ return {
 
         local function open_cmdline_with_path()
             local mode = vim.api.nvim_get_mode().mode
+            -- if not (mode == 'v' or mode == 'V') then -- NOTE: fucking hell man
+            --     require('oil.actions').open_cmdline.callback()
+            --     return
+            -- end
+            -- local paths = get_oil_selection()
+            --
+
             local rm = ''
             local paths
             if mode == 'v' or mode == 'V' then
@@ -87,11 +94,11 @@ return {
                 args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
             end
 
-            -- local pre = ":!" -- NOTE: 2 fuckign hell man
-            local pre = ':vert te '
+            -- local pre = "!" -- NOTE: 2 fuckign hell man
+            local pre = 'vert te '
 
             local escaped = vim.api.nvim_replace_termcodes(
-                args .. '<Home>' .. rm .. pre,
+                ':' .. args .. '<Home>' .. rm .. pre,
                 true,
                 false,
                 true
