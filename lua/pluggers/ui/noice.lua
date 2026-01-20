@@ -5,7 +5,6 @@ return {
     opts = {
         cmdline = {
             format = {
-                -- to prevent smear-cursor.nvim from fucking up
                 filter = { conceal = false },
                 lua = { conceal = false },
                 help = { conceal = false },
@@ -29,6 +28,8 @@ return {
         },
         routes = {
             {
+                -- https://github.com/folke/noice.nvim/issues/1097
+                -- OP bug, noice cant show stdout properly
                 view = 'notify',
                 filter = {
                     event = 'msg_show',

@@ -70,12 +70,14 @@ return {
 
         local function open_cmdline_with_path()
             local mode = vim.api.nvim_get_mode().mode
-            if not (mode == 'v' or mode == 'V') then
-                require('oil.actions').open_cmdline.callback()
-                return
-            end
+            -- if not (mode == 'v' or mode == 'V') then -- NOTE: fucking hell man
+            --     require('oil.actions').open_cmdline.callback()
+            --     return
+            -- end
+            -- local paths = get_oil_selection()
+            local paths = (mode == 'v' or mode == 'V') and get_oil_selection()
+                or { oil.get_cursor_entry().name }
 
-            local paths = get_oil_selection()
             local fs = require('oil.fs')
 
             local rm = '<Del><Del><Del><Del><Del>'
@@ -83,8 +85,12 @@ return {
             for _, path in ipairs(paths) do
                 args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
             end
+
+            -- local pre = ":!" -- NOTE: 2 fuckign hell man
+            local pre = 'vsplit term://'
+
             local escaped = vim.api.nvim_replace_termcodes(
-                ':!' .. args .. '<Home>' .. rm .. '<Right>',
+                pre .. args .. '<Home>' .. rm .. '<Right>',
                 true,
                 false,
                 true
