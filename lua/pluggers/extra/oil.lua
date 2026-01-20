@@ -72,7 +72,7 @@ return {
             local m = vim.api.nvim_get_mode().mode
             local mode = vim.api.nvim_get_mode().mode
             if not (mode == 'v' or mode == 'V') then
-                require('oil.actions').open_cmdline_with_path()
+                require('oil.actions').open.callback()
                 return
             end
 
@@ -99,7 +99,7 @@ return {
         local function open_external()
             local mode = vim.api.nvim_get_mode().mode
             if not (mode == 'v' or mode == 'V') then
-                require('oil.actions').open_external()
+                require('oil.actions').open_external.callback()
                 return
             end
 
