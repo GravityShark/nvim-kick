@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap(
     'n',
     '<leader>S',
     -- '<CMD>split term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
-    '<CMD>e term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
+    '<CMD>e term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>',
     { desc = 'Shell' }
 )
 -- }}}

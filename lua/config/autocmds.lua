@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
     desc = 'load view (folds), when opening file',
     command = 'silent! loadview',
 })
+
 -- Highlight yank{{{
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
@@ -20,3 +21,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 }) -- }}}
+
+-- Terminal mode
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+    desc = 'enter Terminal-mode automatically',
+    command = 'startinsert',
+})

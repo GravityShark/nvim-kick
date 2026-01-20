@@ -87,7 +87,7 @@ return {
             end
 
             -- local pre = ":!" -- NOTE: 2 fuckign hell man
-            local pre = 'vsplit term://'
+            local pre = ':vert te '
 
             local escaped = vim.api.nvim_replace_termcodes(
                 pre .. args .. '<Home>' .. rm .. '<Right>',
@@ -155,6 +155,7 @@ return {
                     desc = 'Open selected item on external program',
                     callback = function()
                         vim.cmd('vsplit')
+
                         vim.cmd(
                             'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
                         )
