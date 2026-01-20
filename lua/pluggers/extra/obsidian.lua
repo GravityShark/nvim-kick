@@ -61,10 +61,10 @@ return {
         note_id_func = function(id)
             return id
         end,
+        notes_subdir = '/0-inbox',
         templates = { folder = '/assets/templates' },
         ui = { enable = false },
         workspaces = {
-            notes_subdir = '/0-inbox',
             {
                 name = 'Notes',
                 path = '~/Notes',
