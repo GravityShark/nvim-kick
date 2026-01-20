@@ -28,38 +28,27 @@ return {
             },
         },
         routes = {
-
             {
-                filter = { event = 'msg_show' },
-                view = 'notify',
-                opts = {
-                    level = 'info',
-                    skip = false,
-                    replace = false,
+                view = 'cmdline',
+                filter = {
+                    event = 'msg_show',
+                    kind = {
+                        'shell_out',
+                        'shell_err',
+                    },
                 },
             },
-            -- {
-            --     -- https://github.com/folke/noice.nvim/issues/1097
-            --     view = 'notify',
-            --     filter = {
-            --         event = 'msg_show',
-            --         kind = {
-            --             'shell_out',
-            --             'shell_err',
-            --         },
-            --     },
-            -- },
-            -- {
-            --     view = 'mini',
-            --     filter = {
-            --         event = 'msg_show',
-            --         any = {
-            --             { find = '%d+L, %d+B' },
-            --             { find = '; after #%d+' },
-            --             { find = '; before #%d+' },
-            --         },
-            --     },
-            -- },
+            {
+                filter = {
+                    event = 'msg_show',
+                    any = {
+                        { find = '%d+L, %d+B' },
+                        { find = '; after #%d+' },
+                        { find = '; before #%d+' },
+                    },
+                },
+                view = 'mini',
+            },
         },
         presets = {
             bottom_search = true,
