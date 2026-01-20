@@ -69,7 +69,6 @@ return {
         end
 
         local function open_cmdline_with_path()
-            local m = vim.api.nvim_get_mode().mode
             local mode = vim.api.nvim_get_mode().mode
             if not (mode == 'v' or mode == 'V') then
                 require('oil.actions').open_cmdline.callback()
@@ -79,13 +78,10 @@ return {
             local paths = get_oil_selection()
             local fs = require('oil.fs')
 
-            local rm = ''
+            local rm = '<Del><Del><Del><Del><Del>'
             local args = ''
             for _, path in ipairs(paths) do
                 args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
-            end
-            if m == 'v' or m == 'V' then
-                rm = '<Del><Del><Del><Del><Del>'
             end
             local escaped = vim.api.nvim_replace_termcodes(
                 ':!' .. args .. '<Home>' .. rm .. '<Right>',
@@ -93,7 +89,7 @@ return {
                 false,
                 true
             )
-            vim.api.nvim_feedkeys(escaped, m, true)
+            vim.api.nvim_feedkeys(escaped, mode, true)
         end
 
         local function open_external()
@@ -106,6 +102,7 @@ return {
             for _, path in ipairs(get_oil_selection()) do
                 vim.ui.open(path)
             end
+            vim.api.nvim_input('<Esc>')
         end
 
         oil.setup({
@@ -148,20 +145,20 @@ return {
                     desc = 'Open selected item on external program',
                 },
                 ['gs'] = {
-                    'actions.open_terminal',
+                    -- 'actions.open_terminal',
                     desc = 'Open selected item on external program',
-                    -- function()
-                    --     vim.cmd('vsplit')
-                    --     -- Set cwd ONLY for this window
-                    --     vim.cmd(
-                    --         'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
-                    --     )
-                    --     -- Open terminal using inherited cwd
-                    --     vim.cmd('terminal $SHELL')
-                    --     vim.local_opt.nu = false
-                    --     vim.local_opt.rnu = false
-                    --     vim.cmd('startinsert')
-                    -- end,
+                    callback = function()
+                        vim.cmd('vsplit')
+                        -- Set cwd ONLY for this window
+                        vim.cmd(
+                            'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
+                        )
+                        -- Open terminal using inherited cwd
+                        vim.cmd('terminal $SHELL')
+                        vim.local_opt.nu = false
+                        vim.local_opt.rnu = false
+                        vim.cmd('startinsert')
+                    end,
                 },
                 ['g1'] = {
                     'actions.open_cmdline',
