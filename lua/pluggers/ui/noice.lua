@@ -1,7 +1,5 @@
 return {
-    -- 'folke/noice.nvim',
-    'dpetka2001/noice.nvim',
-    branch = 'fix/msg_show.shell_out',
+    'folke/noice.nvim',
     event = 'VeryLazy',
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
@@ -30,17 +28,18 @@ return {
             },
         },
         routes = {
-            -- {
-            --     view = 'cmdline_popup',
-            --     filter = {
-            --         event = 'msg_show',
-            --         kind = {
-            --             'shell_out',
-            --             'shell_err',
-            --         },
-            --     },
-            -- },
             {
+                view = 'notify',
+                filter = {
+                    event = 'msg_show',
+                    kind = {
+                        'shell_out',
+                        'shell_err',
+                    },
+                },
+            },
+            {
+                view = 'mini',
                 filter = {
                     event = 'msg_show',
                     any = {
@@ -49,7 +48,6 @@ return {
                         { find = '; before #%d+' },
                     },
                 },
-                view = 'mini',
             },
         },
         presets = {
