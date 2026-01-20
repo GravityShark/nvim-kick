@@ -1,6 +1,6 @@
 return {
     -- 'folke/noice.nvim',
-    'dpetka/noice.nvim',
+    'dpetka2001/noice.nvim',
     branch = 'fix/msg_show.shell_out',
     event = 'VeryLazy',
     dependencies = { 'MunifTanjim/nui.nvim' },
@@ -30,16 +30,16 @@ return {
             },
         },
         routes = {
-            {
-                view = 'cmdline_popup',
-                filter = {
-                    event = 'msg_show',
-                    kind = {
-                        'shell_out',
-                        'shell_err',
-                    },
-                },
-            },
+            -- {
+            --     view = 'cmdline_popup',
+            --     filter = {
+            --         event = 'msg_show',
+            --         kind = {
+            --             'shell_out',
+            --             'shell_err',
+            --         },
+            --     },
+            -- },
             {
                 filter = {
                     event = 'msg_show',
