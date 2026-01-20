@@ -82,9 +82,10 @@ return {
             if mode == 'v' or mode == 'V' then
                 rm = '<Del><Del><Del><Del><Del>'
                 paths = get_oil_selection()
-                return
             else
-                paths = { oil.get_cursor_entry().name }
+                -- local lnum = vim.api.nvim_win_get_cursor(0)[1]
+                local lnum = vim.fn.getpos('.')[2]
+                paths = { oil.get_entry_on_line(0, lnum).name }
             end
 
             local fs = require('oil.fs')
