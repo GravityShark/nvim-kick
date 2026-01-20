@@ -71,11 +71,12 @@ return {
         local function open_cmdline_with_path()
             local m = vim.api.nvim_get_mode().mode
             local paths = get_oil_selection()
+            local fs = require('oil.fs')
 
             local rm = ''
             local args = ''
             for _, path in ipairs(paths) do
-                args = args .. ' ' .. vim.fn.fnameescape(path)
+                args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
             end
             if m == 'v' or m == 'V' then
                 rm = '<Del><Del><Del><Del><Del>'
@@ -90,9 +91,7 @@ return {
         end
 
         local function open_file_with_path()
-            local paths = get_oil_selection()
-
-            for _, path in ipairs(paths) do
+            for _, path in ipairs(get_oil_selection()) do
                 vim.ui.open(path)
             end
         end
@@ -127,6 +126,12 @@ return {
                             require('oil').set_columns({ 'icon' })
                         end
                     end,
+                },
+                ['g!'] = {
+                    'actions.open_cmdline',
+                    opts = { shorten_path = true },
+                    desc = 'Open the command line with the current directory as argument',
+                    mode = 'n',
                 },
                 ['g!'] = {
                     open_cmdline_with_path,
