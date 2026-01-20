@@ -149,14 +149,12 @@ return {
                     desc = 'Open selected item on external program',
                     callback = function()
                         vim.cmd('vsplit')
-                        -- Set cwd ONLY for this window
                         vim.cmd(
                             'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
                         )
-                        -- Open terminal using inherited cwd
                         vim.cmd('terminal $SHELL')
-                        vim.local_opt.nu = false
-                        vim.local_opt.rnu = false
+                        vim.wo.nu = false
+                        vim.wo.rnu = false
                         vim.cmd('startinsert')
                     end,
                 },
