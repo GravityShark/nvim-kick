@@ -93,7 +93,7 @@ return {
 
             local args = ''
             for _, path in ipairs(paths) do
-                args = args .. ' ' .. fs.shorten_path(name)
+                args = args .. ' ' .. fs.shorten_path(path)
                 -- args = args .. ' ' .. path
             end
 
