@@ -93,8 +93,8 @@ return {
 
             local args = ''
             for _, path in ipairs(paths) do
-                -- args = args .. ' ' .. fs.shorten_path(vim.fn.fnameescape(path))
-                args = args .. ' ' .. path
+                args = args .. ' ' .. fs.shorten_path(name)
+                -- args = args .. ' ' .. path
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
