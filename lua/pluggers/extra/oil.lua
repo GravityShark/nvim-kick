@@ -138,7 +138,7 @@ return {
                     desc = 'Open selected item on cmdline',
                     mode = 'v',
                 },
-                ['gx'] = 'actions.open_external',
+                ['gx'] = { 'actions.open_external', mode = 'n' },
                 ['gx'] = {
                     open_file_with_path,
                     desc = 'Open selected item on external program',
