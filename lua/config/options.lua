@@ -29,8 +29,8 @@ vim.opt.fillchars = { fold = ' ', eob = ' ' }
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 4
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- Netrw
 -- vim.g.netrw_bufsettings = 'noma nomod nowrap ro nobl rnu'
 -- vim.g.netrw_banner = 0
