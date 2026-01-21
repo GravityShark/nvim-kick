@@ -97,7 +97,7 @@ endfunction
 
 " Setup {{{1
 
-" setlocal foldtext=
+setlocal foldtext=
 setlocal foldexpr=StackedMarkdownFolds()
 " or
 " setlocal foldexpr=NestedMarkdownFolds()
