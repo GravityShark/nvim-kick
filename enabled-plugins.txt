@@ -32,6 +32,7 @@ editor/mini.move
 editor/mini.pairs
 editor/mini.surround
 
+extra/bullets
 extra/fugitive
 extra/gitsigns
 extra/inc-rename

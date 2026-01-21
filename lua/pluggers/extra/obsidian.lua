@@ -46,7 +46,6 @@ return {
         },
     },
     dependencies = {
-        { 'bullets-vim/bullets.vim' },
         -- https://github.com/Myzel394/easytables.nvim
         -- https://github.com/HakonHarnes/img-clip.nvim
         -- https://github.com/Thiago4532/mdmath.nvim
@@ -55,6 +54,7 @@ return {
     },
     opts = {
         attachments = { folder = '/assets/attachments' },
+        checkbox = { order = { ' ', 'x' } },
         daily_notes = { folder = '/0-inbox' },
         legacy_commands = false, -- this will be removed in the next major release
         new_notes_location = 'notes_subdir',
