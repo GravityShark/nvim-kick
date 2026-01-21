@@ -35,7 +35,6 @@ function! NestedMarkdownFolds()
   endif
 endfunction
 
-ooo
 " Helpers {{{1
 function! s:SID()
   return matchstr(expand('<sfile>'), '\zs<SNR>\d\+_\zeSID$')
@@ -125,14 +124,14 @@ function! s:FoldText()
 endfunction
 
 " API {{{1
-function! ToggleMarkdownFoldexpr()
-  if &l:foldexpr ==# 'StackedMarkdownFolds()'
-    setlocal foldexpr=NestedMarkdownFolds()
-  else
-    setlocal foldexpr=StackedMarkdownFolds()
-  endif
-endfunction
-command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
+" function! ToggleMarkdownFoldexpr()
+"   if &l:foldexpr ==# 'StackedMarkdownFolds()'
+"     setlocal foldexpr=NestedMarkdownFolds()
+"   else
+"     setlocal foldexpr=StackedMarkdownFolds()
+"   endif
+" endfunction
+" command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
 
 " Setup {{{1
 " let &l:foldtext = s:SID() . 'FoldText()' " default
