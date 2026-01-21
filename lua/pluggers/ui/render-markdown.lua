@@ -12,7 +12,7 @@ return {
         heading = {
             sign = false,
             icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
-            width = 'block',
+            -- width = 'block',
             backgrounds = {
                 '',
                 '',
