@@ -97,8 +97,8 @@ endfunction
 
 " Setup {{{1
 
-" setlocal tabstop=2
-" setlocal softtabstop=2
+setlocal tabstop=2
+setlocal softtabstop=2
 setlocal foldtext=
 setlocal foldexpr=StackedMarkdownFolds()
 " or
