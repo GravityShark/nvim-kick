@@ -6,21 +6,22 @@ return {
     ---@type render.md.UserConfig
     opts = {
         quote = { enabled = false },
+        bullet = { enabled = false },
 
-        checkbox = { render_modes = true, bullet = true, left_pad = 3 },
+        checkbox = { render_modes = true, bullet = true },
 
         heading = {
             sign = false,
             icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
             width = 'block',
-            -- backgrounds = {
-            --     'Headline1Bg',
-            --     'Headline2Bg',
-            --     'Headline3Bg',
-            --     'Headline4Bg',
-            --     'Headline5Bg',
-            --     'Headline6Bg',
-            -- },
+            backgrounds = {
+                'CursorLine',
+                'CursorLine',
+                'CursorLine',
+                'CursorLine',
+                'CursorLine',
+                'CursorLine',
+            },
             -- foregrounds = {
             --     'Headline1Fg',
             --     'Headline2Fg',

@@ -44,6 +44,8 @@ tool or script or even just making my own cli for a specific purpose
 
 ## plugins i have to look into
 
+- [ ] pho
+
 - [bullets.vim](https://github.com/bullets-vim/bullets.vim) i need to fix to
   config of this
 - [mini.move](https://github.com/nvim-mini/mini.move) adds the primeagen mapping
