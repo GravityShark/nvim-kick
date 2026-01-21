@@ -1,3 +1,4 @@
+--[[
 -- https://github.com/linkarzu/dotfiles-latest/blob/990d77fbc13ea506968c2ce1617def110c6c02ad/neovim/neobean/lua/config/keymaps.lua#L3104C1-L3126C4
 function _G.markdown_foldexpr()
     local lnum = vim.v.lnum
@@ -43,3 +44,4 @@ vim.b.frontmatter_end = frontmatter_end
 vim.opt_local.foldexpr = 'v:lua.markdown_foldexpr()'
 -- vim.opt_local.foldtext = 'v:lua.vim.treesitter.foldtext()'
 vim.opt_local.foldtext = 'foldtext()'
+]]

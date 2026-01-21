@@ -141,8 +141,8 @@ end
 
 set_fold_hl()
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    callback = set_fold_hl,
-})
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--     callback = set_fold_hl,
+-- })
 
 vim.opt.foldtext = 'luaeval("HighlightedFoldtext")()'
