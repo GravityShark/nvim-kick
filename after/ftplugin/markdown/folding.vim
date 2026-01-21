@@ -134,13 +134,14 @@ endfunction
 " command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
 
 " Setup {{{1
-" let &l:foldtext = s:SID() . 'FoldText()' " default
-" or
-setlocal foldtext=
 
-let g:markdown_fold_style = 'StackedMarkdownFolds()' " default
+let &l:foldtext = s:SID() . 'FoldText()' " default
 " or
-" let g:markdown_fold_style = 'NestedMarkdownFolds()'
+" setlocal foldtext=
+
+setlocal foldexpr=StackedMarkdownFolds() " default
+" or
+" setlocal foldexpr=NestedMarkdownFolds()
 
 
 " Teardown {{{1

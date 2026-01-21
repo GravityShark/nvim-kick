@@ -7,10 +7,10 @@ return {
     opts = {
         quote = { enabled = false },
         bullet = { enabled = false },
-
-        checkbox = { render_modes = true, bullet = true },
-
+        checkbox = { enabled = false },
+        sign = { enabled = false },
         heading = {
+            enabled = false,
             sign = false,
             icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
             width = 'block',
