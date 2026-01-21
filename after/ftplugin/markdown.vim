@@ -100,9 +100,9 @@ endfunction
 setlocal tabstop=2
 setlocal softtabstop=2
 setlocal foldtext=
-setlocal foldexpr=StackedMarkdownFolds()
+" setlocal foldexpr=StackedMarkdownFolds()
 " or
-" setlocal foldexpr=NestedMarkdownFolds()
+setlocal foldexpr=NestedMarkdownFolds()
 
 
 " Teardown {{{1
