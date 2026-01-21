@@ -1,7 +1,6 @@
 -- Sets the settings before running lazy
 require('config.options')
 
--- Setsup lazy.nvim {{{
 -- Bootstrap lazy.nvim {{{
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -24,7 +23,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         os.exit(1)
     end
 end
-vim.opt.rtp:prepend(lazypath) -- }}}
+vim.opt.rtp:prepend(lazypath)
+-- }}}
 
 -- Setup plugins {{{
 vim.g.mapleader = ' '
@@ -56,9 +56,10 @@ require('lazy').setup({
                 'zipPlugin',
             },
         },
-    }, -- }}}
-}) -- }}}
-
+    },
+})
+-- }}}
+--
 -- Keymaps only works after loading lazy
 require('config.autocmds')
 require('config.foldtext')
