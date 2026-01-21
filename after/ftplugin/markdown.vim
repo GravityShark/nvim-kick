@@ -95,51 +95,10 @@ function! s:HasSurroundingFencemarks(lnum)
   return fenceEndPosition != [0,0]
 endfunction
 
-function! s:FoldText()
-  let level = HeadingDepth(v:foldstart)
-  let indent = repeat('#', level)
-  let title = substitute(getline(v:foldstart), '^#\+\s\+', '', '')
-  let foldsize = (v:foldend - v:foldstart)
-  let linecount = '['.foldsize.' line'.(foldsize>1?'s':'').']'
-
-  if level < 6
-    let spaces_1 = repeat(' ', 6 - level)
-  else
-    let spaces_1 = ' '
-  endif
-
-  if exists('*strdisplaywidth')
-      let title_width = strdisplaywidth(title)
-  else
-      let title_width = len(title)
-  endif
-
-  if title_width < 40
-    let spaces_2 = repeat(' ', 40 - title_width)
-  else
-    let spaces_2 = ' '
-  endif
-
-  return indent.spaces_1.title.spaces_2.linecount
-endfunction
-
-" API {{{1
-" function! ToggleMarkdownFoldexpr()
-"   if &l:foldexpr ==# 'StackedMarkdownFolds()'
-"     setlocal foldexpr=NestedMarkdownFolds()
-"   else
-"     setlocal foldexpr=StackedMarkdownFolds()
-"   endif
-" endfunction
-" command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
-
 " Setup {{{1
 
-let &l:foldtext = s:SID() . 'FoldText()' " default
-" or
 " setlocal foldtext=
-
-setlocal foldexpr=StackedMarkdownFolds() " default
+setlocal foldexpr=StackedMarkdownFolds()
 " or
 " setlocal foldexpr=NestedMarkdownFolds()
 

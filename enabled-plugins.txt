@@ -50,7 +50,7 @@ ui/colorizer
 ui/mini.animate
 ui/mini.statusline
 ui/noice
-# ui/render-markdown
+ui/render-markdown
 ui/todo-comments
 
 # vim:commentstring=#\ %s:

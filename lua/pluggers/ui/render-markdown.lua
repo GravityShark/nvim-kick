@@ -10,17 +10,16 @@ return {
         checkbox = { enabled = false },
         sign = { enabled = false },
         heading = {
-            enabled = false,
             sign = false,
             icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
             width = 'block',
             backgrounds = {
-                'CursorLine',
-                'CursorLine',
-                'CursorLine',
-                'CursorLine',
-                'CursorLine',
-                'CursorLine',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
             },
             -- foregrounds = {
             --     'Headline1Fg',
