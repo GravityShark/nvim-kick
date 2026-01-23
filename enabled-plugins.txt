@@ -11,9 +11,12 @@
 # use `gf` to view the docs, and open netrw/oil to view inside the folder
 # lua/pluggers/main/main.md
 # lua/pluggers/colors/colors.md
+#
+# lua/pluggers/coding/coding.md
 # lua/pluggers/editor/editor.md
 # lua/pluggers/extra/extra.md
 # lua/pluggers/fun/fun.md
+# lua/pluggers/nav/nav.md
 # lua/pluggers/ui/ui.md
 
 # colors/ is not enabled by default
