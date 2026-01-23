@@ -3,7 +3,6 @@ return {
     dependencies = {
         {
             'kungfusheep/snipe-lsp.nvim',
-            dependencies = 'leath-dub/snipe.nvim',
             keys = {
                 {
                     '<leader>cs',
