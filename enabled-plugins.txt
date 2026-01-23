@@ -42,6 +42,7 @@ extra/neogen
 extra/new-file-template
 extra/obsidian
 extra/oil
+extra/snipe
 extra/trouble
 extra/ts-comments
 extra/undotree

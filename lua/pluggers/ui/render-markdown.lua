@@ -11,7 +11,8 @@ return {
         sign = { enabled = false },
         heading = {
             sign = false,
-            icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
+            -- icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' },
+            icons = { '󰉫 ', '󰉬 ', '󰉭 ', '󰉮 ', '󰉯 ', '󰉰 ' },
             -- width = 'block',
             backgrounds = {
                 '',

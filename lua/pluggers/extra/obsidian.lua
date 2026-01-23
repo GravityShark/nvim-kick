@@ -1,6 +1,7 @@
 return {
     'obsidian-nvim/obsidian.nvim',
     ft = 'markdown',
+    cmd = 'Obsidian',
     keys = {
         -- https://github.com/obsidian-nvim/obsidian.nvim?tab=readme-ov-file#commands
         -- other commands
@@ -46,7 +47,6 @@ return {
         },
     },
     dependencies = {
-        -- https://github.com/Myzel394/easytables.nvim
         -- https://github.com/HakonHarnes/img-clip.nvim
         -- https://github.com/Thiago4532/mdmath.nvim
         -- https://github.com/artempyanykh/marksman

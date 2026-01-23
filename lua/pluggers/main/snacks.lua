@@ -30,7 +30,6 @@ return {
             end,
         },
         indent = { enabled = true },
-        input = { enabled = true },
         picker = {
             enabled = true,
             matcher = { frecency = true },
