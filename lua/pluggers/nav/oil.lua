@@ -22,7 +22,7 @@ return {
     },
 
     config = function()
-        local oil = require('oil')
+        local oil = require('lua.pluggers.nav.oil')
         local get_oil_selection = function()
             -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
             -- https://github.com/stevearc/conform.nvim/blob/62d5accad8b29d6ba9b58d3dff90c43a55621c60/lua/conform/init.lua#L324-L353
@@ -129,14 +129,16 @@ return {
                     callback = function()
                         detail = not detail
                         if detail then
-                            require('oil').set_columns({
+                            require('lua.pluggers.nav.oil').set_columns({
                                 'icon',
                                 'permissions',
                                 'size',
                                 'mtime',
                             })
                         else
-                            require('oil').set_columns({ 'icon' })
+                            require('lua.pluggers.nav.oil').set_columns({
+                                'icon',
+                            })
                         end
                     end,
                 },
@@ -148,9 +150,9 @@ return {
                     open_external,
                     desc = 'Open selected item on external program',
                 },
-                ['gs'] = {
+                ['gt'] = {
                     -- 'actions.open_terminal',
-                    desc = 'Open selected item on external program',
+                    desc = 'Open current working directory in a terminal',
                     callback = function()
                         vim.cmd('vsplit')
 

@@ -1,44 +1,22 @@
 #+title: Extra
 
 # Extra Plugins
-These plugins add *extra* functionality that doesn't really fit the categories of UI improvements or Editing improvements
+
+These plugins add _extra_ functionality that doesn't really fit the categories
+of UI or Editing improvements
+
+This means adding new features that add onto neovim, but doesn't fundamentally
+change how you use it.
 
 ## fugitive
-- adds :Git and :GBrowse
 
-## *gitsigns*
-shows the diff inside the gutter + git related features based on hunks 
+- Adds `:Git` and `:GBrowse,` see `:fugitive` when you have loaded it
 
-## *hardtime*
-Establish good command workflow and quit bad habit 
+## live-preview
 
-## *harpoon*
-Allows you to tag (setup to use up to 4) files and easily
-jump to them and be local to each project
+- Adds `:LivePreview`, see `h livepreview` when you have loaded it
 
-## *inc-rename*
-Incremental LSP renaming based on Neovim's command-preview feature. 
+## obsidian
 
-## *lazydev*
-Makes the lua language server better for configuring neovim
-
-## *neogen*
-Easy annotation generation
-
-## *new-file-template*
-Automatically insert a template on new files in neovim. 
-
-## *trouble.nvim*
-Open a menu of all diagnostics in the workspace
-
-## ts-autotag
-Use treesitter to auto close and auto rename html tag 
-
-## *ts-comments*
-Tiny plugin to enhance Neovim's native comments 
-
-## *undotree*
-Open a menu of a tree of all undos
-
-## *which-key.nvim*
-Show list of possible key combinations when pressing keys
+Adds [obsidian.md](https://obsidian.md/) like features, should only apply on the
+defined obsidian vault, yay!

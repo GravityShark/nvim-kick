@@ -254,4 +254,18 @@ vim.api.nvim_set_keymap(
 -- vim.api.nvim_set_keymap('n', '-', '<C-x>', { desc = 'Decrement' })
 -- }}}
 
+-- markdown links {{{
+vim.api.nvim_set_keymap(
+    'v',
+    'P',
+    '0`<i<C-v>(<ESC>`<i<C-v>)<C-v>[p<C-v>]',
+    { desc = 'Increment', noremap = true }
+)
+vim.api.nvim_set_keymap(
+    'v',
+    '<leader>P',
+    '0`<i<C-v>(<ESC>`<i<C-v>)<C-v>[<leader>p<C-v>]',
+    { desc = 'Increment', noremap = true }
+)
+-- }}}
 -- vim:foldmethod=marker:

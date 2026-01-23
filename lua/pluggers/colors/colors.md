@@ -2,10 +2,6 @@
 
 These plugins change and set the colorscheme
 
-## mini.base16
-
-custom colorscheme based on base16, i use this with stylix sometimes
-
 ## catppuccin
 
 the nice pastel theme
@@ -14,17 +10,25 @@ the nice pastel theme
 
 - a real theme for real men
 
+## mini.base16
+
+custom colorscheme based on base16, i use this with stylix sometimes
+
+## mini.colors
+
+other way of making custom themes using
+
 ## monokai
 
 the notsonice bright theme
 
-## sonokai
-
-the high contrast n vivid color based on monokai
-
 ## _rose-pine_
 
 the soho vibes for your editor
+
+## sonokai
+
+the high contrast n vivid color based on monokai
 
 ## tokyonight
 

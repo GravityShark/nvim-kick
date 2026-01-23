@@ -16,7 +16,7 @@
 # lua/pluggers/fun/fun.md
 # lua/pluggers/ui/ui.md
 
-# no colorscheme is enabled by default
+# colors/ is not enabled by default
 
 main/blink
 main/conform
@@ -25,28 +25,28 @@ main/lsp
 main/snacks
 main/treesitter
 
+coding/bullets
+coding/inc-rename
+coding/neogen
+coding/new-file-template
+coding/ts-comments
+
+editor/gitsigns
 editor/guess-indent
 editor/mini.ai
 editor/mini.jump
-editor/mini.move
 editor/mini.pairs
 editor/mini.surround
+editor/undotree
 
-extra/bullets
 extra/fugitive
-extra/gitsigns
-extra/inc-rename
-extra/live-preview
-extra/minipoon
-extra/neogen
-extra/new-file-template
 extra/obsidian
-extra/oil
-extra/snipe
-extra/trouble
-extra/ts-comments
-extra/undotree
-extra/which-key
+
+fun/cellular-automaton
+
+nav/minipoon
+nav/oil
+nav/snipe
 
 ui/colorizer
 ui/mini.animate
@@ -54,5 +54,6 @@ ui/mini.statusline
 ui/noice
 ui/render-markdown
 ui/todo-comments
+ui/which-key
 
 # vim:commentstring=#\ %s:
