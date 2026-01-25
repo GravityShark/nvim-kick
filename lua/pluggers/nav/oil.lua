@@ -73,12 +73,9 @@ return {
             local mode = vim.api.nvim_get_mode().mode
             local rm = ''
             if mode == 'v' or mode == 'V' then
-                local fs = require('oil.fs')
                 rm = '<Del><Del><Del><Del><Del>'
                 for _, path in ipairs(get_oil_selection()) do
-                    args = args
-                        .. ' '
-                        .. fs.shorten_path(vim.fn.fnameescape(path))
+                    args = args .. ' ' .. vim.fn.fnameescape(path)
                 end
             else
                 args = ' ' .. oil.get_cursor_entry().name
