@@ -31,7 +31,7 @@ return {
     config = function()
         local snipe = require('snipe')
         snipe.setup({
-            position = 'center',
+            ui = { position = 'center' },
             hints = {
                 dictionary = '1234567890!@#$%^&*()',
                 -- Character used to disambiguate tags when 'persist_tags' option is set
@@ -62,19 +62,19 @@ return {
                 -- When the list is too long it is split into pages
                 -- `[next|prev]_page` options allow you to navigate
                 -- this list
-                -- next_page = 'J',
-                -- prev_page = 'K',
+                next_page = 'J',
+                prev_page = 'K',
 
                 -- You can also just use normal navigation to go to the item you want
                 -- this option just sets the keybind for selecting the item under the
                 -- cursor
                 ---@type string|string[]
-                -- under_cursor = '<cr>',
+                under_cursor = '<cr>',
 
                 -- In case you changed your mind, provide a keybind that lets you
                 -- cancel the snipe and close the window.
                 ---@type string|string[]
-                -- cancel_snipe = '<esc>',
+                cancel_snipe = '<esc>',
 
                 -- Close the buffer under the cursor
                 -- Remove "j" and "k" from your dictionary to navigate easier to delete
@@ -82,7 +82,7 @@ return {
                 -- close_buffer = 'D',
 
                 -- Open buffer in vertical split
-                -- open_vsplit = 'V',
+                open_vsplit = 'V',
 
                 -- Open buffer in split, based on `vim.opt.splitbelow`
                 open_split = 'S',
