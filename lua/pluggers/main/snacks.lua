@@ -17,6 +17,11 @@ return {
             end,
         })
     end,
+    config = function(_, opts)
+        local Snacks = require('snacks')
+        Snacks.setup(opts)
+        vim.ui.select = Snacks.picker.select({ auto_confirm = true })
+    end,
     opts = {
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
@@ -30,9 +35,11 @@ return {
             end,
         },
         indent = { enabled = true },
+        input = { enabled = true },
         picker = {
             enabled = true,
             matcher = { frecency = true },
+            ui_select = false,
             win = {
                 input = {
                     keys = {
@@ -128,6 +135,19 @@ return {
             '<leader>sb',
             function()
                 Snacks.picker.buffers()
+            end,
+            desc = 'buffers',
+        },
+        {
+            'gb',
+            function()
+                vim.ui.select(
+                    vim.api.nvim_list_bufs(),
+                    { prompt = 'Buffers' },
+                    function(choice)
+                        vim.cmd('buffer ' .. choice)
+                    end
+                )
             end,
             desc = 'buffers',
         },
