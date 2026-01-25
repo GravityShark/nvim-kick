@@ -34,7 +34,8 @@ return {
         picker = {
             enabled = true,
             matcher = { frecency = true },
-            select = { auto_confirm = true },
+            select = { Config = { auto_confirm = true }, auto_confirm = true },
+            -- ui_select = { Config = { auto_confirm = true } },
             win = {
                 input = {
                     keys = {
