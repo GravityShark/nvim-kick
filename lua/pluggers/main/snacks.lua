@@ -17,13 +17,6 @@ return {
             end,
         })
     end,
-    config = function(_, opts)
-        local Snacks = require('snacks')
-        Snacks.setup(opts)
-        vim.ui.select = function()
-            Snacks.picker.select({ auto_confirm = true })
-        end
-    end,
     opts = {
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
@@ -41,7 +34,7 @@ return {
         picker = {
             enabled = true,
             matcher = { frecency = true },
-            ui_select = false,
+            select = { auto_confirm = true },
             win = {
                 input = {
                     keys = {
