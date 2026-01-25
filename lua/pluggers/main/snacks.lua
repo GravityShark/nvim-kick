@@ -33,9 +33,9 @@ return {
         input = { enabled = true },
         picker = {
             enabled = true,
-            matcher = { frecency = true },
             auto_confirm = true,
             sources = { select = { auto_confirm = true } },
+            matcher = { frecency = true },
             win = {
                 input = {
                     keys = {
