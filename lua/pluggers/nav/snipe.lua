@@ -28,33 +28,28 @@ return {
         },
     },
     opts = {
-        ui = {
-            ---@type "topleft"|"bottomleft"|"topright"|"bottomright"|"center"|"cursor"
-            position = 'center',
-
-            ---@type vim.api.keyset.win_config
-            open_win_override = {
-                title = 'Buffers',
-                border = 'rounded', -- use "rounded" for rounded border
-            },
-
-            -- Preselect the currently open buffer
-            preselect_current = true,
-
-            buffer_format = 'icon',
-        },
-        hints = {
-            dictionary = '123456789!@#$%',
-        },
-        navigate = {
-            open_split = 'S',
-        },
+        -- ui = {
+        --     ---@type "topleft"|"bottomleft"|"topright"|"bottomright"|"center"|"cursor"
+        --     position = 'center',
+        --
+        --     ---@type vim.api.keyset.win_config
+        --     open_win_override = {
+        --         border = 'rounded', -- use "rounded" for rounded border
+        --     },
+        --
+        --     -- Preselect the currently open buffer
+        --     preselect_current = true,
+        --
+        --     buffer_format = 'icon',
+        -- },
+        hints = { dictionary = '123456789!@#$%' },
+        navigate = { open_split = 'S' },
 
         -- Can be any of:
         --  "last" - sort buffers by last accessed
         --  "default" - sort buffers by its number
         --  fun(bs:snipe.Buffer[]):snipe.Buffer[] - custom sort function, should accept a list of snipe.Buffer[] as an argument and return sorted list of snipe.Buffer[]
         ---@type "last"|"default"|fun(buffers:snipe.Buffer[]):snipe.Buffer[]
-        sort = 'default',
+        -- sort = 'default',
     },
 }
