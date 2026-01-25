@@ -20,7 +20,9 @@ return {
     config = function(_, opts)
         local Snacks = require('snacks')
         Snacks.setup(opts)
-        vim.ui.select = Snacks.picker.select({ auto_confirm = true })
+        vim.ui.select = function()
+            Snacks.picker.select({ auto_confirm = true })
+        end
     end,
     opts = {
         bigfile = { enabled = true },
