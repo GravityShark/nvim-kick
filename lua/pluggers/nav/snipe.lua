@@ -45,7 +45,7 @@ return {
         ---@type "last"|"default"|fun(buffers:snipe.Buffer[]):snipe.Buffer[]
         sort = 'default',
         ui = {
-            buffer_format = 'icon',
+            -- buffer_format = 'icon',
             ---@type vim.api.keyset.win_config
             open_win_override = {
                 title = 'Buffers',
