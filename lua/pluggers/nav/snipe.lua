@@ -1,7 +1,7 @@
 return {
     'leath-dub/snipe.nvim',
     dependencies = {
-        'nvim-mini/mini.icons',
+        { 'nvim-mini/mini.icons', opts = {} },
         {
             'kungfusheep/snipe-lsp.nvim',
             keys = {
@@ -17,6 +17,8 @@ return {
                 },
             },
         },
+        -- https://github.com/kungfusheep/snipe-spell.nvim
+        -- https://github.com/nicholasxjy/snipe-marks.nvim
     },
     event = { 'VeryLazy', 'LspAttach' }, -- Lsp Attach is for times when lsps open a menu when you just opened a file
     keys = {
@@ -47,11 +49,8 @@ return {
         ui = {
             -- buffer_format = 'icon',
             ---@type vim.api.keyset.win_config
-            open_win_override = {
-                title = 'Buffers',
-                border = 'rounded', -- use "rounded" for rounded border
-            },
-            persistent_tags = false,
+            open_win_override = { border = 'rounded' },
+            persist_tags = false,
             ---@type "topleft"|"bottomleft"|"topright"|"bottomright"|"center"|"cursor"
             position = 'center',
             preselect_current = true,
