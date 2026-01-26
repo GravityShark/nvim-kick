@@ -35,11 +35,11 @@ return {
             enabled = true,
             matcher = { frecency = true },
             sources = {
-                grep = { cmd = 'rg', live = false },
-                select = { auto_confirm = true },
-                ui_select = { auto_confirm = true },
+                grep = { cmd = 'rg' },
+                select = { auto_confirm = true }, -- AUTO CONFIRM DOESNT WORK FOR SOMEREASON
                 smart = { multi = { 'buffers', 'git_files', 'files' } },
             },
+            show_empty = false,
             -- ui_select = false,
             win = {
                 input = {
