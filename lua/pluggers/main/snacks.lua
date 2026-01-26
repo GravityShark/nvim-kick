@@ -17,6 +17,15 @@ return {
             end,
         })
     end,
+    config = function(_, opts)
+        require('snacks').setup(opts)
+        vim.ui.select = function(...)
+            return require('snacks.picker.select').select(
+                ...,
+                { auto_confirm = true }
+            )
+        end
+    end,
     opts = {
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
@@ -33,8 +42,11 @@ return {
         input = { enabled = true },
         picker = {
             enabled = true,
-            auto_confirm = true,
             matcher = { frecency = true },
+            auto_confirm = true,
+            select = { auto_confirm = true },
+            layouts = { select = { auto_confirm = true } },
+            sources = { select = { auto_confirm = true } },
             ui_select = false,
             win = {
                 input = {
@@ -71,7 +83,7 @@ return {
         {
             '<leader>b',
             function()
-                require('snacks').bufdelete.delete()
+                Snacks.bufdelete.delete()
             end,
             desc = 'buffer delete',
         },
