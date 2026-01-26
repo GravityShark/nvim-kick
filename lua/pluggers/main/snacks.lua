@@ -142,7 +142,7 @@ return {
             function()
                 vim.ui.select(
                     vim.api.nvim_list_bufs(),
-                    { prompt = 'Buffers' },
+                    { prompt = 'Buffers', auto_confirm = true },
                     function(choice)
                         vim.cmd('buffer ' .. choice)
                     end
