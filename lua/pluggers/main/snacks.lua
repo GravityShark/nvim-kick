@@ -34,10 +34,12 @@ return {
         picker = {
             enabled = true,
             matcher = { frecency = true },
-            auto_confirm = true,
-            select = { auto_confirm = true },
-            layouts = { select = { auto_confirm = true } },
-            sources = { select = { auto_confirm = true } },
+            sources = {
+                grep = { cmd = 'rg' },
+                select = { auto_confirm = true },
+                ui_select = { auto_confirm = true },
+                smart = { multi = { 'buffers', 'git_files', 'files' } },
+            },
             -- ui_select = false,
             win = {
                 input = {
@@ -108,16 +110,7 @@ return {
         {
             '<leader>f',
             function()
-                Snacks.picker.smart({
-                    multi = { 'buffers', 'git_files', 'files' },
-                })
-                -- local git_root =
-                --     vim.fn.system(' git rev-parse --is-inside-work-tree')
-                -- if vim.v.shell_error == 0 then
-                --     Snacks.picker.git_files({matcher = {cwd_bonus = true}})
-                -- else
-                --     Snacks.picker.files({matcher = {cwd_bonus = true}})
-                -- end
+                Snacks.picker.smart()
             end,
             desc = 'find files',
         },
@@ -125,7 +118,7 @@ return {
         {
             '<leader>F',
             function()
-                Snacks.picker.grep({ cmd = 'rg' })
+                Snacks.picker.grep()
             end,
             desc = 'find text',
         },
@@ -142,7 +135,7 @@ return {
             function()
                 vim.ui.select(
                     vim.api.nvim_list_bufs(),
-                    { prompt = 'Buffers', auto_confirm = true },
+                    { prompt = 'Buffers' },
                     function(choice)
                         vim.cmd('buffer ' .. choice)
                     end
@@ -157,7 +150,6 @@ return {
                     title = 'Directories',
                     format = 'file',
                     args = { '-td' },
-                    auto_confirm = true,
                     win = {
                         preview = {
                             minimal = true,
