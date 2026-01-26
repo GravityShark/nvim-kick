@@ -157,6 +157,7 @@ return {
                     title = 'Directories',
                     format = 'file',
                     args = { '-td' },
+                    auto_confirm = true,
                     win = {
                         preview = {
                             minimal = true,
