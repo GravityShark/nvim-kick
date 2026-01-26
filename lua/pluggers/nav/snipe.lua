@@ -28,30 +28,33 @@ return {
             desc = 'Open Snipe buffer menu',
         },
     },
+    config = function(_, opts)
+        local snipe = require('snipe')
+        snipe.setup(opts)
+        snipe.ui_select_menu = require('snipe.menu'):new({})
+        -- snipe.ui_select_menu:add_new_buffer_callback(function(m)
+        --     vim.keymap.set('n', '<esc>', function()
+        --         m:close()
+        --     end, { nowait = true, buffer = m.buf })
+        -- end)
+        vim.ui.select = snipe.ui_select
+    end,
     opts = {
+        hints = { dictionary = '1234567890!@#$%^&*()' },
+        navigate = { open_split = 'S' },
+        ---@type "last"|"default"|fun(buffers:snipe.Buffer[]):snipe.Buffer[]
+        sort = 'default',
         ui = {
-            ---@type "topleft"|"bottomleft"|"topright"|"bottomright"|"center"|"cursor"
-            position = 'center',
-
+            buffer_format = 'icon',
             ---@type vim.api.keyset.win_config
             open_win_override = {
                 title = 'Buffers',
                 border = 'rounded', -- use "rounded" for rounded border
             },
-
-            -- Preselect the currently open buffer
+            persistent_tags = false,
+            ---@type "topleft"|"bottomleft"|"topright"|"bottomright"|"center"|"cursor"
+            position = 'center',
             preselect_current = true,
-
-            buffer_format = 'icon',
         },
-        hints = { dictionary = '123456789!@#$%' },
-        navigate = { open_split = 'S' },
-
-        -- Can be any of:
-        --  "last" - sort buffers by last accessed
-        --  "default" - sort buffers by its number
-        --  fun(bs:snipe.Buffer[]):snipe.Buffer[] - custom sort function, should accept a list of snipe.Buffer[] as an argument and return sorted list of snipe.Buffer[]
-        ---@type "last"|"default"|fun(buffers:snipe.Buffer[]):snipe.Buffer[]
-        sort = 'default',
     },
 }

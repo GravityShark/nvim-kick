@@ -36,7 +36,10 @@ return {
             matcher = { frecency = true },
             sources = {
                 grep = { cmd = 'rg' },
-                select = { auto_confirm = true }, -- AUTO CONFIRM DOESNT WORK FOR SOMEREASON
+                -- NOTE: I think auto confirm just means if there is a singular
+                -- item at ALL then it auto confirms, not after you just
+                -- filtered for it. So just stick to snipe
+                -- select = { auto_confirm = true },
                 smart = { multi = { 'buffers', 'git_files', 'files' } },
             },
             show_empty = false,
@@ -130,19 +133,19 @@ return {
             end,
             desc = 'buffers',
         },
-        {
-            'gb',
-            function()
-                vim.ui.select(
-                    vim.api.nvim_list_bufs(),
-                    { prompt = 'Buffers' },
-                    function(choice)
-                        vim.cmd('buffer ' .. choice)
-                    end
-                )
-            end,
-            desc = 'buffers',
-        },
+        -- {
+        --     'gb',
+        --     function()
+        --         vim.ui.select(
+        --             vim.api.nvim_list_bufs(),
+        --             { prompt = 'Buffers' },
+        --             function(choice)
+        --                 vim.cmd('buffer ' .. choice)
+        --             end
+        --         )
+        --     end,
+        --     desc = 'buffers',
+        -- },
         {
             '<leader>sd',
             function()

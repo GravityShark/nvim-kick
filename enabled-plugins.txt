@@ -49,6 +49,7 @@ fun/cellular-automaton
 
 nav/minipoon
 nav/oil
+nav/snipe
 
 ui/colorizer
 ui/mini.animate
