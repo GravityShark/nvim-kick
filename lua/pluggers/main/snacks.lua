@@ -35,7 +35,7 @@ return {
             enabled = true,
             matcher = { frecency = true },
             sources = {
-                grep = { cmd = 'rg' },
+                grep = { cmd = 'rg', live = false },
                 select = { auto_confirm = true },
                 ui_select = { auto_confirm = true },
                 smart = { multi = { 'buffers', 'git_files', 'files' } },
