@@ -35,6 +35,7 @@ return {
             enabled = true,
             auto_confirm = true,
             matcher = { frecency = true },
+            ui_select = false,
             win = {
                 input = {
                     keys = {
