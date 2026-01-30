@@ -81,10 +81,7 @@ return {
                         .. vim.fn.fnameescape(fs.shorten_path(path))
                 end
             else
-                args = ' '
-                    .. vim.fn.fnameescape(
-                        fs.shorten_path(oil.get_cursor_entry().name)
-                    )
+                args = ' ' .. vim.fn.fnameescape(oil.get_cursor_entry().name)
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
