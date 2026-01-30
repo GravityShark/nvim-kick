@@ -75,10 +75,12 @@ return {
             if mode == 'v' or mode == 'V' then
                 rm = '<Del><Del><Del><Del><Del>'
                 for _, path in ipairs(get_oil_selection()) do
-                    args = args .. ' ' .. vim.fn.fnameescape(path)
+                    args = args
+                        .. ' '
+                        .. vim.fn.fnameescape(oil.fs.shorten_path(path))
                 end
             else
-                args = ' ' .. oil.get_cursor_entry().name
+                args = ' ' .. vim.fn.nameescape(oil.get_cursor_entry().name)
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
