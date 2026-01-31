@@ -30,17 +30,18 @@ return {
             desc = 'Open Snipe buffer menu',
         },
     },
-    config = function(_, opts)
-        local snipe = require('snipe')
-        snipe.setup(opts)
-        snipe.ui_select_menu = require('snipe.menu'):new({})
-        -- snipe.ui_select_menu:add_new_buffer_callback(function(m)
-        --     vim.keymap.set('n', '<esc>', function()
-        --         m:close()
-        --     end, { nowait = true, buffer = m.buf })
-        -- end)
-        vim.ui.select = snipe.ui_select
-    end,
+    -- Snipe doesn't work properly with the oil menu so im only gonna use it for jumping through buffers
+    -- config = function(_, opts)
+    --     local snipe = require('snipe')
+    --     snipe.setup(opts)
+    --     snipe.ui_select_menu = require('snipe.menu'):new({})
+    -- snipe.ui_select_menu:add_new_buffer_callback(function(m)
+    --     vim.keymap.set('n', '<esc>', function()
+    --         m:close()
+    --     end, { nowait = true, buffer = m.buf })
+    -- end)
+    --     vim.ui.select = snipe.ui_select
+    -- end,
     opts = {
         hints = { dictionary = '1234567890!@#$%^&*()' },
         navigate = { open_split = 'S' },
