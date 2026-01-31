@@ -166,7 +166,7 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete void' })
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'yank clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p"', { desc = 'paste clipboard' })
-vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { desc = 'Paste clipboard' }) -- }}}
+vim.keymap.set({ 'n' }, '<leader>P', '"+P', { desc = 'Paste clipboard' }) -- }}}
 
 -- Middle positioned C+[D/U] and [n/N] {{{
 vim.keymap.set(
@@ -264,7 +264,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'v',
     '<leader>P',
-    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC><leader>pa<C-v>)<ESC>',
+    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC>\'"+p"a<C-v>)<ESC>',
     { desc = 'Increment', noremap = true }
 )
 -- }}}
