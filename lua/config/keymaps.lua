@@ -258,13 +258,13 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
     'v',
     'P',
-    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC>pa<C-v>)',
+    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC>pa<C-v>)<ESC>',
     { desc = 'Increment', noremap = true }
 )
 vim.api.nvim_set_keymap(
     'v',
     '<leader>P',
-    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC><leader>pa<C-v>)',
+    '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC><leader>pa<C-v>)<ESC>',
     { desc = 'Increment', noremap = true }
 )
 -- }}}
