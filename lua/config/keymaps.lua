@@ -10,10 +10,10 @@ vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { silent = true })
 -- Enter terminal
 vim.api.nvim_set_keymap(
     'n',
-    '<leader>S',
+    '<leader>t',
     -- '<CMD>split term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>i',
     '<CMD>e term://$SHELL<CR><CMD>set nu!<CR><CMD>set rnu!<CR>',
-    { desc = 'Shell' }
+    { desc = 'terminal' }
 )
 -- }}}
 

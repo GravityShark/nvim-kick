@@ -28,7 +28,6 @@ main/lsp
 main/snacks
 main/treesitter
 
-coding/bullets
 coding/inc-rename
 coding/neogen
 coding/new-file-template
