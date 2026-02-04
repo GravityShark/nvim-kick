@@ -77,12 +77,12 @@ return {
                 for _, path in ipairs(get_oil_selection()) do
                     args = args
                         .. ' '
-                        .. fs.shorten_path(vim.fn.fnameescape(path))
+                        .. vim.fn.fnameescape(fs.shorten_path(path))
                 end
             else
                 args = ' '
-                    .. fs.shorten_path(
-                        vim.fn.fnameescape(
+                    .. vim.fn.fnameescape(
+                        fs.shorten_path(
                             oil.get_current_dir() .. oil.get_cursor_entry().name
                         )
                     )
