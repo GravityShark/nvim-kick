@@ -69,28 +69,30 @@ return {
         end
 
         local function open_cmdline_with_path()
-            local fs = require('oil.fs')
-
             local args = ''
             local mode = vim.api.nvim_get_mode().mode
             local rm = ''
             if mode == 'v' or mode == 'V' then
                 rm = '<Del><Del><Del><Del><Del>'
                 for _, path in ipairs(get_oil_selection()) do
-                    args = args .. ' ' .. fs.shorten_path(path)
+                    args = args
+                        .. ' '
+                        .. vim.fn.fnameescape(fs.shorten_path(path))
                 end
             else
                 args = ' '
-                    .. fs.shorten_path(
-                        oil.get_current_dir() .. oil.get_cursor_entry().name
+                    .. vim.fn.fnameescape(
+                        fs.shorten_path(
+                            oil.get_current_dir() .. oil.get_cursor_entry().name
+                        )
                     )
             end
-
-            -- local pre = "!" -- NOTE: Because noice.nvim currently doesn't allow for continuous output https://github.com/folke/noice.nvim/issues/1097
+            --
+            -- -- local pre = "!" -- NOTE: Because noice.nvim currently doesn't allow for continuous output https://github.com/folke/noice.nvim/issues/1097
             local pre = 'vert te '
 
             local escaped = vim.api.nvim_replace_termcodes(
-                ':' .. vim.fn.fnameescape(args) .. '<Home>' .. rm .. pre,
+                ':' .. args .. '<Home>' .. rm .. pre,
                 true,
                 false,
                 true
