@@ -24,6 +24,7 @@ return {
     config = function()
         local oil = require('oil')
         local fs = require('oil.fs')
+        local cd = require('oil.actions').cd.callback
         local get_oil_selection = function()
             -- https://github.com/asdf8601/kickstart.nvim/blob/687d4da63f4befcdd3c6c1e1e0f375b449984f18/lua/kickstart/plugins/oil-file-manager.lua#L1-L41
             -- https://github.com/stevearc/conform.nvim/blob/62d5accad8b29d6ba9b58d3dff90c43a55621c60/lua/conform/init.lua#L324-L353
@@ -68,22 +69,8 @@ return {
             return items
         end
 
-        local function cd(dir)
-            if dir then
-                vim.cmd({ cmd = 'cd', args = { dir } })
-                vim.notify(string.format('CWD: %s', dir), vim.log.levels.INFO)
-            else
-                vim.notify(
-                    'Cannot :cd; not in a directory',
-                    vim.log.levels.WARN
-                )
-            end
-        end
         local function open_cmdline_with_path()
-            -- Copied from oil.actions.cd
-            local past_dir = vim.fn.getcwd()
-            local cur_dir = oil.get_current_dir()
-            cd(cur_dir)
+            cd()
 
             local args = ''
             local mode = vim.api.nvim_get_mode().mode
@@ -114,11 +101,11 @@ return {
                 true
             )
             vim.api.nvim_feedkeys(escaped, mode, true)
-
-            cd(past_dir)
         end
 
         local function open_external()
+            cd()
+
             local mode = vim.api.nvim_get_mode().mode
             if not (mode == 'v' or mode == 'V') then
                 require('oil.actions').open_external.callback()
