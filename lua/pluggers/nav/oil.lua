@@ -68,7 +68,23 @@ return {
             return items
         end
 
+        local function cd(dir)
+            if dir then
+                vim.cmd({ cmd = 'cd', args = { dir } })
+                vim.notify(string.format('CWD: %s', dir), vim.log.levels.INFO)
+            else
+                vim.notify(
+                    'Cannot :cd; not in a directory',
+                    vim.log.levels.WARN
+                )
+            end
+        end
         local function open_cmdline_with_path()
+            -- Copied from oil.actions.cd
+            local past_dir = vim.fn.getcwd()
+            local cur_dir = oil.get_current_dir()
+            cd(cur_dir)
+
             local args = ''
             local mode = vim.api.nvim_get_mode().mode
             local rm = ''
@@ -98,6 +114,8 @@ return {
                 true
             )
             vim.api.nvim_feedkeys(escaped, mode, true)
+
+            cd(past_dir)
         end
 
         local function open_external()
