@@ -58,7 +58,6 @@ return {
             local items = {}
 
             for lnum = start_row, end_row do
-                _ = oil.get_entry_on_line(bufnr, lnum)
                 table.insert(
                     items,
                     oil.get_current_dir()
@@ -78,10 +77,15 @@ return {
                 for _, path in ipairs(get_oil_selection()) do
                     args = args
                         .. ' '
-                        .. vim.fn.fnameescape(fs.shorten_path(path))
+                        .. fs.shorten_path(vim.fn.fnameescape(path))
                 end
             else
-                args = ' ' .. vim.fn.fnameescape(oil.get_cursor_entry().name)
+                args = ' '
+                    .. fs.shorten_path(
+                        vim.fn.fnameescape(
+                            oil.get_current_dir() .. oil.get_cursor_entry().name
+                        )
+                    )
             end
 
             -- local pre = "!" -- NOTE: 2 fuckign hell man
