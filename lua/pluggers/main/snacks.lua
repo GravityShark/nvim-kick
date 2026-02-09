@@ -127,25 +127,12 @@ return {
         },
         -- find
         {
-            '<leader>sb',
+            '<leader>sB',
             function()
                 Snacks.picker.buffers()
             end,
-            desc = 'buffers',
+            desc = 'Buffers',
         },
-        -- {
-        --     'gb',
-        --     function()
-        --         vim.ui.select(
-        --             vim.api.nvim_list_bufs(),
-        --             { prompt = 'Buffers' },
-        --             function(choice)
-        --                 vim.cmd('buffer ' .. choice)
-        --             end
-        --         )
-        --     end,
-        --     desc = 'buffers',
-        -- },
         {
             '<leader>sd',
             function()
@@ -278,19 +265,19 @@ return {
         --
         -- rep
         {
-            '<leader>sB',
+            '<leader>sl',
             function()
                 Snacks.picker.lines()
             end,
-            desc = 'Buffer lines',
+            desc = 'lines',
         },
-        -- {
-        --     '<leader>sB',
-        --     function()
-        --         Snacks.picker.grep_buffers()
-        --     end,
-        --     desc = 'grep Open Buffers',
-        -- },
+        {
+            '<leader>sb',
+            function()
+                Snacks.picker.grep_buffers()
+            end,
+            desc = 'buffer grep',
+        },
         {
             '<leader>sw',
             function()
@@ -392,11 +379,11 @@ return {
             desc = 'keymaps',
         },
         {
-            '<leader>sl',
+            '<leader>sL',
             function()
                 Snacks.picker.loclist()
             end,
-            desc = 'location list',
+            desc = 'Location list',
         },
         {
             '<leader>sm',
