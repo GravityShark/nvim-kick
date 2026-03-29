@@ -40,13 +40,16 @@ local function shell_template(relative_path, filename)
 
 with pkgs;
 
-mkShell {
+mkShellNoCC {
   nativeBuildInputs = [
     |cursor|
   ];
 
   buildInputs = [
   ];
+
+   shellHook = ''
+   '';
 }
 ]]
 end
