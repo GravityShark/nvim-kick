@@ -61,6 +61,7 @@ M.format = { -- :help conform-formatters
     css = { 'prettierd' },
     javascript = { 'prettierd' },
     json = { 'prettierd' },
+    kdl = { 'kdlfmt' },
 }
 
 M.formatextra = { -- :help conform-options
