@@ -23,6 +23,7 @@
 
 main/blink
 main/conform
+main/dap
 main/lint
 main/lsp
 main/snacks
