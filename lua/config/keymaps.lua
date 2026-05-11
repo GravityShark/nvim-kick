@@ -163,7 +163,7 @@ vim.api.nvim_set_keymap('v', '<', '< gv', { noremap = true })
 -- }}}
 
 -- <leader>[y|p|P] uses to system clipboard, and <leader>d to delete without copying{{{
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'delete void' })
+vim.keymap.set({ 'n', 'v' }, '<leader>D', '"_d', { desc = 'delete void' })
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'yank clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p"', { desc = 'paste clipboard' })
 vim.keymap.set({ 'n' }, '<leader>P', '"+P', { desc = 'Paste clipboard' }) -- }}}
