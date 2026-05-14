@@ -72,8 +72,8 @@ return { -- Default LSP Configurations
                 )
 
                 -- Plugins
-                local ok = pcall(require, 'inc_rename')
-                if ok then
+                local inc_rename = pcall(require, 'inc_rename')
+                if inc_rename then
                     vim.keymap.set('n', '<leader>cr', function()
                         return ':IncRename ' .. vim.fn.expand('<cword>')
                     end, { expr = true, desc = 'rename' })
@@ -166,6 +166,23 @@ return { -- Default LSP Configurations
                         desc = 'go to t[y]pe definition',
                     })
                 end
+
+                -- Plugins
+                local snipe = pcall(require, 'snipe')
+                if snipe then
+                    vim.keymap.set(
+                        'n',
+                        '<leader>cs',
+                        '<CMD>SnipeLspSymbols<CR',
+                        { desc = 'snipe lsp menu' }
+                    )
+                    vim.keymap.set(
+                        'n',
+                        '<leader>cS',
+                        '<CMD>SnipeLspSymbols<CR',
+                        { desc = 'Snipe lsp menu split' }
+                    )
+                end
                 -- LSP
             end,
         })
@@ -174,8 +191,8 @@ return { -- Default LSP Configurations
     config = function()
         for key, val in pairs(require('config.ensure').lsp) do
             if type(val) == 'table' then
-                vim.lsp.enable(key)
                 vim.lsp.config(key, val)
+                vim.lsp.enable(key)
             else
                 vim.lsp.enable(val)
             end

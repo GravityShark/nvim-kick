@@ -2,14 +2,14 @@
 M = {}
 
 -- Mostly want to install parsers that don't automatically install by filename
-M.treesitter = {
-    'diff',
-    'gitcommit',
-    'markdown_inline',
-    'printf',
-    'query',
-    'regex',
-}
+-- M.treesitter = {
+--     'diff',
+--     'gitcommit',
+--     'markdown_inline',
+--     'printf',
+--     'query',
+--     'regex',
+-- }
 
 M.lsp = { -- :help lspconfig-all
     'clangd',

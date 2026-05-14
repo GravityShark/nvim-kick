@@ -60,7 +60,7 @@ return {
                 },
             },
         },
-        quickfile = { enabled = true, exclude = { 'markdown' } },
+        quickfile = { enabled = true },
         rename = { enabled = true },
         statuscolumn = {
             enabled = true,
