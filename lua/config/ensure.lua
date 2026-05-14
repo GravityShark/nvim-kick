@@ -5,7 +5,7 @@ M = {}
 M.treesitter = {
     'diff',
     'gitcommit',
-    -- 'markdown_inline',
+    'markdown_inline',
     'printf',
     'query',
     'regex',
