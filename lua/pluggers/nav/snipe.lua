@@ -2,21 +2,21 @@ return {
     'leath-dub/snipe.nvim',
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
-        {
-            'kungfusheep/snipe-lsp.nvim',
-            keys = {
-                {
-                    '<leader>cs',
-                    '<CMD>SnipeLspSymbols<CR>',
-                    desc = 'snipe menu',
-                },
-                {
-                    '<leader>cS',
-                    '<CMD>SnipeLspSymbolsVSplit<CR>',
-                    desc = 'Snipe menu split',
-                },
-            },
-        },
+        -- {
+        --     'kungfusheep/snipe-lsp.nvim',
+        --     keys = {
+        --         {
+        --             '<leader>cs',
+        --             '<CMD>SnipeLspSymbols<CR>',
+        --             desc = 'snipe menu',
+        --         },
+        --         {
+        --             '<leader>cS',
+        --             '<CMD>SnipeLspSymbolsVSplit<CR>',
+        --             desc = 'Snipe menu split',
+        --         },
+        --     },
+        -- },
         -- https://github.com/kungfusheep/snipe-spell.nvim
         -- https://github.com/nicholasxjy/snipe-marks.nvim
     },
