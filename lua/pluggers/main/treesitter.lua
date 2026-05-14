@@ -1,8 +1,7 @@
 return { -- nvim-treesitter Supercharge syntax editing
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    lazy = false,
-    -- event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre', 'VeryLazy' },
     -- dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
         require('nvim-treesitter.install').prefer_git = true
