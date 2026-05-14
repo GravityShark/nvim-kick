@@ -15,35 +15,35 @@ return { -- nvim-treesitter Supercharge syntax editing
     --         :totable()
     --     require('nvim-treesitter').install(parsersToInstall)
     -- end,
-    config = function()
-        require('nvim-treesitter.install').prefer_git = true
-        ---@diagnostic disable-next-line: missing-fields
-        require('nvim-treesitter').setup({
-            auto_install = true,
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = '<enter>',
-                    node_incremental = false,
-                    scope_incremental = '<enter>',
-                    node_decremental = '<bs>',
-                },
-            },
-            -- textobjects = {
-            --     move = {
-            --         enable = true,
-            --         goto_next_start = {
-            --             [']f'] = '@function.outer',
-            --             [']c'] = '@class.outer',
-            --             [']a'] = '@parameter.inner',
-            --         },
-            --         goto_previous_start = {
-            --             ['[f'] = '@function.outer',
-            --             ['[c'] = '@class.outer',
-            --             ['[a'] = '@parameter.inner',
-            --         },
-            --     },
-            -- },
-        })
-    end,
+    -- config = function()
+    --     require('nvim-treesitter.install').prefer_git = true
+    ---@diagnostic disable-next-line: missing-fields
+    -- require('nvim-treesitter').setup({
+    --     auto_install = true,
+    --     incremental_selection = {
+    --         enable = true,
+    --         keymaps = {
+    --             init_selection = '<enter>',
+    --             node_incremental = false,
+    --             scope_incremental = '<enter>',
+    --             node_decremental = '<bs>',
+    --         },
+    --     },
+    --     -- textobjects = {
+    --     --     move = {
+    --     --         enable = true,
+    --     --         goto_next_start = {
+    --     --             [']f'] = '@function.outer',
+    --     --             [']c'] = '@class.outer',
+    --     --             [']a'] = '@parameter.inner',
+    --     --         },
+    --     --         goto_previous_start = {
+    --     --             ['[f'] = '@function.outer',
+    --     --             ['[c'] = '@class.outer',
+    --     --             ['[a'] = '@parameter.inner',
+    --     --         },
+    --     --     },
+    --     -- },
+    -- })
+    -- end,
 }
