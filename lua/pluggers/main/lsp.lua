@@ -173,13 +173,13 @@ return { -- Default LSP Configurations
                     vim.keymap.set(
                         'n',
                         '<leader>cs',
-                        '<CMD>SnipeLspSymbols<CR',
+                        '<CMD>SnipeLspSymbols<CR>',
                         { desc = 'snipe lsp menu' }
                     )
                     vim.keymap.set(
                         'n',
                         '<leader>cS',
-                        '<CMD>SnipeLspSymbols<CR',
+                        '<CMD>SnipeLspSymbols<CR>',
                         { desc = 'Snipe lsp menu split' }
                     )
                 end
