@@ -1,6 +1,6 @@
 return {
     'obsidian-nvim/obsidian.nvim',
-    ft = 'markdown',
+    -- ft = 'markdown',
     cmd = 'Obsidian',
     keys = {
         -- https://github.com/obsidian-nvim/obsidian.nvim?tab=readme-ov-file#commands
