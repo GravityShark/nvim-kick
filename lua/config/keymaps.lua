@@ -208,13 +208,13 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzzzv', { silent = true })
 -- )
 
 -- Open current window as default file manager
-vim.api.nvim_set_keymap(
-    'n',
-    '<leader>.',
-    '<CMD>edit %:p:h<CR>',
-    { desc = 'file explorer' }
-)
-
+-- vim.api.nvim_set_keymap(
+--     'n',
+--     '<leader>.',
+--     '<CMD>edit %:p:h<CR>',
+--     { desc = 'file explorer' }
+-- )
+--
 -- Open a floating window with netrw
 -- vim.keymap.set('n', '<leader>.', function()
 --     require('floating_netrw').toggle()

@@ -5,6 +5,7 @@ return {
     -- event = { 'VeryLazy', 'BufNewFile' },
     keys = {
         { '<leader>,', '<CMD>Oil --float<CR>', desc = 'floating file manager' },
+        { '<leader>.', '<CMD>Oil', desc = 'file manager' },
     },
     dependencies = {
         { 'nvim-mini/mini.icons', opts = {} },
@@ -126,12 +127,7 @@ return {
             delete_to_trash = true,
             lsp_file_methods = { autosave_changes = true },
             watch_for_changes = true,
-            view_options = {
-                sort = {
-                    { 'type', 'desc' },
-                    { 'mtime', 'desc' },
-                },
-            },
+            view_options = { sort = { { 'mtime', 'desc' } } },
             preview_win = { preview_method = 'scratch' },
             keymaps = {
                 ['<ESC>'] = { 'actions.close', mode = 'n' },
