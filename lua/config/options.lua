@@ -1,5 +1,5 @@
 -- Opts
-vim.opt.laststatus = 3 -- Global statusline
+vim.opt.laststatus = 2 -- Global statusline
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true -- Fire line
