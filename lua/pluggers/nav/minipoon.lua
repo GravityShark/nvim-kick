@@ -1,5 +1,5 @@
 return {
-    'kkanden/minipoon.nvim',
+    'GravityShark/minipoon.nvim',
     keys = function()
         local keys = {
             -- { '<leader>h', '', desc = '+minipoon' },
@@ -13,7 +13,6 @@ return {
             {
                 '<leader>m',
                 function()
-                    local minipoon = require('minipoon')
                     require('minipoon'):toggle_window()
                 end,
                 desc = 'menu minipoon',
