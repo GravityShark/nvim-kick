@@ -37,6 +37,8 @@ M.lsp = { -- :help lspconfig-all
     'html',
     'jsonls',
     'tailwindcss',
+    -- Java
+    'jdtls',
     ts_ls = {
         settings = { implicitProjectConfiguration = { checkJs = true } },
     },
