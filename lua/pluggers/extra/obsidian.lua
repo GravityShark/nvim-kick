@@ -51,6 +51,11 @@ return {
         -- https://github.com/Thiago4532/mdmath.nvim
         -- https://github.com/artempyanykh/marksman
         -- https://github.com/Myzel394/easytables.nvim
+        {
+            'marcocofano/excalidraw.nvim',
+            cmd = 'Excalidraw',
+            opts = {},
+        },
     },
     opts = {
         attachments = { folder = '/assets/attachments' },
