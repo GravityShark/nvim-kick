@@ -160,7 +160,7 @@ return {
                         vim.cmd('vsplit')
 
                         vim.cmd(
-                            'lcd ' .. vim.fn.fnameescape(oil.get_current_dir())
+                            'lcd ' .. vim.fn.shellescape(oil.get_current_dir())
                         )
                         vim.cmd('terminal $SHELL')
                         vim.wo.nu = false
