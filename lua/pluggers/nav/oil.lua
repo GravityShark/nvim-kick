@@ -81,10 +81,7 @@ return {
                 for _, path in ipairs(get_oil_selection()) do
                     args = args
                         .. ' '
-                        .. vim.fn.escape( -- because parentheses dont work inside of vim
-                            vim.fn.fnameescape(fs.shorten_path(path)),
-                            '()'
-                        )
+                        .. vim.fn.shellescape(fs.shorten_path(path))
                 end
             else
                 args = ' '
