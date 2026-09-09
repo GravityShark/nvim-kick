@@ -85,7 +85,7 @@ return {
                 end
             else
                 args = ' '
-                    .. vim.fn.fnameescape(
+                    .. vim.fn.shellescape(
                         fs.shorten_path(
                             oil.get_current_dir() .. oil.get_cursor_entry().name
                         )
