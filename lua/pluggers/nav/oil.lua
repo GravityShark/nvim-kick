@@ -84,14 +84,13 @@ return {
                         .. vim.fn.shellescape(fs.shorten_path(path))
                 end
             else
-                args = ' '
-                    .. vim.fn.shellescape(
-                        fs.shorten_path(
-                            oil.get_current_dir() .. oil.get_cursor_entry().name
-                        )
+                args = vim.fn.shellescape(
+                    fs.shorten_path(
+                        oil.get_current_dir() .. oil.get_cursor_entry().name
                     )
+                )
             end
-            --
+
             -- -- local pre = "!" -- NOTE: Because noice.nvim currently doesn't allow for continuous output https://github.com/folke/noice.nvim/issues/1097
             local pre = 'vert te '
 
