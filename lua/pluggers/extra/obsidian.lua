@@ -68,6 +68,7 @@ return {
             return id
         end,
         notes_subdir = '/0-inbox',
+        picker = { name = 'snacks.picker' },
         templates = { folder = '/assets/templates' },
         ui = { enable = false },
         workspaces = {
