@@ -58,24 +58,22 @@ return {
         },
     },
     opts = {
-        attachments = { folder = '/assets/attachments' },
+        attachments = { folder = 'assets/attachments' },
         checkbox = { order = { ' ', 'x' } },
-        daily_notes = { folder = '/0-inbox' },
+        daily_notes = { folder = '0-inbox' },
         frontmatter = { enabled = false },
-        legacy_commands = false, -- this will be removed in the next major release
         new_notes_location = 'notes_subdir',
         note_id_func = function(id)
             return id
         end,
-        notes_subdir = '/0-inbox',
+        notes_subdir = '0-inbox',
         picker = { name = 'snacks.picker' },
-        templates = { folder = '/assets/templates' },
-        ui = { enable = false },
+        -- templates = { folder = 'assets/templates' },
+        -- ui = { enable = false },
         workspaces = {
             {
                 name = 'Notes',
                 path = '~/Notes',
-                new_notes_location = '/0-inbox',
             },
         },
     },
