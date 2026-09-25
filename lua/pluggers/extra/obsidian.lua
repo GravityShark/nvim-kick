@@ -26,6 +26,21 @@ return {
             desc = 'today',
         },
         {
+            '<leader>ol',
+            '<CMD>Obsidian links<CR>',
+            desc = 'links',
+        },
+        {
+            '<leader>ob',
+            '<CMD>Obsidian backlinks<CR>',
+            desc = 'backlinks',
+        },
+        {
+            '<leader>ot',
+            '<CMD>Obsidian toc<CR>',
+            desc = 'table of contents',
+        },
+        {
             '<leader>of',
             '<CMD>Obsidian quick_switch<CR>',
             desc = 'find notes',
@@ -45,6 +60,11 @@ return {
             '<CMD>Obsidian<CR>',
             desc = 'Obsidian',
         },
+        {
+            '<leader>o?',
+            '<CMD>Obsidian helpgrep<CR>',
+            desc = 'Help',
+        },
     },
     dependencies = {
         -- https://github.com/HakonHarnes/img-clip.nvim
@@ -62,6 +82,7 @@ return {
         checkbox = { order = { ' ', 'x' } },
         daily_notes = { folder = '0-inbox' },
         frontmatter = { enabled = false },
+        legacy_commands = false, -- this will be removed in the next major release
         new_notes_location = 'notes_subdir',
         note_id_func = function(id)
             return id
