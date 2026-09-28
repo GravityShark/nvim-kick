@@ -43,9 +43,9 @@ return { -- vise for going to the git repository in a browser
             noremap = true,
         },
         {
-            '<leader>gr',
+            '<leader>gk',
             '<CMD>diffget //3<CR>',
-            desc = 'get diff right',
+            desc = 'get diff kanan',
             noremap = true,
         },
     },

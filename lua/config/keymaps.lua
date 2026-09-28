@@ -267,5 +267,13 @@ vim.api.nvim_set_keymap(
     '<ESC>`<i<C-v>[<ESC>`><RIGHT>a<C-v>]<C-v>(<ESC>\'"+p"a<C-v>)<ESC>',
     { desc = 'Increment', noremap = true }
 )
+
+vim.keymap.set('n', '<leader>ct', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, {
+    desc = 'toggle diagnostics',
+})
+
 -- }}}
+--
 -- vim:foldmethod=marker:
