@@ -70,7 +70,14 @@ return {
         -- adds ctrl + i to italicize n shit
         { 'antonk52/markdowny.nvim', opts = {} },
         { 'marcocofano/excalidraw.nvim', cmd = 'Excalidraw', opts = {} },
-        { 'techwizrd/render-latex.nvim', opts = {} },
+        {
+            'techwizrd/render-latex.nvim',
+            opts = {
+                tmux = {
+                    install_cleanup_hooks = true,
+                },
+            },
+        },
         { 'yousefhadder/markdown-plus.nvim', opts = {} },
         -- { 'HakonHarnes/img-clip.nvim', opts = {} },
         -- https://github.com/artempyanykh/marksman
