@@ -67,12 +67,12 @@ return {
         },
     },
     dependencies = {
+        -- adds ctrl + i to italicize n shit
         { 'antonk52/markdowny.nvim', opts = {} },
-        { 'bullets-vim/bullets.nvim', opts = {} },
-        { 'HakonHarnes/img-clip.nvim', opts = {} },
         { 'marcocofano/excalidraw.nvim', cmd = 'Excalidraw', opts = {} },
-        { 'SCJangra/table-nvim', opts = {} },
         { 'techwizrd/render-latex.nvim', opts = {} },
+        { 'yousefhadder/markdown-plus.nvim', opts = {} },
+        -- { 'HakonHarnes/img-clip.nvim', opts = {} },
         -- https://github.com/artempyanykh/marksman
         -- otter.nvim get LSP functionality in code blocks
         -- hamidi-dev/org-list.nvim orgmode-inspired, cycle through list states, make child parent checkboxes share states.
