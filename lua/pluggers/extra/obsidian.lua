@@ -67,15 +67,15 @@ return {
         },
     },
     dependencies = {
-        -- https://github.com/HakonHarnes/img-clip.nvim
-        -- https://github.com/Thiago4532/mdmath.nvim
+        { 'antonk52/markdowny.nvim', opts = {} },
+        { 'bullets-vim/bullets.nvim', opts = {} },
+        { 'HakonHarnes/img-clip.nvim', opts = {} },
+        { 'marcocofano/excalidraw.nvim', cmd = 'Excalidraw', opts = {} },
+        { 'Myzel394/easytables.nvim', opts = {} },
+        { 'techwizrd/render-latex.nvim', opts = {} },
         -- https://github.com/artempyanykh/marksman
-        -- https://github.com/Myzel394/easytables.nvim
-        {
-            'marcocofano/excalidraw.nvim',
-            cmd = 'Excalidraw',
-            opts = {},
-        },
+        -- otter.nvim get LSP functionality in code blocks
+        -- hamidi-dev/org-list.nvim orgmode-inspired, cycle through list states, make child parent checkboxes share states.
     },
     opts = {
         attachments = { folder = 'assets/attachments' },
