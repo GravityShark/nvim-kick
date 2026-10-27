@@ -71,7 +71,7 @@ return {
         { 'bullets-vim/bullets.nvim', opts = {} },
         { 'HakonHarnes/img-clip.nvim', opts = {} },
         { 'marcocofano/excalidraw.nvim', cmd = 'Excalidraw', opts = {} },
-        { 'Myzel394/easytables.nvim', opts = {} },
+        { 'SCJangra/table-nvim', opts = {} },
         { 'techwizrd/render-latex.nvim', opts = {} },
         -- https://github.com/artempyanykh/marksman
         -- otter.nvim get LSP functionality in code blocks
