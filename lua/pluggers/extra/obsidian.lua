@@ -93,8 +93,8 @@ return {
         -- ui = { enable = false },
         workspaces = {
             {
-                name = 'Notes',
-                path = '~/Notes',
+                name = 'Vault',
+                path = '~/Notes/Vault',
             },
         },
     },
